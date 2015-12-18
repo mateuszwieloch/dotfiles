@@ -1,5 +1,5 @@
 # Ask for sudo password upfront
-sudu -v
+sudo -v
 
 # Update Homebrew and formulas
 brew update
