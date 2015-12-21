@@ -9,7 +9,7 @@ set backspace=2         " backspace in insert mode works like normal editor
 set incsearch           " show the first match for a search pattern, while you are still typing it
 set hlsearch            " highlight all matches for the pattern with a yellow background
 
-colorscheme eddie
+colorscheme xoria256
 syntax on               " syntax highlighting
 set number              " line numbers
 set showmatch           " show matching paranthesis when writing code
