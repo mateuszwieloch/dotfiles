@@ -14,8 +14,12 @@ alias ll='ls -l'
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-# Explanation of the weird bits: \u Username, \h Host, \w Path, tput setaf is the color definition
-export PS1='\[$(tput setaf 4)\]\w\[$(tput setaf 1)\]$(parse_git_branch)\[$(tput sgr0)\] $ '
+
+# Prompt for dark bg
+export PS1='\[\e[32m\]\w\[\e[m\]\[\e[33m\]$(parse_git_branch)\[\e[m\] $ '
+
+# Prompt for white bg
+# export PS1='\[$(tput setaf 4)\]\w\[$(tput setaf 1)\]$(parse_git_branch)\[$(tput sgr0)\] $ '
 
 # git branch name autocompletion
 source ~/.git-completion.bash
