@@ -28,6 +28,7 @@ filetype plugin indent on    " required
 set laststatus=2
 " show open buffers
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 set expandtab           " convert tabs to spaces
 set smarttab
