@@ -1,6 +1,10 @@
-" VUNDLE
 set nocompatible              " not vi compatible
 filetype off                  " required
+
+
+" -------------------
+"  VUNDLE
+" -------------------
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -24,11 +28,18 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
+" -------------------
+"   PLUGINS CONFIG
+" -------------------
+
 " airline visible all the time
 set laststatus=2
 " show open buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+
+
 
 set expandtab           " convert tabs to spaces
 set smarttab
