@@ -1,3 +1,34 @@
+" VUNDLE
+set nocompatible              " not vi compatible
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" NERDtree
+Plugin 'scrooloose/nerdTree'
+
+" vim-markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" vim-airline
+Plugin 'bling/vim-airline'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+" airline visible all the time
+set laststatus=2
+" show open buffers
+let g:airline#extensions#tabline#enabled = 1
+
 set expandtab           " convert tabs to spaces
 set smarttab
 set tabstop=2           " 1 tab = 2 spaces
