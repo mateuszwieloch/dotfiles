@@ -7,7 +7,11 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 alias ll='ls -l'
+alias ls='ls -FGh'
 
+# LS COLORS
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # PROMPT with git branch
 
