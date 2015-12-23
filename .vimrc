@@ -52,6 +52,7 @@ set t_Co=256            " force 256 colors terminal
 colorscheme xoria256
 syntax on               " syntax highlighting
 filetype indent on      " activates indenting for files
+set wildmenu            " Make the command-line completion better
 
 set number              " line numbers
 set cursorline          " highlight current line
@@ -70,3 +71,36 @@ set incsearch           " show the first match for a search pattern, while you a
 set hlsearch            " highlight all matches for the pattern with a yellow background
 
 set nobackup            " get rid of anoying ~file
+
+" ------------------
+"   MAPPINGS
+" ------------------
+
+" Maps to make handling windows a bit easier
+"noremap <silent> ,h :wincmd h<CR>
+"noremap <silent> ,j :wincmd j<CR>
+"noremap <silent> ,k :wincmd k<CR>
+"noremap <silent> ,l :wincmd l<CR>
+"noremap <silent> ,sb :wincmd p<CR>
+noremap <silent> <C-F9>  :vertical resize -10<CR>
+noremap <silent> <C-F10> :resize +10<CR>
+noremap <silent> <C-F11> :resize -10<CR>
+noremap <silent> <C-F12> :vertical resize +10<CR>
+noremap <silent> ,s8 :vertical resize 83<CR>
+noremap <silent> ,cj :wincmd j<CR>:close<CR>
+noremap <silent> ,ck :wincmd k<CR>:close<CR>
+noremap <silent> ,ch :wincmd h<CR>:close<CR>
+noremap <silent> ,cl :wincmd l<CR>:close<CR>
+noremap <silent> ,cc :close<CR>
+noremap <silent> ,cw :cclose<CR>
+noremap <silent> ,ml <C-W>L
+noremap <silent> ,mk <C-W>K
+noremap <silent> ,mh <C-W>H
+noremap <silent> ,mj <C-W>J
+noremap <silent> <C-7> <C-W>>
+noremap <silent> <C-8> <C-W>+
+noremap <silent> <C-9> <C-W>+
+noremap <silent> <C-0> <C-W>>
+
+" Enter adds a blank line without entering the edit mode
+nmap <CR> o<Esc>
