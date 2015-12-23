@@ -19,4 +19,10 @@ brew install vim --override-system-vi
 brew install git
 brew install tree
 
+brew install caskroom/cask/brew-cask
+brew cask install atom
+brew cask install google-chrome
+brew cask install iterm2
+
+
 brew cleanup
