@@ -9,14 +9,14 @@ echo "# Change to the new shell"
 chsh -s /usr/local/bin/bash
 
 echo "# Overrite .bashrc and .profile"
-cp .bashrc .profile ~
+cp -i .bashrc .profile ~
 
 echo "# Move .git-completion.bash"
-cp .git-completion.bash ~
+cp -i .git-completion.bash ~
 
 # GIT
 echo "# Install git"
 brew install git
 
 echo "# Move .gitconfig"
-cp .gitconfig ~
+cp -i .gitconfig ~
