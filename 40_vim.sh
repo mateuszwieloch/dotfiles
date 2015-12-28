@@ -1,10 +1,10 @@
 echo "# Install vim"
 brew install vim --override-system-vi 
 
-echo "# Move .vimrc"
+echo "# Setup .vimrc"
 cp -i .vimrc ~
 
-echo "# Move .vim/ (with color themes)"
+echo "# Setup .vim/ (with color themes)"
 cp -i -R .vim ~
 
 echo "# Install vundle (package manager for vim)"
