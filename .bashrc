@@ -1,19 +1,22 @@
 # this file should contain stuff specific to bash
 
-# ALIASES
-
+# aliases {{{
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
 alias ll='ls -l'
 alias ls='ls -FGh'
+# }}}
 
-# LS COLORS
+
+# ls colors {{{
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+# }}}
 
-# PROMPT with git branch
+
+# prompt with git branch {{{ 
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -27,3 +30,4 @@ export PS1='\[\e[32m\]\w\[\e[m\]\[\e[33m\]$(parse_git_branch)\[\e[m\] $ '
 
 # git branch name autocompletion
 source ~/.git-completion.bash
+# }}}

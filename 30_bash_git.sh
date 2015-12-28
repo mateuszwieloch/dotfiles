@@ -1,4 +1,4 @@
-# BASH
+# Bash {{{
 echo "# Install latest bash (4.x)"
 brew install bash
 
@@ -13,10 +13,13 @@ cp -i .bashrc .profile ~
 
 echo "# Setup .git-completion.bash"
 cp -i .git-completion.bash ~
+# }}}
 
-# GIT
+
+# Git {{{
 echo "# Install git"
 brew install git
 
 echo "# Setup .gitconfig"
 cp -i .gitconfig ~
+# }}}

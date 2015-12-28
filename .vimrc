@@ -2,9 +2,7 @@ set nocompatible              " not vi compatible
 filetype off                  " required
 
 
-" -------------------
-"  VUNDLE
-" -------------------
+" --- VUNDLE ---{{{
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -31,23 +29,21 @@ Plugin 'plasticboy/vim-markdown'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+# }}}
 
 
-" -------------------
-"   PLUGINS CONFIG
-" -------------------
+" --- PLUGINS CONFIG ---{{{
 
 " status bar (airline) visible all the time
 set laststatus=2
 " show open buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+" }}}
 
 
+" --- LOOK & FEEL ---{{{
 
-" ------------------
-"   LOOK & FEEL
-" ------------------
 set t_Co=256            " force 256 colors terminal
 colorscheme xoria256
 syntax on               " syntax highlighting
@@ -83,10 +79,11 @@ set splitright
 set nobackup            " get rid of anoying ~file
 set nowritebackup
 set noswapfile
+" }}}
 
-" ------------------
-"   MAPPINGS
-" ------------------
+
+" --- MAPPINGS ---{{{
 
 " Enter adds a blank line without entering the edit mode
 nmap <CR> o<Esc>
+# }}}
