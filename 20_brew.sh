@@ -1,4 +1,6 @@
 # BREW
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 echo "# Update Homebrew and formulas"
 brew update
 
