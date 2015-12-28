@@ -29,7 +29,7 @@ Plugin 'plasticboy/vim-markdown'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-# }}}
+" }}}
 
 
 " --- PLUGINS CONFIG ---{{{
@@ -79,6 +79,8 @@ set splitright
 set nobackup            " get rid of anoying ~file
 set nowritebackup
 set noswapfile
+
+set foldmethod=marker
 " }}}
 
 
@@ -86,4 +88,5 @@ set noswapfile
 
 " Enter adds a blank line without entering the edit mode
 nmap <CR> o<Esc>
-# }}}
+" }}}
+
