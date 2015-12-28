@@ -1,7 +1,7 @@
 # Mac dotfiles and setup scripts
 
-## How does it work
-Provided scripts install basic software and setup decent initial config for OS X, brew, bash, git and vim.
+## What's that
+It's a set of opinionated setup and installation scripts that tweak a brand new OS X installation into an environment optimized for development.
 
 Dotfiles get automatically copied to home folder when you run scripts.
 
