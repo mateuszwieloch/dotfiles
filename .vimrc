@@ -37,7 +37,7 @@ filetype plugin indent on    " required
 "   PLUGINS CONFIG
 " -------------------
 
-" airline visible all the time
+" status bar (airline) visible all the time
 set laststatus=2
 " show open buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -61,46 +61,32 @@ set showmatch           " show matching paranthesis when writing code
 set expandtab           " convert tabs to spaces
 set smarttab
 set tabstop=2           " 1 tab = 2 spaces
-set shiftwidth=2        " shift by 4 spaces (for auto indent)
+set shiftwidth=2        " shift by 2 spaces (for auto indent)
 set noautoindent
 set smartindent
+
+set autoread            " autoread files that have changed outside of vim
+
+set history=1000        " command history
 
 set backspace=2         " backspace in insert mode works like normal editor
 
 set incsearch           " show the first match for a search pattern, while you are still typing it
 set hlsearch            " highlight all matches for the pattern with a yellow background
 
+set ignorecase          " ignores case sensitivity when carrying out a search on a document
+set smartcase 
+
+set splitbelow          " better splits (new windows appear below and to the right)
+set splitright
+
 set nobackup            " get rid of anoying ~file
+set nowritebackup
+set noswapfile
 
 " ------------------
 "   MAPPINGS
 " ------------------
-
-" Maps to make handling windows a bit easier
-"noremap <silent> ,h :wincmd h<CR>
-"noremap <silent> ,j :wincmd j<CR>
-"noremap <silent> ,k :wincmd k<CR>
-"noremap <silent> ,l :wincmd l<CR>
-"noremap <silent> ,sb :wincmd p<CR>
-noremap <silent> <C-F9>  :vertical resize -10<CR>
-noremap <silent> <C-F10> :resize +10<CR>
-noremap <silent> <C-F11> :resize -10<CR>
-noremap <silent> <C-F12> :vertical resize +10<CR>
-noremap <silent> ,s8 :vertical resize 83<CR>
-noremap <silent> ,cj :wincmd j<CR>:close<CR>
-noremap <silent> ,ck :wincmd k<CR>:close<CR>
-noremap <silent> ,ch :wincmd h<CR>:close<CR>
-noremap <silent> ,cl :wincmd l<CR>:close<CR>
-noremap <silent> ,cc :close<CR>
-noremap <silent> ,cw :cclose<CR>
-noremap <silent> ,ml <C-W>L
-noremap <silent> ,mk <C-W>K
-noremap <silent> ,mh <C-W>H
-noremap <silent> ,mj <C-W>J
-noremap <silent> <C-7> <C-W>>
-noremap <silent> <C-8> <C-W>+
-noremap <silent> <C-9> <C-W>+
-noremap <silent> <C-0> <C-W>>
 
 " Enter adds a blank line without entering the edit mode
 nmap <CR> o<Esc>
