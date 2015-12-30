@@ -16,3 +16,4 @@ etc...
 ```
 3. If you want to use vim-airline, choose a powerline font in iTerm (any font with name containing "powerline")
 4. Adjust .gitconfig
+5. Setup Groupon ssh access by following [the guide](https://access.groupondev.com/getting_started).
