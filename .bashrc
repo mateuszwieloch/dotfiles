@@ -1,8 +1,5 @@
 # this file should contain stuff specific to bash
-
-# rbenv {{{
 eval "$(rbenv init -)"
-# }}}
 
 # aliases {{{
 alias cp='cp -i'
@@ -11,6 +8,8 @@ alias rm='rm -i'
 
 alias ll='ls -l'
 alias ls='ls -FGh'
+alias be='bundle exec'
+alias getdocker='eval "$(docker-machine env default)"'
 # }}}
 
 

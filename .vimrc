@@ -1,6 +1,6 @@
 set nocompatible              " not vi compatible
 filetype off                  " required
-
+set clipboard+=unnamed " use the system paste buffer
 
 " --- VUNDLE ---{{{
 
@@ -71,7 +71,7 @@ set incsearch           " show the first match for a search pattern, while you a
 set hlsearch            " highlight all matches for the pattern with a yellow background
 
 set ignorecase          " ignores case sensitivity when carrying out a search on a document
-set smartcase 
+set smartcase
 
 set splitbelow          " better splits (new windows appear below and to the right)
 set splitright
@@ -85,8 +85,31 @@ set foldmethod=marker
 
 
 " --- MAPPINGS ---{{{
+let mapleader=","
 
 " Enter adds a blank line without entering the edit mode
 nmap <CR> o<Esc>
-" }}}
 
+" Buffers navigation
+nmap <C-e> :b#<CR>
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
+
+" move between windows
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l  
+
+nnoremap <CR> :nohlsearch<cr>
+
+nnoremap <Space> za
+
+" use Y to yank the rest of the line
+map Y y$
+
+" edit vimrc
+map <leader>v :sp ~/.vimrc<CR><C-W>_
+map <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+"
+" }}}
