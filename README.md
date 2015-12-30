@@ -17,3 +17,4 @@ etc...
 3. If you want to use vim-airline, choose a powerline font in iTerm (any font with name containing "powerline")
 4. Adjust .gitconfig
 5. Setup Groupon ssh access by following [the guide](https://access.groupondev.com/getting_started).
+6. Install a ruby version of your choice (rbenv is provided so now just run $ rbenv install <version>)
