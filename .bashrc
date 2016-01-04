@@ -6,8 +6,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-alias ll='ls -l'
-alias ls='ls -FGh'
+alias ll='ls -lhFG'
+alias ls='ls -hFG'     # human-readable; add / to file names; colorized output
+alias du='du -h'       # human-readable
 alias be='bundle exec'
 alias getdocker='eval "$(docker-machine env default)"'
 # }}}
