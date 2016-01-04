@@ -1,6 +1,5 @@
 set nocompatible              " not vi compatible
 filetype off                  " required
-set clipboard+=unnamed " use the system paste buffer
 
 " --- VUNDLE ---{{{
 
@@ -44,6 +43,7 @@ let g:airline_powerline_fonts = 1
 
 " --- LOOK & FEEL ---{{{
 
+set clipboard+=unnamed  " use the system paste buffer
 set t_Co=256            " force 256 colors terminal
 colorscheme xoria256
 syntax on               " syntax highlighting
@@ -87,10 +87,7 @@ set foldmethod=marker
 " --- MAPPINGS ---{{{
 let mapleader=","
 
-" Enter adds a blank line without entering the edit mode
-nmap <CR> o<Esc>
-
-" Buffers navigation
+" buffers navigation
 nmap <C-e> :b#<CR>
 nmap <C-n> :bnext<CR>
 nmap <C-p> :bprev<CR>
@@ -101,8 +98,11 @@ map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l  
 
-nnoremap <CR> :nohlsearch<cr>
+" clear highlights with escape in normal mode
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
+" toggle fold with space
 nnoremap <Space> za
 
 " use Y to yank the rest of the line
@@ -111,5 +111,5 @@ map Y y$
 " edit vimrc
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-"
+
 " }}}
