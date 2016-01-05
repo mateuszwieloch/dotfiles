@@ -6,20 +6,27 @@ set nocompatible              " not vi compatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+" Vundle itself 
 Plugin 'VundleVim/Vundle.vim'
 
-
 " NERDtree
+" Features: explore filesystem as a tree. Open files and folders. 
 Plugin 'scrooloose/nerdTree'
 
 " CtrlP
+" Features: fuzzy file/buffer/tag finder
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " vim-airline
+" Features: status line and optional tabline
 Plugin 'bling/vim-airline'
 
+" Syntastic
+" Features: syntax checking plugin. Uses external syntax checkers and displays errors to the user.
+Plugin 'scrooloose/syntastic'
+
 " vim-markdown
+" Features: syntax highlight, matching rules and mappings for Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
@@ -33,7 +40,7 @@ Plugin 'vim-ruby/vim-ruby'
 " Usage: press <return> at the end of block
 Plugin 'tpope/vim-endwise'
 
-" CANDIDATES
+" Other useful plugins:
 " vim-fugitive - git for vim
 " vim-rails
 " vim-cucumber
