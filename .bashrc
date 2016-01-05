@@ -1,4 +1,6 @@
 # this file should contain stuff specific to bash
+
+# initialize rbenv
 eval "$(rbenv init -)"
 
 # aliases {{{
