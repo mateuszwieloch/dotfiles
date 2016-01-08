@@ -63,6 +63,19 @@ set laststatus=2
 " show open buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_ruby_checkers = ['rubocop']
+
 " }}}
 
 
@@ -72,6 +85,7 @@ set clipboard+=unnamed  " use the system paste buffer
 set t_Co=256            " force 256 colors terminal
 colorscheme xoria256
 set wildmenu            " Make the command-line completion better
+set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
 syntax on               " Enable syntax highlighting
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
