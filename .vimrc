@@ -6,34 +6,74 @@ set nocompatible              " not vi compatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+
 " Vundle itself 
 Plugin 'VundleVim/Vundle.vim'
+
 
 " NERDtree
 " Features: explore filesystem as a tree. Open files and folders. 
 Plugin 'scrooloose/nerdTree'
 
+
 " CtrlP
 " Features: fuzzy file/buffer/tag finder
 Plugin 'ctrlpvim/ctrlp.vim'
 
+
 " vim-airline
 " Features: status line and optional tabline
 Plugin 'bling/vim-airline'
+" settings
+set laststatus=2  " status bar (airline) visible all the time
+let g:airline#extensions#tabline#enabled = 1  " show open buffers
+let g:airline_powerline_fonts = 1
+
 
 " Syntastic
-" Features: syntax checking plugin. Uses external syntax checkers and displays errors to the user.
+" Features: sends files to external syntax checkers (eg. Rubocop) and displays errors to the user.
+" Usage: :h syntastic
+" :SyntasticInfo - show list of checkers available for current filetype
+" :SyntasticCheck - manually check right now
+" :SyntasticReset - clear errors
+" :SyntasticToggleMode - toggle between manual and automatic (on buffer open and write)
+" :lclose - close location-list window
+" :lopen
+" :ll     - highlight current warning in code
+" :lnext  - highlight next warning
+" :lprev
 Plugin 'scrooloose/syntastic'
+" mappings
+nmap <leader>ss :SyntasticCheck<cr>
+nmap <leader>sr :SyntasticReset<cr>
+nmap <leader>st :SyntasticToggleMode<cr>
+nmap <leader>sc :lclose<cr>
+nmap <leader>so :lopen<cr>
+nmap <leader>sl :ll<cr>
+nmap <leader>sn :lnext<cr>
+nmap <leader>sp :lprevious<cr>
+" settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['rubocop']
+
 
 " vim-markdown
 " Features: syntax highlight, matching rules and mappings for Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+
 " vim-ruby upgrade (comes built-in with vim)
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
 Plugin 'vim-ruby/vim-ruby'
+
 
 " vim-endwise 
 " Features: automatic insertion of end after if/unless/class/do/while/def blocks
@@ -54,30 +94,6 @@ Plugin 'tpope/vim-endwise'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
-
-
-" --- PLUGINS CONFIG ---{{{
-
-" status bar (airline) visible all the time
-set laststatus=2
-" show open buffers
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_ruby_checkers = ['rubocop']
-
-" }}}
-
 
 " --- LOOK & FEEL ---{{{
 
@@ -125,12 +141,10 @@ set foldmethod=marker
 
 
 " --- MAPPINGS ---{{{
-let mapleader=","
 
 " buffers navigation
 nmap <C-e> :b#<CR>
 nmap <C-n> :bnext<CR>
-nmap <C-p> :bprev<CR>
 
 " windows navigation
 map <C-J> <C-W>j
@@ -147,6 +161,13 @@ nnoremap <Space> za
 
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
+
+
+let mapleader=","
+
+
+" Ruby
+nmap <leader>rr :w<CR>:!ruby %<CR>
 
 " edit vimrc
 map <leader>v :sp ~/.vimrc<CR><C-W>_
