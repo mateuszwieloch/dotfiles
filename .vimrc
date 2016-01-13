@@ -142,10 +142,6 @@ set foldmethod=marker
 
 " --- MAPPINGS ---{{{
 
-" buffers navigation
-nmap <C-e> :b#<CR>
-nmap <C-n> :bnext<CR>
-
 " windows navigation
 map <C-J> <C-W>j
 map <C-K> <C-W>k
@@ -165,6 +161,10 @@ map Y y$
 
 let mapleader=","
 
+" buffers navigation
+nmap <leader>bs :b#<CR>
+nmap <leader>bn :bnext<CR>
+nmap <C-n> :bnext<CR>
 
 " Ruby
 nmap <leader>rr :w<CR>:!ruby %<CR>
