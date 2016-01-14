@@ -113,6 +113,7 @@ set noautoindent
 set smartindent
 
 set autoread            " autoread files that have changed outside of vim
+set lazyredraw          " speed up vim. A lot!
 
 set history=1000        " command history
 
