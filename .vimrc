@@ -10,8 +10,15 @@ call vundle#begin()
 " Use vundle to manage plugins 
 Plugin 'VundleVim/Vundle.vim'
 
+
 Plugin 'tmhedberg/matchit'
 " Features: % matches not only brackets, but also beg/end of blocks in many popular languages
+
+
+Plugin 'tomtom/tcomment_vim'
+" Features: toggle comments
+" Usage: gcc toggle comments in a current line
+" In visual mode gc to toggle
 
 
 Plugin 'scrooloose/nerdTree'
