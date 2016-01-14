@@ -7,30 +7,30 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 
-" Vundle itself 
+" Use vundle to manage plugins 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'tmhedberg/matchit'
+" Features: % matches not only brackets, but also beg/end of blocks in many popular languages
 
-" NERDtree
-" Features: explore filesystem as a tree. Open files and folders. 
+
 Plugin 'scrooloose/nerdTree'
+" Features: explore filesystem as a tree. Open files and folders. 
 
 
-" CtrlP
-" Features: fuzzy file/buffer/tag finder
 Plugin 'ctrlpvim/ctrlp.vim'
+" Features: fuzzy file/buffer/tag finder
 
 
-" vim-airline
-" Features: status line and optional tabline
 Plugin 'bling/vim-airline'
+" Features: status line and optional tabline
 " settings
 set laststatus=2  " status bar (airline) visible all the time
 let g:airline#extensions#tabline#enabled = 1  " show open buffers
 let g:airline_powerline_fonts = 1
 
 
-" Syntastic
+Plugin 'scrooloose/syntastic'
 " Features: sends files to external syntax checkers (eg. Rubocop) and displays errors to the user.
 " Usage: :h syntastic
 " :SyntasticInfo - show list of checkers available for current filetype
@@ -42,7 +42,6 @@ let g:airline_powerline_fonts = 1
 " :ll     - highlight current warning in code
 " :lnext  - highlight next warning
 " :lprev
-Plugin 'scrooloose/syntastic'
 " mappings
 nmap <leader>ss :SyntasticCheck<cr>
 nmap <leader>sr :SyntasticReset<cr>
@@ -63,22 +62,21 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop']
 
 
-" vim-markdown
-" Features: syntax highlight, matching rules and mappings for Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+" Features: syntax highlight, matching rules and mappings for Markdown
 
 
+Plugin 'vim-ruby/vim-ruby'
 " vim-ruby upgrade (comes built-in with vim)
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
-Plugin 'vim-ruby/vim-ruby'
 
 
-" vim-endwise 
+Plugin 'tpope/vim-endwise'
 " Features: automatic insertion of end after if/unless/class/do/while/def blocks
 " Usage: press <return> at the end of block
-Plugin 'tpope/vim-endwise'
+
 
 " Other useful plugins:
 " vim-fugitive - git for vim
@@ -90,12 +88,8 @@ Plugin 'tpope/vim-endwise'
 " supertab - press tab to complete a word/function name/class name/keyword
 " auto-pair - insert closing pair of ([{ automatically
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
 " }}}
-
-" --- LOOK & FEEL ---{{{
 
 set clipboard+=unnamed  " use the system paste buffer
 set t_Co=256            " force 256 colors terminal
@@ -139,9 +133,20 @@ set nowritebackup
 set noswapfile
 
 set foldmethod=marker
-" }}}
 
-" --- MAPPINGS ---{{{
+
+" MAPPINGS
+
+let mapleader=","
+
+" buffers navigation
+nmap <leader>bs :b#<CR>
+nmap <leader>bn :bnext<CR>
+nmap <C-n> :bnext<CR>
+nmap <leader>bd :bd<CR>
+
+" copy full path to current buffer eg. /full/path/to/file.txt
+nnoremap <leader>cf :let @*=expand("%:p")<CR>
 
 " windows navigation
 map <C-J> <C-W>j
@@ -159,23 +164,9 @@ nnoremap <Space> za
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
 
-
-let mapleader=","
-
-" buffers navigation
-nmap <leader>bs :b#<CR>
-nmap <leader>bn :bnext<CR>
-nmap <C-n> :bnext<CR>
-nmap <leader>bd :bd<CR>
-
-" copy full path to current buffer eg. /full/path/to/file.txt
-nnoremap <leader>cf :let @*=expand("%:p")<CR>
-
 " ruby
 nmap <leader>rr :w<CR>:!ruby %<CR>
 
 " edit vimrc
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
-" }}}
