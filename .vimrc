@@ -123,6 +123,7 @@ set autoread            " autoread files that have changed outside of vim
 set history=1000        " command history
 
 set backspace=2         " backspace in insert mode works like normal editor
+" set cpo+=$              " when changing text, don't erase, display $ at the end of the changed text
 
 set incsearch           " show the first match for a search pattern, while you are still typing it
 set hlsearch            " highlight all matches for the pattern with a yellow background
@@ -139,7 +140,6 @@ set noswapfile
 
 set foldmethod=marker
 " }}}
-
 
 " --- MAPPINGS ---{{{
 
@@ -166,8 +166,12 @@ let mapleader=","
 nmap <leader>bs :b#<CR>
 nmap <leader>bn :bnext<CR>
 nmap <C-n> :bnext<CR>
+nmap <leader>bd :bd<CR>
 
-" Ruby
+" copy full path to current buffer eg. /full/path/to/file.txt
+nnoremap <leader>cf :let @*=expand("%:p")<CR>
+
+" ruby
 nmap <leader>rr :w<CR>:!ruby %<CR>
 
 " edit vimrc
