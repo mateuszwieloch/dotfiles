@@ -18,10 +18,13 @@ brew install tree
 
 # Graphical tools {{{
 brew install caskroom/cask/brew-cask
+
 echo "# Install atom"
 brew cask install atom
 echo "# Install Chrome"
 brew cask install google-chrome
+echo "# Install flux"
+brew cask install flux
 echo "# Install iTerm2"
 brew cask install iterm2
 # }}}
