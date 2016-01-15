@@ -84,6 +84,10 @@ Plugin 'tpope/vim-endwise'
 " Features: automatic insertion of end after if/unless/class/do/while/def blocks
 " Usage: press <return> at the end of block
 
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+" Features: Adds two new text objects: ar (around ruby block) and ir (inside of a ruby block)
+
 
 " Other useful plugins:
 " vim-fugitive - git for vim
@@ -109,7 +113,7 @@ filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
 
-set number              " line numbers
+set number              " show line numbers
 set cursorline          " highlight current line
 
 set expandtab           " convert tabs to spaces
@@ -142,7 +146,12 @@ set noswapfile
 
 set foldmethod=marker
 
-" MOUSE
+" no wrapping
+set textwidth=0 
+set wrapmargin=0
+set formatoptions-=t
+
+" mouse
 set mouse=a             " enable mouse use in all modes
 set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
