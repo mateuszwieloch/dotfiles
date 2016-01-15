@@ -142,6 +142,10 @@ set noswapfile
 
 set foldmethod=marker
 
+" MOUSE
+set mouse=a             " enable mouse use in all modes
+set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
+
 
 " MAPPINGS
 
