@@ -156,7 +156,7 @@ set mouse=a             " enable mouse use in all modes
 set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 
-" MAPPINGS
+" --- MAPPINGS -----------------------
 
 let mapleader=","
 
@@ -170,10 +170,20 @@ nmap <leader>bd :bd<CR>
 nnoremap <leader>cf :let @*=expand("%:p")<CR>
 
 " windows navigation
+map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
-map <C-H> <C-W>h
 map <C-L> <C-W>l  
+map <leader>wh <C-W>H
+map <leader>wj <C-W>J
+map <leader>wk <C-W>K
+map <leader>wl <C-W>L
+map <leader>wo <C-W>o
+map <leader>wx <C-W>x
+map <leader>wv <C-W>v
+map <leader>wc <C-W>c
+map <leader>wp <C-W>p
+map <leader>ww <C-W><C-W>
 
 " clear highlights with escape in normal mode
 nnoremap <esc> :noh<return><esc>
