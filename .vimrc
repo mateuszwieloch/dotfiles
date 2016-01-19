@@ -20,6 +20,9 @@ Plugin 'tomtom/tcomment_vim'
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
 
+Plugin 'tpope/vim-surround'
+" Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
+
 
 Plugin 'scrooloose/nerdTree'
 " Features: explore filesystem as a tree. Open files and folders. 
