@@ -1,6 +1,4 @@
 # this file should contain stuff specific to bash
-
-# initialize rbenv
 eval "$(rbenv init -)"
 
 # aliases {{{
@@ -8,9 +6,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-alias ll='ls -lhFG'
-alias ls='ls -hFG'     # human-readable; add / to file names; colorized output
-alias du='du -h'       # human-readable
+alias ll='ls -l'
+alias ls='ls -FGh'
+alias tree='tree -FC'
 alias be='bundle exec'
 alias getdocker='eval "$(docker-machine env default)"'
 # }}}
@@ -18,7 +16,10 @@ alias getdocker='eval "$(docker-machine env default)"'
 
 # ls colors {{{
 export CLICOLOR=1
+# ls on Mac uses BSD-style LSCOLORS variable
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+# tree uses Linux LS_COLORS variable that has different syntax than LSCOLORS
+export LS_COLORS="di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=37;40:su=37;40:sg=37;40:tw=32;40:ow=32;40:"
 # }}}
 
 
