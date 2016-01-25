@@ -86,6 +86,10 @@ Plugin 'vim-ruby/vim-ruby'
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
 
+
+Plugin 'thoughtbot/vim-rspec'
+let g:rspec_command = ":w | !clear && bundle exec rspec {spec}"
+
 Plugin 'keith/rspec.vim'
 
 " Uncomment after adding rails.vim plugin. These 2 lines will enable rspec highlight in rspec files outside of rails projects.
@@ -147,6 +151,7 @@ set smartindent
 set history=1000        " command history
 set autoread            " autoread files that have changed outside of vim
 set lazyredraw          " speeds up vim. A lot!
+set ttyfast
 
 set incsearch           " show the first match for a search pattern, while you are still typing it
 set hlsearch            " highlight all matches for the pattern
@@ -165,7 +170,7 @@ set noswapfile
 
 set foldenable
 set foldmethod=indent
-set foldlevelstart=5    " show most folds by default
+set foldlevelstart=10    " show most folds by default
 " toggle fold with space
 nnoremap <Space> za
 
@@ -214,6 +219,12 @@ map Y y$
 
 " ruby
 nmap <leader>rr :w<CR>:!ruby %<CR>
+
+" rspec
+map <leader>tf :call RunCurrentSpecFile()<CR>
+map <leader>ts :call RunNearestSpec()<CR>
+map <leader>tl :call RunLastSpec()<CR>
+map <leader>ta :call RunAllSpecs()<CR>
 
 " edit vimrc
 map <leader>v :sp ~/.vimrc<CR><C-W>_
