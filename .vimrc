@@ -82,6 +82,12 @@ Plugin 'vim-ruby/vim-ruby'
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
 
+Plugin 'keith/rspec.vim'
+
+" Uncomment after adding rails.vim plugin. These 2 lines will enable rspec highlight in rspec files outside of rails projects.
+" autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+" highlight def link rubyRspec Function
+
 
 Plugin 'tpope/vim-endwise'
 " Features: automatic insertion of end after if/unless/class/do/while/def blocks
@@ -108,7 +114,8 @@ call vundle#end()            " required
 set clipboard+=unnamed  " use the system paste buffer
 set t_Co=256            " force 256 colors terminal
 set background=dark
-colorscheme eddie
+colorscheme molokai
+let g:rehash256 = 1
 set wildmenu            " Make the command-line completion better
 set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
 syntax on               " Enable syntax highlighting
