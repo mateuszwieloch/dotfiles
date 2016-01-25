@@ -1,4 +1,4 @@
-set nocompatible              " not vi compatible
+set nocompatible        " not vi compatible
 
 " --- VUNDLE ---{{{
 
@@ -7,7 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 
-" Use vundle to manage plugins 
+" Use vundle to manage plugins
 Plugin 'VundleVim/Vundle.vim'
 
 
@@ -23,9 +23,13 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
 " Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
 
+Plugin 'ntpeters/vim-better-whitespace'
+" Features: highlights all trailing whitespaces (spaces and tabs)
+" :ToggleWhitespace to show/hide whitespace highlighting
+" :StripWhitespace to get rid of highlighted stuff
 
 Plugin 'scrooloose/nerdTree'
-" Features: explore filesystem as a tree. Open files and folders. 
+" Features: explore filesystem as a tree. Open files and folders.
 
 
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -111,41 +115,46 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 call vundle#end()            " required
 " }}}
 
-set clipboard+=unnamed  " use the system paste buffer
 set t_Co=256            " force 256 colors terminal
-set background=dark
 colorscheme molokai
-let g:rehash256 = 1
-set wildmenu            " Make the command-line completion better
-set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
+let g:rehash256 = 1     " adjust molokai for 256 colors terminal
+set background=dark
+
 syntax on               " Enable syntax highlighting
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
 
+set clipboard+=unnamed  " use the system paste buffer
+set wildmenu            " Make the command-line completion better
+set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
+
 set number              " show line numbers
 set cursorline          " highlight current line
-
-set expandtab           " convert tabs to spaces
-set smarttab
-set tabstop=2           " 1 tab = 2 spaces
-set shiftwidth=2        " shift by 2 spaces (for auto indent)
-set noautoindent
-set smartindent
-
-set autoread            " autoread files that have changed outside of vim
-set lazyredraw          " speed up vim. A lot!
-
-set history=1000        " command history
+" set showcmd             " Affects bottom bar. in normal mode: show command as you type it; in visual mode: show number of selected lines
 
 set backspace=2         " backspace in insert mode works like normal editor
 " set cpo+=$              " when changing text, don't erase, display $ at the end of the changed text
 
-set incsearch           " show the first match for a search pattern, while you are still typing it
-set hlsearch            " highlight all matches for the pattern with a yellow background
+set tabstop=2           " number of visual spaces per <tab>
+set expandtab           " convert tabs to spaces
+set softtabstop=2       " number of spaces in tab when *editing* (how many will be added or deleted)
+set smarttab
+set shiftwidth=2        " shift by 2 spaces (for auto indent)
+set noautoindent
+set smartindent
 
+set history=1000        " command history
+set autoread            " autoread files that have changed outside of vim
+set lazyredraw          " speeds up vim. A lot!
+
+set incsearch           " show the first match for a search pattern, while you are still typing it
+set hlsearch            " highlight all matches for the pattern
 set ignorecase          " ignores case sensitivity when carrying out a search on a document
 set smartcase
+" clear highlights with escape in normal mode
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
 set splitbelow          " better splits (new windows appear below and to the right)
 set splitright
@@ -154,10 +163,14 @@ set nobackup            " get rid of anoying ~file
 set nowritebackup
 set noswapfile
 
-set foldmethod=marker
+set foldenable
+set foldmethod=indent
+set foldlevelstart=5    " show most folds by default
+" toggle fold with space
+nnoremap <Space> za
 
 " no wrapping
-set textwidth=0 
+set textwidth=0
 set wrapmargin=0
 set formatoptions-=t
 
@@ -166,7 +179,6 @@ set mouse=a             " enable mouse use in all modes
 set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 
-" --- MAPPINGS -----------------------
 
 let mapleader=","
 
@@ -183,7 +195,7 @@ nnoremap <leader>cf :let @*=expand("%:p")<CR>
 map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
-map <C-L> <C-W>l  
+map <C-L> <C-W>l
 map <leader>wh <C-W>H
 map <leader>wj <C-W>J
 map <leader>wk <C-W>K
@@ -195,12 +207,7 @@ map <leader>wc <C-W>c
 map <leader>wp <C-W>p
 map <leader>ww <C-W><C-W>
 
-" clear highlights with escape in normal mode
-nnoremap <esc> :noh<return><esc>
-nnoremap <esc>^[ <esc>^[
 
-" toggle fold with space
-nnoremap <Space> za
 
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
