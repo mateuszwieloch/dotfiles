@@ -34,13 +34,14 @@ Plugin 'scrooloose/nerdTree'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
+let g:ctrlp_working_path_mode = 'rc'
 
 
 Plugin 'bling/vim-airline'
 " Features: status line and optional tabline
 " settings
 set laststatus=2  " status bar (airline) visible all the time
-let g:airline#extensions#tabline#enabled = 1  " show open buffers
+" let g:airline#extensions#tabline#enabled = 1  " show open buffers
 let g:airline_powerline_fonts = 1
 
 
@@ -74,6 +75,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop']
+
+
+"Snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 
 Plugin 'godlygeek/tabular'
@@ -187,7 +195,9 @@ set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 let mapleader=","
 
-" buffers navigation
+" -------
+" BUFFERS
+" -------
 nmap <leader>bs :b#<CR>
 nmap <leader>bn :bnext<CR>
 nmap <C-n> :bnext<CR>
@@ -196,28 +206,45 @@ nmap <leader>bd :bd<CR>
 " copy full path to current buffer eg. /full/path/to/file.txt
 nnoremap <leader>cf :let @*=expand("%:p")<CR>
 
-" windows navigation
+" -------
+" WINDOWS
+" -------
 map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
+" split current window in two
+map <leader>wv <C-W>v
+" split current window in two
+map <leader>ws <C-W>s
+
+" make current window the only window on the screen
+map <leader>wo <C-W>o
+" close the current window (if it's the last windows in vim, it won't be closed)
+map <leader>wc <C-W>c
+
+" go to previous window
+map <leader>wp <C-W>p
+" cycle through windows (go to bottom, right)
+map <leader>ww <C-W><C-W>
+
+" move the current window to left/bottom/top/right
 map <leader>wh <C-W>H
 map <leader>wj <C-W>J
 map <leader>wk <C-W>K
 map <leader>wl <C-W>L
-map <leader>wo <C-W>o
+" exchange current window with the next one
 map <leader>wx <C-W>x
-map <leader>wv <C-W>v
-map <leader>wc <C-W>c
-map <leader>wp <C-W>p
-map <leader>ww <C-W><C-W>
 
 
 
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
 
-" ruby
+" ----
+" RUBY
+" ----
+" run current file
 nmap <leader>rr :w<CR>:!ruby %<CR>
 
 " rspec
@@ -226,6 +253,8 @@ map <leader>ts :call RunNearestSpec()<CR>
 map <leader>tl :call RunLastSpec()<CR>
 map <leader>ta :call RunAllSpecs()<CR>
 
-" edit vimrc
+" -----
+" VIMRC
+" -----
 map <leader>v :sp ~/.vimrc<CR><C-W>_
 map <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
