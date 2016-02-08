@@ -146,6 +146,7 @@ set cursorline          " highlight current line
 " set showcmd             " Affects bottom bar. in normal mode: show command as you type it; in visual mode: show number of selected lines
 
 set backspace=2         " backspace in insert mode works like normal editor
+set ttimeoutlen=100     " prevent lag before Shift-O
 " set cpo+=$              " when changing text, don't erase, display $ at the end of the changed text
 
 set tabstop=2           " number of visual spaces per <tab>
