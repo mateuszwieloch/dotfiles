@@ -166,9 +166,8 @@ set incsearch           " show the first match for a search pattern, while you a
 set hlsearch            " highlight all matches for the pattern
 set ignorecase          " ignores case sensitivity when carrying out a search on a document
 set smartcase
-" clear highlights with escape in normal mode
-nnoremap <esc> :noh<return><esc>
-nnoremap <esc>^[ <esc>^[
+" clear highlights with enter in normal mode
+nnoremap <cr> :noh<CR><CR>:<backspace>
 
 set splitbelow          " better splits (new windows appear below and to the right)
 set splitright
