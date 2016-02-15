@@ -30,7 +30,10 @@ Plugin 'ntpeters/vim-better-whitespace'
 
 Plugin 'scrooloose/nerdTree'
 " Features: explore filesystem as a tree. Open files and folders.
-
+map <leader>n :NERDTreeToggle<CR>
+" Show NERD Tree automatically if no files specified at startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 Plugin 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
@@ -244,7 +247,7 @@ map Y y$
 " ----
 " RUBY
 " ----
-" run current file
+" save & run current file
 nmap <leader>rr :w<CR>:!ruby %<CR>
 
 " rspec
