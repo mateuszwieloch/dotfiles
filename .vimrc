@@ -181,14 +181,12 @@ set noswapfile
 
 set foldenable
 set foldmethod=indent
-set foldlevelstart=10    " show most folds by default
+set foldlevelstart=10   " show most folds by default
 " toggle fold with space
 nnoremap <Space> za
 
-" no wrapping
-set textwidth=0
-set wrapmargin=0
-set formatoptions-=t
+" wrapping
+set wrap lbr            " wrap on full words
 
 " mouse
 set mouse=a             " enable mouse use in all modes
@@ -197,6 +195,12 @@ set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 
 let mapleader=","
+
+" move through visual not physical lines
+noremap  <buffer> <silent> k gk
+noremap  <buffer> <silent> j gj
+noremap  <buffer> <silent> 0 g0
+noremap  <buffer> <silent> $ g$
 
 " -------
 " BUFFERS
