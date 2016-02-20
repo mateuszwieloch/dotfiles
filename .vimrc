@@ -1,4 +1,5 @@
 set nocompatible        " not vi compatible
+let mapleader=","
 
 " --- VUNDLE ---{{{
 
@@ -20,20 +21,25 @@ Plugin 'tomtom/tcomment_vim'
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
 
+
 Plugin 'tpope/vim-surround'
 " Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
+
 
 Plugin 'ntpeters/vim-better-whitespace'
 " Features: highlights all trailing whitespaces (spaces and tabs)
 " :ToggleWhitespace to show/hide whitespace highlighting
 " :StripWhitespace to get rid of highlighted stuff
 
+
 Plugin 'scrooloose/nerdTree'
 " Features: explore filesystem as a tree. Open files and folders.
 map <leader>n :NERDTreeToggle<CR>
+let NERDTreeMapOpenVSplit='v'
 " Show NERD Tree automatically if no files specified at startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 
 Plugin 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
@@ -75,9 +81,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_mode_map = { "mode": "passive" }
 
 
 "Snipmate
@@ -181,22 +188,20 @@ set noswapfile
 
 set foldenable
 set foldmethod=indent
-set foldlevelstart=10   " show most folds by default
+set foldlevelstart=10    " show most folds by default
 " toggle fold with space
 nnoremap <Space> za
 
-" wrapping
-set wrap lbr            " wrap on full words
+
+set wrap linebreak
+
 
 " mouse
 set mouse=a             " enable mouse use in all modes
 set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 
-
-let mapleader=","
-
-" move through visual not physical lines
+" move by visual line (not physical) when wrapping occurs
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
