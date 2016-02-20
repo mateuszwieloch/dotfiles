@@ -12,6 +12,10 @@ brew cleanup
 # }}}
 
 # Command line tools {{{
+echo "# Install ack"
+brew install ack
+echo "# Install ag"
+brew install ag
 echo "# Install tree"
 brew install tree
 # }}}
