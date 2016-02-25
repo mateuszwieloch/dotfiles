@@ -24,6 +24,10 @@ Plugin 'tomtom/tcomment_vim'
 
 Plugin 'tpope/vim-surround'
 " Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
+" cs"'  change surrounding " -> '
+" ds"   delete surrounding "
+" S"    surround in visual mode
+" ysiw" surround in word
 
 
 Plugin 'ntpeters/vim-better-whitespace'
@@ -36,6 +40,7 @@ Plugin 'scrooloose/nerdTree'
 " Features: explore filesystem as a tree. Open files and folders.
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit='v'
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " Show NERD Tree automatically if no files specified at startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -129,9 +134,22 @@ Plugin 'tpope/vim-endwise'
 " Features: automatic insertion of end after if/unless/class/do/while/def blocks
 " Usage: press <return> at the end of block
 
+
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 " Features: Adds two new text objects: ar (around ruby block) and ir (inside of a ruby block)
+
+
+" PYTHON
+Plugin 'tmhedberg/SimpylFold'
+" Features: improved Python folding
+
+Plugin 'nvie/vim-flake8'
+" Features: checks compatibility with PEP-8
+
+" Plugin 'Valloric/YouCompleteMe'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " Other useful plugins:
@@ -157,16 +175,19 @@ filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
 
+set encoding=utf-8
+set backspace=2         " backspace in insert mode works like normal editor
 set clipboard+=unnamed  " use the system paste buffer
+set ttimeoutlen=100     " prevent lag before Shift-O
 set wildmenu            " Make the command-line completion better
 set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
+
+set mouse=a             " enable mouse use in all modes
+set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 set number              " show line numbers
 set cursorline          " highlight current line
 " set showcmd             " Affects bottom bar. in normal mode: show command as you type it; in visual mode: show number of selected lines
-
-set backspace=2         " backspace in insert mode works like normal editor
-set ttimeoutlen=100     " prevent lag before Shift-O
 " set cpo+=$              " when changing text, don't erase, display $ at the end of the changed text
 
 set tabstop=2           " number of visual spaces per <tab>
@@ -198,6 +219,7 @@ set noswapfile
 
 set foldenable
 set foldmethod=indent
+set foldlevel=99
 set foldlevelstart=10    " show most folds by default
 " toggle fold with space
 nnoremap <Space> za
@@ -206,9 +228,6 @@ nnoremap <Space> za
 set wrap linebreak
 
 
-" mouse
-set mouse=a             " enable mouse use in all modes
-set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 
 " move by visual line (not physical) when wrapping occurs
@@ -262,6 +281,26 @@ map <leader>wx <C-W>x
 
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
+
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+
+" ------
+" PYTHON
+" ------
+let python_highlight_all=1
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
 
 " ----
 " RUBY
