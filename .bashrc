@@ -7,9 +7,12 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 alias ll='ls -l'
+alias lla='ls -la'
 alias ls='ls -FGh'
 alias tree='tree -FC'
 alias be='bundle exec'
+alias rspec='be rspec'
+alias rake='be rake'
 alias getdocker='eval "$(docker-machine env default)"'
 # }}}
 
@@ -38,3 +41,8 @@ export PS1='\[\e[32m\]\w\[\e[m\]\[\e[33m\]$(parse_git_branch)\[\e[m\] $ '
 # git branch name autocompletion
 source ~/.git-completion.bash
 # }}}
+
+# increase number of allowed processes. Node likes to open tons of files at once, hence a need for the increase.
+ulimit -n 4096
+
+export PATH="node_modules/.bin:$PATH"

@@ -109,6 +109,10 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 
+" Fish shell
+Plugin 'dag/vim-fish'
+
+
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Features: syntax highlight, matching rules and mappings for Markdown
@@ -166,7 +170,6 @@ call vundle#end()            " required
 " }}}
 
 set t_Co=256            " force 256 colors terminal
-colorscheme molokai
 let g:rehash256 = 1     " adjust molokai for 256 colors terminal
 set background=dark
 
@@ -174,6 +177,8 @@ syntax on               " Enable syntax highlighting
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
+
+colorscheme railscasts
 
 set encoding=utf-8
 set backspace=2         " backspace in insert mode works like normal editor
