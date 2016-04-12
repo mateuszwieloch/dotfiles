@@ -155,6 +155,8 @@ Plugin 'nvie/vim-flake8'
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" WEB DEVELOPMENT
+Plugin 'mustache/vim-mustache-handlebars'
 
 " Other useful plugins:
 " vim-fugitive - git for vim
