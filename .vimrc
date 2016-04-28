@@ -17,8 +17,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " Features: use Vundle to manage its own version
 
-
+" --- COLOR SCHEMES ---
 Plugin 'jpo/vim-railscasts-theme'
+" Plugin 'jonathanfilip/vim-lucius'
+" Plugin 'morhetz/gruvbox'
 
 
 Plugin 'tpope/vim-commentary'
