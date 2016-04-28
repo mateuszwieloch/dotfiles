@@ -18,6 +18,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Features: use Vundle to manage its own version
 
 
+Plugin 'jpo/vim-railscasts-theme'
+
+
 Plugin 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
@@ -73,13 +76,6 @@ Plugin 'bling/vim-airline'
 set laststatus=2  " status bar (airline) visible all the time
 " let g:airline#extensions#tabline#enabled = 1  " show open buffers
 let g:airline_powerline_fonts = 1
-
-
-"Snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 
 
 " --- FISH ---
