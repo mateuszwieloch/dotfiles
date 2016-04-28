@@ -1,25 +1,31 @@
-set nocompatible        " not vi compatible
 let mapleader=","
 
-" --- VUNDLE ---{{{
+" vim works best with POSIX compatible shell
+if &shell =~# 'fish$'
+    set shell=sh
+endif
 
-" set the runtime path to include Vundle and initialize
+" activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
+runtime macros/matchit.vim
+
+
+" --- VUNDLE ---
+" -------------- {{{
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-
-" Use vundle to manage plugins
 Plugin 'VundleVim/Vundle.vim'
+" Features: use Vundle to manage its own version
 
 
-Plugin 'tmhedberg/matchit'
-" Features: % matches not only brackets, but also beg/end of blocks in many popular languages
-
-
-Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
+
+
+Plugin 'tpope/vim-endwise'
+" Features: if/unless/class/do/while/def and <enter> will cause insertion of block ending. Works with multiple languages.
 
 
 Plugin 'tpope/vim-surround'
@@ -31,7 +37,7 @@ Plugin 'tpope/vim-surround'
 
 
 Plugin 'ntpeters/vim-better-whitespace'
-" Features: highlights all trailing whitespaces (spaces and tabs)
+" Features: highlights all trailing whitespaces (spaces and tabs) in red
 " :ToggleWhitespace to show/hide whitespace highlighting
 " :StripWhitespace to get rid of highlighted stuff
 
@@ -69,39 +75,6 @@ set laststatus=2  " status bar (airline) visible all the time
 let g:airline_powerline_fonts = 1
 
 
-Plugin 'scrooloose/syntastic'
-" Features: sends files to external syntax checkers (eg. Rubocop) and displays errors to the user.
-" Usage: :h syntastic
-" :SyntasticInfo - show list of checkers available for current filetype
-" :SyntasticCheck - manually check right now
-" :SyntasticReset - clear errors
-" :SyntasticToggleMode - toggle between manual and automatic (on buffer open and write)
-" :lclose - close location-list window
-" :lopen
-" :ll     - highlight current warning in code
-" :lnext  - highlight next warning
-" :lprev
-" mappings
-nmap <leader>ss :SyntasticCheck<cr>
-nmap <leader>sr :SyntasticReset<cr>
-nmap <leader>st :SyntasticToggleMode<cr>
-nmap <leader>sc :lclose<cr>
-nmap <leader>so :lopen<cr>
-nmap <leader>sl :ll<cr>
-nmap <leader>sn :lnext<cr>
-nmap <leader>sp :lprevious<cr>
-" settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_mode_map = { "mode": "passive" }
-
-
 "Snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -109,83 +82,66 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 
-" Fish shell
+" --- FISH ---
+" ------------
 Plugin 'dag/vim-fish'
+" Features: provide support for editing fish scripts
 
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-" Features: syntax highlight, matching rules and mappings for Markdown
+" --- PYTHON ---
+" --------------
+let python_highlight_all=1
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
 
 
+" --- RUBY ---
+" ------------
 Plugin 'vim-ruby/vim-ruby'
 " vim-ruby upgrade (comes built-in with vim)
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
 
-
-Plugin 'thoughtbot/vim-rspec'
-let g:rspec_command = ":w | !clear && bundle exec rspec {spec}"
-
-Plugin 'keith/rspec.vim'
-
-" Uncomment after adding rails.vim plugin. These 2 lines will enable rspec highlight in rspec files outside of rails projects.
-" autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
-" highlight def link rubyRspec Function
+" save & run current file
+nmap <leader>rr :w<CR>:!ruby %<CR>
 
 
-Plugin 'tpope/vim-endwise'
-" Features: automatic insertion of end after if/unless/class/do/while/def blocks
-" Usage: press <return> at the end of block
-
-
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-" Features: Adds two new text objects: ar (around ruby block) and ir (inside of a ruby block)
-
-
-" PYTHON
-Plugin 'tmhedberg/SimpylFold'
-" Features: improved Python folding
-
-Plugin 'nvie/vim-flake8'
-" Features: checks compatibility with PEP-8
-
-" Plugin 'Valloric/YouCompleteMe'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" WEB DEVELOPMENT
+" --- WEB ---
+" -----------
 Plugin 'mustache/vim-mustache-handlebars'
 
-" Other useful plugins:
-" vim-fugitive - git for vim
-" vim-rails
-" vim-cucumber
-" vim-haml
-" vim-snipmate - for snippets
-" tcomment-vim - toggle comments
-" supertab - press tab to complete a word/function name/class name/keyword
-" auto-pair - insert closing pair of ([{ automatically
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
 
 call vundle#end()            " required
 " }}}
 
-set t_Co=256            " force 256 colors terminal
-let g:rehash256 = 1     " adjust molokai for 256 colors terminal
-set background=dark
+
 
 syntax on               " Enable syntax highlighting
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
 
+set t_Co=256            " force 256 colors terminal
+set background=dark
 colorscheme railscasts
 
 set encoding=utf-8
+set hidden              " switch between buffers without having to save first
 set backspace=2         " backspace in insert mode works like normal editor
 set clipboard+=unnamed  " use the system paste buffer
 set ttimeoutlen=100     " prevent lag before Shift-O
+
 set wildmenu            " Make the command-line completion better
 set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
 
@@ -194,19 +150,17 @@ set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 set number              " show line numbers
 set cursorline          " highlight current line
-" set showcmd             " Affects bottom bar. in normal mode: show command as you type it; in visual mode: show number of selected lines
-" set cpo+=$              " when changing text, don't erase, display $ at the end of the changed text
 
-set tabstop=2           " number of visual spaces per <tab>
+set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
 set expandtab           " convert tabs to spaces
+set tabstop=2           " number of visual spaces per <tab>
 set softtabstop=2       " number of spaces in tab when *editing* (how many will be added or deleted)
-set smarttab
-set shiftwidth=2        " shift by 2 spaces (for auto indent)
-set noautoindent
-set smartindent
+set shiftwidth=2        " >> indents by 2 spaces
+set shiftround          " >> indents to next multiple of 'shiftwidth'
 
 set history=1000        " command history
 set autoread            " autoread files that have changed outside of vim
+
 set lazyredraw          " speeds up vim. A lot!
 set ttyfast
 
@@ -231,11 +185,13 @@ set foldlevelstart=10    " show most folds by default
 " toggle fold with space
 nnoremap <Space> za
 
-
 set wrap linebreak
 
 
-
+" --- BASIC MAPPINGS ---
+" ----------------------
+" use Y to yank the rest of the line - it's a change to unify with <D>, <C>
+map Y y$
 
 " move by visual line (not physical) when wrapping occurs
 noremap  <buffer> <silent> k gk
@@ -243,9 +199,9 @@ noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
 
-" -------
-" BUFFERS
-" -------
+
+" --- BUFFERS ---
+" ---------------
 nmap <leader>bs :b#<CR>
 nmap <leader>bn :bnext<CR>
 nmap <C-n> :bnext<CR>
@@ -254,9 +210,9 @@ nmap <leader>bd :bd<CR>
 " copy full path to current buffer eg. /full/path/to/file.txt
 nnoremap <leader>cf :let @*=expand("%:p")<CR>
 
-" -------
-" WINDOWS
-" -------
+
+" --- WINDOWS ---
+" ---------------
 map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
@@ -283,46 +239,3 @@ map <leader>wk <C-W>K
 map <leader>wl <C-W>L
 " exchange current window with the next one
 map <leader>wx <C-W>x
-
-
-
-" use Y to yank the rest of the line - it's a change to unify with <D>, <C>
-map Y y$
-
-
-au BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-
-
-" ------
-" PYTHON
-" ------
-let python_highlight_all=1
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-" ----
-" RUBY
-" ----
-" save & run current file
-nmap <leader>rr :w<CR>:!ruby %<CR>
-
-" rspec
-map <leader>tf :call RunCurrentSpecFile()<CR>
-map <leader>ts :call RunNearestSpec()<CR>
-map <leader>tl :call RunLastSpec()<CR>
-map <leader>ta :call RunAllSpecs()<CR>
-
-" -----
-" VIMRC
-" -----
-map <leader>v :sp ~/.vimrc<CR><C-W>_
-map <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
