@@ -23,7 +23,7 @@ Plugin 'jpo/vim-railscasts-theme'
 " Plugin 'morhetz/gruvbox'
 
 
-" --- BASIC ---
+" --- ESSENTIALS ---
 Plugin 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
@@ -52,14 +52,18 @@ Plugin 'ntpeters/vim-better-whitespace'
 " :StripWhitespace to get rid of highlighted stuff
 
 
-Plugin 'scrooloose/nerdTree'
-" Features: explore filesystem as a tree. Open files and folders.
-map <leader>n :NERDTreeToggle<CR>
-let NERDTreeMapOpenVSplit='v'
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-" Show NERD Tree automatically if no files specified at startup
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" --- UI ---
+Plugin 'jeetsukumaran/vim-filebeagle'
+" Features: it's a simple directory listing utility. It's not filesystem manager and it doesn't support grepping/finding text.
+" - to run FileBeagle
+" o to open
+" v for vertical split
+" s for horizontal split
+" t to open on a new tab
+" po/pv/ps/pt to perform action in background
+" R refresh directory listing
+" gh toggle hidden files
+" + to create a file
 
 
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -86,13 +90,17 @@ let g:airline_powerline_fonts = 1
 
 
 " --- FISH ---
-" ------------
 Plugin 'dag/vim-fish'
 " Features: provide support for editing fish scripts
 
 
+" --- GIT ---
+Plugin 'airblade/vim-gitgutter'
+" Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
+set updatetime=200
+
+
 " --- PYTHON ---
-" --------------
 let python_highlight_all=1
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
@@ -105,7 +113,6 @@ au BufNewFile,BufRead *.py
 
 
 " --- RUBY ---
-" ------------
 Plugin 'vim-ruby/vim-ruby'
 " vim-ruby upgrade (comes built-in with vim)
 " Features: provides syntax highlight, auto-indentation and code-completion support
@@ -116,7 +123,6 @@ nmap <leader>rr :w<CR>:!ruby %<CR>
 
 
 " --- WEB ---
-" -----------
 Plugin 'mustache/vim-mustache-handlebars'
 
 au BufNewFile,BufRead *.js,*.html,*.css
