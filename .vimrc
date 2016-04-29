@@ -23,10 +23,15 @@ Plugin 'jpo/vim-railscasts-theme'
 " Plugin 'morhetz/gruvbox'
 
 
+" --- BASIC ---
 Plugin 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
+
+
+Plugin 'sickill/vim-pasta'
+" Features: remaps p and P in normal and visual mode to do context aware pasting (indentation of pasted text is adjusted properly to match indentation of surrounding code)
 
 
 Plugin 'tpope/vim-endwise'
