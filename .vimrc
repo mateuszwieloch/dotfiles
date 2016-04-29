@@ -52,6 +52,14 @@ Plugin 'ntpeters/vim-better-whitespace'
 " :StripWhitespace to get rid of highlighted stuff
 
 
+Plugin 'rking/ag.vim'
+" Features: This plugin allows to run ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
+" :Ag [options] {pattern} [{directory}]
+" by default start searching from root of project, not cwd
+let g:ag_working_path_mode="r"
+map <leader>a :Ag!<space>
+
+
 " --- UI ---
 Plugin 'jeetsukumaran/vim-filebeagle'
 " Features: it's a simple directory listing utility. It's not filesystem manager and it doesn't support grepping/finding text.
