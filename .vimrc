@@ -186,7 +186,6 @@ set hlsearch            " highlight all matches for the pattern
 set ignorecase          " ignores case sensitivity when carrying out a search on a document
 set smartcase
 " clear search highlights
-map <leader>h :noh<CR>
 map \ :noh<CR>
 
 set splitbelow          " better splits (new windows appear below and to the right)
@@ -210,6 +209,9 @@ set wrap linebreak
 " ----------------------
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
+imap jk <esc>
+map <leader>v :vs<cr>
+map <leader>s :sp<cr>
 
 " move by visual line (not physical) when wrapping occurs
 noremap  <buffer> <silent> k gk
