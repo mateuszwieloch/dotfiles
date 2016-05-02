@@ -93,8 +93,8 @@ Plugin 'bling/vim-airline'
 " Features: status line and optional tabline
 " settings
 set laststatus=2  " status bar (airline) visible all the time
-" let g:airline#extensions#tabline#enabled = 1  " show open buffers
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = '%l/%L'
 
 
 " --- FISH ---
@@ -106,6 +106,10 @@ Plugin 'dag/vim-fish'
 Plugin 'airblade/vim-gitgutter'
 " Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
 set updatetime=200
+" kill mappings starting with <leader>h
+nmap <Plug>NoGitGutterStageHunk <Plug>GitGutterStageHunk
+nmap <Plug>NoGitGutterPreviewHunk <Plug>GitGutterPreviewHunk
+nmap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 
 
 " --- PYTHON ---
@@ -210,8 +214,6 @@ set wrap linebreak
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
 imap jk <esc>
-map <leader>v :vs<cr>
-map <leader>s :sp<cr>
 
 " move by visual line (not physical) when wrapping occurs
 noremap  <buffer> <silent> k gk
@@ -233,14 +235,26 @@ nnoremap <leader>cf :let @*=expand("%:p")<CR>
 
 " --- WINDOWS ---
 " ---------------
+" jump to window
 map <C-H> <C-W>h
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
-" split current window in two
+" move the current window
+map <leader>h <C-W>H
+map <leader>j <C-W>J
+map <leader>k <C-W>K
+map <leader>l <C-W>L
+
+" open empty split
+map <leader>v :vnew<cr>
+map <leader>s :new<cr>
+" open split with conent of current window
 map <leader>wv <C-W>v
-" split current window in two
 map <leader>ws <C-W>s
+
+" make windows equal size
+map <leader>= <C-W>=
 
 " make current window the only window on the screen
 map <leader>wo <C-W>o
@@ -252,10 +266,5 @@ map <leader>wp <C-W>p
 " cycle through windows (go to bottom, right)
 map <leader>ww <C-W><C-W>
 
-" move the current window to left/bottom/top/right
-map <leader>wh <C-W>H
-map <leader>wj <C-W>J
-map <leader>wk <C-W>K
-map <leader>wl <C-W>L
 " exchange current window with the next one
 map <leader>wx <C-W>x
