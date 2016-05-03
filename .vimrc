@@ -169,7 +169,8 @@ set wildmode=longest:full,full  " First tab: longest matching completion and sho
 set mouse=a             " enable mouse use in all modes
 set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
-set number              " show line numbers
+set number              " show line number on a current line
+set relativenumber      " show relative numbers on lines above and below current line
 set cursorline          " highlight current line
 
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
@@ -185,10 +186,10 @@ set autoread            " autoread files that have changed outside of vim
 set lazyredraw          " speeds up vim. A lot!
 set ttyfast
 
-set incsearch           " show the first match for a search pattern, while you are still typing it
-set hlsearch            " highlight all matches for the pattern
-set ignorecase          " ignores case sensitivity when carrying out a search on a document
-set smartcase
+set incsearch           " highlight first match for a search pattern, while still typing it
+set hlsearch            " highlight all matches after performing search
+set ignorecase          " case insensitive pattern matching
+set smartcase           " override ignorecase if pattern contains upcase
 " clear search highlights
 map \ :noh<CR>
 
