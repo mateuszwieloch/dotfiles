@@ -215,6 +215,9 @@ set wrap linebreak
 map Y y$
 imap jk <esc>
 
+" reindent a file
+map <leader>i mmgg=G`m
+
 " move by visual line (not physical) when wrapping occurs
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
