@@ -52,6 +52,11 @@ Plugin 'ntpeters/vim-better-whitespace'
 " :StripWhitespace to get rid of highlighted stuff
 
 
+Plugin 'milkypostman/vim-togglelist'
+" Features: allows to bind a key to toggle the Location List and the Quickfix List
+let g:toggle_list_no_mappings = 'true'
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+
 Plugin 'rking/ag.vim'
 " Features: This plugin allows to run ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
 " :Ag [options] {pattern} [{directory}]
