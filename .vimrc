@@ -174,8 +174,7 @@ set wildmode=longest:full,full  " First tab: longest matching completion and sho
 set mouse=a             " enable mouse use in all modes
 set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
-set number              " show line number on a current line
-set relativenumber      " show relative numbers on lines above and below current line
+set number              " show gutter with line numbers
 set cursorline          " highlight current line
 
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
