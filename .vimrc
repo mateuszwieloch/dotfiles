@@ -34,6 +34,10 @@ Plugin 'sickill/vim-pasta'
 " Features: remaps p and P in normal and visual mode to do context aware pasting (indentation of pasted text is adjusted properly to match indentation of surrounding code)
 
 
+Plugin 'vim-scripts/ReplaceWithRegister'
+" Features: gr{motion} to replace with yanked text; grr to replace entire line
+
+
 Plugin 'tpope/vim-endwise'
 " Features: if/unless/class/do/while/def and <enter> will cause insertion of block ending. Works with multiple languages.
 
