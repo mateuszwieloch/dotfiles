@@ -38,6 +38,15 @@ Plugin 'tpope/vim-endwise'
 " Features: if/unless/class/do/while/def and <enter> will cause insertion of block ending. Works with multiple languages.
 
 
+Plugin 'kana/vim-textobj-user'
+" entire file: ie/ae
+Plugin 'kana/vim-textobj-entire'
+" indent: ii/ai
+Plugin 'kana/vim-textobj-indent'
+" line: il/al
+Plugin 'kana/vim-textobj-line'
+
+
 Plugin 'tpope/vim-surround'
 " Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
 " cs"'  change surrounding " -> '
