@@ -176,6 +176,7 @@ set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
+set scrolloff=5         " keep at least 5 lines below cursor
 
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
 set expandtab           " convert tabs to spaces
@@ -239,7 +240,8 @@ nmap <leader>bd :bd<CR>
 
 " copy full path to current buffer eg. /full/path/to/file.txt
 nnoremap <leader>cf :let @*=expand("%:p")<CR>
-
+" Copy the entire buffer into the system register
+nmap <leader>ca ggVG*y
 
 " --- WINDOWS ---
 " ---------------
