@@ -19,8 +19,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " --- COLOR SCHEMES ---
 Plugin 'jpo/vim-railscasts-theme'
-" Plugin 'jonathanfilip/vim-lucius'
-" Plugin 'morhetz/gruvbox'
+Plugin 'jonathanfilip/vim-lucius'
+Plugin 'morhetz/gruvbox'
 
 
 " --- ESSENTIALS ---
@@ -172,8 +172,8 @@ filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
 
 set t_Co=256            " force 256 colors terminal
-set background=dark
 colorscheme railscasts
+set background=dark
 
 set encoding=utf-8
 set hidden              " switch between buffers without having to save first
@@ -189,7 +189,7 @@ set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
-set scrolloff=5         " keep at least 5 lines below cursor
+set scrolloff=4         " keep at least 4 lines below cursor
 
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
 set expandtab           " convert tabs to spaces
