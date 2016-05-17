@@ -153,6 +153,10 @@ nmap <leader>rr :w<CR>:!ruby %<CR>
 
 
 " --- WEB ---
+Plugin 'pangloss/vim-javascript'
+" Features: provides syntax highlighting and improved indentation.
+
+
 Plugin 'mustache/vim-mustache-handlebars'
 
 au BufNewFile,BufRead *.js,*.html,*.css
@@ -173,7 +177,7 @@ filetype plugin on      " Enable filetype-specific plugins
 
 set t_Co=256            " force 256 colors terminal
 colorscheme railscasts
-set background=dark
+" set background=dark
 
 set encoding=utf-8
 set hidden              " switch between buffers without having to save first
