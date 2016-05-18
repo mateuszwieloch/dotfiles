@@ -12,9 +12,7 @@ alias lla 'll -a'
 alias sl 'll -1'
 alias sla 'lla -1'
 
-alias dotfiles 'cd ~/code/dotfiles'
-
-alias ggg 'cd ~/code/goods-vendor-portal'
-alias gpapi 'cd ~/code/gpapi'
-alias pc 'cd ~/code/goods-product-catalog'
-alias stores 'cd ~/code/goods-stores-api'
+set -g CDPATH . ~
+if test -d ~/code
+  set -g CDPATH $CDPATH ~/code
+end
