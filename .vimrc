@@ -189,7 +189,7 @@ set wildmenu            " Make the command-line completion better
 set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
 
 set mouse=a             " enable mouse use in all modes
-set ttymouse=xterm2     " set it to name of terminal that supports mouse codes
+set ttymouse=sgr        " xterm2 causes mouse not to work past 220 column, see bug: http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
