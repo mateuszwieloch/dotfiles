@@ -75,7 +75,7 @@ Plugin 'rking/ag.vim'
 " :Ag [options] {pattern} [{directory}]
 " by default start searching from root of project, not cwd
 let g:ag_working_path_mode="r"
-map <leader>a :Ag!<space>
+map <leader>/ :Ag!<space>
 
 
 " --- UI ---
