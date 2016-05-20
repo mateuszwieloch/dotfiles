@@ -261,6 +261,8 @@ nmap <leader>bd :bd<CR>
 
 " copy full path to current buffer eg. /full/path/to/file.txt
 nnoremap <leader>cf :let @*=expand("%:p")<CR>
+" copy full path + line eg. /full/path/to/file.txt:123
+nnoremap <leader>cl :let @+=expand("%:p") . ':' . line(".")<CR>
 " Copy the entire buffer into the system register
 nmap <leader>ca ggVG*y
 
