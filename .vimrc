@@ -68,7 +68,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'milkypostman/vim-togglelist'
 " Features: allows to bind a key to toggle the Location List and the Quickfix List
 let g:toggle_list_no_mappings = 'true'
-nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
 
 Plugin 'rking/ag.vim'
 " Features: This plugin allows to run ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
@@ -237,6 +237,10 @@ set wrap linebreak
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 map Y y$
 imap jk <esc>
+map <leader>q :q<cr>
+map <leader>w :w<cr>
+map <leader>wa :wa<cr>
+map <leader>wq :wq<cr>
 
 " reindent a file
 map <leader>i mmgg=G`m
