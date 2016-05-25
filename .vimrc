@@ -225,7 +225,6 @@ set noswapfile
 set foldenable
 set foldmethod=indent
 set foldlevel=99
-set foldlevelstart=10    " show most folds by default
 " toggle fold with space
 nnoremap <Space> za
 
