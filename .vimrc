@@ -238,7 +238,7 @@ map Y y$
 imap jk <esc>
 map <leader>q :q<cr>
 map <leader>w :w<cr>
-map <leader>wa :wa<cr>
+map <leader>wa :wa<cr>:echo 'All buffers written'<cr>
 map <leader>wq :wq<cr>
 
 " reindent a file
