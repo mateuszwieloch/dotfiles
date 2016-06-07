@@ -1,0 +1,10 @@
+"*":
+  autosave: {}
+  core: {}
+  editor:
+    fontSize: 10
+    invisibles: {}
+  "exception-reporting":
+    userId: "cca1ff20-980b-9cea-9260-506bf83ffb31"
+  welcome:
+    showOnStartup: false
