@@ -1,0 +1,6 @@
+packages: [
+  "autohide-tree-view"
+  "package-sync"
+  "toggle-packages"
+  "vim-mode"
+]

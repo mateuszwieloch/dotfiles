@@ -25,10 +25,21 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
+'.platform-darwin':
+  'cmd-0': 'tree-view:toggle-focus'
+
+'.tree-view':
+  'v': 'tree-view:open-selected-entry-right'
+  'h': 'tree-view:open-selected-entry-down'
+
+
 'atom-text-editor.vim-mode:not(.insert-mode)':
   'ctrl-h': 'window:focus-pane-on-left'
   'ctrl-j': 'window:focus-pane-below'
   'ctrl-k': 'window:focus-pane-above'
   'ctrl-l': 'window:focus-pane-on-right'
-  ',v': 'pane:split-right'
-  ',h': 'pane:split-down'
+  ', v': 'pane:split-right'
+  ', h': 'pane:split-down'
+
+'atom-text-editor.vim-mode.insert-mode':
+  'j k': 'vim-mode:activate-normal-mode'
