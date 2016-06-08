@@ -32,6 +32,9 @@
   'v': 'tree-view:open-selected-entry-right'
   'h': 'tree-view:open-selected-entry-down'
 
+'atom-text-editor[mini]':
+  'ctrl-j': 'core:move-down'
+  'ctrl-k': 'core:move-up'
 
 'atom-text-editor.vim-mode:not(.insert-mode)':
   'ctrl-h': 'window:focus-pane-on-left'
