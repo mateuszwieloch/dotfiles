@@ -40,6 +40,8 @@
   'ctrl-l': 'window:focus-pane-on-right'
   ', v': 'pane:split-right'
   ', h': 'pane:split-down'
+  ', c f': 'editor:copy-path'
+  ', c l': 'copy-path:copy-line-reference'
 
 'atom-text-editor.vim-mode.insert-mode':
   'j k': 'vim-mode:activate-normal-mode'

@@ -1,5 +1,6 @@
 packages: [
   "autohide-tree-view"
+  "copy-path"
   "package-sync"
   "toggle-packages"
   "vim-mode"
