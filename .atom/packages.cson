@@ -1,6 +1,5 @@
 packages: [
   "atom-beautify"
-  "autohide-tree-view"
   "copy-path"
   "package-sync"
   "toggle-packages"
