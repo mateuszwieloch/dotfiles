@@ -32,15 +32,26 @@
   'v': 'tree-view:open-selected-entry-right'
   'h': 'tree-view:open-selected-entry-down'
 
-'atom-text-editor[mini]':
-  'ctrl-j': 'core:move-down'
-  'ctrl-k': 'core:move-up'
+'body':
+  "ctrl-k": "core:move-up"
+  "ctrl-j": "core:move-down"
+  'ctrl-h': 'pane:show-previous-item'
+  'ctrl-l': 'pane:show-next-item'
+
+'.preview-pane':
+  'cmd-h': 'window:focus-pane-on-left'
+  'cmd-j': 'window:focus-pane-below'
+  'cmd-k': 'window:focus-pane-above'
+  'cmd-l': 'window:focus-pane-on-right'
+
+'atom-text-editor':
+  ', ,': 'toggle-packages:toggle-vim-mode'
+  'cmd-h': 'window:focus-pane-on-left'
+  'cmd-j': 'window:focus-pane-below'
+  'cmd-k': 'window:focus-pane-above'
+  'cmd-l': 'window:focus-pane-on-right'
 
 'atom-text-editor.vim-mode:not(.insert-mode)':
-  'ctrl-h': 'window:focus-pane-on-left'
-  'ctrl-j': 'window:focus-pane-below'
-  'ctrl-k': 'window:focus-pane-above'
-  'ctrl-l': 'window:focus-pane-on-right'
   ', v': 'pane:split-right'
   ', h': 'pane:split-down'
   ', c f': 'editor:copy-path'

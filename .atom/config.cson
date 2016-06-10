@@ -1,6 +1,9 @@
 "*":
   autosave: {}
   core:
+    disabledPackages: [
+      "project-find-navigation"
+    ]
     projectHome: "/Users/mwieloch/code"
   editor:
     fontFamily: "Consolas"
