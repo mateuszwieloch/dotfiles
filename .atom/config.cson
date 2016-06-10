@@ -1,5 +1,9 @@
 "*":
-  autosave: {}
+  "atom-beautify":
+    general:
+      _analyticsUserId: "206ceef7-a1f5-4646-8de3-d53c37b6a431"
+  autosave:
+    enabled: true
   core:
     disabledPackages: [
       "project-find-navigation"
