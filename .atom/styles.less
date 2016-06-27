@@ -28,3 +28,13 @@ atom-text-editor .cursor {
   text-decoration: line-through;
   color: #aa0000;
 }
+
+.indent-guide-improved {
+  background-color: rgba(171, 178, 191, 0.15);
+  &.indent-guide-stack {
+    background-color: rgba(171, 178, 191, 0.15);
+    &.indent-guide-active {
+      background-color: gray;
+    }
+  }
+}

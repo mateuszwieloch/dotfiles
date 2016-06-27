@@ -13,6 +13,7 @@
     fontFamily: "Consolas"
     fontSize: 12
     invisibles: {}
+    preferredLineLength: 120
   "exception-reporting":
     userId: "cca1ff20-980b-9cea-9260-506bf83ffb31"
   "toggle-packages":
