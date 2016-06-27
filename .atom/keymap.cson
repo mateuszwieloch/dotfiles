@@ -33,29 +33,29 @@
   'h': 'tree-view:open-selected-entry-down'
 
 'body':
-  "ctrl-k": "core:move-up"
-  "ctrl-j": "core:move-down"
-  'ctrl-h': 'pane:show-previous-item'
-  'ctrl-l': 'pane:show-next-item'
+  'cmd-h': 'pane:show-previous-item'
+  'cmd-l': 'pane:show-next-item'
 
 '.preview-pane':
-  'cmd-h': 'window:focus-pane-on-left'
-  'cmd-j': 'window:focus-pane-below'
-  'cmd-k': 'window:focus-pane-above'
-  'cmd-l': 'window:focus-pane-on-right'
+  'ctrl-h': 'window:focus-pane-on-left'
+  'ctrl-j': 'window:focus-pane-below'
+  'ctrl-k': 'window:focus-pane-above'
+  'ctrl-l': 'window:focus-pane-on-right'
 
 'atom-text-editor':
-  ', ,': 'toggle-packages:toggle-vim-mode'
-  'cmd-h': 'window:focus-pane-on-left'
-  'cmd-j': 'window:focus-pane-below'
-  'cmd-k': 'window:focus-pane-above'
-  'cmd-l': 'window:focus-pane-on-right'
+  'ctrl-h': 'window:focus-pane-on-left'
+  'ctrl-j': 'window:focus-pane-below'
+  'ctrl-k': 'window:focus-pane-above'
+  'ctrl-l': 'window:focus-pane-on-right'
 
 'atom-text-editor.vim-mode:not(.insert-mode)':
+  ', ,': 'toggle-packages:toggle-vim-mode'
   ', v': 'pane:split-right'
   ', h': 'pane:split-down'
   ', c f': 'editor:copy-path'
   ', c l': 'copy-path:copy-line-reference'
+  'cmd-h': 'pane:show-previous-item'
+  'cmd-l': 'pane:show-next-item'
 
 'atom-text-editor.vim-mode.insert-mode':
   'j k': 'vim-mode:activate-normal-mode'

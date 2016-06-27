@@ -1,5 +1,6 @@
 "*":
-  autosave: {}
+  autosave:
+    enabled: true
   core:
     disabledPackages: [
       "project-find-navigation"
