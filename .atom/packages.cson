@@ -1,4 +1,5 @@
 packages: [
+  "atom-beautify"
   "copy-path"
   "package-sync"
   "toggle-packages"
