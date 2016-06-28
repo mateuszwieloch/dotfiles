@@ -31,6 +31,8 @@
 '.tree-view':
   'v': 'tree-view:open-selected-entry-right'
   'h': 'tree-view:open-selected-entry-down'
+  'n': 'tree-view:add-file'
+  'f': 'tree-view:add-folder'
 
 'body':
   'cmd-h': 'pane:show-previous-item'
