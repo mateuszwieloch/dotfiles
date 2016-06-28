@@ -5,6 +5,7 @@
   autosave:
     enabled: true
   core:
+    destroyEmptyPanes: false
     disabledPackages: [
       "project-find-navigation"
     ]
