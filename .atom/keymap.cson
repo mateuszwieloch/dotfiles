@@ -27,6 +27,8 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 '.platform-darwin':
   'cmd-0': 'tree-view:toggle-focus'
+  'cmd-F': 'project-find:toggle'
+  'cmd-f': 'find-and-replace:toggle'
 
 '.tree-view':
   'v': 'tree-view:open-selected-entry-right'
