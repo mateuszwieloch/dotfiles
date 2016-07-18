@@ -51,9 +51,9 @@
   'ctrl-j': 'window:focus-pane-below'
   'ctrl-k': 'window:focus-pane-above'
   'ctrl-l': 'window:focus-pane-on-right'
+  'cmd-;': 'toggle-packages:toggle-vim-mode'
 
 'atom-text-editor.vim-mode:not(.insert-mode)':
-  ', ,': 'toggle-packages:toggle-vim-mode'
   ', v': 'pane:split-right'
   ', h': 'pane:split-down'
   ', c f': 'editor:copy-path'
