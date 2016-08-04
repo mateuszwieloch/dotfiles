@@ -18,6 +18,8 @@ echo "# Install ag"
 brew install ag
 echo "# Install tree"
 brew install tree
+echo "# Install p7zip"
+brew install p7zip
 # }}}
 
 # Graphical tools {{{
