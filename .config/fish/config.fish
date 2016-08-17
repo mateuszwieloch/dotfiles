@@ -21,3 +21,5 @@ set fish_user_abbreviations $fish_user_abbreviations 'sla=ll -a -1'
 
 set fish_user_abbreviations $fish_user_abbreviations 'g=git'
 set fish_user_abbreviations $fish_user_abbreviations 'gs=git status -s'
+
+set fish_user_abbreviations $fish_user_abbreviations 'py=python3'
