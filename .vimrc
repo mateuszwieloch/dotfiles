@@ -116,8 +116,10 @@ Plugin 'bling/vim-airline'
 " Features: status line and optional tabline
 " settings
 set laststatus=2  " status bar (airline) visible all the time
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_section_z = '%l/%L'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 
 " --- FISH ---
