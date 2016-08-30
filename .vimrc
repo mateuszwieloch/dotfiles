@@ -24,6 +24,11 @@ Plugin 'morhetz/gruvbox'
 
 
 " --- ESSENTIALS ---
+Plugin '907th/vim-auto-save'
+" Features: :ToggleAutoSave to switch on/off
+" let g:auto_save_silent = 1  " do not display the auto-save notification
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
 Plugin 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
