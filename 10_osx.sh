@@ -22,3 +22,6 @@ defaults write com.apple.screencapture location ~/Desktop/Screenshots
 
 echo "Kill affected applications, so the changes apply"
 for app in Safari Finder Dock SystemUIServer; do killall "$app" >/dev/null 2>&1; done
+
+echo "Add Restart, Sleep, Shutdown, Logout, Lock apps"
+cp -R apps/* /Applications
