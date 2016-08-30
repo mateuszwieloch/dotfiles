@@ -1,5 +1,5 @@
 echo "# Install vim"
-brew install vim --override-system-vi 
+brew install vim --with-override-system-vi
 
 echo "# Setup .vimrc"
 cp -i .vimrc ~
