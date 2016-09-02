@@ -100,6 +100,7 @@ Plugin 'jeetsukumaran/vim-filebeagle'
 Plugin 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
 let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -200,7 +201,7 @@ set ttymouse=sgr        " xterm2 causes mouse not to work past 220 column, see b
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
-set scrolloff=4         " keep at least 4 lines below cursor
+set scrolloff=4         " keep at least 4 lines below/above the cursor
 
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
 set expandtab           " convert tabs to spaces

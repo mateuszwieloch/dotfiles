@@ -8,6 +8,7 @@
     destroyEmptyPanes: false
     disabledPackages: [
       "project-find-navigation"
+      "vim-mode"
     ]
     projectHome: "/Users/mwieloch/code"
   editor:
