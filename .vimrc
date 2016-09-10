@@ -101,11 +101,16 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
+
+" default to regex mode and swap space for .*
+let g:ctrlp_regexp = 1
+let g:ctrlp_abbrev = { 'gmode': 't', 'abbrevs': [ { 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ', 'expanded': '.*', 'mode': 'pfrz', } ] }
+
 if executable('ag')
-  " Use ag over grep
+  " Use ag over grep in vim
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " Use ag in CtrlP. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
