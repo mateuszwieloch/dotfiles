@@ -18,14 +18,14 @@ Plugin 'VundleVim/Vundle.vim'
 " Features: use Vundle to manage its own version
 
 " --- COLOR SCHEMES ---
-Plugin 'jpo/vim-railscasts-theme'
-Plugin 'jonathanfilip/vim-lucius'
-Plugin 'morhetz/gruvbox'
+Plugin 'jpo/vim-railscasts-theme'  " railscasts
+Plugin 'jonathanfilip/vim-lucius'  " lucius
+Plugin 'morhetz/gruvbox'           " gruvbox
 
 
 " --- ESSENTIALS ---
 Plugin '907th/vim-auto-save'
-" Features: :ToggleAutoSave to switch on/off
+" Features: :AutoSaveToggle to switch on/off
 " let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
@@ -67,7 +67,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'ntpeters/vim-better-whitespace'
 " Features: highlights all trailing whitespaces (spaces and tabs) in red
 " :ToggleWhitespace to show/hide whitespace highlighting
+" :Enable/DisableWhitespace
 " :StripWhitespace to get rid of highlighted stuff
+" :ToggleStripWhitespaceOnSave
 
 
 Plugin 'milkypostman/vim-togglelist'
