@@ -123,9 +123,13 @@ Plugin 'bling/vim-airline'
 " settings
 set laststatus=2  " status bar (airline) visible all the time
 let g:airline_powerline_fonts = 0
-let g:airline_section_z = '%l/%L'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+" section b: hunks
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
+let g:airline_section_z = '%l/%L'
 
 
 " --- FISH ---
