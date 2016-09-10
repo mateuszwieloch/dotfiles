@@ -140,6 +140,11 @@ Plugin 'dag/vim-fish'
 
 
 " --- GIT ---
+Plugin 'tpope/vim-fugitive'
+" Features: git wrapper
+" :Gblame
+
+
 Plugin 'airblade/vim-gitgutter'
 " Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
 let g:gitgutter_async=0
