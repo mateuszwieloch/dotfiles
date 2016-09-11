@@ -77,13 +77,6 @@ Plugin 'milkypostman/vim-togglelist'
 let g:toggle_list_no_mappings = 'true'
 nmap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
 
-Plugin 'rking/ag.vim'
-" Features: This plugin allows to run ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
-" :Ag [options] {pattern} [{directory}]
-" by default start searching from root of project, not cwd
-let g:ag_working_path_mode="r"
-map <leader>a :Ag!<space>
-
 
 " --- UI ---
 Plugin 'jeetsukumaran/vim-filebeagle'
@@ -97,6 +90,17 @@ Plugin 'jeetsukumaran/vim-filebeagle'
 " R refresh directory listing
 " gh toggle hidden files
 " + to create a file
+let g:filebeagle_suppress_keymaps = 1
+map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
+
+
+" --- SEARCH ---
+Plugin 'rking/ag.vim'
+" Features: This plugin allows to run ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
+" :Ag [options] {pattern} [{directory}]
+" by default start searching from root of project, not cwd
+let g:ag_working_path_mode="r"
+map <leader>f :Ag!<space>
 
 
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -295,8 +299,10 @@ function! AutoHighlightToggle()
 endfunction
 
 nnoremap <leader>z :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
+nnoremap * :keepjumps normal! mi*`i<CR>
 
 highlight Search ctermbg=59 ctermfg=white
+
 
 " --- BASIC MAPPINGS ---
 " ----------------------
@@ -305,11 +311,9 @@ map Y y$
 imap jk <esc>
 map <leader>q :q<cr>
 map <leader>w :w<cr>
-map <leader>wa :wa<cr>:echo 'All buffers written'<cr>
-map <leader>wq :wq<cr>
 
 " reindent a file
-map <leader>i mmgg=G`m
+map <leader>r mmgg=G`m
 
 " move by visual line (not physical) when wrapping occurs
 noremap  <buffer> <silent> k gk
@@ -348,7 +352,7 @@ map <leader>l <C-W>L
 " open empty split
 map <leader>v :vnew<cr>
 map <leader>s :new<cr>
-" open split with conent of current window
+" open window with content of current window
 map <leader>wv <C-W>v
 map <leader>ws <C-W>s
 
@@ -357,14 +361,3 @@ map <leader>= <C-W>=
 
 " make current window the only window on the screen
 map <leader>wo <C-W>o
-" close the current window (if it's the last windows in vim, it won't be closed)
-map <leader>wc <C-W>c
-
-" go to previous window
-map <leader>wp <C-W>p
-" cycle through windows (go to bottom, right)
-map <leader>ww <C-W><C-W>
-
-" exchange current window with the next one
-map <leader>wx <C-W>x
-
