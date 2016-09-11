@@ -234,6 +234,7 @@ set ttymouse=sgr        " xterm2 causes mouse not to work past 220 column, see b
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
+autocmd FileType python,ruby set colorcolumn=80
 set scrolloff=4         " keep at least 4 lines below/above the cursor
 
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
@@ -341,3 +342,4 @@ map <leader>ww <C-W><C-W>
 
 " exchange current window with the next one
 map <leader>wx <C-W>x
+
