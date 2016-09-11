@@ -250,13 +250,6 @@ set autoread            " autoread files that have changed outside of vim
 set lazyredraw          " speeds up vim. A lot!
 set ttyfast
 
-set incsearch           " highlight first match for a search pattern, while still typing it
-set hlsearch            " highlight all matches after performing search
-set ignorecase          " case insensitive pattern matching
-set smartcase           " override ignorecase if pattern contains upcase
-" clear search highlights
-map \ :noh<CR>
-
 set splitbelow          " better splits (new windows appear below and to the right)
 set splitright
 
@@ -272,6 +265,38 @@ nnoremap <Space> za
 
 set wrap linebreak
 
+" --- SEARCH & HIGHLIGHT ---
+" --------------------------
+set incsearch           " highlight first match for a search pattern, while still typing it
+set hlsearch            " highlight all matches after performing search
+set ignorecase          " case insensitive pattern matching
+set smartcase           " override ignorecase if pattern contains upcase
+" clear search highlights
+map \ :noh<CR>
+
+" Highlight all instances of word under cursor, when idle.
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=500
+    echo 'Highlight current word: on'
+    return 1
+  endif
+endfunction
+
+nnoremap <leader>z :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
+
+highlight Search ctermbg=59 ctermfg=white
 
 " --- BASIC MAPPINGS ---
 " ----------------------
