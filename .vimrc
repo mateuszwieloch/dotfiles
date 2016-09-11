@@ -120,18 +120,34 @@ if executable('ag')
 endif
 
 
-Plugin 'bling/vim-airline'
-" Features: status line and optional tabline
-" settings
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" Features: status line
 set laststatus=2  " status bar (airline) visible all the time
+let g:airline_theme='wombat'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-" section b: hunks
+
 let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
-let g:airline_section_z = '%l/%L'
+
+" to see file encoding: :set fileencoding?
+" to see file type: :set filetype?
+" to see position in file press Ctrl-G
+
+function! AirlineInit()
+  let g:airline_section_a = ''
+  let g:airline_section_b = airline#section#create(['%<', 'file', ' ', 'readonly'])
+  let g:airline_section_c = ''
+  let g:airline_section_x = ''
+  let g:airline_section_y = airline#section#create(['hunks', 'branch'])
+  let g:airline_section_z = ''
+  " section z: current/all lines
+  " let g:airline_section_z = '%l/%L'
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 
 " --- FISH ---
