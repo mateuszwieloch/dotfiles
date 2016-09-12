@@ -9,39 +9,35 @@ endif
 runtime macros/matchit.vim
 
 
-" --- VUNDLE ---
-" -------------- {{{
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-" Features: use Vundle to manage its own version
+" --- VIM-PLUG ---
+" ----------------
+call plug#begin()
 
 " --- COLOR SCHEMES ---
-Plugin 'jpo/vim-railscasts-theme'  " railscasts
-Plugin 'jonathanfilip/vim-lucius'  " lucius
-Plugin 'morhetz/gruvbox'           " gruvbox
+Plug 'jpo/vim-railscasts-theme'  " railscasts
+Plug 'jonathanfilip/vim-lucius'  " lucius
+Plug 'morhetz/gruvbox'           " gruvbox
 
 
 " --- ESSENTIALS ---
-Plugin '907th/vim-auto-save'
+Plug '907th/vim-auto-save'
 " Features: :AutoSaveToggle to switch on/off
 " let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
 
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 " Features: remaps . in a way that plugins can tap into it
 " In particular supports vim-commentary and vim-surround
 
 
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
 
 
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
 " cs"'  change surrounding " -> '
 " ds"   delete surrounding "
@@ -49,28 +45,28 @@ Plugin 'tpope/vim-surround'
 " ysiw" surround in word
 
 
-Plugin 'sickill/vim-pasta'
+Plug 'sickill/vim-pasta'
 " Features: remaps p and P in normal and visual mode to do context aware pasting (indentation of pasted text is adjusted properly to match indentation of surrounding code)
 
 
-Plugin 'vim-scripts/ReplaceWithRegister'
+Plug 'vim-scripts/ReplaceWithRegister'
 " Features: gr{motion} to replace with yanked text; grr to replace entire line
 
 
-Plugin 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise'
 " Features: if/unless/class/do/while/def and <enter> will cause insertion of block ending. Works with multiple languages.
 
 
-Plugin 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user'
 " entire file: ie/ae
-Plugin 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-entire'
 " indent: ii/ai
-Plugin 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-indent'
 " line: il/al
-Plugin 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-line'
 
 
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 " Features: highlights all trailing whitespaces (spaces and tabs) in red
 " :ToggleWhitespace to show/hide whitespace highlighting
 " :Enable/DisableWhitespace
@@ -78,14 +74,14 @@ Plugin 'ntpeters/vim-better-whitespace'
 " :ToggleStripWhitespaceOnSave
 
 
-Plugin 'milkypostman/vim-togglelist'
+Plug 'milkypostman/vim-togglelist'
 " Features: allows to bind a key to toggle the Location List and the Quickfix List
 let g:toggle_list_no_mappings = 'true'
 nmap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
 
 
 " --- UI ---
-Plugin 'jeetsukumaran/vim-filebeagle'
+Plug 'jeetsukumaran/vim-filebeagle'
 " Features: it's a simple directory listing utility. It's not filesystem manager and it doesn't support grepping/finding text.
 " - to run FileBeagle
 " o to open
@@ -101,7 +97,7 @@ map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 
 
 " --- SEARCH ---
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 " Features: This plugin allows to run ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
 " :Ag [options] {pattern} [{directory}]
 " by default start searching from root of project, not cwd
@@ -109,7 +105,7 @@ let g:ag_working_path_mode="r"
 map <leader>f :Ag!<space>
 
 
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
@@ -130,8 +126,8 @@ if executable('ag')
 endif
 
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Features: status line
 set laststatus=2  " status bar (airline) visible all the time
 let g:airline_theme='wombat'
@@ -161,17 +157,17 @@ autocmd User AirlineAfterInit call AirlineInit()
 
 
 " --- FISH ---
-Plugin 'dag/vim-fish'
+Plug 'dag/vim-fish'
 " Features: provide support for editing fish scripts
 
 
 " --- GIT ---
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Features: git wrapper
 " :Gblame
 
 
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
 let g:gitgutter_async=0
 set updatetime=200
@@ -194,7 +190,7 @@ au BufNewFile,BufRead *.py
 
 
 " --- RUBY ---
-Plugin 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 " vim-ruby upgrade (comes built-in with vim)
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
@@ -204,11 +200,11 @@ nmap <leader>rr :w<CR>:!ruby %<CR>
 
 
 " --- WEB ---
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 " Features: provides syntax highlighting and improved indentation.
 
 
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars'
 
 au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
@@ -216,8 +212,7 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \ set shiftwidth=2 |
 
 
-call vundle#end()            " required
-" }}}
+call plug#end()
 
 
 
