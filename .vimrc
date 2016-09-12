@@ -29,10 +29,24 @@ Plugin '907th/vim-auto-save'
 " let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
+
+Plugin 'tpope/vim-repeat'
+" Features: remaps . in a way that plugins can tap into it
+" In particular supports vim-commentary and vim-surround
+
+
 Plugin 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
+
+
+Plugin 'tpope/vim-surround'
+" Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
+" cs"'  change surrounding " -> '
+" ds"   delete surrounding "
+" S"    surround in visual mode
+" ysiw" surround in word
 
 
 Plugin 'sickill/vim-pasta'
@@ -54,14 +68,6 @@ Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
 " line: il/al
 Plugin 'kana/vim-textobj-line'
-
-
-Plugin 'tpope/vim-surround'
-" Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
-" cs"'  change surrounding " -> '
-" ds"   delete surrounding "
-" S"    surround in visual mode
-" ysiw" surround in word
 
 
 Plugin 'ntpeters/vim-better-whitespace'
