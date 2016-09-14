@@ -109,10 +109,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
+let g:ctrlp_max_files = 0        " don't limit number of scanned files
 
-" default to regex mode and swap space for .*
-let g:ctrlp_regexp = 1
-let g:ctrlp_abbrev = { 'gmode': 't', 'abbrevs': [ { 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ', 'expanded': '.*', 'mode': 'pfrz', } ] }
+" skip space in search string (except some special cases, hence the pattern)
+let g:ctrlp_abbrev = { 'abbrevs': [ { 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ', 'expanded': '', 'mode': 'fprz', } ] }
 
 if executable('ag')
   " Use ag over grep in vim
