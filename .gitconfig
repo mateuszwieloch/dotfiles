@@ -2,7 +2,8 @@
 	name = <NAME>
 	email = <EMAIL>
 [push]
-	default = simple
+  # will push only current branch and create the branch in the remote repo if necessary
+	default = current
 [core]
   editor = vim
 [alias]
