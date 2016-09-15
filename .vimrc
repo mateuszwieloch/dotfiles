@@ -97,12 +97,14 @@ map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 
 
 " --- SEARCH ---
-Plug 'rking/ag.vim'
-" Features: This plugin allows to run ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
-" :Ag [options] {pattern} [{directory}]
-" by default start searching from root of project, not cwd
-let g:ag_working_path_mode="r"
-map <leader>f :Ag!<space>
+Plug 'mileszs/ack.vim'
+" Features: This plugin allows to run ack or ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
+" :Ack [options] {pattern} [{directory}]
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+let g:ack_autoclose = 1
+map <leader>f :Ack!<space>
 
 
 Plug 'ctrlpvim/ctrlp.vim'
