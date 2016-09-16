@@ -25,17 +25,14 @@ Plug '907th/vim-auto-save'
 " let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
-
 Plug 'tpope/vim-repeat'
 " Features: remaps . in a way that plugins can tap into it
 " In particular supports vim-commentary and vim-surround
-
 
 Plug 'tpope/vim-commentary'
 " Features: toggle comments
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
-
 
 Plug 'tpope/vim-surround'
 " Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
@@ -44,27 +41,14 @@ Plug 'tpope/vim-surround'
 " S"    surround in visual mode
 " ysiw" surround in word
 
-
 Plug 'sickill/vim-pasta'
 " Features: remaps p and P in normal and visual mode to do context aware pasting (indentation of pasted text is adjusted properly to match indentation of surrounding code)
-
 
 Plug 'vim-scripts/ReplaceWithRegister'
 " Features: gr{motion} to replace with yanked text; grr to replace entire line
 
-
 Plug 'tpope/vim-endwise'
 " Features: if/unless/class/do/while/def and <enter> will cause insertion of block ending. Works with multiple languages.
-
-
-Plug 'kana/vim-textobj-user'
-" entire file: ie/ae
-Plug 'kana/vim-textobj-entire'
-" indent: ii/ai
-Plug 'kana/vim-textobj-indent'
-" line: il/al
-Plug 'kana/vim-textobj-line'
-
 
 Plug 'ntpeters/vim-better-whitespace'
 " Features: highlights all trailing whitespaces (spaces and tabs) in red
@@ -74,38 +58,34 @@ Plug 'ntpeters/vim-better-whitespace'
 " :ToggleStripWhitespaceOnSave
 
 
-Plug 'milkypostman/vim-togglelist'
-" Features: allows to bind a key to toggle the Location List and the Quickfix List
-let g:toggle_list_no_mappings = 'true'
-nmap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
+" --- TEXT OBJECTS ---
+Plug 'kana/vim-textobj-user'
 
+Plug 'kana/vim-textobj-entire'
+" entire file: ie/ae
 
-" --- UI ---
-Plug 'jeetsukumaran/vim-filebeagle'
-" Features: it's a simple directory listing utility. It's not filesystem manager and it doesn't support grepping/finding text.
-" - to run FileBeagle
-" o to open
-" v for vertical split
-" s for horizontal split
-" t to open on a new tab
-" po/pv/ps/pt to perform action in background
-" R refresh directory listing
-" gh toggle hidden files
-" + to create a file
-let g:filebeagle_suppress_keymaps = 1
-map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
+Plug 'kana/vim-textobj-indent'
+" indent: ii/ai
+
+Plug 'kana/vim-textobj-line'
+" line: il/al
 
 
 " --- SEARCH ---
-Plug 'mileszs/ack.vim'
-" Features: This plugin allows to run ack or ag (aka. the silver searcher, grep replacement) from vim, and shows the results in a Quickfix window.
-" :Ack [options] {pattern} [{directory}]
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-let g:ack_autoclose = 1
-map <leader>f :Ack!<space>
+Plug 'dyng/ctrlsf.vim'
+" Features: Integration for ag or ack (grep replacements)
+" :CtrlSF                          " show results in new window (like Atom)
+" :CtrlSFQuickfix                  " show results in quickfix window
+" :CtrlSF {pattern} /path/to/dir
+" :CtrlSF -I {pattern}             " case insensitive
+" :CtrlSFToggle
+nmap <leader>f <Plug>CtrlSFQuickfixPrompt
+vmap <leader>f <Plug>CtrlSFQuickfixVwordExec
 
+Plug 'milkypostman/vim-togglelist'
+" Features: bind a key to toggle the Location List and the Quickfix List
+let g:toggle_list_no_mappings = 'true'
+nmap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
 
 Plug 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
@@ -126,6 +106,22 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+
+" --- UI ---
+Plug 'jeetsukumaran/vim-filebeagle'
+" Features: A simple directory listing utility.
+" - to run FileBeagle
+" o to open
+" v for vertical split
+" s for horizontal split
+" t to open on a new tab
+" po/pv/ps/pt to perform action in background
+" R refresh directory listing
+" gh toggle hidden files
+" + to create a file
+let g:filebeagle_suppress_keymaps = 1
+map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 
 
 Plug 'vim-airline/vim-airline'
@@ -160,14 +156,13 @@ autocmd User AirlineAfterInit call AirlineInit()
 
 " --- FISH ---
 Plug 'dag/vim-fish'
-" Features: provide support for editing fish scripts
+" Features: support for edition of fish scripts
 
 
 " --- GIT ---
 Plug 'tpope/vim-fugitive'
 " Features: git wrapper
 " :Gblame
-
 
 Plug 'airblade/vim-gitgutter'
 " Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
@@ -205,18 +200,17 @@ nmap <leader>rr :w<CR>:!ruby %<CR>
 Plug 'pangloss/vim-javascript'
 " Features: provides syntax highlighting and improved indentation.
 
-
 Plug 'mustache/vim-mustache-handlebars'
-
-au BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
 
 
 call plug#end()
 
 
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
 
 syntax on               " Enable syntax highlighting
 filetype on             " Enable filetype detection
