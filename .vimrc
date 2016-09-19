@@ -1,4 +1,4 @@
-let mapleader=","
+let mapleader="\<space>"
 
 " vim works best with POSIX compatible shell
 if &shell =~# 'fish$'
@@ -95,6 +95,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
 let g:ctrlp_max_files = 0        " don't limit number of scanned files
+nnoremap <leader>o :CtrlP<cr>
 
 " skip space in search string (except some special cases, hence the pattern)
 let g:ctrlp_abbrev = { 'abbrevs': [ { 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ', 'expanded': '', 'mode': 'fprz', } ] }
@@ -265,7 +266,7 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 " toggle fold with space
-nnoremap <Space> za
+nnoremap <tab> za
 
 set wrap linebreak
 
@@ -276,7 +277,7 @@ set hlsearch            " highlight all matches after performing search
 set ignorecase          " case insensitive pattern matching
 set smartcase           " override ignorecase if pattern contains upcase
 " clear search highlights
-noremap \ :noh<CR>
+noremap <bs> :noh<CR>
 
 " Highlight all instances of word under cursor, when idle.
 function! AutoHighlightToggle()
