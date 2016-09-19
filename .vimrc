@@ -79,13 +79,13 @@ Plug 'dyng/ctrlsf.vim'
 " :CtrlSF {pattern} /path/to/dir
 " :CtrlSF -I {pattern}             " case insensitive
 " :CtrlSFToggle
-nmap <leader>f <Plug>CtrlSFQuickfixPrompt
-vmap <leader>f <Plug>CtrlSFQuickfixVwordExec
+nnoremap <leader>f <Plug>CtrlSFQuickfixPrompt
+vnoremap <leader>f <Plug>CtrlSFQuickfixVwordExec
 
 Plug 'milkypostman/vim-togglelist'
 " Features: bind a key to toggle the Location List and the Quickfix List
 let g:toggle_list_no_mappings = 'true'
-nmap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
+nnoremap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
 
 Plug 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
@@ -121,7 +121,7 @@ Plug 'jeetsukumaran/vim-filebeagle'
 " gh toggle hidden files
 " + to create a file
 let g:filebeagle_suppress_keymaps = 1
-map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
+noremap <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 
 
 Plug 'vim-airline/vim-airline'
@@ -169,9 +169,9 @@ Plug 'airblade/vim-gitgutter'
 let g:gitgutter_async=0
 set updatetime=200
 " kill mappings starting with <leader>h
-nmap <Plug>NoGitGutterStageHunk <Plug>GitGutterStageHunk
-nmap <Plug>NoGitGutterPreviewHunk <Plug>GitGutterPreviewHunk
-nmap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
+nnoremap <Plug>NoGitGutterStageHunk <Plug>GitGutterStageHunk
+nnoremap <Plug>NoGitGutterPreviewHunk <Plug>GitGutterPreviewHunk
+nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 
 
 " --- PYTHON ---
@@ -193,7 +193,7 @@ Plug 'vim-ruby/vim-ruby'
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
 
 " save & run current file
-nmap <leader>rr :w<CR>:!ruby %<CR>
+nnoremap <leader>rr :w<CR>:!ruby %<CR>
 
 
 " --- WEB ---
@@ -273,7 +273,7 @@ set hlsearch            " highlight all matches after performing search
 set ignorecase          " case insensitive pattern matching
 set smartcase           " override ignorecase if pattern contains upcase
 " clear search highlights
-map \ :noh<CR>
+noremap \ :noh<CR>
 
 " Highlight all instances of word under cursor, when idle.
 function! AutoHighlightToggle()
@@ -304,13 +304,13 @@ highlight Search ctermbg=59 ctermfg=white
 " --- BASIC MAPPINGS ---
 " ----------------------
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
-map Y y$
-imap jk <esc>
-map <leader>q :q<cr>
-map <leader>w :w<cr>
+noremap Y y$
+inoremap jk <esc>
+noremap <leader>q :q<cr>
+noremap <leader>w :w<cr>
 
 " reindent a file
-map <leader>r mmgg=G`m
+noremap <leader>r mmgg=G`m
 
 " move by visual line (not physical) when wrapping occurs
 noremap  <buffer> <silent> k gk
@@ -321,40 +321,40 @@ noremap  <buffer> <silent> $ g$
 
 " --- BUFFERS ---
 " ---------------
-nmap <leader>bs :b#<CR>
-nmap <leader>bn :bnext<CR>
-nmap <C-n> :bnext<CR>
-nmap <leader>bd :bd<CR>
+nnoremap <leader>bs :b#<CR>
+nnoremap <leader>bn :bnext<CR>
+nnoremap <C-n> :bnext<CR>
+nnoremap <leader>bd :bd<CR>
 
 " copy full path to current buffer eg. /full/path/to/file.txt
 nnoremap <leader>cf :let @*=expand("%:p")<CR>
 " copy full path + line eg. /full/path/to/file.txt:123
 nnoremap <leader>cl :let @+=expand("%:p") . ':' . line(".")<CR>
 " Copy the entire buffer into the system register
-nmap <leader>ca ggVG*y
+nnoremap <leader>ca ggVG*y
 
 " --- WINDOWS ---
 " ---------------
 " jump to window
-map <C-H> <C-W>h
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-W>l
+noremap <C-H> <C-W>h
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-L> <C-W>l
 " move the current window
-map <leader>h <C-W>H
-map <leader>j <C-W>J
-map <leader>k <C-W>K
-map <leader>l <C-W>L
+noremap <leader>h <C-W>H
+noremap <leader>j <C-W>J
+noremap <leader>k <C-W>K
+noremap <leader>l <C-W>L
 
 " open empty split
-map <leader>v :vnew<cr>
-map <leader>s :new<cr>
+noremap <leader>v :vnew<cr>
+noremap <leader>s :new<cr>
 " open window with content of current window
-map <leader>wv <C-W>v
-map <leader>ws <C-W>s
+noremap <leader>wv <C-W>v
+noremap <leader>ws <C-W>s
 
 " make windows equal size
-map <leader>= <C-W>=
+noremap <leader>= <C-W>=
 
 " make current window the only window on the screen
-map <leader>wo <C-W>o
+noremap <leader>wo <C-W>o
