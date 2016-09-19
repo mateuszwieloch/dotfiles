@@ -367,3 +367,8 @@ noremap <leader>= <C-W>=
 
 " make current window the only window on the screen
 noremap <leader>wo <C-W>o
+
+" --- OTHER ---
+" -------------
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
