@@ -79,8 +79,8 @@ Plug 'dyng/ctrlsf.vim'
 " :CtrlSF {pattern} /path/to/dir
 " :CtrlSF -I {pattern}             " case insensitive
 " :CtrlSFToggle
-nnoremap <leader>f <Plug>CtrlSFQuickfixPrompt
-vnoremap <leader>f <Plug>CtrlSFQuickfixVwordExec
+nnoremap <leader>f :CtrlSFQuickfix<space>
+vmap <leader>f <Plug>CtrlSFQuickfixVwordExec
 
 Plug 'yssl/QFEnter'
 " Features: go to window you came from after closing the quickfix window
@@ -125,7 +125,7 @@ Plug 'jeetsukumaran/vim-filebeagle'
 " gh toggle hidden files
 " + to create a file
 let g:filebeagle_suppress_keymaps = 1
-noremap <silent> - <Plug>FileBeagleOpenCurrentBufferDir
+map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 
 
 Plug 'vim-airline/vim-airline'
