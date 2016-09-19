@@ -82,6 +82,9 @@ Plug 'dyng/ctrlsf.vim'
 nnoremap <leader>f <Plug>CtrlSFQuickfixPrompt
 vnoremap <leader>f <Plug>CtrlSFQuickfixVwordExec
 
+Plug 'yssl/QFEnter'
+" Features: go to window you came from after closing the quickfix window
+
 Plug 'milkypostman/vim-togglelist'
 " Features: bind a key to toggle the Location List and the Quickfix List
 let g:toggle_list_no_mappings = 'true'
