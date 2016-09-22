@@ -377,3 +377,4 @@ noremap <leader>wo <C-W>o
 " -------------
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sc :source %<cr>
