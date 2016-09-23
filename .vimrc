@@ -270,7 +270,7 @@ set noswapfile
 set foldenable
 set foldmethod=indent
 set foldlevel=99
-" toggle fold with space
+" toggle fold with Tab
 nnoremap <tab> za
 
 set wrap linebreak
@@ -337,7 +337,6 @@ noremap  <buffer> <silent> $ g$
 " ---------------
 nnoremap <leader>bs :b#<CR>
 nnoremap <leader>bn :bnext<CR>
-nnoremap <C-n> :bnext<CR>
 nnoremap <leader>bd :bd<CR>
 
 " copy full path to current buffer eg. /full/path/to/file.txt
@@ -379,4 +378,12 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sc :source %<cr>
 
-nnoremap <leader>p :!open %:p<cr>
+nnoremap <C-n> <tab>
+
+" Go Back (from tab)
+nnoremap gb <C-t>
+" Go Preview
+nnoremap gp :!open %:p<cr>
+" Go Tag
+nnoremap gt <C-]>
+
