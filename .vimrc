@@ -318,8 +318,8 @@ inoremap jk <esc>
 noremap <leader>q :q<cr>
 noremap <leader>w :w<cr>
 
-nnoremap H 0
-vnoremap H 0
+nnoremap H ^
+vnoremap H ^
 nnoremap L $
 vnoremap L $
 
