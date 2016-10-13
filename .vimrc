@@ -15,8 +15,6 @@ call plug#begin()
 
 " --- COLOR SCHEMES ---
 Plug 'jpo/vim-railscasts-theme'  " railscasts
-Plug 'jonathanfilip/vim-lucius'  " lucius
-Plug 'morhetz/gruvbox'           " gruvbox
 
 
 " --- ESSENTIALS ---
@@ -204,6 +202,13 @@ nnoremap <leader>rr :w<CR>:!ruby %<CR>
 
 
 " --- WEB ---
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set colorcolumn=80 |
+    \ set expandtab |
+
 Plug 'pangloss/vim-javascript'
 " Features: provides syntax highlighting and improved indentation.
 
@@ -225,12 +230,6 @@ let g:mta_filetypes = {
 call plug#end()
 
 
-
-au BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-
 syntax on               " Enable syntax highlighting
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
@@ -238,7 +237,6 @@ filetype plugin on      " Enable filetype-specific plugins
 
 set t_Co=256            " force 256 colors terminal
 colorscheme railscasts
-" set background=dark
 
 set encoding=utf-8
 set hidden              " switch between buffers without having to save first
