@@ -58,6 +58,18 @@ Plug 'ntpeters/vim-better-whitespace'
 " :StripWhitespace to get rid of highlighted stuff
 " :ToggleStripWhitespaceOnSave
 
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+au BufNewFile,BufRead *.snippets
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set noexpandtab |
+    \ set autoindent |
+    \ set colorcolumn=80 |
+    \ set fileformat=unix |
+
 
 " --- TEXT OBJECTS ---
 Plug 'kana/vim-textobj-user'
