@@ -225,6 +225,8 @@ Plug 'pangloss/vim-javascript'
 " Features: provides syntax highlighting and improved indentation.
 
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-liquid'
+" adds support for liquid templates syntax used by Jekyll static sites generator
 
 Plug 'valloric/MatchTagAlways'
 " highlights the XML/HTML tags that enclose your cursor location
