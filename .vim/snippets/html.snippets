@@ -1,38 +1,42 @@
 snippet html
+	<html lang="en">
 	<!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="UTF-8" />
-			<title>${1}</title>
-		</head>
-		<body>
-			${2}
-		</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>${1}</title>
+	</head>
+	<body lang="en">
+		${2}
+	</body>
 	</html>
+
+snippet style
+	<link rel="stylesheet" href="${1}">
+snippet css
+	<link rel="stylesheet" href="${1}">
+
+snippet script
+	<script src="${1}"></script>
+snippet js
+	<script src="${1}"></script>
 
 snippet react
 	<!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="UTF-8" />
-			<title>I'm in a React app!</title>
-		</head>
-		<body>
-			<div id="react-app"></div>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>I'm in a React app!</title>
+	</head>
+	<body>
+		<div id="react-app"></div>
 
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
-			<script>
-				${1}
-			</script>
-		</body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+		<script>
+			${1}
+		</script>
+	</body>
 	</html>
-
-
-
-
-
-
 
 # Some useful Unicode entities
 # Non-Breaking Space
@@ -83,54 +87,7 @@ snippet backspace
 # ⎋
 snippet esc
 	&#x238B;
-# Generic Doctype
-snippet doctype HTML 4.01 Strict
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-	"http://www.w3.org/TR/html4/strict.dtd">
-snippet doctype HTML 4.01 Transitional
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-	"http://www.w3.org/TR/html4/loose.dtd">
-snippet doctype HTML 5
-	<!DOCTYPE HTML>
-snippet doctype XHTML 1.0 Frameset
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-snippet doctype XHTML 1.0 Strict
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-snippet doctype XHTML 1.0 Transitional
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-snippet doctype XHTML 1.1
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-# HTML Doctype 4.01 Strict
-snippet docts
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-	"http://www.w3.org/TR/html4/strict.dtd">
-# HTML Doctype 4.01 Transitional
-snippet doct
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-	"http://www.w3.org/TR/html4/loose.dtd">
-# HTML Doctype 5
-snippet doct5
-	<!DOCTYPE HTML>
-# XHTML Doctype 1.0 Frameset
-snippet docxf
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
-# XHTML Doctype 1.0 Strict
-snippet docxs
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-# XHTML Doctype 1.0 Transitional
-snippet docxt
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-# XHTML Doctype 1.1
-snippet docx
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
 # Attributes
 snippet attr
 	${1:attribute}="${2:property}"
@@ -712,12 +669,6 @@ snippet samp
 	<samp>
 		${1}
 	</samp>${2}
-snippet script
-	<script type="text/javascript" charset="utf-8">
-		${1}
-	</script>${2}
-snippet scriptsrc
-	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>
 snippet section
 	<section>
 		${1}
