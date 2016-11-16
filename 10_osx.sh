@@ -20,6 +20,9 @@ echo "Save screenshots to ~/Desktop/Screenshots"
 mkdir ~/Desktop/Screenshots
 defaults write com.apple.screencapture location ~/Desktop/Screenshots
 
+echo "Remove delay for showing hidden Dock"
+defaults write com.apple.Dock autohide-delay -float 0
+
 echo "Kill affected applications, so the changes apply"
 for app in Safari Finder Dock SystemUIServer; do killall "$app" >/dev/null 2>&1; done
 
