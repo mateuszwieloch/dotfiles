@@ -17,6 +17,14 @@ set fish_user_abbreviations $fish_user_abbreviations 'cp=cp -i'
 set fish_user_abbreviations $fish_user_abbreviations 'mv=mv -i'
 set fish_user_abbreviations $fish_user_abbreviations 'rm=rm -i'
 
+function less
+  command less -R
+end
+
+function ag
+  command ag --pager "less -R" $argv
+end
+
 set fish_user_abbreviations $fish_user_abbreviations 'lsa=ls -a'
 set fish_user_abbreviations $fish_user_abbreviations 'lla=ll -a'
 set fish_user_abbreviations $fish_user_abbreviations 'sl=ll -1'
