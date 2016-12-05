@@ -23,6 +23,18 @@ Plug '907th/vim-auto-save'
 " let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
+augroup vim-auto-mkdir
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  function! s:auto_mkdir(dir, force)
+    if !isdirectory(a:dir)
+          \   && (a:force
+          \       || input("'" . a:dir . "' does not exist. Create? [y/N]") =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction
+augroup END
+
 Plug 'tpope/vim-repeat'
 " Features: remaps . in a way that plugins can tap into it
 " In particular supports vim-commentary and vim-surround
