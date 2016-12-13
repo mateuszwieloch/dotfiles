@@ -60,9 +60,6 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'tpope/vim-endwise'
 " Features: if/unless/class/do/while/def and <enter> will cause insertion of block ending. Works with multiple languages.
 
-Plug 'jiangmiao/auto-pairs'
-" Features: Insert or delete brackets, parens, quotes in pair.
-
 Plug 'ntpeters/vim-better-whitespace'
 " Features: highlights all trailing whitespaces (spaces and tabs) in red
 " :ToggleWhitespace to show/hide whitespace highlighting
@@ -97,6 +94,10 @@ Plug 'kana/vim-textobj-line'
 
 
 " --- SEARCH ---
+Plug 'google/vim-searchindex'
+" Features: shows how many times does a search pattern occur in the current
+" buffer eg: [3/7]
+
 Plug 'dyng/ctrlsf.vim'
 " Features: Integration for ag or ack (grep replacements)
 " :CtrlSF                          " show results in new window (like Atom)
