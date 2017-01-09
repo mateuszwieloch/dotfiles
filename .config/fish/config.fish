@@ -7,6 +7,7 @@ set -x LS_COLORS "di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=3
 set -gx PATH $PATH ~/code/dotfiles/bin ~/code/gateway/public_bin
 
 set -g CDPATH . ~
+# if ~/code exists add all subdirectories of ~/code to fold autocomplete list triggered with TAB
 if test -d ~/code
   set -g CDPATH $CDPATH ~/code
 end
