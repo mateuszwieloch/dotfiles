@@ -33,6 +33,4 @@ echo "# Install flux"
 brew cask install flux
 echo "# Install iTerm2"
 brew cask install iterm2
-echo "# Install Spectacle (keyboard shortcuts for arranging windows)"
-brew cask install spectacle
 # }}}
