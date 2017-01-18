@@ -24,5 +24,8 @@ echo "# Change to the new shell"
 chsh -s /usr/local/bin/fish
 
 # docker completion for fish
-mkdir ~/.config/fish/completions
+mkdir -p ~/.config/fish/completions
 wget https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish -O ~/.config/fish/completions/docker.fish
+
+echo "# Symlink ~/.config/fish/config.fish"
+ln -s ~/code/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
