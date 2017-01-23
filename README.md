@@ -26,7 +26,7 @@ etc...
 1. [Command-Tab Plus](http://commandtab.noteifyapp.com)
 2. [Day-0 2](http://www.shauninman.com/archive/2016/10/20/day_o_2_mac_menu_bar_clock)
 3. [Flux](https://justgetflux.com) installed via brew
-4. [Caffeine](http://lightheadsw.com/caffeine/)
+4. [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake) installed via brew
 5. [Stock+](https://itunes.apple.com/us/app/stock-+/id527270840?mt=12)
 6. [Skype](https://www.skype.com/en/download-skype/skype-for-computer/)
 7. [FreeChat for Facebook Messanger](https://itunes.apple.com/us/app/freechat-for-facebook-messenger/id1077753332?mt=12)
