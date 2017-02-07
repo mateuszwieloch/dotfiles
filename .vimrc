@@ -323,6 +323,8 @@ set ignorecase          " case insensitive pattern matching
 set smartcase           " override ignorecase if pattern contains upcase
 " clear search highlights
 noremap <bs> :noh<CR>
+" in visual mode search for selection with //
+vnoremap // y/<C-R>"<CR>
 
 " Highlight all instances of word under cursor, when idle.
 function! AutoHighlightToggle()
