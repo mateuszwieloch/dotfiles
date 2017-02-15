@@ -14,7 +14,7 @@ runtime macros/matchit.vim
 call plug#begin()
 
 " --- COLOR SCHEMES ---
-Plug 'jpo/vim-railscasts-theme'  " railscasts
+Plug 'jpo/vim-railscasts-theme'
 
 
 " --- ESSENTIALS ---
@@ -95,8 +95,8 @@ Plug 'kana/vim-textobj-line'
 
 " --- SEARCH ---
 Plug 'google/vim-searchindex'
-" Features: shows how many times does a search pattern occur in the current
-" buffer eg: [3/7]
+" Features: shows how many times does a search pattern occur in the current buffer
+" eg: [3/7]  /search_pattern
 
 Plug 'dyng/ctrlsf.vim'
 " Features: Integration for ag or ack (grep replacements)
@@ -312,7 +312,8 @@ set foldlevel=99
 " toggle fold with Tab
 nnoremap <tab> za
 
-set wrap linebreak
+set breakindent
+set showbreak=\ \  " indent
 
 " --- SEARCH & HIGHLIGHT ---
 " --------------------------
@@ -339,7 +340,7 @@ function! AutoHighlightToggle()
       au!
       au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
     augroup end
-    setl updatetime=500
+    setl updatetime=400
     echo 'Highlight current word: on'
     return 1
   endif
