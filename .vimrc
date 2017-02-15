@@ -176,7 +176,7 @@ function! AirlineInit()
   let g:airline_section_b = airline#section#create(['%<', 'file', ' ', 'readonly'])
   let g:airline_section_c = ''
   let g:airline_section_x = ''
-  let g:airline_section_y = airline#section#create(['hunks', 'branch'])
+  let g:airline_section_y = airline#section#create(['hunks'])
   let g:airline_section_z = ''
   " section z: current/all lines
   " let g:airline_section_z = '%l/%L'
@@ -196,7 +196,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 " Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
-let g:gitgutter_async=0
 set updatetime=200
 " kill mappings starting with <leader>h
 nnoremap <Plug>NoGitGutterStageHunk <Plug>GitGutterStageHunk
