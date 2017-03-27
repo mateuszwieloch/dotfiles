@@ -27,8 +27,6 @@ brew install caskroom/cask/brew-cask
 
 echo "# Install Chrome"
 brew cask install google-chrome
-echo "# Install flux"
-brew cask install flux
 echo "# Install KeepingYouAwake"
 brew cask install keepingyouawake
 echo "# Install iTerm2"
