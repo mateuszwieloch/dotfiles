@@ -214,6 +214,7 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
+autocmd FileType python set colorcolumn=80
 
 " --- RUBY ---
 Plug 'vim-ruby/vim-ruby'
@@ -224,6 +225,7 @@ Plug 'vim-ruby/vim-ruby'
 " save & run current file
 nnoremap <leader>rr :w<CR>:!ruby %<CR>
 
+autocmd FileType ruby set colorcolumn=90
 
 " --- WEB ---
 au BufNewFile,BufRead *.js,*.html,*.css
@@ -283,7 +285,6 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
-autocmd FileType python,ruby set colorcolumn=80
 set scrolloff=4         " keep at least 4 lines below/above the cursor
 
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
