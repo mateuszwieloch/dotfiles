@@ -29,6 +29,10 @@ function ag
   command ag --pager "less -R" $argv
 end
 
+function https
+  command http --default-scheme=https $argv
+end
+
 set fish_user_abbreviations $fish_user_abbreviations 'lsa=ls -a'
 set fish_user_abbreviations $fish_user_abbreviations 'lla=ll -a'
 set fish_user_abbreviations $fish_user_abbreviations 'sl=ll -1'

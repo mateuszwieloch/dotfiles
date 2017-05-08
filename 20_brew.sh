@@ -18,8 +18,8 @@ echo "# Install tree"
 brew install tree
 echo "# Install p7zip"
 brew install p7zip
-echo "# Install wget"
-brew install wget
+echo "# Install httpie"
+brew install httpie
 # }}}
 
 # Graphical tools {{{
