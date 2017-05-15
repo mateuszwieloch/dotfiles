@@ -44,6 +44,22 @@ Plug 'tpope/vim-commentary'
 " Usage: gcc toggle comments in a current line
 " In visual mode gc to toggle
 
+Plug 'tpope/vim-eunuch'
+" :Remove: Delete a buffer and the file on disk simultaneously.
+" :Unlink: Like :Remove, but keeps the now empty buffer.
+" :Move: Rename a buffer and the file on disk simultaneously.
+" :Rename: Like :Move, but relative to the current file's containing directory.
+" :Chmod: Change the permissions of the current file.
+" :Mkdir: Create a directory, defaulting to the parent of the current file.
+" :Find: Run find and load the results into the quickfix list.
+" :Locate: Run locate and load the results into the quickfix list.
+" :Wall: Write every open window. Handy for kicking off tools like guard.
+" :SudoWrite: Write a privileged file with sudo.
+" :SudoEdit: Edit a privileged file with sudo.
+" File type detection for sudo -e is based on original file name.
+" New files created with a shebang line are automatically made executable.
+" New init scripts are automatically prepopulated with /etc/init.d/skeleton.
+
 Plug 'tpope/vim-surround'
 " Features: provides mappings to easily delete, change and add surrounding brackets, quotes, etc.
 " cs"'  change surrounding " -> '
