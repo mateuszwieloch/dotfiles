@@ -115,22 +115,20 @@ Plug 'google/vim-searchindex'
 " eg: [3/7]  /search_pattern
 
 Plug 'dyng/ctrlsf.vim'
-" Features: Integration for ag or ack (grep replacements)
+" Features: Integration for ag/ack/pt/rg (grep replacements). Parses the search result
+" and displays the result in a user-friendly format. From 1.9 supports compact view.
 " :CtrlSF                          " show results in new window (like Atom)
-" :CtrlSFQuickfix                  " show results in quickfix window
 " :CtrlSF {pattern} /path/to/dir
 " :CtrlSF -I {pattern}             " case insensitive
 " :CtrlSFToggle
-nnoremap <leader>f :CtrlSFQuickfix<space>
-vmap <leader>f <Plug>CtrlSFQuickfixVwordExec
-
-Plug 'yssl/QFEnter'
-" Features: go to window you came from after closing the quickfix window
-
-Plug 'milkypostman/vim-togglelist'
-" Features: bind a key to toggle the Location List and the Quickfix List
-let g:toggle_list_no_mappings = 'true'
-nnoremap <script> <silent> <leader>x :call ToggleQuickfixList()<CR>
+nnoremap <leader>f :CtrlSF<space>
+vmap <leader>f <Plug>CtrlSFVwordExec
+nnoremap <leader>x :CtrlSFToggle<CR>
+let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_mapping = {
+    \ "next": "n",
+    \ "prev": "N",
+    \ }
 
 Plug 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
