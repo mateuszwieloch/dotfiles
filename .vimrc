@@ -188,12 +188,12 @@ let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
 " to see position in file press Ctrl-G
 
 function! AirlineInit()
-  let g:airline_section_a = ''
-  let g:airline_section_b = airline#section#create(['%<', 'file', ' ', 'readonly'])
+  let g:airline_section_a = airline#section#create(['%<', 'file', ' ', 'readonly'])
+  let g:airline_section_b = ''
   let g:airline_section_c = ''
   let g:airline_section_x = ''
-  let g:airline_section_y = airline#section#create(['hunks'])
-  let g:airline_section_z = ''
+  let g:airline_section_y = ''
+  let g:airline_section_z = airline#section#create(['hunks'])
   " section z: current/all lines
   " let g:airline_section_z = '%l/%L'
 endfunction
