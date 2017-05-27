@@ -29,6 +29,7 @@ etc...
 
 ## Safari exentsions
 1. [Adguard Adblocker](https://adguard.com/en/adblock-adguard-safari.html)
-2. [JSONAce](https://github.com/acrogenesis/JSONAce)
-3. [PiedPiPr](https://github.com/JoeKuhns/PiedPiPer.safariextension) (Picture in Picture support for all videos in Safari)
-4. [Vimmy](https://github.com/gggritso/Vimmy.safariextension)
+2. [Ghostery](https://www.ghostery.com/products/)
+3. [JSONAce](https://github.com/acrogenesis/JSONAce)
+4. [PiedPiPr](https://github.com/JoeKuhns/PiedPiPer.safariextension) (Picture in Picture support for all videos in Safari)
+5. [Vimmy](https://github.com/gggritso/Vimmy.safariextension)
