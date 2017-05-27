@@ -1,18 +1,3 @@
-# BASH
-echo "# Install latest bash (4.x)"
-brew install bash
-
-echo "# Append bash (4.x) to /etc/shells"
-sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-
-echo "# Setup .bashrc and .profile"
-cp -i .bashrc .profile ~
-
-echo "# Setup .git-completion.bash"
-cp -i .git-completion.bash ~
-
-
-
 # FISH
 echo "# Install fish-shell"
 brew install fish
