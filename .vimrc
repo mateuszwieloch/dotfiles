@@ -165,7 +165,7 @@ Plug 'jeetsukumaran/vim-filebeagle'
 " gh toggle hidden files
 " + to create a file
 let g:filebeagle_suppress_keymaps = 1
-map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
+map <silent> - <Plug>FileBeagleOpenCurrentBufferDir \| gh
 
 
 Plug 'vim-airline/vim-airline'
