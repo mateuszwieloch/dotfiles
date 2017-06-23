@@ -86,7 +86,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-au BufNewFile,BufRead *.snippets
+autocmd BufNewFile,BufRead *.snippets
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
@@ -202,6 +202,9 @@ autocmd User AirlineAfterInit call AirlineInit()
 Plug 'dag/vim-fish'
 " Features: support for edition of fish scripts
 
+" --- MARKDOWN ---
+autocmd BufNewFile,BufRead *.md
+    \ set showbreak="" |
 
 " --- GIT ---
 Plug 'tpope/vim-fugitive'
@@ -219,13 +222,14 @@ nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 
 " --- PYTHON ---
 let python_highlight_all=1
-au BufNewFile,BufRead *.py
+autocmd BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
+    \ set colorcolumn=80 |
     \ set fileformat=unix |
 
 autocmd FileType python set colorcolumn=80
@@ -235,14 +239,21 @@ Plug 'vim-ruby/vim-ruby'
 " vim-ruby upgrade (comes built-in with vim)
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
+let ruby_foldable_groups = 'class def'
 
 " save & run current file
 nnoremap <leader>rr :w<CR>:!ruby %<CR>
 
-autocmd FileType ruby set colorcolumn=90
+autocmd FileType ruby
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab |
+    \ set colorcolumn=90 |
+    \ set foldmethod=syntax |
 
 " --- WEB ---
-au BufNewFile,BufRead *.js,*.html,*.css
+autocmd BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
@@ -326,6 +337,8 @@ set foldmethod=indent
 set foldlevel=99
 " toggle fold with Tab
 nnoremap <tab> za
+" jump to beginning (not end) of previous fold area (ex: beginning of a method)
+nnoremap zk zkzakjza
 
 set breakindent
 set showbreak=\ \  " indent
