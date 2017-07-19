@@ -239,7 +239,7 @@ Plug 'vim-ruby/vim-ruby'
 " vim-ruby upgrade (comes built-in with vim)
 " Features: provides syntax highlight, auto-indentation and code-completion support
 " Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
-let ruby_foldable_groups = 'class def'
+let ruby_foldable_groups = 'class def do {'
 
 " save & run current file
 nnoremap <leader>rr :w<CR>:!ruby %<CR>
