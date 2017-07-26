@@ -95,6 +95,10 @@ autocmd BufNewFile,BufRead *.snippets
     \ set colorcolumn=80 |
     \ set fileformat=unix |
 
+Plug 'Konfekt/FastFold'
+" Features: Automatic folding is slow as fuck in vim. This plugin speeds it up
+" by computing folds only when needed.
+
 
 " --- TEXT OBJECTS ---
 Plug 'kana/vim-textobj-user'
