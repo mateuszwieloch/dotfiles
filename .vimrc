@@ -255,6 +255,7 @@ autocmd FileType ruby
     \ set expandtab |
     \ set colorcolumn=90 |
     \ set foldmethod=syntax |
+    \ set nocursorline |
 
 " --- WEB ---
 autocmd BufNewFile,BufRead *.js,*.html,*.css
