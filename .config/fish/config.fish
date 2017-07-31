@@ -33,6 +33,10 @@ function https
   command http --default-scheme=https $argv
 end
 
+function timestamp $argv
+  command date "+%Y%m%d%H%M%S" $argv
+end
+
 set fish_user_abbreviations $fish_user_abbreviations 'lsa=ls -a'
 set fish_user_abbreviations $fish_user_abbreviations 'lla=ll -a'
 set fish_user_abbreviations $fish_user_abbreviations 'sl=ll -1'
