@@ -254,7 +254,7 @@ autocmd FileType ruby
     \ set shiftwidth=2 |
     \ set expandtab |
     \ set colorcolumn=90 |
-    \ set foldmethod=syntax |
+    \ set foldmethod=indent |
     \ set nocursorline |
 
 " --- WEB ---
@@ -342,6 +342,9 @@ set foldmethod=indent
 set foldlevel=99
 " toggle fold with Tab
 nnoremap <tab> za
+nnoremap <leader>ms :set foldmethod=syntax<cr>
+nnoremap <leader>mi :set foldmethod=indent<cr>
+nnoremap <leader>mm :set foldmethod=manual<cr>
 " jump to beginning (not end) of previous fold area (ex: beginning of a method)
 nnoremap zk zkzakjza
 
