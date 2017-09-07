@@ -16,9 +16,9 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 echo "Disable the 'Are you sure you want to open this application?' dialog"
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-echo "Save screenshots to ~/Desktop/Screenshots"
-mkdir ~/Desktop/Screenshots
-defaults write com.apple.screencapture location ~/Desktop/Screenshots
+echo "Save screenshots to ~/Documents/Screenshots"
+mkdir ~/Documents/Screenshots
+defaults write com.apple.screencapture location ~/Documents/Screenshots
 
 echo "Remove delay for showing hidden Dock"
 defaults write com.apple.Dock autohide-delay -float 0
