@@ -353,6 +353,7 @@ set showbreak=\ \  " indent
 
 " --- SEARCH & HIGHLIGHT ---
 " --------------------------
+set gdefault            " s/<patter>/<replacement> has g flag set by default (replace all occurences in line)
 set incsearch           " highlight first match for a search pattern, while still typing it
 set hlsearch            " highlight all matches after performing search
 set ignorecase          " case insensitive pattern matching
