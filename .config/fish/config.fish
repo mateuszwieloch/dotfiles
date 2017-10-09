@@ -4,16 +4,24 @@ status --is-interactive; and . (rbenv init -|psub)
 set -x LSCOLORS gxBxhxDxfxhxhxhxhxcxcx
 set -x LS_COLORS "di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=37;40:su=37;40:sg=37;40:tw=32;40:ow=32;40:"
 
+# PATH
 set -gx PATH $PATH ~/code/dotfiles/bin
+
 if test -d ~/code/gateway
   set -gx PATH $PATH ~/code/gateway/public_bin
 end
 
+if test -d /Applications/Splunk/bin
+  set -gx PATH $PATH /Applications/Splunk/bin
+end
+
+# CDPATH
 set -g CDPATH . ~
 # if ~/code exists add all subdirectories of ~/code to fold autocomplete list triggered with TAB
 if test -d ~/code
   set -g CDPATH $CDPATH ~/code
 end
+
 
 set -U fish_user_abbreviations 'be=bundle exec'
 
