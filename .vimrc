@@ -257,6 +257,10 @@ autocmd FileType ruby
     \ set foldmethod=indent |
     \ set nocursorline |
 
+" --- CRYSTAL ---
+Plug 'rhysd/vim-crystal'
+
+
 " --- WEB ---
 autocmd BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
