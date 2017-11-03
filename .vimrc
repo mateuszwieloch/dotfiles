@@ -164,12 +164,15 @@ Plug 'jeetsukumaran/vim-filebeagle'
 " v for vertical split
 " s for horizontal split
 " t to open on a new tab
-" po/pv/ps/pt to perform action in background
+" po/pv/ps/pt to perform action in background (cursor will stay in filebeagle)
 " R refresh directory listing
 " gh toggle hidden files
 " + to create a file
+" f to find within files (using regex)
 let g:filebeagle_suppress_keymaps = 1
-map <silent> - <Plug>FileBeagleOpenCurrentBufferDir \| gh
+let g:filebeagle_show_hidden = 1
+" let g:filebeagle_buffer_map_movement_keys = 0  " h for folder up, l to open folder
+map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 
 
 Plug 'vim-airline/vim-airline'
