@@ -45,9 +45,9 @@ function timestamp $argv
   command date "+%Y%m%d%H%M%S" $argv
 end
 
-set fish_user_abbreviations $fish_user_abbreviations 'lsa=ls -a'
-set fish_user_abbreviations $fish_user_abbreviations 'lla=ll -a'
+set fish_user_abbreviations $fish_user_abbreviations 'lsa=ls -A'
+set fish_user_abbreviations $fish_user_abbreviations 'lla=ll -A'
 set fish_user_abbreviations $fish_user_abbreviations 'sl=ll -1'
-set fish_user_abbreviations $fish_user_abbreviations 'sla=ll -a -1'
+set fish_user_abbreviations $fish_user_abbreviations 'sla=ll -1 -A'
 
 set fish_user_abbreviations $fish_user_abbreviations 'py=python3'
