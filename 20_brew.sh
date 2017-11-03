@@ -22,13 +22,14 @@ echo "# Install httpie"
 brew install httpie
 # }}}
 
+# Fonts {{{
+brew tap caskroom/fonts
+brew cask install font-iosevka
+# }}}
+
 # Graphical tools {{{
 brew install caskroom/cask/brew-cask
 
-echo "# Install Chrome"
-brew cask install google-chrome
 echo "# Install KeepingYouAwake"
 brew cask install keepingyouawake
-echo "# Install iTerm2"
-brew cask install iterm2
 # }}}
