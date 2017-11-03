@@ -5,6 +5,12 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
+syntax on               " Enable syntax highlighting
+filetype on             " Enable filetype detection
+filetype indent on      " Enable filetype-specific indenting
+filetype plugin on      " Enable filetype-specific plugins
+set t_Co=256            " force 256 colors terminal
+
 " activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
 runtime macros/matchit.vim
 
@@ -275,12 +281,6 @@ let g:mta_filetypes = {
 call plug#end()
 
 
-syntax on               " Enable syntax highlighting
-filetype on             " Enable filetype detection
-filetype indent on      " Enable filetype-specific indenting
-filetype plugin on      " Enable filetype-specific plugins
-
-set t_Co=256            " force 256 colors terminal
 colorscheme railscasts
 
 set encoding=utf-8
