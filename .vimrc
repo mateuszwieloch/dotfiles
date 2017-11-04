@@ -181,6 +181,7 @@ let g:filebeagle_show_hidden = 1
 " let g:filebeagle_buffer_map_movement_keys = 0  " h for folder up, l to open folder
 map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 
+
 Plug 'itchyny/lightline.vim'
 set laststatus=2  " otherwise entire status line is black/blank
 set noshowmode    " removes default --INSERT--
@@ -231,6 +232,8 @@ function! s:MaybeUpdateLightline()
   end
 endfunction
 
+
+" Features: asynchronous lint engine - provides linging while editing a file
 Plug 'w0rp/ale'
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
@@ -260,25 +263,17 @@ nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 " Features: curated bundle of 100+ syntax highlighting plugins
 Plug 'sheerun/vim-polyglot'
 
+" Features: automatically figures out all indent related configuration based on
+" the current file or other files in the same project.
+Plug 'tpope/vim-sleuth'
+
 autocmd BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
     \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
     \ set colorcolumn=80 |
     \ set fileformat=unix |
 
-autocmd FileType python set colorcolumn=80
-let python_highlight_all=1
-
 
 autocmd FileType ruby
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set expandtab |
     \ set colorcolumn=90 |
     \ set foldmethod=indent |
     \ set nocursorline |
@@ -290,11 +285,7 @@ nnoremap <leader>rr :w<CR>:!ruby %<CR>
 
 
 autocmd BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
     \ set colorcolumn=80 |
-    \ set expandtab |
 
 Plug 'valloric/MatchTagAlways'
 " highlights the XML/HTML tags that enclose your cursor location
