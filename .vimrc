@@ -16,6 +16,7 @@ filetype plugin on      " Enable filetype-specific plugins
 
 set t_Co=256            " force 256 colors terminal
 
+
 " --- VIM-PLUG ---
 " ----------------
 call plug#begin()
@@ -240,14 +241,6 @@ let g:ale_fixers = {
     \}
 
 
-" --- FISH ---
-Plug 'dag/vim-fish'
-" Features: support for edition of fish scripts
-
-" --- MARKDOWN ---
-autocmd BufNewFile,BufRead *.md
-    \ set showbreak="" |
-
 " --- GIT ---
 Plug 'tpope/vim-fugitive'
 " Features: git wrapper
@@ -262,8 +255,11 @@ nnoremap <Plug>NoGitGutterPreviewHunk <Plug>GitGutterPreviewHunk
 nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 
 
-" --- PYTHON ---
-let python_highlight_all=1
+" --- PROGRAMMING LANGUAGES ---
+
+" Features: curated bundle of 100+ syntax highlighting plugins
+Plug 'sheerun/vim-polyglot'
+
 autocmd BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -275,16 +271,8 @@ autocmd BufNewFile,BufRead *.py
     \ set fileformat=unix |
 
 autocmd FileType python set colorcolumn=80
+let python_highlight_all=1
 
-" --- RUBY ---
-Plug 'vim-ruby/vim-ruby'
-" vim-ruby upgrade (comes built-in with vim)
-" Features: provides syntax highlight, auto-indentation and code-completion support
-" Usage: <C-x><C-o> to autocomplete, <C-n> or <C-p> to navigate list, <C-y> to accept
-let ruby_foldable_groups = 'class def do {'
-
-" save & run current file
-nnoremap <leader>rr :w<CR>:!ruby %<CR>
 
 autocmd FileType ruby
     \ set tabstop=2 |
@@ -295,24 +283,18 @@ autocmd FileType ruby
     \ set foldmethod=indent |
     \ set nocursorline |
 
-" --- CRYSTAL ---
-Plug 'rhysd/vim-crystal'
+let ruby_foldable_groups = 'class def do {'
+
+" save & run current file
+nnoremap <leader>rr :w<CR>:!ruby %<CR>
 
 
-" --- WEB ---
 autocmd BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
     \ set colorcolumn=80 |
     \ set expandtab |
-
-Plug 'pangloss/vim-javascript'
-" Features: provides syntax highlighting and improved indentation.
-
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'tpope/vim-liquid'
-" adds support for liquid templates syntax used by Jekyll static sites generator
 
 Plug 'valloric/MatchTagAlways'
 " highlights the XML/HTML tags that enclose your cursor location
