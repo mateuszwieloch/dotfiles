@@ -17,8 +17,7 @@ filetype plugin on      " Enable filetype-specific plugins
 set t_Co=256            " force 256 colors terminal
 
 
-" --- VIM-PLUG ---
-" ----------------
+
 call plug#begin()
 
 " --- COLOR SCHEMES ---
@@ -30,6 +29,7 @@ Plug '907th/vim-auto-save'
 " let g:auto_save_silent = 1  " do not display the auto-save notification
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
+" When creating a file in a non-existing directory, ask whether to create it
 augroup vim-auto-mkdir
   autocmd!
   autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
@@ -237,11 +237,12 @@ endfunction
 Plug 'w0rp/ale'
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-nnoremap <leader>aa :ALEToggle<return>
-nnoremap <leader>af :ALEFix<return>
+nnoremap <leader>ll :ALEToggle<return>
+nnoremap <leader>lf :ALEFix<return>
 let g:ale_fixers = {
     \  'ruby': ['rubocop']
     \}
+
 
 
 " --- GIT ---
@@ -394,7 +395,7 @@ function! AutoHighlightToggle()
   endif
 endfunction
 
-nnoremap <leader>z :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
+nnoremap <leader>hh :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
 nnoremap * :keepjumps normal! mi*`i<CR>
 
 highlight Search ctermbg=59 ctermfg=white
@@ -406,7 +407,6 @@ highlight Search ctermbg=59 ctermfg=white
 noremap Y y$
 inoremap jk <esc>
 noremap <leader>q :q<cr>
-noremap <leader>w :w<cr>
 
 nnoremap H ^
 vnoremap H ^
@@ -427,6 +427,9 @@ noremap  <buffer> <silent> $ g$
 " ---------------
 nnoremap <leader>bs :b#<CR>
 nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bl :bnext<CR>
+nnoremap <leader>bp :bprev<CR>
+nnoremap <leader>bh :bprev<CR>
 nnoremap <leader>bd :bd<CR>
 
 " copy full path to current buffer eg. /full/path/to/file.txt
@@ -444,10 +447,10 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-L> <C-W>l
 " move the current window
-noremap <leader>h <C-W>H
-noremap <leader>j <C-W>J
-noremap <leader>k <C-W>K
-noremap <leader>l <C-W>L
+noremap <leader>wh <C-W>H
+noremap <leader>wj <C-W>J
+noremap <leader>wk <C-W>K
+noremap <leader>wl <C-W>L
 
 " open empty split
 noremap <leader>v :vnew<cr>
@@ -468,12 +471,5 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sc :source %<cr>
 
-nnoremap <C-n> <tab>
-
-" Go Back (from tab)
-nnoremap gb <C-t>
 " Go Preview
 nnoremap gp :!open %:p<cr>
-" Go Tag
-nnoremap gt <C-]>
-
