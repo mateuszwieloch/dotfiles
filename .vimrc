@@ -125,6 +125,11 @@ Plug 'google/vim-searchindex'
 " Features: shows how many times does a search pattern occur in the current buffer
 " eg: [3/7]  /search_pattern
 
+Plug 'pgdouyon/vim-evanesco'
+" Features: Automatically clears search highlight when cursor is moved.
+" Draws attention to search under cursor with different highlight group.
+" Star search highlights but doesn't move.
+
 Plug 'dyng/ctrlsf.vim'
 " Features: Integration for ag/ack/pt/rg (grep replacements). Parses the search result
 " and displays the result in a user-friendly format. From 1.9 supports compact view.
