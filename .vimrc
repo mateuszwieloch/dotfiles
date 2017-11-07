@@ -242,6 +242,7 @@ endfunction
 Plug 'w0rp/ale'
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
+let g:ale_lint_on_text_changed = 0   " no need, because auto-save + lint_on_save enabled
 nnoremap <leader>ll :ALEToggle<return>
 nnoremap <leader>lf :ALEFix<return>
 let g:ale_fixers = {
