@@ -51,3 +51,5 @@ set fish_user_abbreviations $fish_user_abbreviations 'sl=ll -1'
 set fish_user_abbreviations $fish_user_abbreviations 'sla=ll -1 -A'
 
 set fish_user_abbreviations $fish_user_abbreviations 'py=python3'
+
+source ~/.config/fish/nvm-wrapper/nvm.fish
