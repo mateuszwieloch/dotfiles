@@ -10,6 +10,7 @@ endif
 runtime macros/matchit.vim
 
 syntax on               " Enable syntax highlighting
+set regexpengine=1      " Changing regexp engine fixes Ruby syntax highlighting slowness that started from vim ~7.3
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
