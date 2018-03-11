@@ -275,22 +275,23 @@ Plug 'sheerun/vim-polyglot'
 " the current file or other files in the same project.
 Plug 'tpope/vim-sleuth'
 
-autocmd BufNewFile,BufRead *.py
+autocmd FileType go
+    \ nnoremap <leader>rr :!go run %<CR>|
+
+autocmd FileType python
     \ set textwidth=79 |
     \ set colorcolumn=80 |
     \ set fileformat=unix |
+    \ nnoremap <leader>rr :!python %<CR>|
 
 
 autocmd FileType ruby
     \ set colorcolumn=90 |
     \ set foldmethod=indent |
     \ set nocursorline |
+    \ nnoremap <leader>rr :!ruby %<CR>|
 
 let ruby_foldable_groups = 'class def do {'
-
-" save & run current file
-nnoremap <leader>rr :w<CR>:!ruby %<CR>
-
 
 autocmd BufNewFile,BufRead *.js,*.html,*.css
     \ set colorcolumn=80 |
