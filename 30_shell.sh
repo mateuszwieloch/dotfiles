@@ -14,3 +14,6 @@ wget https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish -
 
 echo "# Symlink ~/.config/fish/config.fish"
 ln -s ~/code/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
+
+echo "# Symlink fish functions"
+ln -s ~/code/dotfiles/.config/fish/functions ~/.config/fish/functions
