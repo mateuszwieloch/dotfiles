@@ -7,14 +7,6 @@ set -x LS_COLORS "di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=3
 # PATH
 set -gx PATH $PATH ~/code/dotfiles/bin
 
-if test -d ~/code/gateway
-  set -gx PATH $PATH ~/code/gateway/public_bin
-end
-
-if test -d /Applications/Splunk/bin
-  set -gx PATH $PATH /Applications/Splunk/bin
-end
-
 # CDPATH
 set -g CDPATH . ~
 # if ~/code exists add all subdirectories of ~/code to fold autocomplete list triggered with TAB
@@ -51,5 +43,3 @@ set fish_user_abbreviations $fish_user_abbreviations 'sl=ll -1'
 set fish_user_abbreviations $fish_user_abbreviations 'sla=ll -1 -A'
 
 set fish_user_abbreviations $fish_user_abbreviations 'py=python3'
-
-source ~/.config/fish/nvm-wrapper/nvm.fish
