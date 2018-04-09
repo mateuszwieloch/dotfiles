@@ -16,6 +16,9 @@ etc...
 3. Install vim plugins. Run vim and then run command :PlugInstall
 4. Adjust .gitconfig
 
+## OS manual config
+- In Finder, Preferences, set General->New Finder windows show: Downloads
+- enable MacOS Night Shift feature
 
 ## Extremely useful apps
 1. [Command-Tab Plus](http://commandtab.noteifyapp.com)
@@ -37,6 +40,7 @@ etc...
 ## Safari exentsions
 1. [Adguard Adblocker](https://adguard.com/en/adblock-adguard-safari.html)
 2. [Ghostery](https://www.ghostery.com/products/)
+  - enable blocking for all categories in Options->General
 3. [JSONAce](https://github.com/acrogenesis/JSONAce)
 
 
