@@ -1,18 +1,25 @@
 status --is-interactive; and . (rbenv init -|psub)
 
+# ENV VARIABLES
+set -x UBER_HOME "$HOME/Uber"
+set -x UBER_OWNER "mwieloch@uber.com"
+set -x UBER_LDAP_UID mwieloch
+set -x VAGRANT_DEFAULT_PROVIDER aws
+set -x VAGRANTNAME club-180406
+
 set -x EDITOR vim
 
 set -x LSCOLORS gxBxhxDxfxhxhxhxhxcxcx
 set -x LS_COLORS "di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=37;40:su=37;40:sg=37;40:tw=32;40:ow=32;40:"
 
 # PATH
-set -gx PATH $PATH ~/code/dotfiles/bin
+set -gx PATH $HOME/bin  $PATH ~/code/dotfiles/bin /usr/local/sbin
 
 # CDPATH
 set -g CDPATH . ~
 # if ~/code exists add all subdirectories of ~/code to fold autocomplete list triggered with TAB
 if test -d ~/code
-  set -g CDPATH $CDPATH ~/code
+  set -g CDPATH $CDPATH ~/code ~/Uber/sync/$VAGRANTNAME.dev.uber.com/home/uber/src
 end
 
 
