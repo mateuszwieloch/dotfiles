@@ -70,3 +70,5 @@ Add extensions
 2. [Ghostery](https://www.ghostery.com/products/)
   - enable blocking for all categories in Options->General
 3. [JSONAce](https://github.com/acrogenesis/JSONAce)
+4. [mailto:](https://sites.google.com/site/mailtoextension/mailto.safariextz)
+  - For Google Inbox, in options choose "custom URL" and set address to sth like: https://inbox.google.com/?authuser=mwieloch@uber.com&to={to}&cc={cc}&bcc={bcc}&subject={subject}&body={body}
