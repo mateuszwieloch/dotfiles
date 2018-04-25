@@ -19,6 +19,7 @@ etc...
 
 ## macOS
 - enable MacOS Night Shift feature
+- Stop rearranging Desktops. Open System Preferences -> Mission Control -> uncheck 'Automatically rearrange Spaces based on most recent use'.
 - remove Siri and Spotlight menu bar icons (see below)
 - To prevent Pulse Secure from starting on boot, create an Automator application that will run shell command `launchctl unload –w /Library/LaunchAgents/net.pulsesecure.pulsetray.plist`. Add that application to Login Items in macOS Users & Groups settings.
 
