@@ -16,8 +16,27 @@ etc...
 3. Install vim plugins. Run vim and then run command :PlugInstall
 4. Adjust .gitconfig
 
+
 ## macOS
 - enable MacOS Night Shift feature
+- remove Siri and Spotlight menu bar icons (see below)
+- To prevent Pulse Secure from starting on boot, create an Automator application that will run shell command `launchctl unload –w /Library/LaunchAgents/net.pulsesecure.pulsetray.plist`. Add that application to Login Items in macOS Users & Groups settings.
+
+### Changes requiring System Integration Protection to be disabled
+- restart macOS and hold ⌘ R to enter Recovery Mode
+- from Utilities option on menu bar open Terminal and type `csrutil status`
+- disable SIP with `csrutil disable`
+- reboot into regular mode
+- `cd /System/Library/CoreServices/Spotlight.app/Contents/MacOS`
+- make a backup copy `sudo cp Spotlight Spotlight.bak`
+- modify icon to make it 0 width (but keep Spotlight working) `sudo perl -pi -e 's|(\x00\x00\x00\x00\x00\x00\x47\x40\x00\x00\x00\x00\x00\x00)\x42\x40(\x00\x00\x80\x3f\x00\x00\x70\x42)|$1\x00\x00$2|sg' Spotlight`
+- Make sure changes look good `cmp -l Spotlight Spotlight.bak`
+  = 248855 0 102
+  = 248856 0 100
+- sign new Spotlight `sudo codesign -f -s - Spotlight`
+- `sudo killall Spotlight`
+- reenable SIP
+
 
 ## Keyboard
 
