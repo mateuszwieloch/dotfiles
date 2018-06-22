@@ -19,9 +19,10 @@ set -gx PATH $HOME/bin  $PATH ~/code/dotfiles/bin /usr/local/sbin
 set -g CDPATH . ~
 # if ~/code exists add all subdirectories of ~/code to fold autocomplete list triggered with TAB
 if test -d ~/code
-  set -g CDPATH $CDPATH ~/code ~/Uber/sync/$VAGRANTNAME.dev.uber.com/home/uber/src
+  set -g CDPATH $CDPATH ~/code
 end
 
+eval (/usr/local/bin/python -m virtualfish auto_activation)
 
 set -U fish_user_abbreviations 'be=bundle exec'
 
