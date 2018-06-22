@@ -1,2 +1,11 @@
 source ~/.vimrc
 set surround
+
+map <space>d :action QuickJavaDoc<cr>
+map <space>f :action FindInPath<cr>
+map <space>t :action RunClass<cr>
+map <space>v :action SplitVertically<cr>
+
+map <space>u :action FindUsages<cr>
+
+map <space>rr :action RenameElement<cr>

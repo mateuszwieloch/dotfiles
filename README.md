@@ -62,6 +62,14 @@ Terminal.app:
 - Preferences, set 'Sort notes by' to 'Title'
 - Preferences, set 'New notes start with' to 'Title'
 
+## PyCharm
+Keymap
+- Select Next Tab ⌘ L
+- Select Previous Tab ⌘ H
+Editor
+  General
+    - turn on 'Ensure line feed at file end on Save', otherwise PyCharm PEP8 checker constantly complains
+
 ## Extremely useful apps
 1. [Command-Tab Plus](http://commandtab.noteifyapp.com)
 2. [Day-0 2](http://www.shauninman.com/archive/2016/10/20/day_o_2_mac_menu_bar_clock)
