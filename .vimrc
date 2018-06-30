@@ -283,6 +283,16 @@ Plug 'tpope/vim-sleuth'
 autocmd FileType go
     \ nnoremap <leader>rr :!go run %<CR>|
 
+Plug 'jeetsukumaran/vim-pythonsense'
+" Features: text objects, motions, and semantic location for Python
+" Text objects:
+" ac ic    around/inside class
+" af if    around/inside function or method
+" ad id    around/inside multiline docstring
+" Motions (overriden in '~/.vim/ftplugin/python/pythonsense-custom.vim')
+let g:is_pythonsense_suppress_motion_keymaps = 1
+let g:is_pythonsense_suppress_location_keymaps = 1
+
 autocmd FileType python
     \ set textwidth=79 |
     \ set colorcolumn=80 |

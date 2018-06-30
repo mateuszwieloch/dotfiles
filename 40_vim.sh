@@ -4,7 +4,14 @@ brew install vim --with-override-system-vi
 echo "# Symlink .vimrc"
 ln -s ~/code/dotfiles/.vimrc .vimrc
 
-echo "# Setup .vim/ (snippets)"
-cp -i -R ~/code/dotfiles/.vim ~
-
+echo "# Installing vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo "# Symlink ~/.vim/ftplugin"
+ln -s ~/code/dotfiles/.vim/ftplugin ~/.vim/ftplugin
+
+echo "# Symlink ~/.vim/after"
+ln -s ~/code/dotfiles/.vim/after ~/.vim/after
+
+echo "# Symplink ~/.vim/snippets"
+ln -s ~/code/dotfiles/.vim/snippets ~/.vim/snippets
