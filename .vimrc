@@ -284,6 +284,11 @@ Plug 'tpope/vim-sleuth'
 autocmd FileType go
     \ nnoremap <leader>rr :!go run %<CR>|
 
+Plug 'tmhedberg/SimpylFold'
+" Features: class/def/imports/docstrings folding for Python
+let g:SimpylFold_fold_docstring = 0
+let g:SimpylFold_fold_import = 0
+
 Plug 'jeetsukumaran/vim-pythonsense'
 " Features: text objects, motions, and semantic location for Python
 " Text objects:
