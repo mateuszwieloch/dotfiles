@@ -254,6 +254,9 @@ let g:ale_fixers = {
     \}
 
 
+Plug 'yuttie/comfortable-motion.vim'
+" Features: makes CTRL-d and CTRL-u scroll smoothly
+
 
 " --- GIT ---
 Plug 'tpope/vim-fugitive'
