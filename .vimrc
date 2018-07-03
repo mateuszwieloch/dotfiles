@@ -5,10 +5,6 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
-
-" activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
-runtime macros/matchit.vim
-
 syntax on               " Enable syntax highlighting
 set regexpengine=1      " Changing regexp engine fixes Ruby syntax highlighting slowness that started from vim ~7.3
 filetype on             " Enable filetype detection
@@ -20,7 +16,9 @@ set t_Co=256            " force 256 colors terminal
 
 
 call plug#begin()
-
+" activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
+packadd! matchit
+"
 " --- COLOR SCHEMES ---
 Plug 'jpo/vim-railscasts-theme'
 
