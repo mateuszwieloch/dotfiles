@@ -20,7 +20,7 @@ call plug#begin()
 packadd! matchit
 "
 " --- COLOR SCHEMES ---
-Plug 'jpo/vim-railscasts-theme'
+Plug 'morhetz/gruvbox'
 
 " --- ESSENTIALS ---
 Plug '907th/vim-auto-save'
@@ -325,7 +325,8 @@ let g:mta_filetypes = {
 call plug#end()
 
 
-colorscheme railscasts
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 highlight ALEWarningSign ctermfg=226
 highlight ALEErrorSign ctermfg=red
 
