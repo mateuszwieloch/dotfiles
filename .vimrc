@@ -313,18 +313,19 @@ let ruby_foldable_groups = 'class def do {'
 autocmd BufNewFile,BufRead *.js,*.html,*.css
     \ set colorcolumn=80 |
 
-Plug 'valloric/MatchTagAlways'
-" highlights the XML/HTML tags that enclose your cursor location
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'django' : 1,
-    \ 'htmldjango' : 1,
-    \ 'eruby' : 1,
-    \ 'html.handlebars' : 1,
-    \}
+" TODO: causes Errors as of Vim8.1 due to Python deprecation
+" Plug 'valloric/MatchTagAlways'
+" " highlights the XML/HTML tags that enclose your cursor location
+" let g:mta_filetypes = {
+"     \ 'html' : 1,
+"     \ 'xhtml' : 1,
+"     \ 'xml' : 1,
+"     \ 'jinja' : 1,
+"     \ 'django' : 1,
+"     \ 'htmldjango' : 1,
+"     \ 'eruby' : 1,
+"     \ 'html.handlebars' : 1,
+"     \}
 
 call plug#end()
 
