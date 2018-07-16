@@ -155,17 +155,18 @@ Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
 let g:ctrlp_max_files = 0        " don't limit number of scanned files
-nnoremap <leader>o :CtrlP<cr>
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_map = '<leader>o'
 
 " skip space in search string (except some special cases, hence the pattern)
 let g:ctrlp_abbrev = { 'abbrevs': [ { 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ', 'expanded': '', 'mode': 'fprz', } ] }
 
-if executable('ag')
-  " Use ag over grep in vim
-  set grepprg=ag\ --nogroup\ --nocolor
+if executable('rg')
+  " Use rg over grep in vim
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
-  " Use ag in CtrlP. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Use rg in CtrlP. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0

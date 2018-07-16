@@ -1,5 +1,3 @@
-status --is-interactive; and . (rbenv init -|psub)
-
 # ENV VARIABLES
 set -x UBER_HOME "$HOME/Uber"
 set -x UBER_OWNER "mwieloch@uber.com"
@@ -22,6 +20,8 @@ if test -d ~/code
   set -g CDPATH $CDPATH ~/code
 end
 
+set -gx RIPGREP_CONFIG_PATH $HOME/.ripgreprc
+
 eval (/usr/local/bin/python -m virtualfish auto_activation)
 
 set -U fish_user_abbreviations 'be=bundle exec'
@@ -32,10 +32,6 @@ set fish_user_abbreviations $fish_user_abbreviations 'rm=rm -i'
 
 function less
   command less -R
-end
-
-function ag
-  command ag --pager "less -R" $argv
 end
 
 function https

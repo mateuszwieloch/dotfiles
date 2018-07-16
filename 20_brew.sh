@@ -12,8 +12,8 @@ brew cleanup
 # }}}
 
 # Command line tools {{{
-echo "# Install ag"
-brew install ag
+echo "# Install rg"
+brew install rg
 echo "# Install tree"
 brew install tree
 echo "# Install p7zip"
