@@ -11,7 +11,18 @@ set -x LSCOLORS gxBxhxDxfxhxhxhxhxcxcx
 set -x LS_COLORS "di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=37;40:su=37;40:sg=37;40:tw=32;40:ow=32;40:"
 
 # PATH
-set -gx PATH $HOME/bin  $PATH ~/code/dotfiles/bin /usr/local/sbin
+set -l paths \
+$HOME/bin \
+~/code/dotfiles/bin \
+(pyenv root)/shims \
+/usr/local/sbin # uber specific
+
+for p in $paths
+  if not contains $p $PATH; and test -d $p
+    # prepend
+    set -gx PATH $p $PATH
+  end
+end
 
 # CDPATH
 set -g CDPATH . ~
