@@ -273,13 +273,6 @@ nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 " Features: curated bundle of 100+ syntax highlighting plugins
 Plug 'sheerun/vim-polyglot'
 
-" Features: automatically figures out all indent related configuration based on
-" the current file or other files in the same project.
-Plug 'tpope/vim-sleuth'
-
-autocmd FileType go
-    \ nnoremap <leader>rr :!go run %<CR>|
-
 Plug 'tmhedberg/SimpylFold'
 " Features: class/def/imports/docstrings folding for Python
 let g:SimpylFold_fold_docstring = 0
