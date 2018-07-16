@@ -424,10 +424,11 @@ highlight Search ctermbg=59 ctermfg=white
 
 " --- BASIC MAPPINGS ---
 " ----------------------
+nnoremap <CR> :
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 noremap Y y$
-inoremap jk <esc>
 noremap <leader>q :q<cr>
+noremap <leader>Q :q!<cr>
 
 nnoremap H ^
 vnoremap H ^
