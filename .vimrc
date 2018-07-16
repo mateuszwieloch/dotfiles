@@ -6,7 +6,7 @@ if &shell =~# 'fish$'
 endif
 
 syntax on               " Enable syntax highlighting
-set regexpengine=1      " Changing regexp engine fixes Ruby syntax highlighting slowness that started from vim ~7.3
+set regexpengine=1      " Changing regexp engine speeds up syntax highlighting
 filetype on             " Enable filetype detection
 filetype indent on      " Enable filetype-specific indenting
 filetype plugin on      " Enable filetype-specific plugins
@@ -16,9 +16,10 @@ set t_Co=256            " force 256 colors terminal
 
 
 call plug#begin()
+
 " activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
 packadd! matchit
-"
+
 " --- COLOR SCHEMES ---
 Plug 'morhetz/gruvbox'
 
@@ -73,14 +74,8 @@ Plug 'tpope/vim-surround'
 " S"    surround in visual mode
 " ysiw" surround in word
 
-Plug 'sickill/vim-pasta'
-" Features: remaps p and P in normal and visual mode to do context aware pasting (indentation of pasted text is adjusted properly to match indentation of surrounding code)
-
 Plug 'vim-scripts/ReplaceWithRegister'
 " Features: gr{motion} to replace with yanked text; grr to replace entire line
-
-Plug 'tpope/vim-endwise'
-" Features: if/unless/class/do/while/def and <enter> will cause insertion of block ending. Works with multiple languages.
 
 Plug 'ntpeters/vim-better-whitespace'
 " Features: highlights all trailing whitespaces (spaces and tabs) in red
@@ -110,13 +105,13 @@ Plug 'Konfekt/FastFold'
 Plug 'kana/vim-textobj-user'
 
 Plug 'kana/vim-textobj-entire'
-" entire file: ie/ae
+" ae       entire file
 
 Plug 'kana/vim-textobj-indent'
-" indent: ii/ai
+" ai ii    around(with whitespace around)/inside indent
 
 Plug 'kana/vim-textobj-line'
-" line: il/al
+" al il    around(with whitespace around)/inside line
 
 
 " --- SEARCH ---
@@ -243,13 +238,13 @@ function! s:MaybeUpdateLightline()
 endfunction
 
 
-" Features: asynchronous lint engine - provides linging while editing a file
 Plug 'w0rp/ale'
+" Features: asynchronous lint engine - provides linging while editing a file
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_lint_on_text_changed = 0   " no need, because auto-save + lint_on_save enabled
-nnoremap <leader>ll :ALEToggle<return>
-nnoremap <leader>lf :ALEFix<return>
+" nnoremap <leader>ll :ALEToggle<return>
+" nnoremap <leader>lf :ALEFix<return>
 let g:ale_fixers = {
     \  'ruby': ['rubocop']
     \}
@@ -360,6 +355,8 @@ if $TERM_PROGRAM =~ "iTerm"
 endif
 set scrolloff=4         " keep at least 4 lines below/above the cursor
 
+set cpoptions+=$        " display $ when working with motions
+
 set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
 set expandtab           " convert tabs to spaces
 set tabstop=2           " number of visual spaces per <tab>
@@ -383,13 +380,6 @@ set noswapfile
 set foldenable
 set foldmethod=indent
 set foldlevel=99
-" toggle fold with Tab
-nnoremap <tab> za
-nnoremap <leader>ms :set foldmethod=syntax<cr>
-nnoremap <leader>mi :set foldmethod=indent<cr>
-nnoremap <leader>mm :set foldmethod=manual<cr>
-" jump to beginning (not end) of previous fold area (ex: beginning of a method)
-nnoremap zk zkzakjza
 
 set breakindent
 set showbreak=\ \  " indent
@@ -426,7 +416,7 @@ function! AutoHighlightToggle()
   endif
 endfunction
 
-nnoremap <leader>hh :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
+" nnoremap <leader>hh :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
 nnoremap * :keepjumps normal! mi*`i<CR>
 
 highlight Search ctermbg=59 ctermfg=white
@@ -495,10 +485,18 @@ noremap <leader>= <C-W>=
 
 " make current window the only window on the screen
 noremap <leader>wo <C-W>o
+" exchange windows
+nnoremap <leader>wx <C-W>x
+
+" ---- TABS -----
+" ---------------
+nnoremap <leader>t :tabe<CR>
+nnoremap <leader>l :tabn<CR>
+nnoremap <leader>h :tabp<CR>
 
 " --- OTHER ---
 " -------------
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sc :source %<cr>
 
