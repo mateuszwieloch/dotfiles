@@ -428,10 +428,10 @@ noremap Y y$
 noremap <leader>q :q<cr>
 noremap <leader>Q :q!<cr>
 
-nnoremap H ^
-vnoremap H ^
-nnoremap L $
-vnoremap L $
+nnoremap H g^
+vnoremap H g^
+nnoremap L g$
+vnoremap L g$
 
 " reindent a file
 noremap <leader>r mmgg=G`m
