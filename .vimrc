@@ -147,11 +147,15 @@ let g:ctrlsf_mapping = {
 
 Plug 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
+" <c-v> to open file in a new vertical split
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
 let g:ctrlp_max_files = 0        " don't limit number of scanned files
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_map = '<leader>o'
+" When opening a file with <cr>, CtrlP avoids opening it in plugin, help,
+" quickfix windows. This sets exceptions.
+let g:ctrlp_reuse_window = 'filebeagle\|help'
 
 " skip space in search string (except some special cases, hence the pattern)
 let g:ctrlp_abbrev = { 'abbrevs': [ { 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ', 'expanded': '', 'mode': 'fprz', } ] }
