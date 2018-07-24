@@ -256,6 +256,8 @@ let g:ale_fixers = {
 
 Plug 'yuttie/comfortable-motion.vim'
 " Features: makes CTRL-d and CTRL-u scroll smoothly
+let g:comfortable_motion_friction = 250.0
+let g:comfortable_motion_air_drag = 0.0
 
 
 " --- GIT ---
@@ -389,6 +391,8 @@ set incsearch           " highlight first match for a search pattern, while stil
 set hlsearch            " highlight all matches after performing search
 set ignorecase          " case insensitive pattern matching
 set smartcase           " override ignorecase if pattern contains upcase
+" double click highlights all occurences of word
+map <2-LeftMouse> *
 " clear search highlights
 noremap <bs> :noh<CR>
 " in visual mode search for selection with //
@@ -415,32 +419,23 @@ function! AutoHighlightToggle()
 endfunction
 
 " nnoremap <leader>hh :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
-nnoremap * :keepjumps normal! mi*`i<CR>
+" nnoremap * :keepjumps normal! mi*`i<CR>
 
 highlight Search ctermbg=59 ctermfg=white
 
 
-" --- BASIC MAPPINGS ---
-" ----------------------
-nnoremap <CR> :
-" use Y to yank the rest of the line - it's a change to unify with <D>, <C>
-noremap Y y$
-noremap <leader>q :q<cr>
-noremap <leader>Q :q!<cr>
+" --- MOVING AROUND THE FILE ---
+" ------------------------------
+" move by display line (not physical) when wrapping occurs
+nnoremap k gk
+nnoremap j gj
+nnoremap 0 g0
+nnoremap $ g$
 
 nnoremap H g^
 vnoremap H g^
 nnoremap L g$
 vnoremap L g$
-
-" reindent a file
-noremap <leader>r mmgg=G`m
-
-" move by visual line (not physical) when wrapping occurs
-noremap  <buffer> <silent> k gk
-noremap  <buffer> <silent> j gj
-noremap  <buffer> <silent> 0 g0
-noremap  <buffer> <silent> $ g$
 
 
 " --- BUFFERS ---
@@ -472,9 +467,9 @@ noremap <leader>wj <C-W>J
 noremap <leader>wk <C-W>K
 noremap <leader>wl <C-W>L
 
-" open empty split
-noremap <leader>v :vnew<cr>
-noremap <leader>s :new<cr>
+" split window
+noremap <leader>v :vsplit<cr>
+noremap <leader>s :split<cr>
 " open window with content of current window
 noremap <leader>wv <C-W>v
 noremap <leader>ws <C-W>s
@@ -495,9 +490,18 @@ nnoremap <leader>h :tabp<CR>
 
 " --- OTHER ---
 " -------------
+nnoremap <CR> :
+" use Y to yank the rest of the line - it's a change to unify with <D>, <C>
+noremap Y y$
+noremap <leader>q :q<cr>
+noremap <leader>Q :q!<cr>
+
 nnoremap <leader>ev :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sc :source %<cr>
+
+" reindent a file
+noremap <leader>r mmgg=G`m
 
 " Go Preview
 nnoremap gp :!open %:p<cr>
