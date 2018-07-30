@@ -134,16 +134,19 @@ Plug 'dyng/ctrlsf.vim'
 nnoremap <leader>f :CtrlSF<space>
 vmap <leader>f <Plug>CtrlSFVwordExec
 nnoremap <leader>x :CtrlSFToggle<CR>
+let g:ctrlsf_ackprg = "rg"
 let g:ctrlsf_auto_close = {
     \ "normal" : 0,
     \ "compact": 0
     \ }
+let g:ctrlsf_auto_focus = { "at" : "start" }
 let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_mapping = {
     \ "next": "n",
     \ "prev": "N",
-    \ "vsplit"   : "<C-O>",
+    \ "vsplit"   : "<C-v>",
     \ }
+let g:ctrlsf_case_sensitive = "smart"
 
 Plug 'ctrlpvim/ctrlp.vim'
 " Features: fuzzy file/buffer/tag finder
@@ -153,6 +156,12 @@ let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple split
 let g:ctrlp_max_files = 0        " don't limit number of scanned files
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_map = '<leader>o'
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtHistory(-1)':       [],
+    \ 'PrtHistory(1)':        [],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<c-p>'],
+    \ }
 " When opening a file with <cr>, CtrlP avoids opening it in plugin, help,
 " quickfix windows. This sets exceptions.
 let g:ctrlp_reuse_window = 'filebeagle\|help'

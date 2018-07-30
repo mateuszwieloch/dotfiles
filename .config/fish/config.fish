@@ -13,6 +13,7 @@ set -x LS_COLORS "di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=3
 # PATH
 set -l paths \
 $HOME/bin \
+$HOME/.cargo/bin \
 ~/code/dotfiles/bin \
 (pyenv root)/shims \
 /usr/local/sbin # uber specific
