@@ -14,6 +14,9 @@ brew cleanup
 # Command line tools {{{
 echo "# Install rg"
 brew install rg
+echo "# Adding symbolic link for .ripgreprc"
+ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
+
 echo "# Install tree"
 brew install tree
 echo "# Install p7zip"
