@@ -16,7 +16,8 @@ echo "# Install rg"
 brew install rg
 echo "# Adding symbolic link for .ripgreprc"
 ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
-
+echo "# Install bat - a powerful replacement for cat"
+brew install bat
 echo "# Install tree"
 brew install tree
 echo "# Install p7zip"
