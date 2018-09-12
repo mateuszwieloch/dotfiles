@@ -77,6 +77,11 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
 " Features: gr{motion} to replace with yanked text; grr to replace entire line
 
+Plug 'bogado/file-line'
+" Features: Plugin for vim to enable opening a file on a given line
+" Vanila vim:       vi some/file.py +123
+" With this plugin: vi some/file.py:123
+
 Plug 'ntpeters/vim-better-whitespace'
 " Features: highlights all trailing whitespaces (spaces and tabs) in red
 " :ToggleWhitespace to show/hide whitespace highlighting
