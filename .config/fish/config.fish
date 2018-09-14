@@ -7,8 +7,6 @@ set -x VAGRANTNAME club-180406
 
 set -x EDITOR vim
 
-set -x LSCOLORS gxBxhxDxfxhxhxhxhxcxcx
-set -x LS_COLORS "di=36;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=37;40:su=37;40:sg=37;40:tw=32;40:ow=32;40:"
 
 # PATH
 set -l paths \
@@ -54,9 +52,26 @@ function timestamp $argv
   command date "+%Y%m%d%H%M%S" $argv
 end
 
+# ls
+function ls
+  # -F append indicator to entries /=directory, *=executable, @=symbolic link
+  # -h humanly readable file sizes
+  command ls -Fh $argv
+end
 set fish_user_abbreviations $fish_user_abbreviations 'lsa=ls -A'
 set fish_user_abbreviations $fish_user_abbreviations 'lla=ll -A'
 set fish_user_abbreviations $fish_user_abbreviations 'sl=ll -1'
 set fish_user_abbreviations $fish_user_abbreviations 'sla=ll -1 -A'
+# generated with https://geoff.greer.fm/lscolors/
+# BSD
+set -x LSCOLORS xxBxhxDxfxhxhxhxhxcxcx
+# Linux
+set -x LS_COLORS "di=00;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=37;40:su=37;40:sg=37;40:tw=32;40:ow=32;40:"
+
+# tree
+function tree
+  command tree -F $argv
+end
+
 
 set fish_user_abbreviations $fish_user_abbreviations 'py=python3'
