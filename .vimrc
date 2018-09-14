@@ -261,6 +261,7 @@ Plug 'w0rp/ale'
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_lint_on_text_changed = 0   " no need, because auto-save + lint_on_save enabled
+let g:ale_python_flake8_change_directory = 0
 " nnoremap <leader>ll :ALEToggle<return>
 " nnoremap <leader>lf :ALEFix<return>
 let g:ale_fixers = {
@@ -293,10 +294,8 @@ nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 " Features: curated bundle of 100+ syntax highlighting plugins
 Plug 'sheerun/vim-polyglot'
 
-Plug 'tmhedberg/SimpylFold'
-" Features: class/def/imports/docstrings folding for Python
-let g:SimpylFold_fold_docstring = 0
-let g:SimpylFold_fold_import = 0
+Plug 'kalekundert/vim-coiled-snake'
+" Features: better folding for Python
 
 Plug 'jeetsukumaran/vim-pythonsense'
 " Features: text objects, motions, and semantic location for Python
@@ -309,8 +308,8 @@ let g:is_pythonsense_suppress_motion_keymaps = 1
 let g:is_pythonsense_suppress_location_keymaps = 1
 
 autocmd FileType python
-    \ set textwidth=79 |
-    \ set colorcolumn=80 |
+    \ set textwidth=90 |
+    \ set colorcolumn=91 |
     \ set fileformat=unix |
     \ nnoremap <leader>rr :!python %<CR>|
 
@@ -504,7 +503,6 @@ nnoremap <leader>h :tabp<CR>
 
 " --- OTHER ---
 " -------------
-nnoremap <CR> :
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
 noremap Y y$
 noremap <leader>q :q<cr>
