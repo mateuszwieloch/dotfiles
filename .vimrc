@@ -138,6 +138,8 @@ Plug 'dyng/ctrlsf.vim'
 " :CtrlSFToggle
 nnoremap <leader>f :CtrlSF<space>
 vmap <leader>f <Plug>CtrlSFVwordExec
+" yank word under cursor into z buffer; then execute CtrlSF on contents of z buffer
+nnoremap <leader>F "zyiw:exe ":CtrlSF ".@z""<cr>
 nnoremap <leader>x :CtrlSFToggle<CR>
 let g:ctrlsf_ackprg = "rg"
 let g:ctrlsf_auto_close = {
