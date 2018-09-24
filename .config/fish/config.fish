@@ -52,6 +52,15 @@ function timestamp $argv
   command date "+%Y%m%d%H%M%S" $argv
 end
 
+function cn
+  set CN_PATH (/usr/local/bin/change-node run)
+  set final (echo $CN_PATH|cut -d ':' -f1)
+  if not contains $final $PATH
+    # prepend
+    set -gx PATH $final $PATH
+  end
+end
+
 # ls
 function ls
   # -F append indicator to entries /=directory, *=executable, @=symbolic link
