@@ -344,7 +344,10 @@ autocmd BufNewFile,BufRead *.js,*.html,*.css
 call plug#end()
 
 
-let g:gruvbox_contrast_dark = 'hard'
+set termguicolors
+set background=dark
+let g:gruvbox_contrast_dark = 'hard' " black background for more contrast
+let g:gruvbox_sign_column = 'bg0'    " make sign column color the same as text background
 colorscheme gruvbox
 highlight ALEWarningSign ctermfg=226
 highlight ALEErrorSign ctermfg=red
