@@ -366,10 +366,14 @@ set ttymouse=sgr        " xterm2 causes mouse not to work past 220 column, see b
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
-" Change cursor shape between insert and normal mode in iTerm2.app
+" Change cursor shape in various modes
 if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+if $TERM =~ "xterm-kitty"
+    let &t_SI.="\e[5 q" " Vertical bar in insert mode
+    let &t_EI.="\e[1 q" " Block in normal mode
 endif
 set scrolloff=4         " keep at least 4 lines below/above the cursor
 
