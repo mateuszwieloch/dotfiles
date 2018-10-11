@@ -8,10 +8,13 @@ set -x VAGRANTNAME club-180406
 set -x EDITOR vim
 
 
+set -gx GOPATH $HOME/gocode
+
 # PATH
 set -l paths \
 $HOME/bin \
 $HOME/.cargo/bin \
+$GOPATH/bin \
 ~/code/dotfiles/bin \
 (pyenv root)/shims \
 /usr/local/sbin # uber specific
@@ -84,3 +87,4 @@ end
 
 
 set fish_user_abbreviations $fish_user_abbreviations 'py=python3'
+set -g fish_user_paths "/usr/local/opt/node@8/bin" $fish_user_paths
