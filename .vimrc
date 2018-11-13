@@ -306,14 +306,24 @@ autocmd FileType python
     \ set textwidth=90 |
     \ set colorcolumn=91 |
     \ set fileformat=unix |
-    \ nnoremap <leader>rr :!python %<CR>|
+    \ nnoremap <leader>r :!python %<CR>|
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+let g:go_fmt_command = "goimports"
+
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>gt <Plug>(go-test)
+
+nnoremap <leader>un :cnext<CR>
+nnoremap <leader>up :cprevious<CR>
+nnoremap <leader>uc :cclose<CR>
 
 autocmd FileType ruby
     \ set colorcolumn=90 |
     \ set foldmethod=indent |
     \ set nocursorline |
-    \ nnoremap <leader>rr :!ruby %<CR>|
+    \ nnoremap <leader>r :!ruby %<CR>|
 
 let ruby_foldable_groups = 'class def do {'
 
@@ -392,9 +402,8 @@ set nobackup            " get rid of anoying ~file
 set nowritebackup
 set noswapfile
 
-set foldenable
-set foldmethod=indent
-set foldlevel=99
+" set foldenable
+" set foldlevel=99
 
 set breakindent
 set showbreak=\ \  " indent
@@ -513,9 +522,6 @@ noremap <leader>Q :q!<cr>
 nnoremap <leader>ev :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sc :source %<cr>
-
-" reindent a file
-noremap <leader>r mmgg=G`m
 
 " Go Preview
 nnoremap gp :!open %:p<cr>
