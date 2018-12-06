@@ -132,10 +132,12 @@ Plug 'dyng/ctrlsf.vim'
 " :CtrlSF {pattern} /path/to/dir
 " :CtrlSF -I {pattern}             " case insensitive
 " :CtrlSFToggle
-nnoremap <leader>f :CtrlSF<space>
+" nnoremap <leader>f :CtrlSF<space>
+
+" " yank word under cursor into z buffer; then execute CtrlSF on contents of z buffer
+nnoremap <leader>f "zyiw:exe ":CtrlSF ".@z""<cr>
 vmap <leader>f <Plug>CtrlSFVwordExec
-" yank word under cursor into z buffer; then execute CtrlSF on contents of z buffer
-nnoremap <leader>F "zyiw:exe ":CtrlSF ".@z""<cr>
+
 nnoremap <leader>x :CtrlSFToggle<CR>
 let g:ctrlsf_ackprg = "rg"
 let g:ctrlsf_auto_close = {
@@ -301,6 +303,12 @@ Plug 'jeetsukumaran/vim-pythonsense'
 " Motions (overriden in '~/.vim/ftplugin/python/pythonsense-custom.vim')
 let g:is_pythonsense_suppress_motion_keymaps = 1
 let g:is_pythonsense_suppress_location_keymaps = 1
+
+Plug 'davidhalter/jedi-vim'
+" Features: Competion for Python!
+" pip install jedi  # to make it work
+" <ctrl-space> to force completion
+" Cmd-d or <leader>d to go to definiton
 
 autocmd FileType python
     \ set textwidth=90 |
@@ -473,6 +481,8 @@ nnoremap <leader>bd :bd<CR>
 
 " copy full path to current buffer eg. /full/path/to/file.txt
 nnoremap <leader>cf :let @*=expand("%:p")<CR>
+" copy relative path to current buffer eg. path/to/file.txt
+nnoremap <leader>cr :let @+=expand("%")<CR>
 " copy full path + line eg. /full/path/to/file.txt:123
 nnoremap <leader>cl :let @+=expand("%:p") . ':' . line(".")<CR>
 " Copy the entire buffer into the system register

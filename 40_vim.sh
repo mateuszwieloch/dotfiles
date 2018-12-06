@@ -1,8 +1,11 @@
 echo "# Install vim"
-brew install vim --with-override-system-vi
+brew install macvim
 
 echo "# Symlink .vimrc"
-ln -s ~/code/dotfiles/.vimrc .vimrc
+ln -s ~/code/dotfiles/.vimrc ~/.vimrc
+
+echo "# Symlink .gvimrc"
+ln -s ~/code/dotfiles/.gvimrc ~/.gvimrc
 
 echo "# Installing vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
