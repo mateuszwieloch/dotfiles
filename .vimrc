@@ -455,6 +455,26 @@ endfunction
 
 highlight Search ctermbg=59 ctermfg=white
 
+" --- HELP ---
+
+" better mappings to navigate helpgrep
+nmap <silent> <RIGHT>         :cnext<cr>
+nmap <silent> <RIGHT><RIGHT>  :cnfile<cr>
+nmap <silent> <LEFT>          :cprev<cr>
+nmap <silent> <LEFT><LEFT>    :cpfile<cr>
+
+" show help in a new tab
+augroup HelpInTabs
+    autocmd!
+    autocmd BufEnter  *.txt   call HelpInNewTab()
+augroup END
+
+function! HelpInNewTab ()
+    if &buftype == 'help'
+        " convert the help window to a tab...
+        execute "normal \<C-W>T"
+    endif
+endfunction
 
 " --- MOVING AROUND THE FILE ---
 " ------------------------------
