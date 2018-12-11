@@ -17,8 +17,10 @@ set t_Co=256            " force 256 colors terminal
 
 call plug#begin()
 
-" activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
-packadd! matchit
+if !has('nvim')
+  " activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
+  packadd! matchit
+endif
 
 " --- COLOR SCHEMES ---
 Plug 'morhetz/gruvbox'
@@ -116,6 +118,20 @@ Plug 'kana/vim-textobj-line'
 
 
 " --- SEARCH ---
+set gdefault            " s/<pattern>/<replacement> has g flag set by default
+                        " (g means replace all occurences in line)
+set incsearch           " highlights first match while still typing search term
+set hlsearch            " highlights all matches after performing search
+noremap <silent> <bs> :nohlsearch<cr>
+set ignorecase          " case insensitive pattern matching
+set smartcase           " override ignorecase if pattern contains upcase
+" double click highlights all occurences of word
+map <2-LeftMouse> *
+" in visual mode search for selection with //
+vnoremap // y/<C-R>"<CR>
+
+highlight Search ctermbg=59 ctermfg=white
+
 Plug 'google/vim-searchindex'
 " Features: shows how many times does a search pattern occur in the current buffer
 " eg: [3/7]  /search_pattern
@@ -310,6 +326,9 @@ Plug 'davidhalter/jedi-vim'
 " <ctrl-space> to force completion
 " Cmd-d or <leader>d to go to definiton
 
+" disable autocompleting of import when starting import statement
+let g:jedi#smart_auto_mappings = 0
+
 autocmd FileType python
     \ set textwidth=90 |
     \ set colorcolumn=91 |
@@ -365,7 +384,7 @@ highlight ALEErrorSign ctermfg=red
 
 set encoding=utf-8
 set hidden              " switch between buffers without having to save first
-set backspace=2         " backspace in insert mode works like normal editor
+set backspace=start,eol,indent  " enable deleting past these (as normal editor would)
 set clipboard+=unnamed  " use the system paste buffer
 set ttimeoutlen=100     " prevent lag before Shift-O
 
@@ -373,7 +392,9 @@ set wildmenu            " Make the command-line completion better
 set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
 
 set mouse=a             " enable mouse use in all modes
-set ttymouse=sgr        " xterm2 causes mouse not to work past 220 column, see bug: http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
+if !has('nvim')
+  set ttymouse=sgr        " xterm2 causes mouse not to work past 220 column, see bug: http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
+endif
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
@@ -385,6 +406,7 @@ endif
 if $TERM =~ "xterm-kitty"
     let &t_SI.="\e[5 q" " Vertical bar in insert mode
     let &t_EI.="\e[1 q" " Block in normal mode
+    let &t_ut=''
 endif
 set scrolloff=4         " keep at least 4 lines below/above the cursor
 
@@ -416,44 +438,6 @@ set noswapfile
 set breakindent
 set showbreak=\ \  " indent
 
-" --- SEARCH & HIGHLIGHT ---
-" --------------------------
-set gdefault            " s/<patter>/<replacement> has g flag set by default (replace all occurences in line)
-set incsearch           " highlight first match for a search pattern, while still typing it
-set hlsearch            " highlight all matches after performing search
-set ignorecase          " case insensitive pattern matching
-set smartcase           " override ignorecase if pattern contains upcase
-" double click highlights all occurences of word
-map <2-LeftMouse> *
-" clear search highlights
-noremap <bs> :noh<CR>
-" in visual mode search for selection with //
-vnoremap // y/<C-R>"<CR>
-
-" Highlight all instances of word under cursor, when idle.
-function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    augroup end
-    setl updatetime=400
-    echo 'Highlight current word: on'
-    return 1
-  endif
-endfunction
-
-" nnoremap <leader>hh :if AutoHighlightToggle()<bar>set hls<Bar>endif<CR>
-" nnoremap * :keepjumps normal! mi*`i<CR>
-
-highlight Search ctermbg=59 ctermfg=white
 
 " --- HELP ---
 
