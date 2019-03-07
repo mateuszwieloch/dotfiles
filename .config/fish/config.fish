@@ -20,7 +20,7 @@ set -gx GOPATH $HOME/gocode
 set -l paths \
 ~/code/dotfiles/bin \
 $GOPATH/bin \
-(pyenv root)/shims \
+~/.rbenv/shims \
 $HOME/bin \
 /usr/local/sbin
 
@@ -84,10 +84,6 @@ function cn
     set -gx PATH $final $PATH
   end
 end
-
-# Python
-eval (/usr/local/bin/python -m virtualfish auto_activation)
-set fish_user_abbreviations $fish_user_abbreviations 'py=python3'
 
 # Ruby
 set -U fish_user_abbreviations 'be=bundle exec'

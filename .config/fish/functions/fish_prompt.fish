@@ -27,10 +27,6 @@ end
 
 # ~/path/to/dir master↑3↓2 s1+4 $
 function fish_prompt --description 'Write out the prompt'
-  if set -q VIRTUAL_ENV
-    echo -n -s (set_color white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
-  end
-
   if not test $status -eq 0
     set -l mode_color red
   else
