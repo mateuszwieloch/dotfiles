@@ -71,7 +71,8 @@ Editor
     - turn on 'Ensure line feed at file end on Save', otherwise PyCharm PEP8 checker constantly complains
 
 ## Extremely useful apps
-1. [Command-Tab Plus](http://commandtab.noteifyapp.com)
+1. Bear
+  - "Note->Copy Link To Note" Cmd+Shift+C
 2. [Day-0 2](http://www.shauninman.com/archive/2016/10/20/day_o_2_mac_menu_bar_clock)
 3. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12) OR [BetterSnapTool](https://itunes.apple.com/us/app/bettersnaptool/id417375580?mt=12)
   - define snap areas for Left third, Middle third, and Right third
