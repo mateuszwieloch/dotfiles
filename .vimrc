@@ -148,11 +148,11 @@ Plug 'dyng/ctrlsf.vim'
 " :CtrlSF {pattern} /path/to/dir
 " :CtrlSF -I {pattern}             " case insensitive
 " :CtrlSFToggle
-" nnoremap <leader>f :CtrlSF<space>
+nnoremap <leader>f :CtrlSF<space>
+vmap <leader>f <Plug>CtrlSFVwordExec
 
 " " yank word under cursor into z buffer; then execute CtrlSF on contents of z buffer
-nnoremap <leader>f "zyiw:exe ":CtrlSF ".@z""<cr>
-vmap <leader>f <Plug>CtrlSFVwordExec
+nnoremap <leader>F "zyiw:exe ":CtrlSF ".@z""<cr>
 
 nnoremap <leader>x :CtrlSFToggle<CR>
 let g:ctrlsf_ackprg = "rg"
