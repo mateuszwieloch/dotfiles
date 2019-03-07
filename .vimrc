@@ -328,6 +328,7 @@ Plug 'davidhalter/jedi-vim'
 
 " disable autocompleting of import when starting import statement
 let g:jedi#smart_auto_mappings = 0
+nmap <leader>d :call jedi#goto()<cr>
 
 autocmd FileType python
     \ set textwidth=90 |
