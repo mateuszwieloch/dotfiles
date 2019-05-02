@@ -392,6 +392,8 @@ set encoding=utf-8
 set hidden              " switch between buffers without having to save first
 set backspace=start,eol,indent  " enable deleting past these (as normal editor would)
 set clipboard+=unnamed  " use the system paste buffer
+" paste in visual mode without copying
+xnoremap p pgvy
 set ttimeoutlen=100     " prevent lag before Shift-O
 
 set wildmenu            " Make the command-line completion better
