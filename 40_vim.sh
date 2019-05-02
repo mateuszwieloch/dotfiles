@@ -1,5 +1,7 @@
 echo "# Install vim"
-brew install macvim
+brew install vim
+# symlink vi to vim
+ln -s /usr/local/bin/vim /usr/local/bin/vi
 
 echo "# Symlink .vimrc"
 ln -s ~/code/dotfiles/.vimrc ~/.vimrc
