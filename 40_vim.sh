@@ -16,5 +16,8 @@ ln -s ~/code/dotfiles/.vim/ftplugin ~/.vim/ftplugin
 echo "# Symlink ~/.vim/after"
 ln -s ~/code/dotfiles/.vim/after ~/.vim/after
 
-echo "# Symplink ~/.vim/snippets"
+echo "# Symlink ~/.vim/snippets"
 ln -s ~/code/dotfiles/.vim/snippets ~/.vim/snippets
+
+echo "# Create ~/.vim/undodir directory"
+mkdir -p ~/.vim/undodir

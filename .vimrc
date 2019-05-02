@@ -527,6 +527,12 @@ nnoremap <leader>t :tabe<CR>
 nnoremap <leader>l :tabn<CR>
 nnoremap <leader>h :tabp<CR>
 
+" ---- UNDO ----
+" --------------
+set undofile
+" Note: undodir must already exist!
+set undodir=~/.vim/undodir
+
 " --- OTHER ---
 " -------------
 " use Y to yank the rest of the line - it's a change to unify with <D>, <C>
