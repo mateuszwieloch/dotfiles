@@ -338,6 +338,11 @@ autocmd FileType python
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_fmt_command = "goimports"
+" vim-go is incompatible with auto-saving so turn off auto-save for go files
+augroup ft_go
+  au!
+  au FileType go let b:auto_save = 0
+augroup END
 
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
