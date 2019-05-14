@@ -1,9 +1,0 @@
-packages: [
-  "atom-beautify"
-  "copy-path"
-  "indent-guide-improved"
-  "package-sync"
-  "toggle-packages"
-  "vim-mode"
-  "vim-surround"
-]
