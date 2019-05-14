@@ -321,7 +321,7 @@ let g:is_pythonsense_suppress_motion_keymaps = 1
 let g:is_pythonsense_suppress_location_keymaps = 1
 
 Plug 'davidhalter/jedi-vim'
-" Features: Competion for Python!
+" Features: Completion for Python!
 " pip install jedi  # to make it work
 " <ctrl-space> to force completion
 " Cmd-d or <leader>d to go to definiton
@@ -362,6 +362,9 @@ let ruby_foldable_groups = 'class def do {'
 
 autocmd BufNewFile,BufRead *.js,*.html,*.css
     \ set colorcolumn=80 |
+
+autocmd FileType javascript
+    \ nnoremap <leader>r :!node %<CR>|
 
 " TODO: causes Errors as of Vim8.1 due to Python deprecation
 " Plug 'valloric/MatchTagAlways'
