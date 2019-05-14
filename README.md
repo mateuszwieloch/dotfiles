@@ -74,20 +74,23 @@ Editor
 1. Bear
   - "Note->Copy Link To Note" Cmd+Shift+C
 2. [Day-0 2](http://www.shauninman.com/archive/2016/10/20/day_o_2_mac_menu_bar_clock)
-3. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12) OR [BetterSnapTool](https://itunes.apple.com/us/app/bettersnaptool/id417375580?mt=12)
+3. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12)
   - define snap areas for Left third, Middle third, and Right third
   - maximize: ^⇧ ⌘ M
   - left half: ^⇧ ⌘ H
   - right half: ^⇧ ⌘ L
   - left third: ^⇧ ⌘ G
   - right third: ^⇧ ⌘ ;
-
 4. [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake) installed via brew
 5. [NightOwl](https://nightowl.kramser.xyz/)
 6. [Skype](https://www.skype.com/en/download-skype/skype-for-computer/)
 7. [FreeChat for Facebook Messanger](https://itunes.apple.com/us/app/freechat-for-facebook-messenger/id1077753332?mt=12)
 8. [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
   - in Preferences, Misc, disable 'Show icon in menu bar'
+9. [Postman](https://www.getpostman.com/) or [Insomnia](https://insomnia.rest/) $50/year for sync
+10. [qBittorrent](https://www.qbittorrent.org/download.php)
+11. [VLC](https://www.videolan.org/vlc/)
+12. [ToothFairy](https://itunes.apple.com/us/app/toothfairy/id1191449274?mt=12) - simpifies connection to wireless headphones
 
 
 ## Safari
@@ -95,9 +98,6 @@ Editor
 - in Preferences, General, Safari Opens With choose 'All windows from last session'
 
 Add extensions
-1. [Adguard Adblocker](https://adguard.com/en/adblock-adguard-safari.html)
-2. [Ghostery](https://www.ghostery.com/products/)
-  - enable blocking for all categories in Options->General
+1. Dashlane
+2. uBlockOrigin
 3. [JSONAce](https://github.com/acrogenesis/JSONAce)
-4. [mailto:](https://sites.google.com/site/mailtoextension/mailto.safariextz)
-  - For Google Inbox, in options choose "custom URL" and set address to sth like: https://inbox.google.com/?authuser=mwieloch@uber.com&to={to}&cc={cc}&bcc={bcc}&subject={subject}&body={body}
