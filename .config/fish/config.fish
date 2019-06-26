@@ -1,7 +1,14 @@
-# ENV VARIABLES
+# Uber
 set -x UBER_HOME "$HOME/Uber"
 set -x UBER_OWNER "mwieloch@uber.com"
 set -x UBER_LDAP_UID mwieloch
+
+function diffs
+  command diffs $argv | rg --invert-match Resigned
+end
+
+# Compliance Enforcer
+set -gx JAVA_HOME /usr/libexec/java_home -v 1.8
 
 set -x EDITOR vim
 set -gx RIPGREP_CONFIG_PATH $HOME/.ripgreprc
@@ -39,6 +46,15 @@ set -g CDPATH . ~
 # if ~/code exists add all subdirectories of ~/code to fold autocomplete list triggered with TAB
 if test -d ~/code
   set -g CDPATH $CDPATH ~/code
+end
+if test -d ~/gocode/src/code.uber.internal
+  set -g CDPATH $CDPATH ~/gocode/src/code.uber.internal
+end
+if test -d ~/gocode/src/code.uber.internal/growth
+  set -g CDPATH $CDPATH ~/gocode/src/code.uber.internal/growth
+end
+if test -d ~/gocode/src/code.uber.internal/supply
+  set -g CDPATH $CDPATH ~/gocode/src/code.uber.internal/supply
 end
 
 
