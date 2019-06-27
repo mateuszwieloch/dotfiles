@@ -101,9 +101,17 @@ function cn
   end
 end
 
+# Output of (fnm env --shell=fish)
+set -gx PATH /Users/mwieloch/.fnm/current/bin $PATH;
+set -gx FNM_MULTISHELL_PATH /Users/mwieloch/.fnm/current;
+set -gx FNM_DIR /Users/mwieloch/.fnm;
+set -gx FNM_NODE_DIST_MIRROR https://nodejs.org/dist
+
 # Ruby
 set -U fish_user_abbreviations 'be=bundle exec'
 
 function irb
   command irb --simple-prompt
 end
+# fnm
+fnm env --multi
