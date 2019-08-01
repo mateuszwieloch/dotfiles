@@ -20,5 +20,5 @@ end
 brew install cassandra
 
 if not test -d ~/schema-service-repo
-  git clone gitolite@code.uber.internal:data/schema-service-repo
+  git clone gitolite@code.uber.internal:data/schema-service-repo ~/schema-service-repo
 end

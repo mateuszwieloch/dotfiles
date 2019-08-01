@@ -55,8 +55,14 @@ Terminal.app:
 - Show Next Tab ⌘ L
 - Show Previous Tab ⌘ H
 
+kitty.app
+- Hide kitty <some ridiculous mapping>
+
 ## Finder
 - Preferences, set General->New Finder windows show: Downloads
+- In Tags, remove all tags
+- In Sidebar, remove useless locations
+- In Advanced, set "Show all filename extensions", and "In windows when sorting by name"
 
 ## Notes
 - Preferences, set 'Sort notes by' to 'Title'
