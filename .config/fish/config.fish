@@ -27,6 +27,8 @@ set -gx GOPATH ~/gocode
 set -l paths \
 ~/code/dotfiles/bin \
 $GOPATH/bin \
+~/.poetry/bin \
+~/.pyenv/shims \
 ~/.rbenv/shims \
 ~/bin \
 /usr/local/sbin \
