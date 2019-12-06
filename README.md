@@ -46,18 +46,20 @@ etc...
 - disable Character Accent Menu with: `defaults write -g ApplePressAndHoldEnabled -bool false`
 
 Safari.app:
-- Duplicate Tab (⌘D simulated by custom Karabiner mapping)
+- Duplicate Tab (⌘D simulated by a custom Karabiner mapping)
 - Close Tab ⌘W
 - Show Next Tab ⌘L
 - Show Previous Tab ⌘H
-- Open Location... ^L
+- Open Location... ⌘O
 - Pin Tab ⌘;  (⌘. doesn't work - probably a bug in Safari)
 - Unpin Tab ⌘;
 
 Google Chrome:
+- Duplicate Tab ⌘D
 - Select Next Tab ⌘L
 - Select Previous Tab ⌘H
-- Open Location... ^L
+- Open File... ⌘ShiftO (in order to free ⌘O)
+- Open Location... ⌘O
 - Pin Tab ⌘;
 
 Terminal.app:

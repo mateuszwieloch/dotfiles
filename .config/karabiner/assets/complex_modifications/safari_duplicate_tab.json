@@ -1,0 +1,52 @@
+{
+  "title": "Ctrl+d to duplicate a tab in Safari (2)",
+  "rules": [
+    {
+      "description": "Cmd+d to duplicate a tab in Safari",
+      "manipulators": [
+        {
+          "conditions": [
+              {
+                  "bundle_identifiers": [
+                      "^com.apple.Safari"
+                  ],
+                  "type": "frontmost_application_if"
+              }
+          ],
+          "from": {
+              "key_code": "d",
+              "modifiers": {
+                  "mandatory": [
+                      "command"
+                  ],
+                  "optional": [
+                      "any"
+                  ]
+              }
+          },
+          "to": [
+              {
+                  "key_code": "o",
+                  "modifiers": [
+                      "command"
+                  ]
+              },
+              {
+                  "key_code": "return_or_enter",
+                  "modifiers": [
+                      "command"
+                  ]
+              },
+              {
+                  "key_code": "l",
+                  "modifiers": [
+                      "command"
+                  ]
+              }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

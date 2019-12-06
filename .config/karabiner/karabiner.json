@@ -66,9 +66,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "l",
+                                        "key_code": "o",
                                         "modifiers": [
-                                            "left_control"
+                                            "command"
                                         ]
                                     },
                                     {
