@@ -47,6 +47,7 @@ set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 
 # CDPATH - list of file and folder name auto-completions triggered with TAB
 set -l cdpaths \
+. \
 ~ \
 ~/code \
 ~/gocode/src/code.uber.internal \
