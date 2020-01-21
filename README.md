@@ -42,6 +42,10 @@ etc...
 ## Keyboard
 
 - in settings, go to Text tab and disable 'Capitalize words automatically' and 'Add period with double-space'
+- in settings, go to Shortcuts and disable:
+    - Under Keyboard: Show/Hide Trackpad Handwriting (conflicts with IntelliJ)
+    - Under Services: Search man Page Index in Terminal (conflicts with FindAction in IntelliJ)
+    - Under Spotlight: Disable everything (use Alfred instead)
 - in settings, go to Input Sources tab and disable 'Show Input menu in menu bar'
 - disable Character Accent Menu with: `defaults write -g ApplePressAndHoldEnabled -bool false`
 
@@ -86,6 +90,9 @@ Keymap
 Editor
   General
     - turn on 'Ensure line feed at file end on Save', otherwise PyCharm PEP8 checker constantly complains
+
+## Fonts
+Install the JetBrains Mono font system-wide from [here](https://www.jetbrains.com/lp/mono/).
 
 ## Extremely useful apps
 1. Bear
