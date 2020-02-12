@@ -62,3 +62,6 @@ end
 
 # fnm
 fnm env --multi
+
+# direnv
+direnv hook fish | source
