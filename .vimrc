@@ -292,6 +292,8 @@ let g:comfortable_motion_air_drag = 0.0
 
 
 " --- GIT ---
+au FileType gitcommit setlocal formatoptions=tn colorcolumn=73
+
 Plug 'tpope/vim-fugitive'
 " Features: git wrapper
 " :Gblame

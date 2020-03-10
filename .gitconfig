@@ -8,8 +8,8 @@
   editor = vim
 [alias]
   st      =   status
-  s       =   status -s
-  ss      =   status -s
+  s       =   status --short
+  ss      =   status --short
   ci      =   commit
   cim     =   commit -m
   br      =   branch
