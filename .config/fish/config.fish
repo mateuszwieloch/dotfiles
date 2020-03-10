@@ -41,7 +41,6 @@ for p in $paths
   end
 end
 
-set -g fish_user_paths "/usr/local/opt/node@8/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
 
 
@@ -61,7 +60,7 @@ for p in $cdpaths
 end
 
 # fnm
-fnm env --multi
+fnm env --multi | source
 
 # direnv
 direnv hook fish | source
