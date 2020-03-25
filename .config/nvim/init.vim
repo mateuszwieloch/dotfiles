@@ -3,24 +3,6 @@ let mapleader="\<space>"
 
 call plug#begin()
 
-if !has('nvim')
-  " vim works best with POSIX compatible shell
-  if &shell =~# 'fish$'
-      set shell=sh
-  endif
-
-  " activate vim built-in matchit plugin: % will match beg/end of blocks in many popular languages (eg. html tags)
-  packadd! matchit
-
-  syntax on               " Enable syntax highlighting
-  set regexpengine=1      " Changing regexp engine speeds up syntax highlighting
-  filetype on             " Enable filetype detection
-  filetype indent on      " Enable filetype-specific indenting
-  filetype plugin on      " Enable filetype-specific plugins
-
-  set t_Co=256            " force 256 colors terminal
-endif
-
 " --- COLOR SCHEMES ---
 Plug 'morhetz/gruvbox'
 
@@ -223,6 +205,7 @@ map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
 Plug 'itchyny/lightline.vim'
 set laststatus=2  " otherwise entire status line is black/blank
 set noshowmode    " removes default --INSERT--
+set noruler
 let g:lightline = {
     \   'active': {
     \     'left': [ ['mode'], ['filename'], ['readonly'] ],
@@ -308,8 +291,11 @@ nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
 
 " --- PROGRAMMING LANGUAGES ---
 
-" Features: curated bundle of 100+ syntax highlighting plugins
 Plug 'sheerun/vim-polyglot'
+" Features: curated bundle of 100+ syntax highlighting plugins
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Intellisense engine for Vim8/Neovim with full language protocol support
 
 Plug 'jeetsukumaran/vim-pythonsense'
 " Features: text objects, motions, and semantic location for Python
@@ -371,25 +357,19 @@ autocmd FileType javascript
 
 call plug#end()
 
-
-set termguicolors
-set background=dark
+set termguicolors       " 24-bit color. Unsupported in Terminal.app
 let g:gruvbox_contrast_dark = 'hard' " black background for more contrast
 let g:gruvbox_sign_column = 'bg0'    " make sign column color the same as text background
 colorscheme gruvbox
 highlight ALEWarningSign ctermfg=226
 highlight ALEErrorSign ctermfg=red
 
-set encoding=utf-8
 set hidden              " switch between buffers without having to save first
 set backspace=start,eol,indent  " enable deleting past these (as normal editor would)
 set clipboard+=unnamed  " use the system paste buffer
 " paste in visual mode without copying
 xnoremap p pgvy
 set ttimeoutlen=100     " prevent lag before Shift-O
-
-set wildmenu            " Make the command-line completion better
-set wildmode=longest:full,full  " First tab: longest matching completion and show full list of matches. Second tab: cycle throught the list.
 
 set mouse=a             " enable mouse use in all modes
 if !has('nvim')
