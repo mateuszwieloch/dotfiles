@@ -103,7 +103,6 @@ set gdefault            " s/<pattern>/<replacement> has g flag set by default
                         " (g means replace all occurences in line)
 set incsearch           " highlights first match while still typing search term
 set hlsearch            " highlights all matches after performing search
-noremap <silent> <bs> :nohlsearch<cr>
 set ignorecase          " case insensitive pattern matching
 set smartcase           " override ignorecase if pattern contains upcase
 " double click highlights all occurences of word
@@ -112,10 +111,6 @@ map <2-LeftMouse> *
 vnoremap // y/<C-R>"<CR>
 
 highlight Search ctermbg=59 ctermfg=white
-
-Plug 'google/vim-searchindex'
-" Features: shows how many times does a search pattern occur in the current buffer
-" eg: [3/7]  /search_pattern
 
 Plug 'pgdouyon/vim-evanesco'
 " Features: Automatically clears search highlight when cursor is moved.
