@@ -360,6 +360,10 @@ colorscheme gruvbox
 highlight ALEWarningSign ctermfg=226
 highlight ALEErrorSign ctermfg=red
 
+" Always show signcolumn, otherwise it would shift the text each time
+" diagnostics from ALE or Coc.nvim appear/disappear.
+set signcolumn=yes
+
 set hidden              " switch between buffers without having to save first
 set backspace=start,eol,indent  " enable deleting past these (as normal editor would)
 set clipboard+=unnamed  " use the system paste buffer
