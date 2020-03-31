@@ -112,10 +112,11 @@ vnoremap // y/<C-R>"<CR>
 
 highlight Search ctermbg=59 ctermfg=white
 
-Plug 'pgdouyon/vim-evanesco'
+Plug 'mateuszwieloch/vim-evanesco'
 " Features: Automatically clears search highlight when cursor is moved.
 " Draws attention to search under cursor with different highlight group.
 " Star search highlights but doesn't move.
+" Note: this plugin causes search count [1/63] to disappear on n
 
 Plug 'dyng/ctrlsf.vim'
 " Features: Integration for ag/ack/pt/rg (grep replacements). Parses the search result
