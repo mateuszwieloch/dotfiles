@@ -266,10 +266,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
 set updatetime=200
-" kill mappings starting with <leader>h
-nnoremap <Plug>NoGitGutterStageHunk <Plug>GitGutterStageHunk
-nnoremap <Plug>NoGitGutterPreviewHunk <Plug>GitGutterPreviewHunk
-nnoremap <Plug>NoGitGutterUndoHunk <Plug>GitGutterUndoHunk
+let g:gitgutter_map_keys = 0   " kill all mappings
 
 
 " --- PROGRAMMING LANGUAGES ---
