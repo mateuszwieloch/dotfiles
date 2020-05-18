@@ -1,5 +1,42 @@
+AllCops:
+  Exclude:
+    - "spec/spec_helper.rb"
+  TargetRubyVersion: 2.7
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Layout/EmptyLines:
+  Enabled: false
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - "spec/**.rb"
+
+Layout/ExtraSpacing:
+  AllowBeforeTrailingComments: true
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**.rb"
+
 Style/Documentation:
   Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
