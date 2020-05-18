@@ -25,4 +25,5 @@ brew cask install font-iosevka
 # Graphical tools {{{
 brew install caskroom/cask/brew-cask
 brew cask install keepingyouawake
+brew cask install visual-studio-code
 # }}}
