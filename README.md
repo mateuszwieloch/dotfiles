@@ -41,7 +41,7 @@ etc...
 
 ## Keyboard
 
-- in settings, go to Text tab and disable 'Capitalize words automatically' and 'Add period with double-space'
+- in settings, go to Text tab and disable 'Capitalize words automatically', 'Add period with double-space', 'Use smart quotes and dashes'
 - in settings, go to Shortcuts and disable:
     - Under Keyboard: Show/Hide Trackpad Handwriting (conflicts with IntelliJ)
     - Under Services: Search man Page Index in Terminal (conflicts with FindAction in IntelliJ)
@@ -50,7 +50,7 @@ etc...
 - disable Character Accent Menu with: `defaults write -g ApplePressAndHoldEnabled -bool false`
 
 Safari.app:
-- Duplicate Tab (⌘D simulated by a custom Karabiner mapping)
+- Duplicate Tab ⌘D
 - Close Tab ⌘W
 - Show Next Tab ⌘L
 - Show Previous Tab ⌘H
@@ -66,16 +66,15 @@ Google Chrome:
 - Open Location... ⌘O
 - Pin Tab ⌘;
 
-Terminal.app:
-- Show Next Tab ⌘ L
-- Show Previous Tab ⌘ H
+Utilities/Terminal.app:
+- Show Next Tab ⌘L
+- Show Previous Tab ⌘H
 
 kitty.app
 - Hide kitty <some ridiculous mapping>
 
 ## Finder
 - Preferences, set General->New Finder windows show: Downloads
-- In Tags, remove all tags
 - In Sidebar, remove useless locations
 - In Advanced, set "Show all filename extensions", and "In windows when sorting by name"
 
@@ -95,9 +94,8 @@ Editor
 Install the JetBrains Mono font system-wide from [here](https://www.jetbrains.com/lp/mono/).
 
 ## Extremely useful apps
-1. Bear
-  - "Note->Copy Link To Note" Cmd+Shift+C
-2. [Day-0 2](http://www.shauninman.com/archive/2016/10/20/day_o_2_mac_menu_bar_clock)
+1. [Notion](https://www.notion.so/desktop)
+2. [Day-0 3](https://shauninman.com/archive/2020/04/08/day_o_mac_menu_bar_clock_for_catalina)
 3. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12)
   - define snap areas for Left third, Middle third, and Right third
   - maximize: ^⇧ ⌘M
@@ -105,10 +103,10 @@ Install the JetBrains Mono font system-wide from [here](https://www.jetbrains.co
   - right half: ^⇧ ⌘L
   - left third: ^⇧ ⌘G
   - right third: ^⇧ ⌘;
-4. [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake) installed via brew
+4. [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake) installed via brew. In Preferences enable the 'Start at Login' option.
 5. [NightOwl](https://nightowl.kramser.xyz/)
 6. [Skype](https://www.skype.com/en/download-skype/skype-for-computer/)
-7. [FreeChat for Facebook Messanger](https://itunes.apple.com/us/app/freechat-for-facebook-messenger/id1077753332?mt=12)
+7. [Facebook Messenger](https://apps.apple.com/app/messenger/id1480068668)
 8. [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
   - in Preferences, Misc, disable 'Show icon in menu bar'
   - ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json karabiner.json
@@ -120,7 +118,7 @@ Install the JetBrains Mono font system-wide from [here](https://www.jetbrains.co
 
 ## Safari
 
-- in Preferences, General, Safari Opens With choose 'All windows from last session'
+- in Preferences, General, Safari Opens With choose 'All non-private windows from last session'
 
 Add extensions
 1. Dashlane

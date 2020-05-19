@@ -11,4 +11,5 @@ ln -s ~/code/dotfiles/.config/fish/completions ~/.config/fish/completions
 # Symlink config files
 mkdir -p ~/.config/fish/functions
 ln -s ~/code/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
-ln -s ~/code/dotfiles/.config/fish/functions ~/.config/fish/functions
+rm -rf ~/.config/fish/functions
+ln -sf ~/code/dotfiles/.config/fish/functions ~/.config/fish/functions

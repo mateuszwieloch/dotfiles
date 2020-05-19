@@ -18,12 +18,16 @@ brew install httpie
 # }}}
 
 # Fonts {{{
-brew tap caskroom/fonts
-brew cask install font-iosevka
+# brew tap caskroom/fonts
+# brew cask install font-iosevka
 # }}}
 
 # Graphical tools {{{
-brew install caskroom/cask/brew-cask
 brew cask install keepingyouawake
+
+brew cask install kitty
+ln -sf ~/code/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+
 brew cask install visual-studio-code
+ln -s /usr/local/bin/code /usr/local/bin/vscode
 # }}}
