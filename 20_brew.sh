@@ -23,10 +23,15 @@ brew install httpie
 # }}}
 
 # Graphical tools {{{
+brew cask install eloston-chromium
+
 brew cask install keepingyouawake
 
 brew cask install kitty
 ln -sf ~/code/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+
+# adjust brigtness and volume of external display using Apple Keyboard keys
+brew cask install monitorcontrol
 
 brew cask install visual-studio-code
 ln -s /usr/local/bin/code /usr/local/bin/vscode
