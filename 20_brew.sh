@@ -35,4 +35,7 @@ brew cask install monitorcontrol
 
 brew cask install visual-studio-code
 ln -s /usr/local/bin/code /usr/local/bin/vscode
+
+brew cask install vlc
+ln -sf ~/code/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc
 # }}}
