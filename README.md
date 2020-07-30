@@ -95,25 +95,24 @@ Install the JetBrains Mono font system-wide from [here](https://www.jetbrains.co
 
 ## Extremely useful apps
 1. [Notion](https://www.notion.so/desktop)
-2. [Day-0 3](https://shauninman.com/archive/2020/04/08/day_o_mac_menu_bar_clock_for_catalina)
-3. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12)
+2. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12)
   - define snap areas for Left third, Middle third, and Right third
   - maximize: ^⇧ ⌘M
   - left half: ^⇧ ⌘H
   - right half: ^⇧ ⌘L
   - left third: ^⇧ ⌘G
   - right third: ^⇧ ⌘;
-4. [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake) installed via brew. In Preferences enable the 'Start at Login' option.
-5. [NightOwl](https://nightowl.kramser.xyz/)
-6. [Skype](https://www.skype.com/en/download-skype/skype-for-computer/)
-7. [Facebook Messenger](https://apps.apple.com/app/messenger/id1480068668)
-8. [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
+3. [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake) installed via brew. In Preferences enable the 'Start at Login' option.
+4. [NightOwl](https://nightowl.kramser.xyz/)
+5. [Skype](https://www.skype.com/en/download-skype/skype-for-computer/)
+6. [Facebook Messenger](https://apps.apple.com/app/messenger/id1480068668)
+7. [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
   - in Preferences, Misc, disable 'Show icon in menu bar'
   - ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json karabiner.json
-9. [Postman](https://www.getpostman.com/) or [Insomnia](https://insomnia.rest/) $50/year for sync
-10. [qBittorrent](https://www.qbittorrent.org/download.php)
-11. [VLC](https://www.videolan.org/vlc/)
-12. [ToothFairy](https://itunes.apple.com/us/app/toothfairy/id1191449274?mt=12) - simpifies connection to wireless headphones
+8. [Postman](https://www.getpostman.com/) or [Insomnia](https://insomnia.rest/) $50/year for sync
+9. [qBittorrent](https://www.qbittorrent.org/download.php)
+10. [VLC](https://www.videolan.org/vlc/)
+11. [ToothFairy](https://itunes.apple.com/us/app/toothfairy/id1191449274?mt=12) - simpifies connection to wireless headphones
 
 
 ## Safari

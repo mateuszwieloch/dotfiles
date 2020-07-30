@@ -25,6 +25,8 @@ brew install httpie
 # Graphical tools {{{
 brew cask install eloston-chromium
 
+brew cask install itsycal
+
 brew cask install keepingyouawake
 
 brew cask install kitty
