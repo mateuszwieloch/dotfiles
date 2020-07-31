@@ -1,29 +1,11 @@
 # Mac dotfiles and setup scripts
 
 
-## What's that
-It's a set of opinionated setup and installation scripts that tweak a brand new OS X installation into an environment optimized for development.
-
-
-## Usage
-1. Save files and close all software you don't need. Installation scripts will quietly restart Finder, Safari and other software as needed.
-2. Run selected scripts one by one. The first two characters indicate a suggested order of execution.
-```
-$ bash 10_osx.sh
-$ bash 20_brew.sh
-etc...
-```
-3. Install vim plugins. Run vim and then run command :PlugInstall
-4. Adjust .gitconfig
-
-
 ## macOS
-- enable MacOS Night Shift feature
 - Stop rearranging Desktops. Open System Preferences -> Mission Control -> uncheck 'Automatically rearrange Spaces based on most recent use'.
 - remove Siri and Spotlight menu bar icons (see below)
-- To prevent Pulse Secure from starting on boot, create an Automator application that will run shell command `launchctl unload –w /Library/LaunchAgents/net.pulsesecure.pulsetray.plist`. Add that application to Login Items in macOS Users & Groups settings.
 
-### Changes requiring System Integration Protection to be disabled
+Remove Siri and Spotlight icons (requires disabling System Integration Protection):
 - restart macOS and hold ⌘R to enter Recovery Mode
 - from Utilities option on menu bar open Terminal and type `csrutil status`
 - disable SIP with `csrutil disable`
@@ -40,7 +22,6 @@ etc...
 
 
 ## Keyboard
-
 - in settings, go to Text tab and disable 'Capitalize words automatically', 'Add period with double-space', 'Use smart quotes and dashes'
 - in settings, go to Shortcuts and disable:
     - Under Keyboard: Show/Hide Trackpad Handwriting (conflicts with IntelliJ)
@@ -58,7 +39,7 @@ Safari.app:
 - Pin Tab ⌘;  (⌘. doesn't work - probably a bug in Safari)
 - Unpin Tab ⌘;
 
-Google Chrome:
+Chromium.app:
 - Duplicate Tab ⌘D
 - Select Next Tab ⌘L
 - Select Previous Tab ⌘H
@@ -73,53 +54,50 @@ Utilities/Terminal.app:
 kitty.app
 - Hide kitty <some ridiculous mapping>
 
+
 ## Finder
 - Preferences, set General->New Finder windows show: Downloads
 - In Sidebar, remove useless locations
 - In Advanced, set "Show all filename extensions", and "In windows when sorting by name"
 
-## Notes
-- Preferences, set 'Sort notes by' to 'Title'
-- Preferences, set 'New notes start with' to 'Title'
-
-## PyCharm
-Keymap
-- Select Next Tab ⌘L
-- Select Previous Tab ⌘H
-Editor
-  General
-    - turn on 'Ensure line feed at file end on Save', otherwise PyCharm PEP8 checker constantly complains
-
-## Fonts
-Install the JetBrains Mono font system-wide from [here](https://www.jetbrains.com/lp/mono/).
 
 ## Extremely useful apps
-1. [Notion](https://www.notion.so/desktop)
-2. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12)
+1. [Magnet](https://itunes.apple.com/us/app/magnet/id441258766?mt=12)
   - define snap areas for Left third, Middle third, and Right third
   - maximize: ^⇧ ⌘M
   - left half: ^⇧ ⌘H
   - right half: ^⇧ ⌘L
   - left third: ^⇧ ⌘G
   - right third: ^⇧ ⌘;
-3. [KeepingYouAwake](https://github.com/newmarcel/KeepingYouAwake) installed via brew. In Preferences enable the 'Start at Login' option.
-4. [NightOwl](https://nightowl.kramser.xyz/)
-5. [Skype](https://www.skype.com/en/download-skype/skype-for-computer/)
-6. [Facebook Messenger](https://apps.apple.com/app/messenger/id1480068668)
-7. [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
-  - in Preferences, Misc, disable 'Show icon in menu bar'
-  - ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json karabiner.json
-8. [Postman](https://www.getpostman.com/) or [Insomnia](https://insomnia.rest/) $50/year for sync
-9. [qBittorrent](https://www.qbittorrent.org/download.php)
-10. [VLC](https://www.videolan.org/vlc/)
-11. [ToothFairy](https://itunes.apple.com/us/app/toothfairy/id1191449274?mt=12) - simpifies connection to wireless headphones
+2. [ToothFairy](https://itunes.apple.com/us/app/toothfairy/id1191449274?mt=12) - simpifies connection to wireless headphones
+3. [Facebook Messenger](https://apps.apple.com/app/messenger/id1480068668)
+4. [pCloud](https://www.pcloud.com/download-free-online-cloud-file-storage.html)
 
 
-## Safari
+## Browsers
 
+### ungoogled-chromium (cask)
+Because Firefox doesn't support custom shortcuts like ⌘O 'search bar' and 'next/prev tab' ⌘L/⌘H.
+
+Extensions: 
+- [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
+- Dashlane - use standalone mode.
+- Don't Close Window With Last Tab
+- Rearrange Tabs
+    ```
+    1. Go to `chrome://extensions/shortcuts`
+    2. Scroll down to locate `Rearrange Tabs`.
+    3. Click in the greyed out fields for `Not set`.
+    4. Move selected tab(s) left = ⇧⌘H
+    5. Move selected tab(s) right = ⇧⌘L
+    ```
+- Privacy Redirect
+- Adblock for YouTube
+- LanguageTool
+- Workona
+
+### Safari
 - in Preferences, General, Safari Opens With choose 'All non-private windows from last session'
 
-Add extensions
+Extensions:
 1. Dashlane
-2. uBlockOrigin
-3. [JSONAce](https://github.com/acrogenesis/JSONAce)
