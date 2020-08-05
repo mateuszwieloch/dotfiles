@@ -55,8 +55,14 @@ brew cask install signal
 
 brew cask install skype
 
-brew cask install visual-studio-code
-ln -s /usr/local/bin/code /usr/local/bin/vscode
+# VSCodium by default uses Open VSC Registry which lacks most of VSCode plugins. To migigate
+# change /Applications/VSCodium.app/Contents/Resources/app/product.json by replacing extensionsGallery:
+# "extensionsGallery": {
+#    "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+#    "itemUrl": "https://marketplace.visualstudio.com/items"
+# }
+brew cask install vscodium
+ln -s /usr/local/bin/code /usr/local/bin/vscodium
 
 brew cask install vlc
 ln -sf ~/code/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc
