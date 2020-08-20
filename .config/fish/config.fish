@@ -39,3 +39,6 @@ end
 
 # fnm
 fnm env --multi | source
+
+# for GPG to work with Fish
+set -x GPG_TTY (tty)

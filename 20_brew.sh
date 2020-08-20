@@ -31,11 +31,13 @@ brew cask install flotato
 brew cask install itsycal
 
 brew cask install karabiner-elements
+mkdir -p ~/.config/karabiner
 ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
 brew cask install keepingyouawake
 
 brew cask install kitty
+mkdir -p ~/.config/kitty
 ln -sf ~/code/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
 brew cask install libreoffice
@@ -66,4 +68,11 @@ brew cask install vlc
 ln -sf ~/code/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc
 
 brew cask install zoom
+# }}}
+
+# Graphical tools (Tanium) {{{
+brew cask install google-chrome
+brew cask install slack
+brew cask install virtualbox
+brew cask install visual-studio-code
 # }}}
