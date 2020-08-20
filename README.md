@@ -76,12 +76,14 @@ kitty.app
 
 ## Browsers
 
+In Chromium-based browsers you may need to disable "Use hardware acceleration when available" to avoid scroll lag when on battery. The lag is due to switching between integrated and dGPU.
+
 ### ungoogled-chromium (cask)
 Because Firefox doesn't support custom shortcuts like ⌘O 'search bar' and 'next/prev tab' ⌘L/⌘H.
 
 Extensions: 
 - [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
-- Dashlane - use standalone mode.
+- Bitwarden.
 - Don't Close Window With Last Tab
 - Rearrange Tabs
     ```
@@ -98,6 +100,3 @@ Extensions:
 
 ### Safari
 - in Preferences, General, Safari Opens With choose 'All non-private windows from last session'
-
-Extensions:
-1. Dashlane

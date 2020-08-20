@@ -18,12 +18,10 @@ brew install httpie
 # }}}
 
 
-# Graphical tools {{{
-brew cask install alfred
+# Graphical tools (private){{{
+brew cask install bitwarden
 
 brew cask install calibre
-
-brew cask install dashlane
 
 brew cask install eloston-chromium
 
