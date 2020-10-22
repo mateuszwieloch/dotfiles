@@ -83,7 +83,7 @@ Because Firefox doesn't support custom shortcuts like ⌘O 'search bar' and 'nex
 
 Extensions: 
 - [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
-- Bitwarden.
+- Bitwarden
 - Don't Close Window With Last Tab
 - Rearrange Tabs
     ```
@@ -93,8 +93,7 @@ Extensions:
     4. Move selected tab(s) left = ⇧⌘H
     5. Move selected tab(s) right = ⇧⌘L
     ```
-- Privacy Redirect
-- Adblock for YouTube
+- Amazon Ad Blocker
 - LanguageTool
 - Workona
 

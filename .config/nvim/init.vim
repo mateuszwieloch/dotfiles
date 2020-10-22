@@ -110,13 +110,11 @@ map <2-LeftMouse> *
 " in visual mode search for selection with //
 vnoremap // y/<C-R>"<CR>
 
+" backspace to remove search highlight
+nnoremap <bs> :noh<cr>
+
 highlight Search ctermbg=59 ctermfg=white
 
-Plug 'mateuszwieloch/vim-evanesco'
-" Features: Automatically clears search highlight when cursor is moved.
-" Draws attention to search under cursor with different highlight group.
-" Star search highlights but doesn't move.
-" Note: this plugin causes search count [1/63] to disappear on n
 
 Plug 'dyng/ctrlsf.vim'
 " Features: Integration for ag/ack/pt/rg (grep replacements). Parses the search result
@@ -587,7 +585,7 @@ set undodir=~/.vim/undodir
 
 " --- OTHER ---
 " -------------
-" use Y to yank the rest of the line - it's a change to unify with <D>, <C>
+" make Y consistent with C and D
 noremap Y y$
 noremap <leader>q :q<cr>
 noremap <leader>Q :q!<cr>

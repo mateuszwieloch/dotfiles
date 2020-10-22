@@ -1,3 +1,5 @@
+#!/bin/sh
+
 set -x
 
 # Fast keyboard repeat rate
@@ -19,7 +21,7 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Save screenshots to ~/Documents/Screenshots"
-mkdir ~/Documents/Screenshots
+test -d ~/Documents/Screenshots || mkdir ~/Documents/Screenshots
 defaults write com.apple.screencapture location ~/Documents/Screenshots
 
 # Remove delay for showing hidden Dock"
