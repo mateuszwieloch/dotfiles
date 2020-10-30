@@ -33,3 +33,6 @@ echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sud
 sudo apt update && sudo apt install signal-desktop
 
 # }}}
+
+# flatpak
+sudo flatpak install flathub md.obsidian.Obsidian
