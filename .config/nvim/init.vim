@@ -151,6 +151,7 @@ let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
 let g:ctrlp_max_files = 0        " don't limit number of scanned files
 let g:ctrlp_show_hidden = 1
+
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_prompt_mappings = {
     \ 'PrtHistory(-1)':       [],
@@ -437,9 +438,14 @@ set signcolumn=yes
 
 set hidden              " switch between buffers without having to save first
 set backspace=start,eol,indent  " enable deleting past these (as normal editor would)
-set clipboard+=unnamed  " use the system paste buffer
+
+" clipboard settings
+set clipboard+=unnamedplus  " use the system paste buffer
 " paste in visual mode without copying
 xnoremap p pgvy
+" allow Ctrl-v in insert mode
+imap <C-v> <C-r><C-o>+
+
 set ttimeoutlen=100     " prevent lag before Shift-O
 
 set mouse=a             " enable mouse use in all modes
