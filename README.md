@@ -40,11 +40,11 @@ Safari.app:
 - Unpin Tab ⌘;
 
 Chromium.app:
-- Duplicate Tab ⌘D
+- Duplicate Tab ⌘ShiftD
 - Select Next Tab ⌘L
 - Select Previous Tab ⌘H
-- Open File... ⌘ShiftO (in order to free ⌘O)
-- Open Location... ⌘O
+- Bookmark This Tab... (to free ⌘D)
+- Open Location... ⌘D (to work on Linux too)
 - Pin Tab ⌘;
 
 Utilities/Terminal.app:
@@ -83,9 +83,11 @@ Because Firefox doesn't support custom shortcuts like ⌘O 'search bar' and 'nex
 
 Extensions: 
 - [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
-- Bitwarden
-- Don't Close Window With Last Tab
-- Rearrange Tabs
+- [Bitwarden](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb)
+- [SimpleLogin](https://chrome.google.com/webstore/detail/simplelogin-open-source-e/dphilobhebphkdjbpfohgikllaljmgbn)
+- [xBrowserSync](https://chrome.google.com/webstore/detail/xbrowsersync/lcbjdhceifofjlpecfpeimnnphbcjgnc?hl=en) - encrypted, no account bookmarks sync.
+- [Don't Close Window With Last Tab](https://chrome.google.com/webstore/detail/dont-close-window-with-la/dlnpfhfhmkiebpnlllpehlmklgdggbhn)
+- [Rearrange Tabs](https://chrome.google.com/webstore/detail/rearrange-tabs/ccnnhhnmpoffieppjjkhdakcoejcpbga)
     ```
     1. Go to `chrome://extensions/shortcuts`
     2. Scroll down to locate `Rearrange Tabs`.
@@ -93,9 +95,8 @@ Extensions:
     4. Move selected tab(s) left = ⇧⌘H
     5. Move selected tab(s) right = ⇧⌘L
     ```
-- Amazon Ad Blocker
-- LanguageTool
-- Workona
+- [Amazon Ad Blocker](https://chrome.google.com/webstore/detail/amazon-ad-blocker/heakoamokkehmhdmhinhhchfpleokalg)
+- [LanguageTool](https://chrome.google.com/webstore/detail/grammar-and-spell-checker/oldceeleldhonbafppcapldpdifcinji)
 
 ### Safari
 - in Preferences, General, Safari Opens With choose 'All non-private windows from last session'
