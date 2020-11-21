@@ -21,8 +21,9 @@ In 'On Startup':
 - [LBRY](https://lbry.com/get)
 - [FreeTube](https://freetubeapp.io/#download)
 
-### Install Extensions
+### Chromium
 
+Extensions:
 - [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
 - Bitwarden.
 - Don't Close Window With Last Tab
@@ -31,12 +32,15 @@ In 'On Startup':
   - Select next tab Ctrl+L
   - Move current tab left Ctrl+Shift+H
   - Move current tab right Ctrl+Shift+L
+- Amazon Ad Blocker
+- [GNOME Shell integration](https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep)
 - Privacy Redirect
 - Adblock for YouTube
-- Amazon Ad Blocker
 - LanguageTool
 - Workona
 
+Settings:
+- Ungoogled-Chromium by defaults set the "Clear cookies and site data when you quit Chromium" flag in chrome://settings/content/cookies You can still allow certain cookies there (for example for aws.amazon.com)
 
 ## Scroll wheel speed adjustment
 
