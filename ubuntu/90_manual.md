@@ -25,13 +25,16 @@ In 'On Startup':
 
 Extensions:
 - [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
-- Bitwarden.
+- Bitwarden
 - Don't Close Window With Last Tab
-- Keyboard Shortcuts
+- [Shortkeys](https://github.com/mikecrittenden/shortkeys/releases)
+  - has more configurable shortcuts than the Keyboard Shortcuts extension
+  - can export/import configuration
   - Select previous tab Ctrl+H
   - Select next tab Ctrl+L
   - Move current tab left Ctrl+Shift+H
   - Move current tab right Ctrl+Shift+L
+- SmoothScroll - to make mouse wheel scrolling usable in Chromium on Linux
 - Amazon Ad Blocker
 - [GNOME Shell integration](https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep)
 - Privacy Redirect
@@ -40,7 +43,7 @@ Extensions:
 - Workona
 
 Settings:
-- Ungoogled-Chromium by defaults set the "Clear cookies and site data when you quit Chromium" flag in chrome://settings/content/cookies You can still allow certain cookies there (for example for aws.amazon.com)
+- Ungoogled-Chromium by defaults set the "Clear cookies and site data when you quit Chromium" flag in chrome://settings/content/cookies You can still allow certain cookies there (for example for `[*.]aws.amazon.com`)
 
 ## Scroll wheel speed adjustment
 
@@ -54,4 +57,5 @@ Settings:
 
 * Remove Dropdown Arrows
 * Sound Input & Output Device Chooser 
+* [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
 
