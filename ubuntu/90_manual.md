@@ -2,24 +2,16 @@
 
 ### Change settings
 
-In 'Appearance':
-- Uncheck 'Show home button'. 
-- Uncheck 'Use system title bar and borders'.
-
 In 'Search Engine'->'Manage Search Engines':
 - (prerequisite is to visit startpage.com and google.com)
 - Add StartPage as a search engine and assign it keyword `s`.
-- Add Google as a search engine and assign it keyword `g`.
+- Add Google as a search engine  URL=https://www.google.com/search?q=%s, SearchURL=https://www.google.com/complete/search?client=chrome&q=%s
 - Change DuckDuckGo's keyword to `d`.
 
 In 'On Startup':
 - Select 'Continue where you left off'.
 
-
-### Install apps
-- Calibre - in the 40_app file
-- [LBRY](https://lbry.com/get)
-- [FreeTube](https://freetubeapp.io/#download)
+- Ungoogled-Chromium by defaults set the "Clear cookies and site data when you quit Chromium" flag in chrome://settings/content/cookies You can still allow certain cookies there (for example for `[*.]aws.amazon.com`)
 
 ### Chromium
 
@@ -38,12 +30,10 @@ Extensions:
 - Amazon Ad Blocker
 - [GNOME Shell integration](https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep)
 - Privacy Redirect
-- Adblock for YouTube
-- LanguageTool
-- Workona
+    - go to Options -> Advanced -> enable 'Use FreeTube over Invidious when possible'
+- [LanguageTool](https://chrome.google.com/webstore/detail/grammar-and-spell-checker/oldceeleldhonbafppcapldpdifcinji?hl=en)
 
 Settings:
-- Ungoogled-Chromium by defaults set the "Clear cookies and site data when you quit Chromium" flag in chrome://settings/content/cookies You can still allow certain cookies there (for example for `[*.]aws.amazon.com`)
 
 ## Scroll wheel speed adjustment
 
