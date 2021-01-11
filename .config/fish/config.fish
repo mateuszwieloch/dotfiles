@@ -14,6 +14,7 @@ set -l paths \
 ~/.pyenv/shims \
 ~/.rbenv/shims \
 ~/bin \
+~/.local/bin \
 /usr/local/sbin \
 /usr/local/opt/coreutils/bin
 
@@ -39,3 +40,7 @@ end
 
 # for GPG to work with Fish
 set -x GPG_TTY (tty)
+
+# PYTHON
+# pipx completions
+register-python-argcomplete --shell fish pipx | source
