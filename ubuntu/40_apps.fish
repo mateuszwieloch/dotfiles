@@ -37,10 +37,17 @@ sudo apt install --yes kitty
 mkdir -p ~/.config/kitty
 ln -sf ~/code/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
+# qbittorrent
+sudo add-apt-repository --yes ppa:qbittorrent-team/qbittorrent-stable
+sudo apt-get update && sudo apt install --yes qbittorrent
+
 # signal
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
-sudo apt update && sudo apt install signal-desktop
+sudo apt update && sudo apt install --yes signal-desktop
+
+# vlc
+sudo apt install --yes vlc
 
 # }}}
 
@@ -50,15 +57,15 @@ sudo apt update && sudo apt install signal-desktop
 # obsidian
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 # also available as AppImage and Snap
-sudo flatpak install flathub md.obsidian.Obsidian
+sudo flatpak install --assumeyes flathub md.obsidian.Obsidian
 
 # ungoogled-chromium
-sudo flatpak install com.github.Eloston.UngoogledChromium
+sudo flatpak install --assumeyes com.github.Eloston.UngoogledChromium
 # manual:
 # 1) add Google as search engine 1) URL=https://www.google.com/search?q=%s, SearchURL=https://www.google.com/complete/search?client=chrome&q=%s
 # 2) In Settings -> Appearance -> 'On Startup' section -> select 'Continue where you left off'
 
 # freetube
-sudo flatpak install io.freetubeapp.FreeTube
+sudo flatpak install --assumeyes io.freetubeapp.FreeTube
 
 # }}}
