@@ -75,4 +75,6 @@ sudo flatpak install --assumeyes flathub com.skype.Client
 # }}}
 
 
+# Uninstall {{{
+sudo apt remove firefox firefox-locale-ar firefox-locale-de firefox-locale-en firefox-locale-es firefox-locale-fr firefox-locale-it firefox-locale-ja firefox-locale-pt firefox-locale-ru firefox-locale-zh-hans firefox-locale-zh-hant
 # }}}
