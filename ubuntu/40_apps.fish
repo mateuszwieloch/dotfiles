@@ -29,9 +29,6 @@ sudo apt install --yes httpie
 
 # Graphical tools (apt){{{
 
-# calibre
-sudo -v && wget --no-check-certificate -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
-
 # kitty
 sudo apt install --yes kitty
 mkdir -p ~/.config/kitty
@@ -53,19 +50,29 @@ sudo apt install --yes vlc
 
 
 # Flatpak (comes with PopOS) {{{
-
-# obsidian
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-# also available as AppImage and Snap
+
+# calibre
+flatpak install --assumeyes flathub com.calibre_ebook.calibre
+# manually add keyboard shortcuts:
+# n = Scroll forwards smoothly
+
+# freetube
+sudo flatpak install --assumeyes flathub io.freetubeapp.FreeTube
+
+# obsidian (also available as AppImage and Snap)
 sudo flatpak install --assumeyes flathub md.obsidian.Obsidian
 
 # ungoogled-chromium
-sudo flatpak install --assumeyes com.github.Eloston.UngoogledChromium
+sudo flatpak install --assumeyes flathub com.github.Eloston.UngoogledChromium
 # manual:
 # 1) add Google as search engine 1) URL=https://www.google.com/search?q=%s, SearchURL=https://www.google.com/complete/search?client=chrome&q=%s
 # 2) In Settings -> Appearance -> 'On Startup' section -> select 'Continue where you left off'
 
-# freetube
-sudo flatpak install --assumeyes io.freetubeapp.FreeTube
+# skype
+sudo flatpak install --assumeyes flathub com.skype.Client
+
+# }}}
+
 
 # }}}
