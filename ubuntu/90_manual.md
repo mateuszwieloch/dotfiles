@@ -11,7 +11,12 @@ In 'Search Engine'->'Manage Search Engines':
 In 'On Startup':
 - Select 'Continue where you left off'.
 
-- Ungoogled-Chromium by defaults set the "Clear cookies and site data when you quit Chromium" flag in chrome://settings/content/cookies You can still allow certain cookies there (for example for `[*.]aws.amazon.com`)
+Cookies:
+- Ungoogled-Chromium by defaults set the "Clear cookies and site data when you quit Chromium" flag in chrome://settings/content/cookies. You can still allow certain cookies there.
+- `[*.]aws.amazon.com`
+- `[*.]acloud.guru`
+- `[*.]schwab.com`
+- `[*.]wsj.com`
 
 ### Chromium
 
@@ -19,9 +24,8 @@ Extensions:
 - [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
 - Bitwarden
 - Don't Close Window With Last Tab
-- [Shortkeys](https://github.com/mikecrittenden/shortkeys/releases)
-  - has more configurable shortcuts than the Keyboard Shortcuts extension
-  - can export/import configuration
+- [Keyboard Shortcuts](https://chrome.google.com/webstore/detail/keyboard-shortcuts/lplcmnhgijkkmflbmhabnccgelffpnog?hl=en) or [Shortkeys](https://github.com/mikecrittenden/shortkeys/releases)
+  - Keyboard Shortcuts is much more reliable as an extension. Shortcuts has more configurable shortcuts and import/export, but I've never really needed it.
   - Select previous tab Ctrl+H
   - Select next tab Ctrl+L
   - Move current tab left Ctrl+Shift+H
@@ -33,13 +37,20 @@ Extensions:
     - go to Options -> Advanced -> enable 'Use FreeTube over Invidious when possible'
 - [LanguageTool](https://chrome.google.com/webstore/detail/grammar-and-spell-checker/oldceeleldhonbafppcapldpdifcinji?hl=en)
 
-Settings:
+Ubuntu settings:
 
-## Scroll wheel speed adjustment
-
-1. `sudo apt install imwheel`
-2. Run `91_scroll_wheel_script.sh` to set desired scroll wheel speed.
-3. Run `Startup Applications` app and add `imwheel` to run on startup.
+* Accessibility -> Repeat keys (click) -> make delay shorter and repeat faster
+* Power -> Suspend & Power Button -> enable 'Show Battery Percentage'
+* To open Nautilus file manager in a custom directory:
+  ```
+  cp /usr/share/applications/org.gnome.Nautilus.desktop ~/.local/share/applications/
+  chmod +x ~/.local/share/applications/org.gnome.Nautilus.desktop
+  vi ~/.local/share/applications/org.gnome.Nautilus.desktop
+  ```
+  and modify both lines with `Exec=` so they look like this:
+  ```
+  Exec=nautilus --new-window /your/desired/directory
+  ```
 
 ## GNOME Extensions
 
@@ -48,4 +59,5 @@ Settings:
 * Remove Dropdown Arrows
 * Sound Input & Output Device Chooser 
 * [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
+* [Caffeine](https://extensions.gnome.org/extension/517/caffeine/)
 
