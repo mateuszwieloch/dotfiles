@@ -25,11 +25,6 @@ brew cask install calibre
 
 brew cask install eloston-chromium
 
-# for Fastmail
-brew cask install flotato
-
-brew cask install itsycal
-
 brew cask install karabiner-elements
 mkdir -p ~/.config/karabiner
 ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
