@@ -1,6 +1,8 @@
 [user]
 	name = Mateusz Wieloch
 	email = github@mateuszwieloch.com
+[pull]
+	ff = only
 [push]
   # will push only current branch and create the branch in the remote repo if necessary
 	default = current
