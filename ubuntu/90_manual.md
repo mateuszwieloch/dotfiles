@@ -16,6 +16,7 @@ Cookies:
 - `[*.]aws.amazon.com`
 - `[*.]acloud.guru`
 - `[*.]schwab.com`
+- `[*.]wallst.com` # to make Screener work on Schwab website
 - `[*.]wsj.com`
 
 ### Chromium
