@@ -4,7 +4,7 @@
 
 In 'Search Engine'->'Manage Search Engines':
 - (prerequisite is to visit startpage.com and google.com)
-- Add StartPage as a search engine and assign it keyword `s`.
+- Add StartPage as a search engine URL=https://www.startpage.com/do/dsearch?query=%s SearchURL=
 - Add Google as a search engine  URL=https://www.google.com/search?q=%s, SearchURL=https://www.google.com/complete/search?client=chrome&q=%s
 - Change DuckDuckGo's keyword to `d`.
 
@@ -24,6 +24,9 @@ Cookies:
 Extensions:
 - [Chrome Web Store](https://github.com/NeverDecaf/chromium-web-store) - to be able to notify about extension updates
 - Bitwarden
+  - Auto-fill the last used login for the current website Ctrl+B
+  - Settings -> Vault Timeout -> Never
+  - Pin it
 - Don't Close Window With Last Tab
 - [Keyboard Shortcuts](https://chrome.google.com/webstore/detail/keyboard-shortcuts/lplcmnhgijkkmflbmhabnccgelffpnog?hl=en) or [Shortkeys](https://github.com/mikecrittenden/shortkeys/releases)
   - Keyboard Shortcuts is much more reliable as an extension. Shortcuts has more configurable shortcuts and import/export, but I've never really needed it.
@@ -32,6 +35,10 @@ Extensions:
   - Move current tab left Ctrl+Shift+H
   - Move current tab right Ctrl+Shift+L
 - SmoothScroll - to make mouse wheel scrolling usable in Chromium on Linux
+  - Step size [px] -> 500
+  - Acceleration scale -> 5
+- [SimpleLogin](https://chrome.google.com/webstore/detail/simplelogin-open-source-e/dphilobhebphkdjbpfohgikllaljmgbn?hl=en)
+  - Pin it
 - Amazon Ad Blocker
 - [GNOME Shell integration](https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep)
 - Privacy Redirect
