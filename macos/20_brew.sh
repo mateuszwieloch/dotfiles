@@ -19,8 +19,6 @@ brew install httpie
 
 
 # Graphical tools (private){{{
-brew cask install bitwarden
-
 brew cask install calibre
 
 brew cask install eloston-chromium
@@ -42,22 +40,11 @@ brew cask install monitorcontrol
 
 brew cask install obsidian
 
-brew cask install pandora
-
 brew cask install qbittorrent
 
 brew cask install signal
 
 brew cask install skype
-
-# VSCodium by default uses Open VSC Registry which lacks most of VSCode plugins. To migigate
-# change /Applications/VSCodium.app/Contents/Resources/app/product.json by replacing extensionsGallery:
-# "extensionsGallery": {
-#    "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
-#    "itemUrl": "https://marketplace.visualstudio.com/items"
-# }
-brew cask install vscodium
-ln -s /usr/local/bin/code /usr/local/bin/vscodium
 
 brew cask install vlc
 ln -sf ~/code/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc

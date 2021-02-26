@@ -21,7 +21,7 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Save screenshots to ~/Documents/Screenshots"
-test -d ~/Documents/Screenshots || mkdir ~/Documents/Screenshots
+mkdir -p ~/Documents/Screenshots
 defaults write com.apple.screencapture location ~/Documents/Screenshots
 
 # Remove delay for showing hidden Dock"
@@ -34,4 +34,4 @@ defaults write com.apple.dock autohide-time-modifier -float 0.35
 for app in Safari Finder Dock SystemUIServer; do killall "$app" >/dev/null 2>&1; done
 
 # sync system dictionary
-ln -sf ~/code/dotfiles/Library/Spelling/LocalDictionary ~/Library/Spelling/LocalDictionary
+ln -sf ~/code/dotfiles/macos/Library/Spelling/LocalDictionary ~/Library/Spelling/LocalDictionary
