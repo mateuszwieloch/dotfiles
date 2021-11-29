@@ -20,6 +20,12 @@ brew install httpie
 # }}}
 
 
+# fonts {{{
+brew tap homebrew/cask-fonts
+brew install font-fira-code-nerd-font
+# }}}
+
+
 # Graphical tools (private){{{
 brew cask install calibre
 
