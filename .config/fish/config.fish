@@ -13,10 +13,6 @@ end
 # PATH
 set -l paths \
 ~/code/dotfiles/bin \
-~/.cargo/bin \
-~/.poetry/bin \
-~/.pyenv/shims \
-~/.rbenv/shims \
 ~/bin \
 ~/.local/bin \
 /usr/local/sbin \
@@ -52,15 +48,9 @@ for p in $cdpaths
 end
 
 
-# fnm
-fnm env | source
-
 # for GPG to work with Fish
 set --export GPG_TTY (tty)
 
-# PYTHON
-# pipx completions
-register-python-argcomplete --shell fish pipx | source
 
-# Tanium - for metrics-all-in-one-env
-set --export TS_IP '192.168.56.80'
+# asdf
+source /usr/local/opt/asdf/libexec/asdf.fish
