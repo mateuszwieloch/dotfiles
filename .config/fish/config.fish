@@ -59,3 +59,9 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 
 # asdf
 source /usr/local/opt/asdf/libexec/asdf.fish
+
+# fzf
+set --export FZF_DEFAULT_COMMAND "fd --type f"
+set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set --export FZF_CTRL_T_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black --preview 'bat --color=always {}'"
+set --export FZF_CTRL_R_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black"
