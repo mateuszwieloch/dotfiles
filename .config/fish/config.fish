@@ -19,7 +19,8 @@ set -l paths \
 /usr/local/opt/coreutils/bin \
 ~/.okta/bin \
 ~/code/tanium-cloud/SaaS-CustomerEnvironment/cli \
-~/code/tanium-cloud/sre-tools/bin
+~/code/tanium-cloud/sre-tools/bin \
+~/.okta/bin # oktadeveloper/okta-aws-cli-assume-role required by tap-infra
 
 for p in $paths
   if not contains $p $PATH; and test -d $p
@@ -47,10 +48,14 @@ for p in $cdpaths
   end
 end
 
+# load subdirectories of fish/functions
+set fish_function_path ~/.config/fish/functions/*/ $fish_function_path
 
 # for GPG to work with Fish
 set --export GPG_TTY (tty)
 
+# AWS CLI completions
+complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
 # asdf
 source /usr/local/opt/asdf/libexec/asdf.fish
