@@ -9,9 +9,10 @@ brew cleanup
 # }}}
 
 # Command line tools {{{
-brew install rg
+brew install exa  # ls replacement
+brew install rg   # grep replacement
 ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
-brew install bat
+brew install bat  # cat replacement
 brew install tree
 brew install p7zip
 brew install httpie
