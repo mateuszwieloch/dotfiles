@@ -7,23 +7,17 @@
   # will push only current branch and create the branch in the remote repo if necessary
 	default = current
 [alias]
-  st      =   status
-  s       =   status --short
-  ss      =   status --short
-  ci      =   commit
-  cim     =   commit -m
-  br      =   branch
-  co      =   checkout
-  df      =   diff
-  lg      =   log --oneline --decorate --all --graph
-  l       =   "!source ~/.githelpers && pretty_git_log"
-  la      =   "!source ~/.githelpers && pretty_git_log_a"
-  me      =   "!source ~/.githelpers && pretty_git_log --author=Mateusz"
-  h       =   "!source ~/.githelpers && show_git_head"
-  lp      =   log --pretty="format:'%h %ad | %an - %s%d'" --date=short
-  lgs     =   log --stat
-  ls      =   ls-files
-  pr      =   pull --rebase
-  aa      =   add --all
-  amend   =   commit --amend
-  unstage =   reset HEAD --
+  # %C to change color; %h abbrev commit hash; %cr committer date, relative; %cn committer name; %d ref names; %s subject
+  hist    = log --pretty=format:\"%Cgreen%h %Creset%cr %Cblue[%cn]%C(auto)%d %Creset%s\" --graph --decorate --all --color=always
+  lg      = "!git hist | fzf --reverse --ansi | rg --only-matching '\\* ([a-z0-9]{7})' -r '$1' | xargs -I {} git diff {}^ {}"
+  amend   = commit --amend
+  unstage = reset HEAD --
+
+  # for pair programming
+  st      = status
+  s       = status --short
+  ss      = status --short
+  ci      = commit
+  cim     = commit -m
+  br      = branch
+  co      = checkout
