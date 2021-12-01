@@ -72,18 +72,6 @@ Plug 'ntpeters/vim-better-whitespace'
 " :StripWhitespace to get rid of highlighted stuff
 " :ToggleStripWhitespaceOnSave
 
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-autocmd BufNewFile,BufRead *.snippets
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set noexpandtab |
-    \ set autoindent |
-    \ set colorcolumn=80 |
-    \ set fileformat=unix |
-
 
 " --- TEXT OBJECTS ---
 Plug 'kana/vim-textobj-user'
@@ -115,68 +103,12 @@ nnoremap <bs> :noh<cr>
 
 highlight Search ctermbg=59 ctermfg=white
 
-
-Plug 'dyng/ctrlsf.vim'
-" Features: Integration for ag/ack/pt/rg (grep replacements). Parses the search result
-" and displays the result in a user-friendly format. From 1.9 supports compact view.
-" :CtrlSF                          " show results in new window (like Atom)
-" :CtrlSF {pattern} /path/to/dir
-" :CtrlSF -I {pattern}             " case insensitive
-" :CtrlSFToggle
-nnoremap <leader>f :CtrlSF<space>
-vmap <leader>f <Plug>CtrlSFVwordExec
-
-" " yank word under cursor into z buffer; then execute CtrlSF on contents of z buffer
-nnoremap <leader>F "zyiw:exe ":CtrlSF ".@z""<cr>
-
-nnoremap <leader>x :CtrlSFToggle<CR>
-let g:ctrlsf_ackprg = "rg"
-let g:ctrlsf_auto_close = {
-    \ "normal" : 0,
-    \ "compact": 0
-    \ }
-let g:ctrlsf_auto_focus = { "at" : "start" }
-let g:ctrlsf_default_view_mode = 'compact'
-let g:ctrlsf_mapping = {
-    \ "next": "n",
-    \ "prev": "N",
-    \ "vsplit"   : "<C-v>",
-    \ }
-let g:ctrlsf_case_sensitive = "smart"
-
-Plug 'ctrlpvim/ctrlp.vim'
-" Features: fuzzy file/buffer/tag finder
-" <c-v> to open file in a new vertical split
-let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_switch_buffer = ''   " allow opening the same file in multiple splits
-let g:ctrlp_max_files = 0        " don't limit number of scanned files
-let g:ctrlp_show_hidden = 1
-
-let g:ctrlp_map = '<leader>o'
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtHistory(-1)':       [],
-    \ 'PrtHistory(1)':        [],
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<c-p>'],
-    \ }
-" When opening a file with <cr>, CtrlP avoids opening it in plugin, help,
-" quickfix windows. This sets exceptions.
-let g:ctrlp_reuse_window = 'filebeagle\|help'
-
-" skip space in search string (except some special cases, hence the pattern)
-let g:ctrlp_abbrev = { 'abbrevs': [ { 'pattern': '\(^@.\+\|\\\@<!:.\+\)\@<! ', 'expanded': '', 'mode': 'fprz', } ] }
-
-if executable('rg')
-  " Use rg over grep in vim
-  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-
-  " Use rg in CtrlP. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+nnoremap <leader>o :FZF<cr>
+nnoremap <leader>f :Rg<space>
+" yank word under cursor into z buffer; then execute Rg on contents of z buffer
+nnoremap <leader>F "zyiw:exe ":Rg ".@z""<cr>
 
 " --- UI ---
 Plug 'jeetsukumaran/vim-filebeagle'
