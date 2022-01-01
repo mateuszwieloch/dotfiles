@@ -523,8 +523,6 @@ set undodir=~/.vim/undodir
 
 " --- OTHER ---
 " -------------
-" make Y consistent with C and D
-noremap Y y$
 noremap <leader>q :q<cr>
 noremap <leader>Q :q!<cr>
 
