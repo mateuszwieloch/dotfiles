@@ -428,6 +428,7 @@ set showbreak=\ \  " indent
 
 
 " --- HELP ---
+" ------------
 
 " better mappings to navigate helpgrep
 nmap <silent> <RIGHT>         :cnext<cr>
@@ -448,6 +449,7 @@ function! HelpInNewTab ()
     endif
 endfunction
 
+
 " --- MOVING AROUND THE FILE ---
 " ------------------------------
 " move by display line (not physical) when wrapping occurs
@@ -460,6 +462,22 @@ nnoremap H g^
 vnoremap H g^
 nnoremap L g$
 vnoremap L g$
+
+
+" --- EDITING ---
+" ---------------
+
+" stay in visual mode after indenting
+vnoremap > >gv
+vnoremap \< <gv
+
+" move line (or selected text) up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 
 " --- BUFFERS ---
@@ -480,8 +498,10 @@ nnoremap <leader>cl :let @+=expand("%:p") . ':' . line(".")<CR>
 " Copy the entire buffer into the system register
 nnoremap <leader>ca ggVG*y
 
+
 " --- WINDOWS ---
 " ---------------
+
 " jump to window
 noremap <C-H> <C-W>h
 noremap <C-J> <C-W>j
@@ -508,6 +528,7 @@ noremap <leader>wo <C-W>o
 " exchange windows
 nnoremap <leader>wx <C-W>x
 
+
 " ---- TABS -----
 " ---------------
 nnoremap <leader>t :tabe<CR>
@@ -519,6 +540,7 @@ nnoremap <leader>h :tabp<CR>
 set undofile
 " Note: undodir must already exist!
 set undodir=~/.vim/undodir
+
 
 " --- OTHER ---
 " -------------
