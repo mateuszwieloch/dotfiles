@@ -9,6 +9,8 @@ if not which -s exa
   set -x LS_COLORS "di=00;40:ln=1;31;40:so=37;40:pi=1;33;40:ex=35;40:bd=37;40:cd=37;40:su=37;40:sg=37;40:tw=32;40:ow=32;40:"
 end
 
+set --export BAT_STYLE numbers
+
 
 # PATH
 set -l paths \
@@ -63,5 +65,5 @@ source /usr/local/opt/asdf/libexec/asdf.fish
 # fzf
 set --export FZF_DEFAULT_COMMAND "fd --type f"
 set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set --export FZF_CTRL_T_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black --preview 'bat --color=always {}'"
+set --export FZF_CTRL_T_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black --preview 'bat --color=always --number {}'"
 set --export FZF_CTRL_R_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black"
