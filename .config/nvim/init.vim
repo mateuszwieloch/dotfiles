@@ -202,8 +202,9 @@ let g:gitgutter_map_keys = 0   " kill all mappings
 
 " --- PROGRAMMING LANGUAGES ---
 
-Plug 'sheerun/vim-polyglot'
-" Features: curated bundle of 100+ syntax highlighting plugins
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Rainbow paranthesis module for treesitter.
+Plug 'p00f/nvim-ts-rainbow'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Intellisense engine for Vim8/Neovim with full language protocol support
@@ -357,6 +358,50 @@ autocmd FileType javascript
 
 call plug#end()
 
+" needs to be after plug#end because nvim-treesitter depends on files in
+" runtime path, which load after the end
+lua <<EOF
+
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "fish", "hcl", "lua", "typescript", "vim" },
+
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing
+  ignore_install = {},
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- list of language that will be disabled
+    disable = {},
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true,
+
+    -- List of languages that will be disabled
+    disable = {}
+  },
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, -- list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  }
+}
+EOF
+
 set termguicolors       " 24-bit color. Unsupported in Terminal.app
 let g:gruvbox_contrast_dark = 'hard' " black background for more contrast
 let g:gruvbox_sign_column = 'bg0'    " make sign column color the same as text background
@@ -421,6 +466,8 @@ set nowritebackup
 set noswapfile
 
 set foldenable
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set foldlevel=99
 
 set breakindent
