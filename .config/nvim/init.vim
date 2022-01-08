@@ -29,10 +29,8 @@ Plug 'tpope/vim-repeat'
 " Features: remaps . in a way that plugins can tap into it
 " In particular supports vim-commentary and vim-surround
 
-Plug 'tpope/vim-commentary'
-" Features: toggle comments
-" Usage: gcc toggle comments in a current line
-" In visual mode gc to toggle
+Plug 'numToStr/Comment.nvim'
+" Features: supports treesitter, nested languages and intuitive motions
 
 Plug 'tpope/vim-eunuch'
 " :Remove: Delete a buffer and the file on disk simultaneously.
@@ -361,6 +359,22 @@ call plug#end()
 " needs to be after plug#end because nvim-treesitter depends on files in
 " runtime path, which load after the end
 lua <<EOF
+
+require('Comment').setup({
+  ---Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
+  ---@type table
+  mappings = {
+      ---Operator-pending mapping
+      ---Includes `gcc`, `gbc`, `gc[count]{motion}` and `gb[count]{motion}`
+      basic = true,
+      ---Extra mapping
+      ---Includes `gco`, `gcO`, `gcA`
+      extra = true,
+      ---Extended mapping
+      ---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
+      extended = false,
+  },
+})
 
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
