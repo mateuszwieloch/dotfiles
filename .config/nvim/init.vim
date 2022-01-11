@@ -190,12 +190,10 @@ au FileType gitcommit setlocal formatoptions=tn colorcolumn=73
 
 Plug 'tpope/vim-fugitive'
 " Features: git wrapper
-" :Gblame
+" :Git blame
 
-Plug 'airblade/vim-gitgutter'
-" Features: shows a git diff in the 'gutter' (lines that were added, removed or modified)
-set updatetime=200
-let g:gitgutter_map_keys = 0   " kill all mappings
+Plug 'nvim-lua/plenary.nvim' " required by gitsigns
+Plug 'lewis6991/gitsigns.nvim' " can be integrated with null-ls
 
 
 " --- PROGRAMMING LANGUAGES ---
@@ -416,10 +414,51 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+lua <<EOF
+  require('gitsigns').setup {
+    -- extensive options available, see Github repo
+    signs = {
+      add          = {hl = 'GitSignsAdd'   , text = "▎", numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'    },
+      change       = {hl = 'GitSignsChange', text = "▎", numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
+      delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn' },
+      topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn' },
+      changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
+    },
+    keymaps = {
+      noremap = true,
+
+      ['n ]g'] = { expr = true, "&diff ? ']g' : '<cmd>Gitsigns next_hunk<CR>'"},
+      ['n [g'] = { expr = true, "&diff ? '[g' : '<cmd>Gitsigns prev_hunk<CR>'"},
+
+      ['n <leader>gs'] = '<cmd>Gitsigns stage_hunk<CR>',
+      ['v <leader>gs'] = ':Gitsigns stage_hunk<CR>',
+      ['n <leader>gu'] = '<cmd>Gitsigns undo_stage_hunk<CR>',
+      ['n <leader>gr'] = '<cmd>Gitsigns reset_hunk<CR>',
+      ['v <leader>gr'] = ':Gitsigns reset_hunk<CR>',
+      ['n <leader>gR'] = '<cmd>Gitsigns reset_buffer<CR>',
+      ['n <leader>gp'] = '<cmd>Gitsigns preview_hunk<CR>',
+      ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
+      ['n <leader>gS'] = '<cmd>Gitsigns stage_buffer<CR>',
+      ['n <leader>gU'] = '<cmd>Gitsigns reset_buffer_index<CR>',
+
+      -- Text objects
+      ['o ih'] = ':<C-U>Gitsigns select_hunk<CR>',
+      ['x ih'] = ':<C-U>Gitsigns select_hunk<CR>'
+    },
+  }
+
+EOF
+
+
 set termguicolors       " 24-bit color. Unsupported in Terminal.app
 let g:gruvbox_contrast_dark = 'hard' " black background for more contrast
 let g:gruvbox_sign_column = 'bg0'    " make sign column color the same as text background
 colorscheme gruvbox
+
+" this needs to be set after colorscheme and termguicolors is set
+highlight GitSignsAdd guifg=green ctermfg=green
+highlight GitSignsChange guifg=yellow ctermfg=yellow
+highlight GitSignsDelete guifg=red ctermfg=red
 highlight ALEWarningSign ctermfg=226
 highlight ALEErrorSign ctermfg=red
 
