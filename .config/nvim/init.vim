@@ -376,7 +376,7 @@ require('Comment').setup({
 
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = { "fish", "hcl", "lua", "typescript", "vim" },
+  ensure_installed = { "bash", "css", "dockerfile", "fish",  "go", "hcl", "html", "javascript", "json", "json5", "jsonc", "lua", "markdown", "python", "ruby", "toml", "typescript", "yaml", "vim" },
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,

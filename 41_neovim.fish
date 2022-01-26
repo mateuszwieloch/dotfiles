@@ -7,3 +7,5 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 
 mkdir -p ~/.config/nvim
 ln -s ~/code/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+
+ln -s ~/code/dotfiles/.config/nvim/ftdetect ~/.config/nvim/ftdetect
