@@ -15,6 +15,10 @@ ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
 brew install bat  # cat replacement
 brew install fzf
 brew install asdf
+echo 'legacy_version_file = yes' > ~/.asdfrc   # for .terraform-version support
+asdf plugin add packer https://github.com/asdf-community/asdf-hashicorp.git
+asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
+asdf plugin add terraform-ls https://github.com/shihanng/asdf-terraform-ls
 brew install tree
 brew install p7zip
 brew install httpie
