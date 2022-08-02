@@ -1,3 +1,3 @@
 function default_branch
-  git remote show origin | awk '/HEAD branch/ {print $NF}'
+  git remote show origin | rg 'HEAD branch: (.*)' --replace '$1' --trim
 end
