@@ -15,7 +15,8 @@ ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
 brew install bat  # cat replacement
 brew install fzf
 brew install asdf
-echo 'legacy_version_file = yes' > ~/.asdfrc   # for .terraform-version support
+# for .nvmrc and .terraform-version support
+echo 'legacy_version_file = yes' > ~/.asdfrc
 asdf plugin add packer https://github.com/asdf-community/asdf-hashicorp.git
 asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
 asdf plugin add terraform-ls https://github.com/shihanng/asdf-terraform-ls
@@ -32,42 +33,41 @@ brew install font-fira-mono-nerd-font
 
 
 # Graphical tools (private){{{
-brew cask install calibre
+brew install --cask calibre
 
-brew cask install eloston-chromium
+brew install --cask eloston-chromium
 
-brew cask install karabiner-elements
+brew install --cask karabiner-elements
 mkdir -p ~/.config/karabiner
 ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
-brew cask install keepingyouawake
+brew install --cask keepingyouawake
 
-brew cask install kitty
+brew install --cask kitty
 mkdir -p ~/.config/kitty
 ln -sf ~/code/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
-brew cask install libreoffice
+brew install --cask libreoffice
 
 # adjust brigtness and volume of external display using Apple Keyboard keys
-brew cask install monitorcontrol
+# brew install --cask monitorcontrol
 
-brew cask install obsidian
+brew install --cask obsidian
 
-brew cask install qbittorrent
+brew install --cask qbittorrent
 
-brew cask install signal
+brew install --cask signal
 
-brew cask install skype
+brew install --cask vlc
 
-brew cask install vlc
 ln -sf ~/code/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc
 
-brew cask install zoom
 # }}}
 
 # Graphical tools (Tanium) {{{
-brew cask install google-chrome
-brew cask install slack
-brew cask install virtualbox
-brew cask install visual-studio-code
+brew install --cask google-chrome
+brew install --cask slack
+brew install --cask virtualbox
+brew install --cask visual-studio-code
+brew install --cask zoom
 # }}}
