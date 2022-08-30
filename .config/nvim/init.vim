@@ -196,6 +196,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'nvim-lua/plenary.nvim' " required by gitsigns
 Plug 'lewis6991/gitsigns.nvim' " can be integrated with null-ls
 
+Plug 'ruanyl/vim-gh-line'
+" Features: opens GitHub on the line under the cursor
+let g:gh_line_map = '<leader>gh'
+let g:gh_line_blame_map = '<leader>gb'
+let g:gh_repo_map = '<leader>go'
+
+" Copy link to a clipboard instead of opening a browser:
+" let g:gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
+
+let g:gh_github_domain = "git.corp.tanium.com"
+let g:gh_use_canonical = 1                        " Use canonical hash in URL in place of branch name
 
 " --- PROGRAMMING LANGUAGES ---
 
