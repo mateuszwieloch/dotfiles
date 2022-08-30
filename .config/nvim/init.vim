@@ -4,7 +4,8 @@ let mapleader="\<space>"
 call plug#begin()
 
 " --- COLOR SCHEMES ---
-Plug 'morhetz/gruvbox'
+Plug 'rktjmp/lush.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
 
 " --- ESSENTIALS ---
 Plug '907th/vim-auto-save'
