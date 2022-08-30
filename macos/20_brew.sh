@@ -9,20 +9,25 @@ brew cleanup
 # }}}
 
 # Command line tools {{{
-brew install exa  # ls replacement
-brew install rg   # grep replacement
-ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
-brew install bat  # cat replacement
-brew install fzf
 brew install asdf
 # for .nvmrc and .terraform-version support
 echo 'legacy_version_file = yes' > ~/.asdfrc
 asdf plugin add packer https://github.com/asdf-community/asdf-hashicorp.git
 asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git
 asdf plugin add terraform-ls https://github.com/shihanng/asdf-terraform-ls
-brew install tree
-brew install p7zip
+
+brew install bat  # cat replacement
+brew install exa  # ls replacement
+brew install fd   # find replacemnt
+brew install fzf
 brew install httpie
+brew install p7zip
+
+brew install rg   # grep replacement
+ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
+
+brew install sd
+brew install tree
 # }}}
 
 
@@ -57,16 +62,9 @@ brew install --cask qbittorrent
 
 brew install --cask signal
 
-brew install --cask vlc
+brew install --cask visual-studio-code
 
+brew install --cask vlc
 ln -sf ~/code/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc
 
-# }}}
-
-# Graphical tools (Tanium) {{{
-brew install --cask google-chrome
-brew install --cask slack
-brew install --cask virtualbox
-brew install --cask visual-studio-code
-brew install --cask zoom
 # }}}
