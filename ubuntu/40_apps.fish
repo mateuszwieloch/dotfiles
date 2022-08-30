@@ -31,8 +31,7 @@ sudo apt install --yes httpie
 
 # kitty
 sudo apt install --yes kitty
-mkdir -p ~/.config/kitty
-ln -sf ~/code/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln -sf ~/code/dotfiles/.config/kitty/ ~/.config
 
 # qbittorrent
 sudo add-apt-repository --yes ppa:qbittorrent-team/qbittorrent-stable

@@ -44,8 +44,7 @@ ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/kara
 brew install --cask keepingyouawake
 
 brew install --cask kitty
-mkdir -p ~/.config/kitty
-ln -sf ~/code/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln -sf ~/code/dotfiles/.config/kitty/ ~/.config
 
 brew install --cask libreoffice
 
