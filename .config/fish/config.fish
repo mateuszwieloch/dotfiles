@@ -18,11 +18,7 @@ set -l paths \
 ~/bin \
 ~/.local/bin \
 /usr/local/sbin \
-/usr/local/opt/coreutils/bin \
-~/.okta/bin \
-~/code/tanium-cloud/SaaS-CustomerEnvironment/cli \
-~/code/tanium-cloud/sre-tools/bin \
-~/.okta/bin # oktadeveloper/okta-aws-cli-assume-role required by tap-infra
+/usr/local/opt/coreutils/bin
 
 for p in $paths
   if not contains $p $PATH; and test -d $p
@@ -36,12 +32,7 @@ set -gx PATH $PATH .
 
 
 # CDPATH - list of file and folder name auto-completions triggered with TAB
-set -l cdpaths \
-. \
-~ \
-~/code \
-~/code/tanium-cloud \
-~/code/tanium
+set -l cdpaths . ~ ~/code
 
 for p in $cdpaths
   if not contains $p $CDPATH; and test -d $p
@@ -50,14 +41,12 @@ for p in $cdpaths
   end
 end
 
+
 # load subdirectories of fish/functions
 set fish_function_path ~/.config/fish/functions/*/ $fish_function_path
 
 # for GPG to work with Fish
 set --export GPG_TTY (tty)
-
-# AWS CLI completions
-complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
 # asdf
 source /usr/local/opt/asdf/libexec/asdf.fish
@@ -67,3 +56,5 @@ set --export FZF_DEFAULT_COMMAND "fd --type f"
 set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set --export FZF_CTRL_T_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black --preview 'bat --color=always --number {}'"
 set --export FZF_CTRL_R_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black"
+
+source ~/.config/fish/local/*.fish
