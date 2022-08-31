@@ -640,12 +640,15 @@ noremap <leader>wo <C-W>o
 " exchange windows
 nnoremap <leader>wx <C-W>x
 
+" move current window to a new tab
+nnoremap <leader>wt <C-W>T
+
 
 " ---- TABS -----
 " ---------------
-nnoremap <leader>t :tabe<CR>
-nnoremap <leader>l :tabn<CR>
-nnoremap <leader>h :tabp<CR>
+nnoremap <leader>tn :tabe<CR>
+nnoremap <leader>tl :tabn<CR>
+nnoremap <leader>th :tabp<CR>
 
 " ---- UNDO ----
 " --------------
