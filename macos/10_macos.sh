@@ -30,6 +30,9 @@ defaults write com.apple.Dock autohide-delay -float 0
 # Speed up Dock animations"
 defaults write com.apple.dock autohide-time-modifier -float 0.35
 
+# Allow Cmd+Q to kill Finder
+defaults write com.apple.finder QuitMenuItem -bool YES && killall Finder
+
 # Kill affected applications, so the changes apply"
 for app in Safari Finder Dock SystemUIServer; do killall "$app" >/dev/null 2>&1; done
 
