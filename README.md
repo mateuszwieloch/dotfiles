@@ -70,8 +70,9 @@ kitty.app
   - left third: ^⇧ ⌘G
   - right third: ^⇧ ⌘;
 2. [ToothFairy](https://itunes.apple.com/us/app/toothfairy/id1191449274?mt=12) - simpifies connection to wireless headphones
-3. [Facebook Messenger](https://apps.apple.com/app/messenger/id1480068668)
-4. [pCloud](https://www.pcloud.com/download-free-online-cloud-file-storage.html)
+3. [Ethernet Status](https://apps.apple.com/us/app/ethernet-status/id1186187538?mt=12)
+4. [Facebook Messenger](https://apps.apple.com/app/messenger/id1480068668)
+5. [pCloud](https://www.pcloud.com/download-free-online-cloud-file-storage.html)
 
 
 ## Browsers

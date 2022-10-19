@@ -42,6 +42,9 @@ brew install --cask calibre
 
 brew install --cask eloston-chromium
 
+# Etcher is an open source app cross-platform app to burn disk images to USB drives.
+brew install --cask balenaetcher
+
 brew install --cask karabiner-elements
 mkdir -p ~/.config/karabiner
 ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
