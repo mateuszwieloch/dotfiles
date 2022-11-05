@@ -1,7 +1,7 @@
 set -x EDITOR vim
 set -gx RIPGREP_CONFIG_PATH ~/.ripgreprc
 
-if not which -s exa
+if not command -sq exa
   # generated with https://geoff.greer.fm/lscolors/
   # BSD version
   set -x LSCOLORS xxBxhxDxfxhxhxhxhxcxcx
@@ -14,7 +14,7 @@ set --export BAT_STYLE numbers
 
 # PATH
 set -l paths \
-~/code/dotfiles/bin \
+~/code/mateuszwieloch/dotfiles/bin \
 ~/bin \
 ~/.local/bin \
 /usr/local/sbin \
@@ -32,7 +32,7 @@ set -gx PATH $PATH .
 
 
 # CDPATH - list of file and folder name auto-completions triggered with TAB
-set -l cdpaths . ~ ~/code
+set -l cdpaths . ~ ~/code ~/code/mateuszwieloch
 
 for p in $cdpaths
   if not contains $p $CDPATH; and test -d $p
@@ -48,8 +48,22 @@ set fish_function_path ~/.config/fish/functions/*/ $fish_function_path
 # for GPG to work with Fish
 set --export GPG_TTY (tty)
 
+# ssh agent
+if test -z (pgrep ssh-agent | string collect)
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
 # asdf
-source /usr/local/opt/asdf/libexec/asdf.fish
+switch (uname)
+  case Linux
+    source ~/.asdf/asdf.fish
+  case Darwin
+    source /usr/local/opt/asdf/libexec/asdf.fish
+  case '*'
+    echo 'Error: unrecognized operating system'
+end
 
 # fzf
 set --export FZF_DEFAULT_COMMAND "fd --type f"
