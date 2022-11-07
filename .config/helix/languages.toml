@@ -1,0 +1,10 @@
+[[language]]
+name = "hcl"
+scope = "source.hcl"
+injection-regex = "(hcl|tf|nomad)"
+file-types = ["hcl", "tf", "nomad"]
+roots = []
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+language-server = { command = "terraform-ls", args = ["serve"], language-id = "terraform", timeout = 30 }
+auto-format = true

@@ -1,0 +1,11 @@
+[editor.cursor-shape]
+insert="bar"
+
+[editor.lsp]
+display-messages = true
+
+[keys.normal]
+"C-k" = "jump_view_up"
+"C-j" = "jump_view_down"
+"C-h" = "jump_view_left"
+"C-l" = "jump_view_right"
