@@ -214,83 +214,20 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Rainbow paranthesis module for treesitter.
 Plug 'p00f/nvim-ts-rainbow'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Intellisense engine for Vim8/Neovim with full language protocol support
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+Plug 'neovim/nvim-lspconfig'
+" Many LSP servers require paramters to run that describe what files to watch, where are executables etc.
+" This plugin contains just these configurations, so that it's easier to attach and manage LSP servers.
 
-" TODO
-" " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" " position. Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+Plug 'L3MON4D3/LuaSnip'
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+Plug 'hrsh7th/nvim-cmp'         " the core completion engine
+Plug 'hrsh7th/cmp-buffer'       " completes words from the current buffer
+Plug 'hrsh7th/cmp-nvim-lua'     " completes lua Neovim functions
+" Plug 'hrsh7th/cmp-path'         " completes file paths (NOT YET SETUP)
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip' " completes snippets
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" TODO: Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" TODO: Apply AutoFix to problem on the current line.
-" nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <TAB> for selections ranges.
-" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-" coc-tsserver, coc-python are the examples of servers that support it.
-" nmap <silent> <TAB> <Plug>(coc-range-select)
-" xmap <silent> <TAB> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 let g:lightline = {
 \ 'colorscheme': 'wombat',
@@ -302,29 +239,6 @@ let g:lightline = {
 \   'cocstatus': 'coc#status'
 \ },
 \ }
-
-" Use auocmd to force lightline update.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-Plug 'jeetsukumaran/vim-pythonsense'
-" Features: text objects, motions, and semantic location for Python
-" Text objects:
-" ac ic    around/inside class
-" af if    around/inside function or method
-" ad id    around/inside multiline docstring
-" Motions (overriden in '~/.vim/ftplugin/python/pythonsense-custom.vim')
-let g:is_pythonsense_suppress_motion_keymaps = 1
-let g:is_pythonsense_suppress_location_keymaps = 1
-
-Plug 'davidhalter/jedi-vim'
-" Features: Completion for Python!
-" pip install jedi  # to make it work
-" <ctrl-space> to force completion
-" Cmd-d or <leader>d to go to definiton
-
-" disable autocompleting of import when starting import statement
-let g:jedi#smart_auto_mappings = 0
-nmap <leader>d :call jedi#goto()<cr>
 
 autocmd FileType python
     \ set textwidth=90 |
@@ -349,20 +263,6 @@ autocmd BufNewFile,BufRead *.js,*.html,*.css
 
 autocmd FileType javascript
     \ nnoremap <leader>r :!node %<CR>|
-
-" TODO: causes Errors as of Vim8.1 due to Python deprecation
-" Plug 'valloric/MatchTagAlways'
-" " highlights the XML/HTML tags that enclose your cursor location
-" let g:mta_filetypes = {
-"     \ 'html' : 1,
-"     \ 'xhtml' : 1,
-"     \ 'xml' : 1,
-"     \ 'jinja' : 1,
-"     \ 'django' : 1,
-"     \ 'htmldjango' : 1,
-"     \ 'eruby' : 1,
-"     \ 'html.handlebars' : 1,
-"     \}
 
 call plug#end()
 
@@ -426,7 +326,289 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+set completeopt=menu,menuone,noselect
+
 lua <<EOF
+  local luasnip = require("luasnip")
+
+  local cmp = require('cmp')
+  cmp.setup({
+    mapping = {
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+
+    -- The order of sources (by default) decides priority.i In addition to the name, you can specify:
+    -- `keyword_length = 5` the minimum number of characters required before completions from a given source are shown
+    -- `max_item_count = 3`
+    sources = cmp.config.sources({
+      -- this source already knows to only enable itself in the Lua filetype
+      { name = 'nvim_lua' },
+      { name = 'nvim_lsp' },
+      { name = 'path' },
+      { name = 'luasnip' },
+      { name = 'buffer', keyword_length = 5 },
+    }),
+
+    snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body)
+      end,
+    },
+
+    -- Determines look of the popup menu
+    formatting = {
+      format = function(entry, vim_item)
+        vim_item.menu = ({
+          nvim_lua = "[LUA]",
+          nvim_lsp = "[LSP]",
+          path = "[PATH]",
+          buffer = "[BUF]",
+        })[entry.source.name]
+
+        return vim_item
+      end
+    },
+  })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local runtime_path = vim.split(package.path, ';')
+  table.insert(runtime_path, "lua/?.lua")
+  table.insert(runtime_path, "lua/?/init.lua")
+  local lsp = require('lspconfig')
+
+  lsp.sumneko_lua.setup {
+    on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+      local opts = { noremap=true, silent=true }
+
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      buf_set_keymap('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+      buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+
+      buf_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+      buf_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+      buf_set_keymap('n', '<leader>dl', '<cmd>Telescope diagnostics<CR>', opts)
+
+      buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+      buf_set_keymap('n', '<leader>lm', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+      buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+
+      -- Uses the following highlight groups LspReferenceText LspReferenceRead LspReferenceWrite to highligh symbol under the cursor
+      if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+          [[
+            augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+          ]],
+          false
+        )
+      end
+    end,
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+          path = runtime_path,
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+    capabilities = capabilities
+  }
+
+  lsp.terraformls.setup {
+    on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+      local opts = { noremap=true, silent=true }
+
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      buf_set_keymap('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+      buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+
+      buf_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+      buf_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+      buf_set_keymap('n', '<leader>dl', '<cmd>Telescope diagnostics<CR>', opts)
+
+      buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+      buf_set_keymap('n', '<leader>lm', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+      buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+
+      -- Uses the following highlight groups LspReferenceText LspReferenceRead LspReferenceWrite to highligh symbol under the cursor
+      if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+          [[
+            augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+          ]],
+          false
+        )
+      end
+    end,
+    capabilities = capabilities
+  }
+  vim.cmd 'autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()'
+
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  lsp.jsonls.setup {
+    -- on_attach function runs inside of every buffer when the LSP gets attached to the buffer
+    on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+      local opts = { noremap=true, silent=true }
+
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      -- In neovim 0.7 this can change to:
+      -- vim.keymap.set('n', '<leader>ld', vim.lsp.buf.hover, {buffer=0}) -- buffer=0 means make keymapping attach to the current buffer
+      buf_set_keymap('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+      -- definition() adds the jump location to tag stack, so it's possible to go back with Ctrl-T (go back through tagstack) or Ctrl-O (go back through jumplist)
+      buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      -- jump to the type definition of a variable under cursor
+      buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+      -- go to implementation - makes particular sense for languages like Go
+      buf_set_keymap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+
+      buf_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+      buf_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+      -- Ctrl-q while in Telescope diagnostics puts the diagnostics list into the quickfix window
+      buf_set_keymap('n', '<leader>dl', '<cmd>Telescope diagnostics<CR>', opts)
+
+      buf_set_keymap('n', '<leader>lm', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      -- cool for example for organizing imports
+      buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+      buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+      buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+
+      -- Uses the following highlight groups LspReferenceText LspReferenceRead LspReferenceWrite to highligh symbol under the cursor
+      if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+          [[
+            augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+          ]],
+          false
+        )
+      end
+      local schemas = {
+      }
+    end,
+    settings = {
+      json = {
+        schemas = {
+          {
+            description = "NPM configuration file",
+            fileMatch = {
+              "package.json",
+            },
+            url = "https://json.schemastore.org/package.json",
+          }
+        },
+        {
+          description = "TypeScript compiler configuration file",
+          fileMatch = {
+            "tsconfig.json",
+            "tsconfig.*.json",
+          },
+          url = "https://json.schemastore.org/tsconfig.json",
+        },
+      },
+    },
+    capabilities = capabilities,
+  }
+
+  lsp.tsserver.setup {
+    on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+      local opts = { noremap=true, silent=true }
+
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      -- In neovim 0.7 this can change to:
+      -- vim.keymap.set('n', '<leader>ld', vim.lsp.buf.hover, {buffer=0}) -- buffer=0 means make keymapping attach to the current buffer
+      buf_set_keymap('n', '<leader>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+      -- definition() adds the jump location to tag stack, so it's possible to go back with Ctrl-T (go back through tagstack) or Ctrl-O (go back through jumplist)
+      buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      -- jump to the type definition of a variable under cursor
+      buf_set_keymap('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+      -- go to implementation - makes particular sense for languages like Go
+      buf_set_keymap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+
+      buf_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+      buf_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+      -- Ctrl-q while in Telescope diagnostics puts the diagnostics list into the quickfix window
+      buf_set_keymap('n', '<leader>dl', '<cmd>Telescope diagnostics<CR>', opts)
+
+      buf_set_keymap('n', '<leader>lm', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      -- cool for example for organizing imports
+      buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+      buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+      buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+
+      -- Uses the following highlight groups LspReferenceText LspReferenceRead LspReferenceWrite to highligh symbol under the cursor
+      if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec(
+          [[
+            augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+          ]],
+          false
+        )
+      end
+    end,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    capabilities = capabilities
+  }
+
+
   require('gitsigns').setup {
     -- extensive options available, see Github repo
     signs = {
@@ -474,8 +656,7 @@ highlight GitSignsDelete guifg=red ctermfg=red
 highlight ALEWarningSign ctermfg=226
 highlight ALEErrorSign ctermfg=red
 
-" Always show signcolumn, otherwise it would shift the text each time
-" diagnostics from ALE or Coc.nvim appear/disappear.
+" Always show signcolumn, otherwise it would shift the text each time diagnostics appear/disappear.
 set signcolumn=yes
 
 set backspace=start,eol,indent  " enable deleting past these (as normal editor would)
@@ -489,10 +670,6 @@ imap <C-v> <C-r><C-o>+
 
 set ttimeoutlen=100     " prevent lag before Shift-O
 
-set mouse=a             " enable mouse use in all modes
-if !has('nvim')
-  set ttymouse=sgr        " xterm2 causes mouse not to work past 220 column, see bug: http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
-endif
 
 set number              " show gutter with line numbers
 set cursorline          " highlight current line
@@ -510,12 +687,16 @@ set scrolloff=4         " keep at least 4 lines below/above the cursor
 
 set cpoptions+=$        " display $ when working with motions
 
-set smartindent         " autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
-set expandtab           " convert tabs to spaces
-set tabstop=2           " number of visual spaces per <tab>
-set softtabstop=2       " number of spaces in tab when *editing* (how many will be added or deleted)
-set shiftwidth=2        " >> indents by 2 spaces
-set shiftround          " >> indents to next multiple of 'shiftwidth'
+lua <<EOF
+vim.opt.mouse = "a"            -- enable mouse in all modes
+
+vim.opt.smartindent = true     -- autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
+vim.opt.expandtab = true       -- convert tabs to spaces
+vim.opt.tabstop = 2            -- number of visual spaces per <tab>
+vim.opt.softtabstop = 2        -- number of spaces in tab when *editing* (how many will be added or deleted)
+vim.opt.shiftwidth = 2         -- >> indents by 2 spaces
+vim.opt.shiftround = true      -- >> indents to next multiple of 'shiftwidth'
+EOF
 
 set history=1000        " command history
 set autoread            " autoread files that have changed outside of vim
@@ -523,12 +704,14 @@ set autoread            " autoread files that have changed outside of vim
 set lazyredraw          " speeds up vim. A lot!
 set ttyfast
 
-set splitbelow          " better splits (new windows appear below and to the right)
-set splitright
 
-set nobackup            " get rid of anoying ~file
-set nowritebackup
-set noswapfile
+
+lua <<EOF
+vim.opt.splitbelow = true   -- new windows appear below and to the right
+vim.opt.splitright = true
+vim.opt.writebackup = false -- no tilde files
+vim.opt.swapfile = false    --
+EOF
 
 set foldenable
 set foldmethod=expr
@@ -584,12 +767,12 @@ vnoremap > >gv
 vnoremap \< <gv
 
 " move line (or selected text) up and down
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+" nnoremap <A-j> :m .+1<CR>==
+" nnoremap <A-k> :m .-2<CR>==
+" inoremap <A-j> <Esc>:m .+1<CR>==gi
+" inoremap <A-k> <Esc>:m .-2<CR>==gi
+" vnoremap <A-j> :m '>+1<CR>gv=gv
+" vnoremap <A-k> :m '<-2<CR>gv=gv
 
 
 " --- BUFFERS ---
