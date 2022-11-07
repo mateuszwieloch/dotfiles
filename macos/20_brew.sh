@@ -24,7 +24,7 @@ brew install httpie
 brew install p7zip
 
 brew install rg   # grep replacement
-ln -s ~/code/dotfiles/.ripgreprc  ~/.ripgreprc
+ln -s ~/code/mateuszwieloch/dotfiles/.ripgreprc  ~/.ripgreprc
 
 brew install sd
 brew install tree
@@ -47,12 +47,12 @@ brew install --cask balenaetcher
 
 brew install --cask karabiner-elements
 mkdir -p ~/.config/karabiner
-ln -sf ~/code/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+ln -sf ~/code/mateuszwieloch/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
 brew install --cask keepingyouawake
 
 brew install --cask kitty
-ln -sf ~/code/dotfiles/.config/kitty/ ~/.config
+ln -sf ~/code/mateuszwieloch/dotfiles/.config/kitty/ ~/.config
 
 brew install --cask libreoffice
 
@@ -68,6 +68,6 @@ brew install --cask signal
 brew install --cask visual-studio-code
 
 brew install --cask vlc
-ln -sf ~/code/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc
+ln -sf ~/code/mateuszwieloch/dotfiles/vlcrc ~/Library/Preferences/org.videolan.vlc/vlcrc
 
 # }}}

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -x
 
 brew install git

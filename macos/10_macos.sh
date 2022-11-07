@@ -37,4 +37,4 @@ defaults write com.apple.finder QuitMenuItem -bool YES && killall Finder
 for app in Safari Finder Dock SystemUIServer; do killall "$app" >/dev/null 2>&1; done
 
 # sync system dictionary
-ln -sf ~/code/dotfiles/macos/Library/Spelling/LocalDictionary ~/Library/Spelling/LocalDictionary
+ln -sf ~/code/mateuszwieloch/dotfiles/macos/Library/Spelling/LocalDictionary ~/Library/Spelling/LocalDictionary
