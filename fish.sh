@@ -37,7 +37,8 @@ fi
 echo 'Symlinking fish config files...'
 set -x
 
-ln -s --force ~/code/mateuszwieloch/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
+# Note: macOS only supports -s and -f (not the variants with `--`)
+ln -s -f ~/code/mateuszwieloch/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
 
 rm -ri ~/.config/fish/functions
 ln -s ~/code/mateuszwieloch/dotfiles/.config/fish/functions/ ~/.config/fish/functions
