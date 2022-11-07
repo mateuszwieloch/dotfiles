@@ -10,14 +10,13 @@ if not command -sq exa
 end
 
 set --export BAT_STYLE numbers
+set --export BAT_THEME "Monokai Extended"
 
 
 # PATH
 set -l paths \
 ~/code/mateuszwieloch/dotfiles/bin \
 ~/bin \
-~/.local/bin \
-/usr/local/sbin \
 /usr/local/opt/coreutils/bin
 
 for p in $paths
@@ -45,6 +44,9 @@ end
 # load subdirectories of fish/functions
 set fish_function_path ~/.config/fish/functions/*/ $fish_function_path
 
+# load files in fish/local
+source ~/.config/fish/local/*.fish
+
 # for GPG to work with Fish
 set --export GPG_TTY (tty)
 
@@ -70,5 +72,3 @@ set --export FZF_DEFAULT_COMMAND "fd --type f"
 set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set --export FZF_CTRL_T_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black --preview 'bat --color=always --number {}'"
 set --export FZF_CTRL_R_OPTS "--height='90%' --color=dark,query:green,fg+:white:underline,hl+:bright-green:underline,bg+:black,hl:green:bold,gutter:black"
-
-source ~/.config/fish/local/*.fish
