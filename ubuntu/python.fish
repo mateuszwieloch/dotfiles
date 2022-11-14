@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 set -x
 
 # pip and venv - because Ubuntu comes without them! <facepalm>
