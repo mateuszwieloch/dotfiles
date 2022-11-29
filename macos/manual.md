@@ -22,38 +22,33 @@ Remove Siri and Spotlight icons (requires disabling System Integration Protectio
 
 
 ## Keyboard
-- in settings, go to Text tab and disable 'Capitalize words automatically', 'Add period with double-space', 'Use smart quotes and dashes'
-- in settings, go to Shortcuts and disable:
-    - Under Keyboard: Show/Hide Trackpad Handwriting (conflicts with IntelliJ)
-    - Under Services: Search man Page Index in Terminal (conflicts with FindAction in IntelliJ)
-    - Under Spotlight: Disable everything (use Alfred instead)
-- in settings, go to Input Sources tab and disable 'Show Input menu in menu bar'
-- disable Character Accent Menu with: `defaults write -g ApplePressAndHoldEnabled -bool false`
+From Spotlight/Alfred launch the Keyboard settings app and then:
+- Go to the Text tab and disable 'Capitalize words automatically', 'Add period with double-space', 'Use smart quotes and dashes'
+- Go to the Input Sources tab and disable 'Show Input menu in menu bar'
+- Go to the Shortcuts tab and disable:
+  - Under Keyboard: Show/Hide Trackpad Handwriting (conflicts with IntelliJ)
+  - Under Services: Search man Page Index in Terminal (conflicts with FindAction in IntelliJ)
+  - Under Spotlight: Disable everything (use Alfred instead)
+- Go to the Shortcuts tab -> App Shortcuts:
+  - All Applications
+    - Find... ^F
+    - Open Location... ^O
+    - Select Next Tab ^L
+    - Show Next Tab ^L
+    - Select Previous Tab ^H
+    - Show Previous Tab ^H
+    - New Tab ^T
+    - Duplicate Tab ^D
+    - Pin Tab ^;
+    - Close Tab ^W
+  - kitty.app
+    - Hide kitty <some ridiculous mapping>
+  - Obsidian.app
+    - Hide Obsidian <some ridiculous mapping>
+  - Visual Studio Code.app
+    - Hide Visual Studio Code <some ridiculous mapping>
 
-Safari.app:
-- Duplicate Tab ⌘D
-- Close Tab ⌘W
-- Show Next Tab ⌘L
-- Show Previous Tab ⌘H
-- Open Location... ⌘O
-- Pin Tab ⌘;  (⌘. doesn't work - probably a bug in Safari)
-- Unpin Tab ⌘;
-
-Chromium.app:
-- Duplicate Tab ⌘ShiftD
-- Select Next Tab ⌘L
-- Select Previous Tab ⌘H
-- Bookmark This Tab... (to free ⌘D)
-- Open Location... ⌘D (to work on Linux too)
-- Pin Tab ⌘;
-
-Utilities/Terminal.app:
-- Show Next Tab ⌘L
-- Show Previous Tab ⌘H
-
-kitty.app
-- Hide kitty <some ridiculous mapping>
-
+Then disable Character Accent Menu with: `defaults write -g ApplePressAndHoldEnabled -bool false`
 
 ## Finder
 - Preferences, set General->New Finder windows show: Downloads
