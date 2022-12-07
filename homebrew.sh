@@ -27,12 +27,16 @@ fi
   brew install asdf
   # for .nvmrc and .terraform-version support
   ln -sf ~/code/mateuszwieloch/dotfiles/.asdfrc ~/.asdfrc
+  # fish shell completions
+  ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 
   brew install bat  # cat replacement
   brew install exa  # ls replacement
   brew install fd   # find replacemnt
   brew install fzf
+  brew install gh
   brew install httpie
+  brew install jq
   brew install p7zip
 
   brew install rg   # grep replacement
