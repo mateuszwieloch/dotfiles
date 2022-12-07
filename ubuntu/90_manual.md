@@ -64,7 +64,10 @@ Ubuntu settings:
 
 [website](https://extensions.gnome.org) - don't forget to install browser extension to use it.
 
+To check GNOME version go to Settings -> About.
+
+Most useful extensions:
 * Sound Input & Output Device Chooser 
 * [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
 * [Espresso](https://extensions.gnome.org/extension/4135/espresso/)
-
+* [Panel Date Format](https://extensions.gnome.org/extension/3465/panel-date-format) Set format to `%F, %G` which translates to "2022-10-06, 12:56".
