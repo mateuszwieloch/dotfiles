@@ -33,7 +33,11 @@ fi
   brew install bat  # cat replacement
   brew install exa  # ls replacement
   brew install fd   # find replacemnt
+
   brew install fzf
+  # install keybindings
+  /home/linuxbrew/.linuxbrew/opt/fzf/install
+
   brew install gh
   brew install httpie
   brew install jq
