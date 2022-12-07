@@ -64,8 +64,7 @@ Ubuntu settings:
 
 [website](https://extensions.gnome.org) - don't forget to install browser extension to use it.
 
-* Remove Dropdown Arrows
 * Sound Input & Output Device Chooser 
 * [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
-* [Caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+* [Espresso](https://extensions.gnome.org/extension/4135/espresso/)
 
