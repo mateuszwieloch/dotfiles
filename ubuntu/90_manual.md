@@ -60,6 +60,9 @@ Ubuntu settings:
   Exec=nautilus --new-window /your/desired/directory
   ```
 
+## Brave Browser
+To remove Brave Search from application launcher, modify the `/usr/lib/pop-launcher/plugins/web/config.ron` file
+
 ## GNOME Extensions
 
 [website](https://extensions.gnome.org) - don't forget to install browser extension to use it.
