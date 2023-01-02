@@ -1,4 +1,4 @@
-#!/usr/bin/env kitty
+#!/usr/bin/env fish
 
 set_color black --background=yellow
 echo "Downloading and executing install script..."
