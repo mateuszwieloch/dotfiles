@@ -28,26 +28,18 @@ vim.keymap.set("n", "<leader>cr", ":let @+=expand('%')<cr>")
 -- Copy full filepath:line string eg. /full/path/to/file.txt:123
 vim.keymap.set("n", "<leader>cl", ":let @+=expand('%:p') . ':' . line('.')<cr>")
 
-------------
--- SEARCH --
-------------
+----------------------
+-- SEARCH & REPLACE --
+----------------------
 vim.keymap.set("n", "<bs>", ":noh<cr>")
 
--- TODO
--- set gdefault            " s/<pattern>/<replacement> has g flag set by default
---                         " (g means replace all occurences in line)
--- set incsearch           " highlights first match while still typing search term
--- set hlsearch            " highlights all matches after performing search
--- set ignorecase          " case insensitive pattern matching
--- set smartcase           " override ignorecase if pattern contains upcase
---
--- " double click highlights all occurences of word
--- map <2-LeftMouse> *
--- " in visual mode search for selection with //
--- vnoremap // y/<C-R>"<CR>
---
--- " backspace to remove search highlight
--- nnoremap <bs> :noh<cr>
+vim.opt.gdefault = true    -- s/<pattern>/<replacement> has g flag set by default
+                           -- (g means replace all occurences in line)
+vim.opt.ignorecase = true  -- case insensitive pattern matching
+vim.opt.smartcase = true   -- override ignorecase if pattern contains upcase
+
+-- double click highlights all occurences of a word
+vim.keymap.set("n", "<2-LeftMouse>", "*")
 
 -------------
 -- EDITING --
@@ -65,12 +57,12 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 -- TODO: allow Ctrl-v in insert mode
--- imap <C-v> <C-r><C-o>+
+-- vim.keymap.set("i", "<C-v>", "<C-r><C-o>+")
 
 vim.cmd("packadd! nvim-surround")
 require("nvim-surround").setup()
 -- Integrates with nvim-treesitter and nvim-treesitter-textobjects
--- 
+--
 
 vim.cmd("packadd! whitespace-nvim")
 local whitespace = require("whitespace-nvim")
@@ -113,9 +105,8 @@ vim.opt.softtabstop = 2        -- number of spaces in tab when *editing* (how ma
 vim.opt.shiftwidth = 2         -- >> indents by 2 spaces
 vim.opt.shiftround = true      -- >> indents to next multiple of 'shiftwidth'
 
--- TODO
--- set breakindent
--- set showbreak=\ \  " indent
+vim.opt.breakindent = true     -- Wrapped lines will continue visually indented
+vim.opt.showbreak="↳ "         -- Extra indent for wrapped lines
 
 -------------
 -- WINDOWS --
@@ -123,27 +114,43 @@ vim.opt.shiftround = true      -- >> indents to next multiple of 'shiftwidth'
 -- new windows appear below and to the right
 vim.opt.splitbelow = true
 vim.opt.splitright = true
--- split the window
+-- Split the window
 vim.keymap.set("n", "<A-v>", ":vsplit<cr>")
 vim.keymap.set("n", "<A-s>", ":split<cr>")
--- navigate between vim windows
+-- Navigate between vim windows
 vim.keymap.set({"n", "v"}, "<A-h>", "<C-W>h")
 vim.keymap.set({"n", "v"}, "<A-l>", "<C-W>l")
 vim.keymap.set({"n", "v"}, "<A-j>", "<C-W>j")
 vim.keymap.set({"n", "v"}, "<A-k>", "<C-W>k")
--- move the current vim window
+-- Move the current vim window
 vim.keymap.set({"n", "v"}, "<A-H>", "<C-W>H")
 vim.keymap.set({"n", "v"}, "<A-L>", "<C-W>L")
 vim.keymap.set({"n", "v"}, "<A-J>", "<C-W>J")
 vim.keymap.set({"n", "v"}, "<A-K>", "<C-W>K")
--- make windows equal size
+-- Make windows equal size
 vim.keymap.set({"n", "v"}, "<A-=>", "<C-W>=")
--- TODO
--- " make current window the only window on the screen
--- noremap <leader>wo <C-W>o
+-- Make current window the only window on the screen
+vim.keymap.set({"n", "v"}, "<A-o>", "<C-W>o")
+
+-------------
+-- BUFFERS --
+-------------
+-- nnoremap <leader>bs :b#<CR>
+-- nnoremap <leader>bn :bnext<CR>
+-- nnoremap <leader>bl :bnext<CR>
+-- nnoremap <leader>bp :bprev<CR>
+-- nnoremap <leader>bh :bprev<CR>
+-- nnoremap <leader>bd :bd<CR>
+
+----------
+-- TABS --
+----------
+--TODO
+-- nnoremap <leader>tn :tabe<CR>
+-- nnoremap <leader>tl :tabn<CR>
+-- nnoremap <leader>th :tabp<CR>
 -- " move current window to a new tab
 -- nnoremap <leader>wt <C-W>T
-
 
 -----------
 -- NETRW --
@@ -178,10 +185,10 @@ vim.opt.relativenumber = true
 vim.api.nvim_set_hl(0, "LineNr", { fg = "LightGray" })
 vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "gray" })
 vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "gray" })
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "gray28" })
 
 ---------
--- GIT --
----------
+-- GIT -- -------
 vim.cmd("packadd! gitsigns")
 require("gitsigns").setup()
 vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "green" })
@@ -239,5 +246,129 @@ require("treesitter-context").setup()
 -- set foldexpr=nvim_treesitter#foldexpr()
 -- set foldlevel=99
 
+-- nnoremap <leader>un :cnext<CR>
+-- nnoremap <leader>up :cprevious<CR>
+-- nnoremap <leader>uc :cclose<CR>
+
+-------------
+-- LUALINE --
+-------------
+vim.cmd("packadd! lualine")
+-- See `:help lualine.txt`
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'tokyonight',
+    component_separators = '|',
+    section_separators = '',
+  },
+}
+
+-----------------------
+-- LANGUAGE SPECIFIC --
+-----------------------
+local on_attach = function()
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=true})
+end
+-- JavaScript
+local ftJavaScript = vim.api.nvim_create_augroup("ftJavaScript", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "javascript",
+  group = ftJavaScript,
+  callback = function()
+    vim.keymap.set("n", "<leader>r", ":!node %<cr>")
+  end
+})
+
+-- Python
+-- Should call this within a FileType autocmd or put the call in a `ftplugin/<filetype_name>.lua`
+local ftNetrwGroup = vim.api.nvim_create_augroup("ftPython", { clear = true })
+vim.api.nvim_create_autocmd("FileType", { -- trigger whenever a filetype is set
+  pattern = "python",
+  group = ftPython,
+  callback = function()
+    -- run python3
+    vim.keymap.set("n", "<leader>r",
+      function()
+        if vim.api.nvim_buf_get_name(0) == '' then
+          local file_content = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false))
+          vim.notify(vim.fn.system({"python3", "-c", file_content}))
+        else
+          vim.notify(vim.cmd.write())
+          vim.notify(vim.fn.system({"python3", vim.fn.expand("%")}))
+        end
+      end,
+      { buffer=true }
+    )
+
+    vim.opt.colorcolumn = "91"
+
+    -- Pyright
+    local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
+    local project_root = vim.fs.dirname(vim.fs.find({'setup.py', 'pyproject.toml'}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
+
+    -- we can re-run it, because default impl reuses the client when name and root_dir match
+    local client_id = vim.lsp.start({
+      name = 'Python Pyright',
+      cmd = {'pyright-langserver', '--stdio'},
+      root_dir = project_root,
+      settings = { -- these are language server specific settings
+        python = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = "workspace",
+            useLibraryCodeForTypes = true
+          }
+        }
+      },
+      on_attach = on_attach
+    })
+    vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
+  end
+})
+
+---------
+-- LSP --
+---------
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {silent=true})
+-- open location list with a list of all issues
+vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, {silent=true})
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {silent=true})
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {silent=true})
+
+
+
+-- vim.cmd("packadd! nvim-lspconfig")
+-- lsp = require('lspconfig')
+--
+-- -- Installed with `brew install pyright`
+-- lsp.pyright.setup({
+--   --on_attach = function(client, bufnr)
+--   --end
+-- })
+-- :LspInfo
+
+-- vim.cmd("packadd! mason.nvim")
+-- vim.cmd("packadd! mason-lspconfig.nvim")
+-- -- Autocompletion
+-- vim.cmd("packadd! nvim-cmp")
+-- vim.cmd("packadd! cmp-buffer")
+-- vim.cmd("packadd! cmp-path")
+-- vim.cmd("packadd! cmp_luasnip")
+-- vim.cmd("packadd! cmp-nvim-lsp")
+-- vim.cmd("packadd! cmp-nvim-lua")
+-- -- Snippets
+-- vim.cmd("packadd! LuaSnip")
+-- vim.cmd("packadd! friendly-snippets")
+--
+-- vim.cmd("packadd! lsp-zero")
+--
+-- local lsp = require('lsp-zero')
+-- lsp.preset('recommended')
+-- lsp.set_preferences({
+--   set_lsp_keymaps = {omit = {'gr'}}
+-- })
+-- lsp.setup()
+-- -- keybindings: https://github.com/VonHeikemen/lsp-zero.nvim#default-keybindings-1
 
 vim.cmd.helptags("ALL")
