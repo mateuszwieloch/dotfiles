@@ -7,7 +7,7 @@ sudo ln -sf $HOMEBREW_PREFIX/bin/nvim /usr/bin/vi
 
 mkdir -p ~/.config/nvim/pack
 ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua
-ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/plugin-install.fish ~/.config/nvim/plugin-install.fish
+ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/lazy-lock.json ~/.config/nvim/lazy-lock.json
 
 
 # On Linux with X11 the clipboard feature requires xclip

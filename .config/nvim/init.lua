@@ -1,10 +1,198 @@
+-- Needs to be set before loading external code so that mappings are correct
 vim.g.mapleader = " "
 
--------------
--- GENERAL --
--------------
--- Support for the filepath:line format when opening neovim
-vim.cmd("packadd! vim-fetch")
+--------------------
+-- PLUGIN MANAGER --
+--------------------
+-- Auto-install lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- :Lazy to open the UI.
+-- Automatically checks for updates and installs missing plugins.
+-- Has support for installing a specific SemVer of a plugin and lockfile `lazy-lock.json`.
+-- Can lazy-loade on events, commands, filetypes, and key mappings. UI shows what caused a plugin to be loaded.
+require("lazy").setup({
+  "wsdjeg/vim-fetch",
+  -- Support for the filepath:line format when opening neovim
+
+  -- EDITING --
+  -------------
+  {
+    "kylechui/nvim-surround",
+    -- Manipulating surroundind delimiter pairs. Integrates with nvim-treesitter and nvim-treesitter-textobjects.
+    -- Default aliases q = `/'/", b = ), B = }, r = ],
+    -- f is for function call
+    -- yss surrounds the current line
+    -- ySS surrounds the current line but adds delimiter pair on lines above and below.
+    -- Examples:
+    -- ysiw)  yes surround inner word with )
+    -- yssf   surround current line with a function call
+    -- csq"   change surrounding quotes into "
+    -- csth1  change surrounding tag into h1
+    -- ds]    delete surrounding ]
+    -- viwSb  visual inner work surround with bracket )
+    config = function()
+      require("nvim-surround").setup()
+    end
+  },
+  {
+    "johnfrankmorgan/whitespace.nvim",
+    -- Highlights trailing whitespace. Exposes a function to delete it.
+    config = function()
+      local whitespace = require("whitespace-nvim")
+      whitespace.setup()
+      vim.api.nvim_create_user_command("TrimWhitespace", whitespace.trim, {})
+    end
+  },
+  {
+    "numToStr/Comment.nvim",
+    -- Combine with https://github.com/JoosepAlviste/nvim-ts-context-commentstring if there are nested languages (common in web development)
+    -- gcc for line comment
+    -- gbc for block comment
+    -- gcO open comment above
+    -- gcA append comment
+    config = function()
+      require("Comment").setup()
+    end
+  },
+  {
+    "gbprod/substitute.nvim",
+    -- New operator and motions to perform quick substitutions and exchanges (not configured).
+    -- `s` gets shadowed, so you need to use `cl` to do it now
+    config = function()
+      vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
+      vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
+      vim.keymap.set("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
+      vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+    end
+  },
+
+  -- COLOR SCHEMES --
+  -------------------
+  -- Main colorscheme has to be loaded first, which can be achieved with `priority=1000`
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      vim.cmd.colorscheme("tokyonight")
+
+      vim.opt.number = true
+      vim.opt.relativenumber = true
+
+      vim.api.nvim_set_hl(0, "LineNr", { fg = "LightGray" })
+      vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "gray" })
+      vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "gray" })
+      vim.api.nvim_set_hl(0, "ColorColumn", { bg = "gray28" })
+
+      vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "green" })
+      vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "gold2" })
+    end
+  },
+
+  -- TEXT OBJECTS --
+  ------------------
+  -- ae  entire file
+  -- ie  entire file but skip empty lines at beginning and end
+  { "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } },
+  -- ai ii  around(with whitespace around)/inside indent
+  { "kana/vim-textobj-indent", dependencies = { "kana/vim-textobj-user" } },
+  -- al il  around(with whitespace around)/inside line
+  { "kana/vim-textobj-line", dependencies = { "kana/vim-textobj-user" } },
+
+  -- GIT --
+  ---------
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end
+  },
+
+  -- STATUS LINE --
+  -----------------
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      -- See `:help lualine.txt`
+      require('lualine').setup {
+        options = {
+          icons_enabled = false,
+          theme = 'tokyonight',
+          component_separators = '|',
+          section_separators = '',
+        },
+      }
+    end
+  },
+
+  -- TELESCOPE --
+  ---------------
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    config = function()
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+      vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+    end
+  },
+
+  -- HARPOON
+  -- Saves marks *per project*
+  -- Saves position in file on buffer change and quit/exit
+  --{ "https://github.com/ThePrimeagen/harpoon" },
+
+  -- TREESITTER --
+  ----------------
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      -- nvim-ts-autotag - optional extension to autoclose and autorename html tags
+      -- p00f/nvim-ts-rainbow - rainbow parantheses
+      -- :TSUpdate       Needs to happen when treesitter is upgraded
+      -- :TSInstallInfo  A list of all available languages and their installation status
+      -- :TSModuleInfo   A table showing what modules are enabled for what languages
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "bash", "css", "dockerfile", "fish", "gitcommit", "gitignore", "help", "html", "javascript", "json", "json5", "jsonc", "lua", "markdown", "markdown_inline", "python", "toml", "typescript", "vim", "yaml" },
+        sync_install = false,
+
+        -- Automatically install missing parsers when entering buffer
+        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+        auto_install = true,
+
+        highlight = {
+          enable = true,
+        },
+
+        indent = {
+          enable = true
+        },
+      })
+    end
+  },
+  { "nvim-treesitter/nvim-treesitter-textobjects" },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup()
+    end
+  }
+})
 
 vim.opt.clipboard = "unnamedplus"  -- Always use the OS clipboard
 
@@ -56,44 +244,6 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 -- Stay in visual mode after indenting
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
--- TODO: allow Ctrl-v in insert mode
--- vim.keymap.set("i", "<C-v>", "<C-r><C-o>+")
-
-vim.cmd("packadd! nvim-surround")
-require("nvim-surround").setup()
--- Integrates with nvim-treesitter and nvim-treesitter-textobjects
---
-
-vim.cmd("packadd! whitespace-nvim")
-local whitespace = require("whitespace-nvim")
-whitespace.setup()
-vim.api.nvim_create_user_command("TrimWhitespace", whitespace.trim, {})
-
-vim.cmd("packadd! comment")
-require("Comment").setup()
--- Combine with https://github.com/JoosepAlviste/nvim-ts-context-commentstring if there are nested languages (common in web development)
--- gcc for line comment
--- gbc for block comment
--- gcO open comment above
--- gcA append comment
-
-vim.cmd("packadd! vim-ReplaceWithRegister")
-
--------------
--- TEXT OBJECTS
-------------------
-vim.cmd("packadd! vim-textobj-user")
--- Prerequisite of the ones below
-
-vim.cmd("packadd! vim-textobj-entire")
--- ae  entire file
--- ie  entire file but skip empty lines at beginning and end
-
-vim.cmd("packadd! vim-textobj-indent")
--- ai ii  around(with whitespace around)/inside indent
-
-vim.cmd("packadd! vim-textobj-line")
--- al il  around(with whitespace around)/inside line
 
 -------------
 -- INDENTS --
@@ -174,96 +324,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 -- vim.g.netrw_banner = 0
 
--------------------
--- COLOR SCHEMES --
--------------------
-vim.cmd("packadd! tokyonight")
-vim.cmd("packadd! rose-pine")
-vim.cmd.colorscheme("tokyonight")
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.api.nvim_set_hl(0, "LineNr", { fg = "LightGray" })
-vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "gray" })
-vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "gray" })
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = "gray28" })
-
----------
--- GIT -- -------
-vim.cmd("packadd! gitsigns")
-require("gitsigns").setup()
-vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "green" })
-vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "gold2" })
-
--------------
--- HARPOON --
--------------
--- TODO: should I use this?
--- Saves marks *per project*
--- Saves position in file on buffer change and quit/exit
-
----------------
--- TELESCOPE --
----------------
-vim.cmd("packadd! plenary")
-vim.cmd("packadd! telescope") -- requires plenary.nvim
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-
-----------------
--- TREESITTER --
-----------------
--- nvim-ts-autotag - optional extension to autoclose and autorename html tags
--- p00f/nvim-ts-rainbow - rainbow parantheses
-vim.cmd("packadd! treesitter")
--- :TSUpdate       Needs to happen when treesitter is upgraded
--- :TSInstallInfo  A list of all available languages and their installation status
--- :TSModuleInfo   A table showing what modules are enabled for what languages
-require("nvim-treesitter.configs").setup({
-  ensure_installed = { "bash", "css", "dockerfile", "fish", "gitcommit", "gitignore", "help", "html", "javascript", "json", "json5", "jsonc", "lua", "markdown", "markdown_inline", "python", "toml", "typescript", "vim", "yaml" },
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-
-  highlight = {
-    enable = true,
-  },
-
-  indent = {
-    enable = true
-  },
-})
-vim.cmd("packadd! treesitter-context")
-require("treesitter-context").setup()
--- TODO: add https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-
--- TODO
--- set foldmethod=expr
--- set foldexpr=nvim_treesitter#foldexpr()
--- set foldlevel=99
-
--- nnoremap <leader>un :cnext<CR>
--- nnoremap <leader>up :cprevious<CR>
--- nnoremap <leader>uc :cclose<CR>
-
--------------
--- LUALINE --
--------------
-vim.cmd("packadd! lualine")
--- See `:help lualine.txt`
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'tokyonight',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
-
 -----------------------
 -- LANGUAGE SPECIFIC --
 -----------------------
@@ -282,7 +342,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Python
 -- Should call this within a FileType autocmd or put the call in a `ftplugin/<filetype_name>.lua`
-local ftNetrwGroup = vim.api.nvim_create_augroup("ftPython", { clear = true })
+local ftPython = vim.api.nvim_create_augroup("ftPython", { clear = true })
 vim.api.nvim_create_autocmd("FileType", { -- trigger whenever a filetype is set
   pattern = "python",
   group = ftPython,
