@@ -96,6 +96,11 @@ require("lazy").setup({
 
       vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "green" })
       vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "gold2" })
+
+      -- word diff in buffer
+      vim.api.nvim_set_hl(0, "GitSignsAddLnInline", { bg = "DarkGreen" })
+      vim.api.nvim_set_hl(0, "GitSignsChangeLnInline", { bg = "gold3" })
+      vim.api.nvim_set_hl(0, "GitSignsDeleteLnInline", { bg = "maroon" })
     end
   },
 
@@ -113,8 +118,36 @@ require("lazy").setup({
   ---------
   {
     "lewis6991/gitsigns.nvim",
+    -- Provides signs in the signcolumn to show changed/added/removed lines.
+    -- Mappings for hunks to stage, undo or reset them.
+    -- TODO: Integrates with status line and null-fs.
+    -- :Gitsigns toggle_word_diff
+    -- :Gitsigns diffthis
+    -- :Gitsigns toggle_current_line_blame
+    -- :Gitsigns toggle_deleted
+    -- :Gitsigns preview_hunk or preview_hunk_inline (and then navigate with ]h and [h) to preview changes
     config = function()
-      require("gitsigns").setup()
+      require("gitsigns").setup({
+        current_line_blame_opts = {
+          delay = 10
+        },
+        current_line_blame_formatter = '<author> <author_time:%Y-%m-%d> <summary>',
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+
+          vim.keymap.set('n', ']h', function()
+            if vim.wo.diff then return ']h' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+          end, {buffer=bufnr, expr=true})
+
+          vim.keymap.set('n', '[h', function()
+            if vim.wo.diff then return '[h' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+          end, {buffer=bufnr, expr=true})
+        end
+      })
     end
   },
 
@@ -139,9 +172,7 @@ require("lazy").setup({
   ---------------
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim"
-    },
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
