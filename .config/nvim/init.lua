@@ -382,12 +382,28 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 -- vim.g.netrw_banner = 0
 
+------------------
+-- LSP (common) --
+------------------
+local on_attach = function()
+  -- Diagnostics
+  vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {silent=true})
+  -- open location list with a list of all issues
+  vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, {silent=true})
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {silent=true})
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {silent=true})
+
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=true})
+  vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", {buffer=true}) -- Jump to the definition
+  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", {buffer=true}) -- Jump to declaration
+  vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", {buffer=true}) -- Find all references
+end
+
 -----------------------
 -- LANGUAGE SPECIFIC --
 -----------------------
-local on_attach = function()
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=true})
-end
+-- Based on: https://dev.to/vonheikemen/can-we-manage-neovims-lsp-client-without-plugins-3mge
+
 -- JavaScript
 local ftJavaScript = vim.api.nvim_create_augroup("ftJavaScript", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
@@ -398,10 +414,46 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+-- Lua
+local ftLua = vim.api.nvim_create_augroup("ftLua", { clear = true })
+vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
+  pattern = "lua",
+  group = ftLua,
+  callback = function()
+    vim.lsp.set_log_level(vim.log.levels.INFO)
+    local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
+    local project_root = vim.fs.dirname(vim.fs.find({".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml"}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
+    -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
+    local client_id = vim.lsp.start({
+      name = "Sumneko Lua (lua-language-server)",
+      cmd = {"lua-language-server"},
+      root_dir = project_root,
+      settings = { -- these are language server specific settings
+        Lua = {
+          runtime = {
+            version = 'LuaJIT',
+          },
+          diagnostics = {
+            globals = {'vim'}, -- Get the language server to recognize the `vim` global
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true), -- Make the server aware of Neovim runtime files
+          },
+          telemetry = {
+            enable = false, -- Do not send telemetry data containing a randomized but unique identifier
+          },
+        }
+      },
+      on_attach = on_attach
+    })
+    vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
+  end
+})
+
 -- Python
 -- Should call this within a FileType autocmd or put the call in a `ftplugin/<filetype_name>.lua`
 local ftPython = vim.api.nvim_create_augroup("ftPython", { clear = true })
-vim.api.nvim_create_autocmd("FileType", { -- trigger whenever a filetype is set
+vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
   pattern = "python",
   group = ftPython,
   callback = function()
@@ -425,7 +477,7 @@ vim.api.nvim_create_autocmd("FileType", { -- trigger whenever a filetype is set
     local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
     local project_root = vim.fs.dirname(vim.fs.find({'setup.py', 'pyproject.toml'}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
 
-    -- we can re-run it, because default impl reuses the client when name and root_dir match
+    -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
     local client_id = vim.lsp.start({
       name = 'Python Pyright',
       cmd = {'pyright-langserver', '--stdio'},
@@ -448,11 +500,6 @@ vim.api.nvim_create_autocmd("FileType", { -- trigger whenever a filetype is set
 ---------
 -- LSP --
 ---------
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {silent=true})
--- open location list with a list of all issues
-vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, {silent=true})
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {silent=true})
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {silent=true})
 
 
 
