@@ -71,12 +71,23 @@ require("lazy").setup({
     -- New operator and motions to perform quick substitutions and exchanges (not configured).
     -- `s` gets shadowed, so you need to use `cl` to do it now
     config = function()
-      vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
-      vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
-      vim.keymap.set("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
-      vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+      vim.keymap.set("n", "s", require("substitute").operator, { noremap = true })
+      vim.keymap.set("n", "ss", require("substitute").line, { noremap = true })
+      vim.keymap.set("n", "S", require("substitute").eol, { noremap = true })
+      vim.keymap.set("x", "s", require("substitute").visual, { noremap = true })
     end
   },
+  {
+    "fedepujol/move.nvim",
+    -- Move current/selected line(s)
+    config = function()
+      vim.keymap.set('n', '<C-j>', ':MoveLine(1)<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<C-k>', ':MoveLine(-1)<CR>', { noremap = true, silent = true })
+      vim.keymap.set('v', '<C-j>', ':MoveBlock(1)<CR>', { noremap = true, silent = true })
+      vim.keymap.set('v', '<C-k>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
+    end
+  },
+
 
   -- COLOR SCHEMES --
   -------------------
@@ -195,7 +206,6 @@ require("lazy").setup({
     dependencies = { "nvim-treesitter-textobjects" },
     config = function()
       -- nvim-ts-autotag - optional extension to autoclose and autorename html tags
-      -- p00f/nvim-ts-rainbow - rainbow parantheses
       -- :TSUpdate       Needs to happen when treesitter is upgraded
       -- :TSInstallInfo  A list of all available languages and their installation status
       -- :TSModuleInfo   A table showing what modules are enabled for what languages
@@ -292,13 +302,6 @@ vim.keymap.set("n", "<2-LeftMouse>", "*")
 -------------
 -- Keep clipboard contents when pasting in visual mode
 vim.keymap.set("x", "p", "pgvy")
--- Move line (or selected text) up and down
-vim.keymap.set("n", "<C-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<C-k>", ":m .-2<CR>==")
-vim.keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi")
-vim.keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi")
-vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 -- Stay in visual mode after indenting
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
@@ -394,9 +397,9 @@ local on_attach = function()
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {silent=true})
 
   vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=true})
-  vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", {buffer=true}) -- Jump to the definition
-  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", {buffer=true}) -- Jump to declaration
-  vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", {buffer=true}) -- Find all references
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=true}) -- Jump to the definition
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {buffer=true}) -- Jump to declaration
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, {buffer=true}) -- Find all references
 end
 
 -----------------------

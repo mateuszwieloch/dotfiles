@@ -3,6 +3,7 @@
   "gitsigns.nvim": { "branch": "main", "commit": "81641791439bc8f0ceb3691d62b95c8e646f3771" },
   "lazy.nvim": { "branch": "main", "commit": "c85f929bd98032b35e09fbc5a510884caaa8a5c3" },
   "lualine.nvim": { "branch": "master", "commit": "32a7382a75a52e8ad05f4cec7eeb8bbfbe80d461" },
+  "move.nvim": { "branch": "main", "commit": "2cd533590a133ae5fe751ca8081cd1a2047d7c7f" },
   "nvim-surround": { "branch": "main", "commit": "ad56e6234bf42fb7f7e4dccc7752e25abd5ec80e" },
   "nvim-treesitter": { "branch": "master", "commit": "8c71c6c5edfa447aaa867858e2e913340ea964b7" },
   "nvim-treesitter-context": { "branch": "master", "commit": "4842abe5bd1a0dc8b67387cc187edbabc40925ba" },
