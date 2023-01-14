@@ -70,6 +70,13 @@ To remove Brave Search from application launcher, modify the `/usr/lib/pop-launc
 To check GNOME version go to Settings -> About.
 
 Most useful extensions:
+* [Auto Move Windows](https://extensions.gnome.org/extension/16/auto-move-windows/)
+  * 1 terminal
+  * 2 browser
+  * 3 media (FreeTube, ebook reader)
+  * 4 notes
+  * 5 IMs
+* [Emoji selector](https://extensions.gnome.org/extension/1162/emoji-selector/)
 * Sound Input & Output Device Chooser 
 * [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
 * [Espresso](https://extensions.gnome.org/extension/4135/espresso/)
