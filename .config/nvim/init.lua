@@ -445,6 +445,7 @@ vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
           },
           workspace = {
             library = vim.api.nvim_get_runtime_file("", true), -- Make the server aware of Neovim runtime files
+            checkThirdParty = false,  -- Removes the "Do you need to configure your work environment as xyz" error
           },
           telemetry = {
             enable = false, -- Do not send telemetry data containing a randomized but unique identifier
