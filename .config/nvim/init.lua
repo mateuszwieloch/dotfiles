@@ -26,6 +26,10 @@ require("lazy").setup({
   "wsdjeg/vim-fetch",
   -- Support for the filepath:line format when opening neovim
 
+  "lambdalisue/suda.vim",
+  -- :SudaWrite to write read-only file
+
+
   -- EDITING --
   -------------
   {

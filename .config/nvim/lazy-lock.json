@@ -12,6 +12,7 @@
   "substitute.nvim": { "branch": "main", "commit": "e63afff1ab385bb210a97bbafa23ba05bdc336b7" },
   "telescope.nvim": { "branch": "master", "commit": "04af51dbfb17c2afa0b8d82b0e842e0638201ca9" },
   "tokyonight.nvim": { "branch": "main", "commit": "def91651c41f6d1d43ebcb50763324d35331baee" },
+  "suda.vim": { "branch": "master", "commit": "08abd39dfe1cee681b8ce3e7321da5fa03e045c1" },
   "vim-fetch": { "branch": "master", "commit": "0a6ab17e84c7f4808bf05ec380121bce40b40d21" },
   "vim-textobj-entire": { "branch": "master", "commit": "64a856c9dff3425ed8a863b9ec0a21dbaee6fb3a" },
   "vim-textobj-indent": { "branch": "master", "commit": "deb76867c302f933c8f21753806cbf2d8461b548" },
