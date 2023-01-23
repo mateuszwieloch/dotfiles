@@ -26,7 +26,13 @@ Metrics/BlockLength:
   Exclude:
     - "spec/**.rb"
 
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/GuardClause:
