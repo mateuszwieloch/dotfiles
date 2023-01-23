@@ -584,43 +584,52 @@ vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
   end
 })
 
----------
--- LSP --
----------
+-- Ruby
+-- Should call this within a FileType autocmd or put the call in a `ftplugin/ruby.lua`
+local ftRuby = vim.api.nvim_create_augroup("ftRuby", { clear = true })
+vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
+  pattern = "ruby",
+  group = ftRuby,
+  callback = function()
+    vim.keymap.set("n", "<leader>r",
+      function()
+        if vim.api.nvim_buf_get_name(0) == '' then
+          vim.notify("Save file to run ruby")
+        else
+          vim.notify(vim.cmd.write())
+          vim.notify(vim.fn.system({"ruby", vim.fn.expand("%")}))
+        end
+      end,
+      { buffer=true }
+    )
 
+    -- Solargraph Language Server
+    local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
+    local project_root = vim.fs.dirname(vim.fs.find({'.git', 'Gemfile'}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
 
+    -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
+    local client_id = vim.lsp.start({
+      name = 'Ruby Solargraph',
+      cmd = {'solargraph', 'stdio'},
+      root_dir = project_root,
+      settings = { -- these are language server specific settings
+        solargraph = {
+          diagnostics = true,
+          completion = true,
+          flags = {
+            debounce_text_changes = 150
+          },
+          initializationOptions = {
+            formatting = true
+          }
+        }
+      },
+      on_attach = on_attach,
+      capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    })
+    vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
+  end
+})
 
--- vim.cmd("packadd! nvim-lspconfig")
--- lsp = require('lspconfig')
---
--- -- Installed with `brew install pyright`
--- lsp.pyright.setup({
---   --on_attach = function(client, bufnr)
---   --end
--- })
--- :LspInfo
-
--- vim.cmd("packadd! mason.nvim")
--- vim.cmd("packadd! mason-lspconfig.nvim")
--- -- Autocompletion
--- vim.cmd("packadd! nvim-cmp")
--- vim.cmd("packadd! cmp-buffer")
--- vim.cmd("packadd! cmp-path")
--- vim.cmd("packadd! cmp_luasnip")
--- vim.cmd("packadd! cmp-nvim-lsp")
--- vim.cmd("packadd! cmp-nvim-lua")
--- -- Snippets
--- vim.cmd("packadd! LuaSnip")
--- vim.cmd("packadd! friendly-snippets")
---
--- vim.cmd("packadd! lsp-zero")
---
--- local lsp = require('lsp-zero')
--- lsp.preset('recommended')
--- lsp.set_preferences({
---   set_lsp_keymaps = {omit = {'gr'}}
--- })
--- lsp.setup()
--- -- keybindings: https://github.com/VonHeikemen/lsp-zero.nvim#default-keybindings-1
 
 vim.cmd.helptags("ALL")
