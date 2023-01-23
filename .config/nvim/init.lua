@@ -274,7 +274,70 @@ require("lazy").setup({
     config = function()
       require("treesitter-context").setup({ mode = 'topline' })
     end
-  }
+  },
+
+  -- COMPLETIONS --
+  -----------------
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
+    config = function()
+      vim.opt.completeopt = "menu,menuone,noselect"
+
+      local cmp = require("cmp")
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-a>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- `select=false` to only confirm explicitly selected items.
+        }),
+
+        sources = cmp.config.sources(
+          {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+          },
+          {
+            { name = 'buffer' },
+          }
+        )
+      })
+
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline' }
+        })
+      })
+
+    end
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    config = function()
+      local cmp = require("cmp")
+    end
+  },
 })
 
 vim.opt.clipboard = "unnamedplus"  -- Always use the OS clipboard
@@ -403,7 +466,7 @@ vim.api.nvim_create_autocmd("FileType", {
 ------------------
 -- LSP (common) --
 ------------------
-local on_attach = function()
+local on_attach = function(_, bufnr)
   -- Diagnostics
   vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {silent=true})
   -- open location list with a list of all issues
@@ -415,6 +478,9 @@ local on_attach = function()
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=true}) -- Jump to the definition
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {buffer=true}) -- Jump to declaration
   vim.keymap.set("n", "gr", vim.lsp.buf.references, {buffer=true}) -- Find all references
+
+  -- configure function signature
+  require "lsp_signature".on_attach({}, bufnr)
 end
 
 -----------------------
@@ -463,7 +529,8 @@ vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
           },
         }
       },
-      on_attach = on_attach
+      on_attach = on_attach,
+      capabilities = require('cmp_nvim_lsp').default_capabilities(),
     })
     vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
   end
@@ -510,7 +577,8 @@ vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
           }
         }
       },
-      on_attach = on_attach
+      on_attach = on_attach,
+      capabilities = require('cmp_nvim_lsp').default_capabilities(),
     })
     vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
   end
