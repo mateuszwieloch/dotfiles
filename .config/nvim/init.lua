@@ -82,13 +82,24 @@ require("lazy").setup({
     end
   },
   {
-    "fedepujol/move.nvim",
+    "echasnovski/mini.move",
     -- Move current/selected line(s)
     config = function()
-      vim.keymap.set('n', '<C-j>', ':MoveLine(1)<CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<C-k>', ':MoveLine(-1)<CR>', { noremap = true, silent = true })
-      vim.keymap.set('v', '<C-j>', ':MoveBlock(1)<CR>', { noremap = true, silent = true })
-      vim.keymap.set('v', '<C-k>', ':MoveBlock(-1)<CR>', { noremap = true, silent = true })
+      require('mini.move').setup({
+        mappings = {
+          -- Move visual selection
+          left = '',
+          right = '',
+          down = '<C-j>',
+          up = '<C-k>',
+
+          -- Move current line in Normal mode
+          line_left = '',
+          line_right = '',
+          line_down = '<C-j>',
+          line_up = '<C-k>',
+        },
+      })
     end
   },
 
