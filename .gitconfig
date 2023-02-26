@@ -1,6 +1,7 @@
 [user]
 	name = Mateusz Wieloch
-	email = github@mateuszwieloch.com
+  # auto-generated no-reply GitHub email address
+	email = 9206426+mateuszwieloch@users.noreply.github.com
 [pull]
 	ff = only
 [push]
