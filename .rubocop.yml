@@ -1,7 +1,7 @@
 AllCops:
   Exclude:
     - "spec/spec_helper.rb"
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.2
 
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
@@ -19,6 +19,9 @@ Layout/ExtraSpacing:
 Layout/SpaceAroundEqualsInParameterDefault:
   Enabled: false
 
+Layout/SpaceAroundOperators:
+  Enabled: false
+
 Layout/SpaceInsideHashLiteralBraces:
   Enabled: false
 
@@ -26,7 +29,10 @@ Metrics/BlockLength:
   Exclude:
     - "spec/**.rb"
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/CaseLikeIf:
   Enabled: false
 
 Style/Documentation:
@@ -36,6 +42,10 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/GuardClause:
+  Enabled: false
+
+# a, b = foo1, foo2
+Style/ParallelAssignment:
   Enabled: false
 
 Style/RedundantSelf:

@@ -237,7 +237,8 @@ require("lazy").setup({
         },
 
         indent = {
-          enable = true
+          enable = true,
+          disable = {"ruby"}
         },
 
         -- From the nvim-treesitter/nvim-treesitter-textobjects plugin
@@ -478,6 +479,8 @@ local on_attach = function(_, bufnr)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=true}) -- Jump to the definition
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {buffer=true}) -- Jump to declaration
   vim.keymap.set("n", "gr", vim.lsp.buf.references, {buffer=true}) -- Find all references
+
+  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, {buffer=true})
 
   -- configure function signature
   require "lsp_signature".on_attach({}, bufnr)
