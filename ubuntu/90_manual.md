@@ -1,3 +1,39 @@
+## GNOME
+
+To check GNOME version go to Settings -> About.
+
+### Settings
+* Font size can be increased in Tweaks app->Fonts
+* Settings -> Power -> Suspend & Power Button -> enable 'Show Battery Percentage'
+* In the terminal, run `ibus-setup` and remove keyboard shortcuts for emojis and unicode points. They interfere with VSCode.
+
+### Extensions
+
+[website](https://extensions.gnome.org) - don't forget to install browser extension to use it.
+
+Most useful extensions:
+* [Auto Move Windows](https://extensions.gnome.org/extension/16/auto-move-windows/)
+  * 1 terminal
+  * 2 browser
+  * 3 media (FreeTube, ebook reader)
+  * 4 notes
+  * 5 IMs
+* [Tiling Assistant](https://extensions.gnome.org/extension/3733/tiling-assistant/) - mostly for Magnet-like snapping to corners, but can handle any layout
+* [Unite](https://extensions.gnome.org/extension/1287/unite/) - removes window bar when at the top of the primary screen.
+* [Emoji selector](https://extensions.gnome.org/extension/1162/emoji-selector/) Set to Super+E keyboard shortcut. Unfortunatly it only copies the emoji instead of auto pasting it.
+* [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
+* [Panel Date Format](https://extensions.gnome.org/extension/3465/panel-date-format) Set format to `%F, %G` which translates to "2022-10-06, 12:56".
+* [Espresso](https://extensions.gnome.org/extension/4135/espresso/) or [Caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+* [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
+* [Bluetooth Quick Connect](https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/) - allows to connect to paired devices right from the control panel
+
+
+
+## Brave Browser
+To remove Brave Search from application launcher, modify the `/usr/lib/pop-launcher/plugins/web/config.ron` file
+
+
+
 ## Ungoogled Chrome
 
 ### Change settings
@@ -48,7 +84,6 @@ Extensions:
 Ubuntu settings:
 
 * Accessibility -> Repeat keys (click) -> make delay shorter and repeat faster
-* Power -> Suspend & Power Button -> enable 'Show Battery Percentage'
 * To open Nautilus file manager in a custom directory:
   ```
   cp /usr/share/applications/org.gnome.Nautilus.desktop ~/.local/share/applications/
@@ -59,25 +94,3 @@ Ubuntu settings:
   ```
   Exec=nautilus --new-window /your/desired/directory
   ```
-
-## Brave Browser
-To remove Brave Search from application launcher, modify the `/usr/lib/pop-launcher/plugins/web/config.ron` file
-
-## GNOME Extensions
-
-[website](https://extensions.gnome.org) - don't forget to install browser extension to use it.
-
-To check GNOME version go to Settings -> About.
-
-Most useful extensions:
-* [Auto Move Windows](https://extensions.gnome.org/extension/16/auto-move-windows/)
-  * 1 terminal
-  * 2 browser
-  * 3 media (FreeTube, ebook reader)
-  * 4 notes
-  * 5 IMs
-* [Emoji selector](https://extensions.gnome.org/extension/1162/emoji-selector/)
-* Sound Input & Output Device Chooser 
-* [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
-* [Espresso](https://extensions.gnome.org/extension/4135/espresso/)
-* [Panel Date Format](https://extensions.gnome.org/extension/3465/panel-date-format) Set format to `%F, %G` which translates to "2022-10-06, 12:56".
