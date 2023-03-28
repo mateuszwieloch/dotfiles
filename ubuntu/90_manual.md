@@ -24,6 +24,7 @@ Most useful extensions:
 * [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
 * [Panel Date Format](https://extensions.gnome.org/extension/3465/panel-date-format) Set format to `%F, %G` which translates to "2022-10-06, 12:56".
 * [Espresso](https://extensions.gnome.org/extension/4135/espresso/) or [Caffeine](https://extensions.gnome.org/extension/517/caffeine/)
+* [Brightness control using ddcutil](https://extensions.gnome.org/extension/2645/brightness-control-using-ddcutil/)
 * [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
 * [Bluetooth Quick Connect](https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/) - allows to connect to paired devices right from the control panel
 
