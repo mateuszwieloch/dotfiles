@@ -19,6 +19,7 @@ Most useful extensions:
   * 4 notes
   * 5 IMs
 * [Tiling Assistant](https://extensions.gnome.org/extension/3733/tiling-assistant/) - mostly for Magnet-like snapping to corners, but can handle any layout
+* [Another Window Session Manager](https://extensions.gnome.org/extension/4709/another-window-session-manager/) save windows as a session that can be restored manually or at startup.
 * [Unite](https://extensions.gnome.org/extension/1287/unite/) - removes window bar when at the top of the primary screen.
 * [Emoji selector](https://extensions.gnome.org/extension/1162/emoji-selector/) Set to Super+E keyboard shortcut. Unfortunatly it only copies the emoji instead of auto pasting it.
 * [Window is ready notification remover](https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/) - to improve notifications in Signal
