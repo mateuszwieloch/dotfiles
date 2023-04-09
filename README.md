@@ -24,3 +24,13 @@ cat ~/.ssh/id_rsa.pub
 ```
 
 Paste it in [GitHub -> Settings -> SSH and GPG keys -> New SSH key](https://github.com/settings/keys)
+
+Clone the dotfiles repo:
+```shell
+git@github.com:mateuszwieloch/dotfiles.git
+```
+
+Setup local .gitconfig. Adjust if needed:
+```shell
+cp -i .gitconfig ~
+```
