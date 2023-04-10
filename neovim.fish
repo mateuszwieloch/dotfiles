@@ -5,6 +5,7 @@ set -x
 brew install neovim
 sudo ln -sf $HOMEBREW_PREFIX/bin/nvim /usr/bin/vi
 
+mkdir -p ~/.config/nvim
 ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua
 ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/lazy-lock.json ~/.config/nvim/lazy-lock.json
 ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/after ~/.config/nvim/after
@@ -23,3 +24,6 @@ if test (uname) = "Linux"
 else
   echo "Linux not detected. Skipping xclip installation."
 end
+
+# Lua language server is essenitial to get in config files
+brew install lua-language-server
