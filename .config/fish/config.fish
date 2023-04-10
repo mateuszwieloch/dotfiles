@@ -46,16 +46,6 @@ if test -z (pgrep ssh-agent | string collect)
     set -Ux SSH_AGENT_PID $SSH_AGENT_PID
 end
 
-# asdf
-switch (uname)
-  case Linux
-    source ~/.asdf/asdf.fish
-  case Darwin
-    source /usr/local/opt/asdf/libexec/asdf.fish
-  case '*'
-    echo 'Error: unrecognized operating system'
-end
-
 # fzf
 set --export FZF_DEFAULT_COMMAND "fd --type f"
 set --export FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
