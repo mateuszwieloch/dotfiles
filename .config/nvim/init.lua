@@ -225,7 +225,7 @@ require("lazy").setup({
       -- :TSInstallInfo  A list of all available languages and their installation status
       -- :TSModuleInfo   A table showing what modules are enabled for what languages
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "bash", "css", "dockerfile", "fish", "gitcommit", "gitignore", "help", "html", "javascript", "json", "json5", "jsonc", "lua", "markdown", "markdown_inline", "python", "toml", "typescript", "vim", "yaml" },
+        ensure_installed = { "bash", "css", "dockerfile", "fish", "gitcommit", "gitignore", "html", "javascript", "json", "json5", "jsonc", "lua", "markdown", "markdown_inline", "python", "toml", "typescript", "vim", "vimdoc", "yaml" },
         sync_install = false,
 
         -- Automatically install missing parsers when entering buffer
