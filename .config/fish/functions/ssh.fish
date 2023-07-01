@@ -4,5 +4,9 @@
 #
 # This is because most ssh clients do not automatically share terminfo files with the server.
 function ssh
-  kitty +kitten ssh $argv
+  if type -q kitty
+    kitty +kitten ssh $argv
+  else
+    command ssh $argv
+  end
 end
