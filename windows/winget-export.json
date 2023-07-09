@@ -24,6 +24,9 @@
 				{
 					"PackageIdentifier" : "Foxit.FoxitReader"
 				},
+        {
+					"PackageIdentifier" : "GIMP.GIMP"
+				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal"
 				},
