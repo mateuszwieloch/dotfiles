@@ -12,6 +12,10 @@
 				{
 					"PackageIdentifier" : "OpenWhisperSystems.Signal"
 				},
+        {
+          "comment": "For signing PDF documents for free",
+          "PackageIdentifier" : "Adobe.Acrobat.Reader.64-bit"
+        },
 				{
 					"PackageIdentifier" : "AutoHotkey.AutoHotkey"
 				},
