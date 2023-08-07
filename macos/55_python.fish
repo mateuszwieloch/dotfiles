@@ -1,4 +1,4 @@
-set -x
+set fish_trace 1
 
 brew install pyright
 

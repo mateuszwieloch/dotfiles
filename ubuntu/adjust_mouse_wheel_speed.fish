@@ -19,10 +19,10 @@ Shift_L,   Down, Shift_L|Button5"
 
 end
 
-set -x CURRENT_VALUE (rg 'Button4, (.*)' --replace '$1' --only-matching  ~/.imwheelrc)
+set fish_trace 1 CURRENT_VALUE (rg 'Button4, (.*)' --replace '$1' --only-matching  ~/.imwheelrc)
 echo "Current speed: $CURRENT_VALUE"
 
-set -x NEW_VALUE (zenity --scale --window-icon=info --ok-label=Apply --title="Wheelies" --text "Mouse wheel speed:" --min-value=1 --max-value=100 --value="$CURRENT_VALUE" --step 1)
+set fish_trace 1 NEW_VALUE (zenity --scale --window-icon=info --ok-label=Apply --title="Wheelies" --text "Mouse wheel speed:" --min-value=1 --max-value=100 --value="$CURRENT_VALUE" --step 1)
 
 if test "$NEW_VALUE" = ""
   exit 0

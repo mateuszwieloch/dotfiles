@@ -1,6 +1,6 @@
 #!/usr/bin/fish
 
-set -x
+set fish_trace 1
 
 brew install neovim
 sudo ln -sf $HOMEBREW_PREFIX/bin/nvim /usr/bin/vi

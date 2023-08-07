@@ -2,7 +2,7 @@
 
 # dependencies
 echo "Installing dependencies..."
-set -x
+set fish_trace 1
 sudo add-apt-repository universe
 sudo apt install libfuse2
 
