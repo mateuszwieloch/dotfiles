@@ -6,6 +6,13 @@
 		{
 			"Packages" :
 			[
+        {
+          "PackageIdentifier" : "Mozilla.Firefox"
+        },
+        {
+          "comment": "FOSS cross-platform tool for sharing files between nearby devices",
+          "PackageIdentifier" : "LocalSend.LocalSend"
+        },
 				{
 					"PackageIdentifier" : "xanderfrangos.twinkletray"
 				},
@@ -18,9 +25,6 @@
         },
 				{
 					"PackageIdentifier" : "AutoHotkey.AutoHotkey"
-				},
-				{
-					"PackageIdentifier" : "Brave.Brave"
 				},
         {
           "PackageIdentifier" : "qBittorrent.qBittorrent"
