@@ -19,6 +19,9 @@
 				{
 					"PackageIdentifier" : "OpenWhisperSystems.Signal"
 				},
+				{
+					"PackageIdentifier" : "WhatsApp.WhatsApp"
+				},
         {
           "comment": "For signing PDF documents for free",
           "PackageIdentifier" : "Adobe.Acrobat.Reader.64-bit"
