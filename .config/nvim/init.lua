@@ -110,10 +110,16 @@ require("lazy").setup({
   {
     "folke/tokyonight.nvim",
     config = function()
+      require("tokyonight").setup({
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
+        }
+      })
+
       vim.cmd.colorscheme("tokyonight")
 
       vim.opt.number = true
-      vim.opt.relativenumber = true
 
       vim.api.nvim_set_hl(0, "LineNr", { fg = "LightGray" })
       vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "gray" })
@@ -127,6 +133,7 @@ require("lazy").setup({
       vim.api.nvim_set_hl(0, "GitSignsAddLnInline", { bg = "DarkGreen" })
       vim.api.nvim_set_hl(0, "GitSignsChangeLnInline", { bg = "gold3" })
       vim.api.nvim_set_hl(0, "GitSignsDeleteLnInline", { bg = "maroon" })
+
     end
   },
 
