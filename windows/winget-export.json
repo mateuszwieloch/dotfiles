@@ -22,19 +22,16 @@
 				{
 					"PackageIdentifier" : "WhatsApp.WhatsApp"
 				},
-        {
-          "comment": "For signing PDF documents for free",
-          "PackageIdentifier" : "Adobe.Acrobat.Reader.64-bit"
-        },
+				{
+          "comment": "FOSS lightweight PDF reader and editor. Use Annotations->Freehand line tool to sign documents.",
+					"PackageIdentifier" : "KDE.Okular"
+				},
 				{
 					"PackageIdentifier" : "AutoHotkey.AutoHotkey"
 				},
         {
           "PackageIdentifier" : "qBittorrent.qBittorrent"
         },
-				{
-					"PackageIdentifier" : "Foxit.FoxitReader"
-				},
         {
 					"PackageIdentifier" : "GIMP.GIMP"
 				},
