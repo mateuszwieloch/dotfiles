@@ -1,70 +1,78 @@
 {
-	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-04-07T14:50:29.113-00:00",
-	"Sources" :
-	[
-		{
-			"Packages" :
-			[
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "CreationDate": "2023-04-07T14:50:29.113-00:00",
+  "Sources": [
+    {
+      "Packages":
+      [
         {
-          "PackageIdentifier" : "Mozilla.Firefox"
+          "comment": "Includes a slow, but capable PDF reader with annotations support.",
+          "PackageIdentifier": "Mozilla.Firefox"
         },
         {
           "comment": "FOSS cross-platform tool for sharing files between nearby devices",
-          "PackageIdentifier" : "LocalSend.LocalSend"
-        },
-				{
-					"PackageIdentifier" : "xanderfrangos.twinkletray"
-				},
-				{
-					"PackageIdentifier" : "OpenWhisperSystems.Signal"
-				},
-				{
-					"PackageIdentifier" : "WhatsApp.WhatsApp"
-				},
-				{
-          "comment": "FOSS lightweight PDF reader and editor. Use Annotations->Freehand line tool to sign documents.",
-					"PackageIdentifier" : "KDE.Okular"
-				},
-				{
-					"PackageIdentifier" : "AutoHotkey.AutoHotkey"
-				},
-        {
-          "PackageIdentifier" : "qBittorrent.qBittorrent"
+          "PackageIdentifier": "LocalSend.LocalSend"
         },
         {
-					"PackageIdentifier" : "GIMP.GIMP"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Teams"
-				},
-				{
-					"PackageIdentifier" : "Obsidian.Obsidian"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
-				},
-				{
-					"PackageIdentifier" : "calibre.calibre"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "pCloudAG.pCloudDrive"
-				}
-			],
-			"SourceDetails" :
-			{
-				"Argument" : "https://cdn.winget.microsoft.com/cache",
-				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
-				"Name" : "winget",
-				"Type" : "Microsoft.PreIndexed.Package"
-			}
-		}
-	],
-	"WinGetVersion" : "1.4.10173"
+          "PackageIdentifier": "xanderfrangos.twinkletray"
+        },
+        {
+          "PackageIdentifier": "OpenWhisperSystems.Signal"
+        },
+        {
+          "PackageIdentifier": "AutoHotkey.AutoHotkey"
+        },
+        {
+          "PackageIdentifier": "qBittorrent.qBittorrent"
+        },
+        {
+          "PackageIdentifier": "GIMP.GIMP"
+        },
+        {
+          "PackageIdentifier": "Microsoft.WindowsTerminal"
+        },
+        {
+          "PackageIdentifier": "Obsidian.Obsidian"
+        },
+        {
+          "PackageIdentifier": "Microsoft.PowerToys"
+        },
+        {
+          "PackageIdentifier": "calibre.calibre"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VisualStudioCode"
+        },
+        {
+          "PackageIdentifier": "pCloudAG.pCloudDrive"
+        },
+        {
+          "PackageIdentifier": "WhatsApp.WhatsApp"
+        }
+      ],
+      "SourceDetails":
+      {
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      }
+    }
+  ],
+  "WinGetVersion": "1.4.10173",
+  "Optional": [
+    {
+      "PackageIdentifier": "Microsoft.Teams"
+    }
+  ],
+  "Retired": [
+    {
+      "comment": "FOSS PDF reader and editor. REALLY BAD FONT RENDERING. Use Annotations->Freehand line tool to sign documents.",
+      "PackageIdentifier": "KDE.Okular"
+    },
+    {
+      "comment": "Very lightweight, Windows-only PDF reader. No editing functionality.",
+      "PackageIdentifier": "SumatraPDF.SumatraPDF"
+    },
+  ]
 }
