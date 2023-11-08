@@ -4,6 +4,7 @@ set fish_trace 1
 
 brew install neovim
 sudo ln -sf $HOMEBREW_PREFIX/bin/nvim /usr/bin/vi
+sudo ln -sf $HOMEBREW_PREFIX/bin/nvim /usr/bin/vim
 
 mkdir -p ~/.config/nvim
 ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua
