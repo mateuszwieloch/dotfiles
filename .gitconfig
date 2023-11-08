@@ -2,8 +2,17 @@
 	name = Mateusz Wieloch
   # auto-generated no-reply GitHub email address
 	email = 9206426+mateuszwieloch@users.noreply.github.com
+[core]
+  # CRLF endings in Windows checkouts, but LF endings on macOS and Linux systems and in the repository
+  autocrlf = input
+[init]
+  # To match GitHub's and GitLab's default branch name
+  defaultBranch = main
 [pull]
-	ff = only
+  # By default on pull git merges remote branch into local branch. Merge commits are not intuitive, so it's common to change that behavior:
+  # * With ff = only, git will only move the HEAD, but won't add any new (merge) commits.
+  # * Alternatively, with rebase = true, git will start a rebase.
+  ff = only
 [push]
   # will push only current branch and create the branch in the remote repo if necessary
 	default = current
