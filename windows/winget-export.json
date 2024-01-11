@@ -47,9 +47,6 @@
           "PackageIdentifier": "pCloudAG.pCloudDrive"
         },
         {
-          "PackageIdentifier": "WhatsApp.WhatsApp"
-        },
-        {
           "comment": "Capable. Allows choosing subtitles encoding (Windows 1250)",
           "PackageIdentifier": "VideoLAN.VLC",
         }
