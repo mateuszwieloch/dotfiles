@@ -49,7 +49,11 @@
         {
           "comment": "Capable. Allows choosing subtitles encoding (Windows 1250)",
           "PackageIdentifier": "VideoLAN.VLC",
-        }
+        },
+        {
+          "comment": "Simulates Linux Compose button making it easier to input special characters",
+          "PackageIdentifier": "SamHocevar.WinCompose",
+        },
       ],
       "SourceDetails":
       {
