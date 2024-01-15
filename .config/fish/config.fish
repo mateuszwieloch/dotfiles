@@ -58,7 +58,7 @@ source ~/.config/fish/local/*.fish
 test -d /home/linuxbrew/.linuxbrew && eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 
-if command -sq exa
+if command -sq eza
   # Overall syntax: https://the.exa.website/docs/colour-themes
   # Color codes: https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 
@@ -66,10 +66,10 @@ if command -sq exa
   # 48;5  means select background color
   # next goes 8bit color code
   # next can be style 1=bold 4=underline
-  # combined example: EXA_COLORS "*.xyz=38;5;14;1"
+  # combined example: EZA_COLORS "*.xyz=38;5;14;1"
 
   # di = directories
-  set -x EXA_COLORS (string join ':' \
+  set -x EZA_COLORS (string join ':' \
     "di=38;5;37;1" \
     "*.js=38;5;220"
   )

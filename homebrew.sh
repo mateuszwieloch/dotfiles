@@ -31,7 +31,7 @@ fi
   ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 
   brew install bat  # cat replacement
-  brew install exa  # ls replacement
+  brew install eza  # ls replacement
   brew install fd   # find replacemnt
 
   brew install fzf
