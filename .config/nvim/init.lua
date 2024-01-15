@@ -23,6 +23,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Has support for installing a specific SemVer of a plugin and lockfile `lazy-lock.json`.
 -- Can lazy-loade on events, commands, filetypes, and key mappings. UI shows what caused a plugin to be loaded.
 require("lazy").setup({
+  "mateuszwieloch/automkdir.nvim",
+
   "wsdjeg/vim-fetch",
   -- Support for the filepath:line format when opening neovim
 
