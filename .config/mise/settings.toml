@@ -1,0 +1,3 @@
+experimental = true # enable experimental features e.g. automatic virtualenv activation
+
+python_venv_auto_create = true

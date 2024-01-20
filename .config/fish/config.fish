@@ -90,4 +90,7 @@ function storePathForWindowsTerminal --on-variable PWD
   end
 end
 
-source ~/.asdf/asdf.fish
+# mise is a dev env manager for tool versions, env variables, tasks
+if test -e ~/.local/bin/mise
+  ~/.local/bin/mise activate fish | source
+end
