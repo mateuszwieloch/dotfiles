@@ -6,5 +6,3 @@ function fish_user_key_bindings
   bind -M default H beginning-of-line
   bind -M default L end-of-line
 end
-
-fzf_key_bindings
