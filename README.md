@@ -30,7 +30,7 @@ Clone the dotfiles repo:
 git@github.com:mateuszwieloch/dotfiles.git
 ```
 
-Setup local .gitconfig. Adjust if needed:
+To setup .gitconfig, run
 ```shell
-cp -i .gitconfig ~
+./git.sh
 ```

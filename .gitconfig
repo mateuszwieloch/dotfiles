@@ -2,6 +2,8 @@
   name = Mateusz Wieloch
   # auto-generated no-reply GitHub email address
   email = 9206426+mateuszwieloch@users.noreply.github.com
+[includeIf "gitdir:~/code/bp/"]
+  path = .gitconfig-bp
 [core]
   # CRLF endings in Windows checkouts, but LF endings on macOS and Linux systems and in the repository
   autocrlf = input
