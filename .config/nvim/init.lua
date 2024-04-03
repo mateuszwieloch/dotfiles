@@ -1,5 +1,4 @@
--- Needs to be set before loading external code so that mappings are correct
-vim.g.mapleader = " "
+vim.g.mapleader = " "  -- Needs to be set before loading external code so that mappings are correct
 
 --------------------
 -- PLUGIN MANAGER --
@@ -350,73 +349,73 @@ require("lazy").setup({
   },
 })
 
-vim.opt.clipboard = "unnamedplus"  -- Always use the OS clipboard
 
--- Clipboard support for WSL
-if vim.fn.has('wsl') == 1 then
-  vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('Yank', { clear = true }),
-  callback = function()
-    vim.fn.system('clip.exe', vim.fn.getreg('"'))
-  end,
-  })
-end
+-------------
+-- EDITING --
+-------------
+vim.keymap.set({"n", "v"}, "H", "g^")  -- Move cursor to start of line
+vim.keymap.set({"n", "v"}, "L", "g$")  -- Move cursor to end of line
 
+-----------
+-- <Tab> --
+-----------
+vim.opt.expandtab = true  -- convert tabs to spaces
+vim.opt.tabstop = 2       -- number of spaces a <Tab> in the text stands for
+vim.opt.softtabstop = 2   -- number of spaces to insert for a <Tab>
 
-vim.opt.undofile = true     -- Store undo history between neovim sessions
-vim.opt.writebackup = false -- No tilde files
-vim.opt.swapfile = false    -- No .swp files
-
--- Move by display line (not physical line)
-vim.keymap.set("n", "k", "gk")
+--------------
+-- WRAPPING --
+--------------
+vim.opt.smartindent = true      -- autoindent = same indent as line above; smartindent = autoindent + one level of indentation in some cases
+vim.opt.breakindent = true      -- preserve indentation in wrapped text
+vim.opt.showbreak="↳ "          -- string to put before wrapped screen lines
+vim.keymap.set("n", "k", "gk")  -- move by screen lines (not physical lines) in wrapped text
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "0", "g0")
 vim.keymap.set("n", "$", "g$")
--- Move cursor to start/end of line
-vim.keymap.set({"n", "v"}, "H", "g^")
-vim.keymap.set({"n", "v"}, "L", "g$")
 
--- Copy full path to the current buffer eg. /full/path/to/file.txt
-vim.keymap.set("n", "<leader>cf", ":let @+=expand('%:p')<cr>")
--- Copy relative path to the current buffer eg. path/to/file.txt
-vim.keymap.set("n", "<leader>cr", ":let @+=expand('%')<cr>")
--- Copy full filepath:line string eg. /full/path/to/file.txt:123
-vim.keymap.set("n", "<leader>cl", ":let @+=expand('%:p') . ':' . line('.')<cr>")
+------------
+-- INDENT --
+------------
+vim.opt.shiftwidth = 2          -- number of spaces for each << and >>
+vim.opt.shiftround = true       -- round to 'shiftwidth' for << and >>
+vim.keymap.set("v", ">", ">gv") -- stay in visual mode after indenting
+vim.keymap.set("v", "<", "<gv")
+
+---------------
+-- CLIPBOARD --
+---------------
+vim.opt.clipboard = "unnamedplus"  -- Always use the OS clipboard
+vim.keymap.set("x", "p", "pgvy")   -- Keep clipboard contents when pasting in visual mode
+
+-- Clipboard support for WSL
+if vim.fn.has('wsl') == 1 then
+  vim.cmd([[
+    let g:clipboard = {
+      \   'name': 'WslClipboard',
+      \   'copy': {
+      \      '+': 'clip.exe',
+      \      '*': 'clip.exe',
+      \    },
+      \   'paste': {
+      \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
+	]])
+end
 
 ----------------------
 -- SEARCH & REPLACE --
 ----------------------
-vim.keymap.set("n", "<bs>", ":noh<cr>")
+vim.keymap.set("n", "<2-LeftMouse>", "*")  -- Double click highlights all occurences of a word
+vim.keymap.set("n", "<bs>", ":noh<cr>")    -- Backspace removes highlights
 
 vim.opt.gdefault = true    -- s/<pattern>/<replacement> has g flag set by default
                            -- (g means replace all occurences in line)
 vim.opt.ignorecase = true  -- case insensitive pattern matching
 vim.opt.smartcase = true   -- override ignorecase if pattern contains upcase
-
--- double click highlights all occurences of a word
-vim.keymap.set("n", "<2-LeftMouse>", "*")
-
--------------
--- EDITING --
--------------
--- Keep clipboard contents when pasting in visual mode
-vim.keymap.set("x", "p", "pgvy")
--- Stay in visual mode after indenting
-vim.keymap.set("v", ">", ">gv")
-vim.keymap.set("v", "<", "<gv")
-
--------------
--- INDENTS --
--------------
-vim.opt.smartindent = true     -- autoindent = same indent as line above; smartindent = autoindent + one extra level of indentation in some cases
-vim.opt.expandtab = true       -- convert tabs to spaces
-vim.opt.tabstop = 2            -- number of visual spaces per <tab>
-vim.opt.softtabstop = 2        -- number of spaces in tab when *editing* (how many will be added or deleted)
-vim.opt.shiftwidth = 2         -- >> indents by 2 spaces
-vim.opt.shiftround = true      -- >> indents to next multiple of 'shiftwidth'
-
-vim.opt.breakindent = true     -- Wrapped lines will continue visually indented
-vim.opt.showbreak="↳ "         -- Extra indent for wrapped lines
 
 -------------
 -- WINDOWS --
@@ -462,6 +461,13 @@ vim.keymap.set({"n", "v"}, "<A-o>", "<C-W>o")
 -- " move current window to a new tab
 -- nnoremap <leader>wt <C-W>T
 
+--------------
+-- SESSIONS --
+--------------
+vim.opt.undofile = true     -- Store undo history between neovim sessions
+vim.opt.writebackup = false -- No tilde files
+vim.opt.swapfile = false    -- No .swp files
+
 -----------
 -- NETRW --
 -----------
@@ -483,6 +489,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 -- vim.g.netrw_banner = 0
+
+---------------
+-- COPY PATH --
+---------------
+vim.keymap.set("n", "<leader>cf", ":let @+=expand('%:p')<cr>")  -- Copy full path to the current buffer eg. /path/file.txt
+vim.keymap.set("n", "<leader>cr", ":let @+=expand('%')<cr>")    -- Copy relative path to the current buffer eg. path/to/file.txt
+vim.keymap.set("n", "<leader>cl", ":let @+=expand('%:p') . ':' . line('.')<cr>")  -- Copy full filepath:line string eg. /path/to/file.txt:123
 
 ------------------
 -- LSP (common) --
@@ -597,53 +610,6 @@ vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
             autoSearchPaths = true,
             diagnosticMode = "workspace",
             useLibraryCodeForTypes = true
-          }
-        }
-      },
-      on_attach = on_attach,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    })
-    vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
-  end
-})
-
--- Ruby
--- Should call this within a FileType autocmd or put the call in a `ftplugin/ruby.lua`
-local ftRuby = vim.api.nvim_create_augroup("ftRuby", { clear = true })
-vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
-  pattern = "ruby",
-  group = ftRuby,
-  callback = function()
-    vim.keymap.set("n", "<leader>r",
-      function()
-        if vim.api.nvim_buf_get_name(0) == '' then
-          vim.notify("Save file to run ruby")
-        else
-          vim.notify(vim.cmd.write())
-          vim.notify(vim.fn.system({"ruby", vim.fn.expand("%")}))
-        end
-      end,
-      { buffer=true }
-    )
-
-    -- Solargraph Language Server
-    local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
-    local project_root = vim.fs.dirname(vim.fs.find({'.git', 'Gemfile'}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
-
-    -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
-    local client_id = vim.lsp.start({
-      name = 'Ruby Solargraph',
-      cmd = {'solargraph', 'stdio'},
-      root_dir = project_root,
-      settings = { -- these are language server specific settings
-        solargraph = {
-          diagnostics = true,
-          completion = true,
-          flags = {
-            debounce_text_changes = 150
-          },
-          initializationOptions = {
-            formatting = true
           }
         }
       },
