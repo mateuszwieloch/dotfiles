@@ -224,20 +224,24 @@ require("lazy").setup({
   -- Saves position in file on buffer change and quit/exit
   --{ "https://github.com/ThePrimeagen/harpoon" },
 
-  -- TREESITTER --
-  ----------------
+  -----------------
+  -- TREE-SITTER --
+  -----------------
+  -- Neovim ships with Tree-sitter - an incremental parsing library.
   {
+    -- Makes it easier to install additional parsers and uses the parsers to provide useful functionality via their modules.
+    -- :TSInstall <language> Note: can be configured to auto_install
+    -- :TSInstallInfo  A list of all available languages and their installation status
+    -- :TSUpdate       Update parsers
+    -- :InspectTree    Create a split with syntax tree of the current buffer
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    build = ":TSUpdate",  -- Update parsers on plugin update, because nvim-treesitter only works with the latest parser version.
     dependencies = { "nvim-treesitter-textobjects" },
     config = function()
-      -- nvim-ts-autotag - optional extension to autoclose and autorename html tags
-      -- :TSUpdate       Needs to happen when treesitter is upgraded
-      -- :TSInstallInfo  A list of all available languages and their installation status
-      -- :TSModuleInfo   A table showing what modules are enabled for what languages
+      ---@diagnostic disable-next-line: missing-fields
       require("nvim-treesitter.configs").setup({
+        -- TODO: Neovim 0.10 will ship with bash, markdown and python parsers
         ensure_installed = { "bash", "css", "dockerfile", "fish", "gitcommit", "gitignore", "html", "javascript", "json", "json5", "jsonc", "lua", "markdown", "markdown_inline", "python", "toml", "typescript", "vim", "vimdoc", "yaml" },
-        sync_install = false,
 
         -- Automatically install missing parsers when entering buffer
         -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
@@ -249,14 +253,13 @@ require("lazy").setup({
 
         indent = {
           enable = true,
-          disable = {"ruby"}
         },
 
         -- From the nvim-treesitter/nvim-treesitter-textobjects plugin
         textobjects = {
-          -- can also swap parameters
           select = {
             enable = true,
+            lookahead = true,  -- Automatically jump forward to textobj
             keymaps = {
               ["af"] = { query = "@function.outer", desc = "Select outer part of a function" },
               ["if"] = { query = "@function.inner", desc = "Select inner part of a function" },
