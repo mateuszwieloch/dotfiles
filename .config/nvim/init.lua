@@ -358,6 +358,9 @@ require("lazy").setup({
 -------------
 vim.keymap.set({"n", "v"}, "H", "g^")  -- Move cursor to start of line
 vim.keymap.set({"n", "v"}, "L", "g$")  -- Move cursor to end of line
+-- Allow positioning cursor past the last character in a line in visual block mode
+-- (C-q to enter visual block mode, because C-v is often used by terminal for paste)
+vim.opt.virtualedit = "block"
 
 -----------
 -- <Tab> --
@@ -374,6 +377,7 @@ vim.opt.breakindent = true      -- preserve indentation in wrapped text
 vim.opt.showbreak="↳ "          -- string to put before wrapped screen lines
 vim.keymap.set("n", "k", "gk")  -- move by screen lines (not physical lines) in wrapped text
 vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "^", "g^")
 vim.keymap.set("n", "0", "g0")
 vim.keymap.set("n", "$", "g$")
 
