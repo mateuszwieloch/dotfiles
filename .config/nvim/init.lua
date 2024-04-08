@@ -52,15 +52,18 @@ require("lazy").setup({
     end
   },
   {
+    -- Highlights trailing whitespace. :TrimWhitespace to remove it.
     "johnfrankmorgan/whitespace.nvim",
-    -- Highlights trailing whitespace. Exposes a function to delete it.
     config = function()
-      local whitespace = require("whitespace-nvim")
-      whitespace.setup()
-      vim.api.nvim_create_user_command("TrimWhitespace", whitespace.trim, {})
+      require("whitespace-nvim").setup({
+        ignored_filetypes = {'lazy'},
+        -- ignore_terminal = true
+      })
+      vim.api.nvim_create_user_command("TrimWhitespace", require("whitespace-nvim").trim, {})
     end
   },
   {
+    -- TODO: vim-commentary will be included in Neovim 0.10 see *commenting*
     "numToStr/Comment.nvim",
     -- Combine with https://github.com/JoosepAlviste/nvim-ts-context-commentstring if there are nested languages (common in web development)
     -- gcc for line comment
