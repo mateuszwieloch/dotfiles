@@ -26,32 +26,12 @@ require("lazy").setup({
   -- :SudaWrite to force-write a read-only file
   "lambdalisue/suda.vim",
 
-  -- EDITING --
-  -------------
   {
-    "kylechui/nvim-surround",
-    -- Manipulating surroundind delimiter pairs. Integrates with nvim-treesitter and nvim-treesitter-textobjects.
-    -- Default aliases q = `/'/", b = ), B = }, r = ],
-    -- f is for function call
-    -- yss surrounds the current line
-    -- ySS surrounds the current line but adds delimiter pair on lines above and below.
-    -- Examples:
-    -- ysiw)  yes surround inner word with )
-    -- yssf   surround current line with a function call
-    -- csq"   change surrounding quotes into "
-    -- csth1  change surrounding tag into h1
-    -- ds]    delete surrounding ]
-    -- viwSb  visual inner work surround with bracket )
-    config = function()
-      require("nvim-surround").setup()
-    end
-  },
-  {
-    -- Highlights trailing whitespace. :TrimWhitespace to remove it.
+    -- Highlights trailing whitespace with `DiffDelete` (by default). :TrimWhitespace to remove the whitespace.
     "johnfrankmorgan/whitespace.nvim",
     config = function()
       require("whitespace-nvim").setup({
-        ignored_filetypes = {'lazy'},
+        ignored_filetypes = {'help', 'lazy', 'TelescopePrompt'},
         -- ignore_terminal = true
       })
       vim.api.nvim_create_user_command("TrimWhitespace", require("whitespace-nvim").trim, {})
@@ -283,6 +263,24 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
       require("treesitter-context").setup({ mode = 'topline' })
+    end
+  },
+  {
+    -- Manipulating surroundind delimiter pairs. Integrates with nvim-treesitter and nvim-treesitter-textobjects.
+    -- Default aliases q = `/'/", b = ), B = }, r = ],
+    -- f is for function call
+    -- yss surrounds the current line
+    -- ySS surrounds the current line but adds delimiter pair on lines above and below.
+    -- Examples:
+    -- ysiw)  yes surround inner word with )
+    -- yssf   surround current line with a function call
+    -- csq"   change surrounding quotes into "
+    -- csth1  change surrounding tag into h1
+    -- ds]    delete surrounding ]
+    -- viwSb  visual inner work surround with bracket )
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup()
     end
   },
 
