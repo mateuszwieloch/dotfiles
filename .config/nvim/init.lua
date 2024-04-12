@@ -3,33 +3,28 @@ vim.g.mapleader = " "  -- Needs to be set before loading external code so that m
 --------------------
 -- PLUGIN MANAGER --
 --------------------
--- Auto-install lazy.nvim
+-- :Lazy to open the UI where you can update plugins.
+-- Supports installing specific SemVers of a plugin and locking working versions in a lockfile `lazy-lock.json`.
+-- Can lazy-load on events, commands, filetypes, and key mappings. UI shows what caused a plugin to be loaded.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+  -- Auto-install lazy.nvim
+  vim.fn.system({"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath})
 end
 vim.opt.rtp:prepend(lazypath)
 
--- :Lazy to open the UI.
--- Automatically checks for updates and installs missing plugins.
--- Has support for installing a specific SemVer of a plugin and lockfile `lazy-lock.json`.
--- Can lazy-loade on events, commands, filetypes, and key mappings. UI shows what caused a plugin to be loaded.
 require("lazy").setup({
+  -- When opening a file, you can specify line and column to open in one of many supported formats:
+  -- - Trailing colon `filepath:lnum[:colnum]`
+  -- - GitHub/GitLab `filepath:#Llnum-Llnum`
+  -- - Pytest type method spec, i.e. '::method'
+  "wsdjeg/vim-fetch",
+
+  -- When writing a file, automatically creates non-existent parent directories.
   "mateuszwieloch/automkdir.nvim",
 
-  "wsdjeg/vim-fetch",
-  -- Support for the filepath:line format when opening neovim
-
+  -- :SudaWrite to force-write a read-only file
   "lambdalisue/suda.vim",
-  -- :SudaWrite to write read-only file
-
 
   -- EDITING --
   -------------
