@@ -71,6 +71,23 @@ require("lazy").setup({
     end
   },
 
+  --------------
+  -- OIL.NVIM --
+  --------------
+  {
+    -- File explorer that lets you edit filesystem like regular files.
+    -- You can even move files by deleting them `dd`, navigating to a different directory, pasting and `:w`.
+    'stevearc/oil.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("oil").setup({
+        keymaps = {
+          ["q"] = "actions.close",
+        }
+      })
+      vim.keymap.set("n", "-", ":edit .<cr>", { silent = true })
+    end
+  },
 
   ---------------
   -- TELESCOPE --
@@ -469,28 +486,6 @@ vim.keymap.set({"n", "v"}, "<A-o>", "<C-W>o")
 vim.opt.undofile = true     -- Store undo history between neovim sessions
 vim.opt.writebackup = false -- No tilde files
 vim.opt.swapfile = false    -- No .swp files
-
------------
--- NETRW --
------------
--- filetype=netrw
--- +           (custom) create a file
--- <del> or D  delete
--- gh          toggle hidden files
--- i           cycle through the view types
--- q           (custom) return from explorer (go back to the file that was open before)
-
-vim.keymap.set("n", "-", vim.cmd.Explore, { silent = true })
-local ftNetrwGroup = vim.api.nvim_create_augroup("ftNetrwGroup", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "netrw",
-  group = ftNetrwGroup,
-  callback = function()
-    vim.keymap.set("n", "q", ":Rexplore<cr>", { buffer=true, nowait=true })
-    vim.keymap.set("n", "+", "<Plug>NetrwOpenFile")
-  end
-})
--- vim.g.netrw_banner = 0
 
 ---------------
 -- COPY PATH --
