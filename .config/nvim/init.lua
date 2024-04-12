@@ -50,17 +50,6 @@ require("lazy").setup({
     end
   },
   {
-    "gbprod/substitute.nvim",
-    -- New operator and motions to perform quick substitutions and exchanges (not configured).
-    -- `s` gets shadowed, so you need to use `cl` to do it now
-    config = function()
-      vim.keymap.set("n", "s", require("substitute").operator, { noremap = true })
-      vim.keymap.set("n", "ss", require("substitute").line, { noremap = true })
-      vim.keymap.set("n", "S", require("substitute").eol, { noremap = true })
-      vim.keymap.set("x", "s", require("substitute").visual, { noremap = true })
-    end
-  },
-  {
     "echasnovski/mini.move",
     -- Move current/selected line(s)
     config = function()
@@ -83,103 +72,7 @@ require("lazy").setup({
   },
 
 
-  -- COLOR SCHEMES --
-  -------------------
-  -- Main colorscheme has to be loaded first, which can be achieved with `priority=1000`
-  {
-    "folke/tokyonight.nvim",
-    config = function()
-      require("tokyonight").setup({
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-        }
-      })
-
-      vim.cmd.colorscheme("tokyonight")
-
-      vim.opt.number = true
-
-      vim.api.nvim_set_hl(0, "LineNr", { fg = "LightGray" })
-      vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "gray" })
-      vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "gray" })
-      vim.api.nvim_set_hl(0, "ColorColumn", { bg = "gray28" })
-
-      vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "green" })
-      vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "gold2" })
-
-      -- word diff in buffer
-      vim.api.nvim_set_hl(0, "GitSignsAddLnInline", { bg = "DarkGreen" })
-      vim.api.nvim_set_hl(0, "GitSignsChangeLnInline", { bg = "gold3" })
-      vim.api.nvim_set_hl(0, "GitSignsDeleteLnInline", { bg = "maroon" })
-
-    end
-  },
-
-  -- TEXT OBJECTS --
-  ------------------
-  -- ae  entire file
-  -- ie  entire file but skip empty lines at beginning and end
-  { "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } },
-  -- ai ii  around(with whitespace around)/inside indent
-  { "kana/vim-textobj-indent", dependencies = { "kana/vim-textobj-user" } },
-  -- al il  around(with whitespace around)/inside line
-  { "kana/vim-textobj-line", dependencies = { "kana/vim-textobj-user" } },
-
-  -- GIT --
-  ---------
-  {
-    "lewis6991/gitsigns.nvim",
-    -- Provides signs in the signcolumn to show changed/added/removed lines.
-    -- Mappings for hunks to stage, undo or reset them.
-    -- TODO: Integrates with status line and null-fs.
-    -- :Gitsigns toggle_word_diff
-    -- :Gitsigns diffthis
-    -- :Gitsigns toggle_current_line_blame
-    -- :Gitsigns toggle_deleted
-    -- :Gitsigns preview_hunk or preview_hunk_inline (and then navigate with ]h and [h) to preview changes
-    config = function()
-      require("gitsigns").setup({
-        current_line_blame_opts = {
-          delay = 10
-        },
-        current_line_blame_formatter = '<author> <author_time:%Y-%m-%d> <summary>',
-        on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
-
-          vim.keymap.set('n', ']h', function()
-            if vim.wo.diff then return ']h' end
-            vim.schedule(function() gs.next_hunk() end)
-            return '<Ignore>'
-          end, {buffer=bufnr, expr=true})
-
-          vim.keymap.set('n', '[h', function()
-            if vim.wo.diff then return '[h' end
-            vim.schedule(function() gs.prev_hunk() end)
-            return '<Ignore>'
-          end, {buffer=bufnr, expr=true})
-        end
-      })
-    end
-  },
-
-  -- STATUS LINE --
-  -----------------
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      -- See `:help lualine.txt`
-      require('lualine').setup {
-        options = {
-          icons_enabled = false,
-          theme = 'tokyonight',
-          component_separators = '|',
-          section_separators = '',
-        },
-      }
-    end
-  },
-
+  ---------------
   -- TELESCOPE --
   ---------------
   {
@@ -265,6 +158,13 @@ require("lazy").setup({
       require("treesitter-context").setup({ mode = 'topline' })
     end
   },
+  -- ae  entire file
+  -- ie  entire file but skip empty lines at beginning and end
+  { "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } },
+  -- ai ii  around(with whitespace around)/inside indent
+  { "kana/vim-textobj-indent", dependencies = { "kana/vim-textobj-user" } },
+  -- al il  around(with whitespace around)/inside line
+  { "kana/vim-textobj-line", dependencies = { "kana/vim-textobj-user" } },
   {
     -- Manipulating surroundind delimiter pairs. Integrates with nvim-treesitter and nvim-treesitter-textobjects.
     -- Default aliases q = `/'/", b = ), B = }, r = ],
@@ -281,6 +181,17 @@ require("lazy").setup({
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup()
+    end
+  },
+  {
+    -- New operator and motions to perform quick substitutions and exchanges (not configured).
+    -- `s` gets shadowed, so you need to use `cl` to do it now
+    "gbprod/substitute.nvim",
+    config = function()
+      vim.keymap.set("n", "s", require("substitute").operator, { noremap = true })
+      vim.keymap.set("n", "ss", require("substitute").line, { noremap = true })
+      vim.keymap.set("n", "S", require("substitute").eol, { noremap = true })
+      vim.keymap.set("x", "s", require("substitute").visual, { noremap = true })
     end
   },
 
@@ -344,6 +255,93 @@ require("lazy").setup({
     "ray-x/lsp_signature.nvim",
     config = function()
       local cmp = require("cmp")
+    end
+  },
+  -------------------
+  -- COLOR SCHEMES --
+  -------------------
+  -- Main colorscheme has to be loaded first, which can be achieved with `priority=1000`
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      require("tokyonight").setup({
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
+        }
+      })
+
+      vim.cmd.colorscheme("tokyonight")
+
+      vim.opt.number = true
+
+      vim.api.nvim_set_hl(0, "LineNr", { fg = "LightGray" })
+      vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "gray" })
+      vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "gray" })
+      vim.api.nvim_set_hl(0, "ColorColumn", { bg = "gray28" })
+
+      vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "green" })
+      vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "gold2" })
+
+      -- word diff in buffer
+      vim.api.nvim_set_hl(0, "GitSignsAddLnInline", { bg = "DarkGreen" })
+      vim.api.nvim_set_hl(0, "GitSignsChangeLnInline", { bg = "gold3" })
+      vim.api.nvim_set_hl(0, "GitSignsDeleteLnInline", { bg = "maroon" })
+
+    end
+  },
+  ---------
+  -- GIT --
+  ---------
+  {
+    "lewis6991/gitsigns.nvim",
+    -- Provides signs in the signcolumn to show changed/added/removed lines.
+    -- Mappings for hunks to stage, undo or reset them.
+    -- TODO: Integrates with status line and null-fs.
+    -- :Gitsigns toggle_word_diff
+    -- :Gitsigns diffthis
+    -- :Gitsigns toggle_current_line_blame
+    -- :Gitsigns toggle_deleted
+    -- :Gitsigns preview_hunk or preview_hunk_inline (and then navigate with ]h and [h) to preview changes
+    config = function()
+      require("gitsigns").setup({
+        current_line_blame_opts = {
+          delay = 10
+        },
+        current_line_blame_formatter = '<author> <author_time:%Y-%m-%d> <summary>',
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+
+          vim.keymap.set('n', ']h', function()
+            if vim.wo.diff then return ']h' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+          end, {buffer=bufnr, expr=true})
+
+          vim.keymap.set('n', '[h', function()
+            if vim.wo.diff then return '[h' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+          end, {buffer=bufnr, expr=true})
+        end
+      })
+    end
+  },
+  -----------------
+  -- STATUS LINE --
+  -----------------
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      -- See `:help lualine.txt`
+      require('lualine').setup {
+        options = {
+          icons_enabled = false,
+          theme = 'tokyonight',
+          component_separators = '|',
+          section_separators = '',
+        },
+      }
     end
   },
 })
@@ -415,10 +413,11 @@ end
 vim.keymap.set("n", "<2-LeftMouse>", "*")  -- Double click highlights all occurences of a word
 vim.keymap.set("n", "<bs>", ":noh<cr>")    -- Backspace removes highlights
 
-vim.opt.gdefault = true    -- s/<pattern>/<replacement> has g flag set by default
-                           -- (g means replace all occurences in line)
-vim.opt.ignorecase = true  -- case insensitive pattern matching
-vim.opt.smartcase = true   -- override ignorecase if pattern contains upcase
+vim.opt.gdefault = true      -- s/<pattern>/<replacement> has g flag set by default
+                             -- (g means replace all occurences in line)
+vim.opt.ignorecase = true    -- Ignore case in search patterns. \c or \C in search pattern to overrule.
+vim.opt.smartcase = true     -- Override ignorecase if pattern contains upcase
+vim.opt.inccommand = "split" -- Shows the effects of :%substitute as you type in a preview window
 
 -------------
 -- WINDOWS --
