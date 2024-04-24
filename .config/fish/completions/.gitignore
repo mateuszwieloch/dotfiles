@@ -1,0 +1,2 @@
+# Ignore mise completions script. It's generated in my mise installation script.
+mise.fish
