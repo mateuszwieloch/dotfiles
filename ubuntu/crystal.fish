@@ -1,6 +1,5 @@
 #!/usr/bin/env fish
 
-echo "Using brew, because ASDF does not support crystal with icr or crystalline LSP yet"
 brew install crystal
 brew install crystal-icr
 

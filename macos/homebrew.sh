@@ -24,12 +24,6 @@ fi
 
 
 # Command line tools {{{
-  brew install asdf
-  # for .nvmrc and .terraform-version support
-  ln -sf ~/code/mateuszwieloch/dotfiles/.asdfrc ~/.asdfrc
-  # fish shell completions
-  ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
-
   brew install bat  # cat replacement
   brew install eza  # ls replacement
   brew install fd   # find replacemnt
