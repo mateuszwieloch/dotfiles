@@ -38,18 +38,6 @@ require("lazy").setup({
     end
   },
   {
-    -- TODO: vim-commentary will be included in Neovim 0.10 see *commenting*
-    "numToStr/Comment.nvim",
-    -- Combine with https://github.com/JoosepAlviste/nvim-ts-context-commentstring if there are nested languages (common in web development)
-    -- gcc for line comment
-    -- gbc for block comment
-    -- gcO open comment above
-    -- gcA append comment
-    config = function()
-      require("Comment").setup()
-    end
-  },
-  {
     "echasnovski/mini.move",
     -- Move current/selected line(s)
     config = function()
@@ -211,7 +199,73 @@ require("lazy").setup({
       vim.keymap.set("x", "s", require("substitute").visual, { noremap = true })
     end
   },
-
+  ---------
+  -- LSP --
+  ---------
+  -- Neovim acts as a client to LSP servers and includes the `vim.lsp` table to access their functionality.
+  {
+    -- Provides default configurations for dozens of LSP servers.
+    -- :LspInfo to see LSPs available/working in the current buffer
+    "neovim/nvim-lspconfig",
+  },
+  {
+    -- Manages installation of external editor tooling: LSP servers, DAP servers, linters and formatters.
+    -- :Mason, press i to install
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+  },
+  {
+    -- Automatically setups all LSPs installed with Mason
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim", "hrsh7th/cmp-nvim-lsp" },
+    config = function()
+      local lspconfig = require("lspconfig")
+      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup_handlers({
+        function (server_name)
+          vim.print("Setting up configuration for " .. server_name .. " LSP server")
+          require("lspconfig")[server_name].setup({
+            capabilities = require('cmp_nvim_lsp').default_capabilities()
+          })
+        end,
+        lua_ls = function()
+          lspconfig.lua_ls.setup({
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                hint = { enable = true },
+                format = {
+                  enable = true,
+                  defaultConfig = {
+                    indent_style = "tab",
+                    indent_size = "2",
+                  }
+                },
+              },
+            },
+          })
+        end,
+        basedpyright = function()
+          lspconfig.pyright.setup({
+            settings = {
+              python = {
+                analysis = {
+                  autoSearchPaths = true,
+                  diagnosticMode = "workspace",
+                  useLibraryCodeForTypes = true
+                }
+              }
+            }
+          })
+        end
+      })
+    end
+  },
+  -----------------
   -- COMPLETIONS --
   -----------------
   {
@@ -497,24 +551,22 @@ vim.keymap.set("n", "<leader>cl", ":let @+=expand('%:p') . ':' . line('.')<cr>")
 ------------------
 -- LSP (common) --
 ------------------
-local on_attach = function(_, bufnr)
-  -- Diagnostics
-  vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {silent=true})
-  -- open location list with a list of all issues
-  vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, {silent=true})
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {silent=true})
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {silent=true})
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function()
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=true}) -- Jump to the definition
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {buffer=true}) -- Jump to declaration
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, {buffer=true}) -- Find all references
+    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, {buffer=true})
 
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=true})
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=true}) -- Jump to the definition
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {buffer=true}) -- Jump to declaration
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, {buffer=true}) -- Find all references
-
-  vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, {buffer=true})
-
-  -- configure function signature
-  require "lsp_signature".on_attach({}, bufnr)
-end
+    -- Diagnostics
+    vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {silent=true})
+    -- open location list with a list of all issues
+    vim.keymap.set('n', '<leader>D', vim.diagnostic.setloclist, {silent=true})
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {silent=true})
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {silent=true})
+  end,
+})
 
 -----------------------
 -- LANGUAGE SPECIFIC --
@@ -531,91 +583,86 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
--- Lua
-local ftLua = vim.api.nvim_create_augroup("ftLua", { clear = true })
-vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
-  pattern = "lua",
-  group = ftLua,
-  callback = function()
-    vim.lsp.set_log_level(vim.log.levels.INFO)
-    local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
-    local project_root = vim.fs.dirname(vim.fs.find({".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml"}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
-    -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
-    local client_id = vim.lsp.start({
-      name = "Sumneko Lua (lua-language-server)",
-      cmd = {"lua-language-server"},
-      root_dir = project_root,
-      settings = { -- these are language server specific settings
-        Lua = {
-          runtime = {
-            version = 'LuaJIT',
-          },
-          diagnostics = {
-            globals = {'vim'}, -- Get the language server to recognize the `vim` global
-          },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file("", true), -- Make the server aware of Neovim runtime files
-            checkThirdParty = false,  -- Removes the "Do you need to configure your work environment as xyz" error
-          },
-          telemetry = {
-            enable = false, -- Do not send telemetry data containing a randomized but unique identifier
-          },
-        }
-      },
-      on_attach = on_attach,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    })
-    vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
-  end
-})
+-- -- Lua
+-- local ftLua = vim.api.nvim_create_augroup("ftLua", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
+--   pattern = "lua",
+--   group = ftLua,
+--   callback = function()
+--     local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
+--     local project_root = vim.fs.dirname(vim.fs.find({".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml"}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
+--     -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
+--     local client_id = vim.lsp.start({
+--       name = "Sumneko Lua (lua-language-server)",
+--       cmd = {"lua-language-server"},
+--       root_dir = project_root,
+--       settings = { -- these are language server specific settings
+--         Lua = {
+--           runtime = {
+--             version = 'LuaJIT',
+--           },
+--           diagnostics = {
+--             globals = {'vim'}, -- Get the language server to recognize the `vim` global
+--           },
+--           workspace = {
+--             library = vim.api.nvim_get_runtime_file("", true), -- Make the server aware of Neovim runtime files
+--             checkThirdParty = false,  -- Removes the "Do you need to configure your work environment as xyz" error
+--           },
+--         }
+--       },
+--       on_attach = on_attach,
+--     })
+--     vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
+--   end
+-- })
 
--- Python
--- Should call this within a FileType autocmd or put the call in a `ftplugin/<filetype_name>.lua`
-local ftPython = vim.api.nvim_create_augroup("ftPython", { clear = true })
-vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
-  pattern = "python",
-  group = ftPython,
-  callback = function()
-    -- run python3
-    vim.keymap.set("n", "<leader>r",
-      function()
-        if vim.api.nvim_buf_get_name(0) == '' then
-          local file_content = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false))
-          vim.notify(vim.fn.system({"python3", "-c", file_content}))
-        else
-          vim.notify(vim.cmd.write())
-          vim.notify(vim.fn.system({"python3", vim.fn.expand("%")}))
-        end
-      end,
-      { buffer=true }
-    )
-
-    vim.opt.colorcolumn = "91"
-
-    -- Pyright
-    local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
-    local project_root = vim.fs.dirname(vim.fs.find({'setup.py', 'pyproject.toml'}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
-
-    -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
-    local client_id = vim.lsp.start({
-      name = 'Python Pyright',
-      cmd = {'pyright-langserver', '--stdio'},
-      root_dir = project_root,
-      settings = { -- these are language server specific settings
-        python = {
-          analysis = {
-            autoSearchPaths = true,
-            diagnosticMode = "workspace",
-            useLibraryCodeForTypes = true
-          }
-        }
-      },
-      on_attach = on_attach,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    })
-    vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
-  end
-})
+-- -- Python
+-- -- Should call this within a FileType autocmd or put the call in a `ftplugin/<filetype_name>.lua`
+-- local ftPython = vim.api.nvim_create_augroup("ftPython", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", { -- triggers whenever a filetype is set
+--   pattern = "python",
+--   group = ftPython,
+--   callback = function()
+--     -- run python3
+--     vim.keymap.set("n", "<leader>r",
+--       function()
+--         if vim.api.nvim_buf_get_name(0) == '' then
+--           local file_content = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false))
+--           vim.notify(vim.fn.system({"python3", "-c", file_content}))
+--         else
+--           vim.notify(vim.cmd.write())
+--           vim.notify(vim.fn.system({"python3", vim.fn.expand("%")}))
+--         end
+--       end,
+--       { buffer=true }
+--     )
+--
+--     vim.opt.colorcolumn = "91"
+--
+--     -- Pyright
+--     local bufname = vim.api.nvim_buf_get_name(0) -- 0 means current buffer
+--     local project_root = vim.fs.dirname(vim.fs.find({'setup.py', 'pyproject.toml'}, { upward = true })[1]) or (#bufname == 0 and vim.loop.cwd()) or vim.fs.dirname(bufname)
+--
+--     -- We can re-run it, because default impl reuses the LS client when name and root_dir attributes match
+--     local client_id = vim.lsp.start({
+--       name = 'Python Pyright',
+--       cmd = {'pyright-langserver', '--stdio'},
+--       root_dir = project_root,
+--       settings = { -- these are language server specific settings
+--         python = {
+--           analysis = {
+--             autoSearchPaths = true,
+--             diagnosticMode = "workspace",
+--             useLibraryCodeForTypes = true
+--           }
+--         }
+--       },
+--       on_attach = on_attach,
+--       capabilities = require('cmp_nvim_lsp').default_capabilities(),
+--     })
+--     vim.lsp.buf_attach_client(0, client_id) -- Notifies LS about changes
+--   end
+-- })
 
 
 vim.cmd.helptags("ALL")
