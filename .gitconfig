@@ -18,6 +18,15 @@
 [push]
   # will push only current branch and create the branch in the remote repo if necessary
 	default = current
+[diff]
+  # Removes "a" and "b" versions from file paths in a diff output.
+  # Before:
+  # --- a/a.txt
+  # +++ b/a.txt
+  # After
+  # --- a.txt
+  # +++ a.txt
+  noprefix = true
 [alias]
   # %C to change color; %h abbrev commit hash; %cr committer date, relative; %cn committer name; %d ref names; %s subject
   hist    = log --pretty=format:\"%Cgreen%h %Creset%cr %Cblue[%cn]%C(auto)%d %Creset%s\" --graph --decorate --all --color=always
