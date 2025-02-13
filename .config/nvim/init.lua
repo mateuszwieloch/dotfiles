@@ -23,6 +23,19 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
+  {
+    -- Configures LuaLS for editing Neovim config files. Available as completion source in nvim-cmp
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
   -- When opening a file, you can specify line and column to open in one of many supported formats:
   -- - Trailing colon `filepath:lnum[:colnum]`
   -- - GitHub/GitLab `filepath:#Llnum-Llnum`
@@ -243,8 +256,16 @@ require("lazy").setup({
           lspconfig.lua_ls.setup({
             settings = {
               Lua = {
+                runtime = {
+                  version = "LuaJIT",
+                  path = vim.split(package.path, ";"),
+                },
                 diagnostics = {
-                  globals = { "vim" },
+                  globals = { "vim" },  -- Get the language server to recognize the `vim` global
+                },
+                workspace = {
+                  library = { vim.env.VIMRUNTIME },  -- Make the server aware of Neovim runtime files and plugins
+                  checkThirdParty = false,
                 },
                 hint = { enable = true },
                 format = {
@@ -253,6 +274,9 @@ require("lazy").setup({
                     indent_style = "tab",
                     indent_size = "2",
                   }
+                },
+                telemetry = {
+                  enable = false,
                 },
               },
             },
@@ -304,6 +328,7 @@ require("lazy").setup({
 
         sources = cmp.config.sources(
           {
+            { name = "lazydev", group_index = 0}, -- set group index to 0 to skip loading LuaLS completions
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
           },
