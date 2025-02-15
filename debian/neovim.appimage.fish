@@ -12,6 +12,6 @@ sudo ln -sf $NVIM_PATH /usr/local/bin/vim
 mkdir -p ~/.config/nvim
 ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua
 ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/lazy-lock.json ~/.config/nvim/lazy-lock.json
-ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/after ~/.config/nvim/after
+ln -s ~/code/mateuszwieloch/dotfiles/.config/nvim/after ~/.config/nvim/
 
 sudo apt-get install tree-sitter-cli
