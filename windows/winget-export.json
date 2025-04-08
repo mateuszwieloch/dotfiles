@@ -14,6 +14,10 @@
           "PackageIdentifier": "LocalSend.LocalSend"
         },
         {
+          "comment": "Shows real-time hardware info and power usage",
+          "PackageIdentifier": "REALiX.HWiNFO"
+        },
+        {
           "PackageIdentifier": "xanderfrangos.twinkletray"
         },
         {
