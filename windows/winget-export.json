@@ -73,8 +73,12 @@
       "PackageIdentifier": "GIMP.GIMP"
     },
     {
+      "comment": "Make a screen recording and store it as easily shareable GIF",
+      "PackageIdentifier": "NickeManarin.ScreenToGif"
+    },
+    {
       "comment": "Simulates Linux Compose button making it easier to input special characters",
-      "PackageIdentifier": "SamHocevar.WinCompose",
+      "PackageIdentifier": "SamHocevar.WinCompose"
     }
   ],
   "Retired": [
