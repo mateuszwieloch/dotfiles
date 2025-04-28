@@ -51,6 +51,7 @@ require("lazy").setup({
   {
     -- Highlights trailing whitespace with `DiffDelete` (by default). :TrimWhitespace to remove the whitespace.
     "johnfrankmorgan/whitespace.nvim",
+    cond = not vim.g.vscode, -- `"files.trimTrailingWhitespace": true` trims trailing whitespace on save.
     config = function()
       require("whitespace-nvim").setup({
         ignored_filetypes = {'help', 'lazy', 'TelescopePrompt'},
@@ -229,74 +230,6 @@ require("lazy").setup({
     -- Provides default configurations for dozens of LSP servers.
     -- :LspInfo to see LSPs available/working in the current buffer
     "neovim/nvim-lspconfig",
-  },
-  {
-    -- Manages installation of external editor tooling: LSP servers, DAP servers, linters and formatters.
-    -- :Mason, press i to install
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end
-  },
-  {
-    -- Automatically setups all LSPs installed with Mason
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "hrsh7th/cmp-nvim-lsp" },
-    config = function()
-      local lspconfig = require("lspconfig")
-      require("mason-lspconfig").setup()
-      require("mason-lspconfig").setup_handlers({
-        function (server_name)
-          vim.print("Setting up configuration for " .. server_name .. " LSP server")
-          require("lspconfig")[server_name].setup({
-            capabilities = require('cmp_nvim_lsp').default_capabilities()
-          })
-        end,
-        lua_ls = function()
-          lspconfig.lua_ls.setup({
-            settings = {
-              Lua = {
-                runtime = {
-                  version = "LuaJIT",
-                  path = vim.split(package.path, ";"),
-                },
-                diagnostics = {
-                  globals = { "vim" },  -- Get the language server to recognize the `vim` global
-                },
-                workspace = {
-                  library = { vim.env.VIMRUNTIME },  -- Make the server aware of Neovim runtime files and plugins
-                  checkThirdParty = false,
-                },
-                hint = { enable = true },
-                format = {
-                  enable = true,
-                  defaultConfig = {
-                    indent_style = "tab",
-                    indent_size = "2",
-                  }
-                },
-                telemetry = {
-                  enable = false,
-                },
-              },
-            },
-          })
-        end,
-        basedpyright = function()
-          lspconfig.pyright.setup({
-            settings = {
-              python = {
-                analysis = {
-                  autoSearchPaths = true,
-                  diagnosticMode = "workspace",
-                  useLibraryCodeForTypes = true
-                }
-              }
-            }
-          })
-        end
-      })
-    end
   },
   -----------------
   -- COMPLETIONS --
@@ -696,5 +629,8 @@ vim.api.nvim_create_autocmd("FileType", {
 --   end
 -- })
 
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
 
 vim.cmd.helptags("ALL")
