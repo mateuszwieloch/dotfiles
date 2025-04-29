@@ -88,14 +88,15 @@ require("lazy").setup({
     -- File explorer that lets you edit filesystem like regular files.
     -- You can even move files by deleting them `dd`, navigating to a different directory, pasting and `:w`.
     'stevearc/oil.nvim',
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    lazy = false,
     config = function()
       require("oil").setup({
         keymaps = {
           ["q"] = "actions.close",
         }
       })
-      vim.keymap.set("n", "-", ":edit .<cr>", { silent = true })
+      vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
     end
   },
 
