@@ -230,65 +230,34 @@ require("lazy").setup({
   -- COMPLETIONS --
   -----------------
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
-    config = function()
-      vim.opt.completeopt = "menu,menuone,noselect"
+    -- C-n/C-p: Select next/previous item
+    -- C-space: Open menu or open docs if already open
+    -- C-e: Hide menu
+    -- C-k: Toggle signature help (if signature.enabled = true)
+    "saghen/blink.cmp",
+    -- optional: provides snippets for the snippet source
+    dependencies = { "rafamadriz/friendly-snippets" },
 
-      local cmp = require("cmp")
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-          end
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-a>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- `select=false` to only confirm explicitly selected items.
-        }),
+    version = "1.*",  -- Use a release tag to download pre-built fuzzy matching binaries vs nightly would require building from src
 
-        sources = cmp.config.sources(
-          {
-            { name = "lazydev", group_index = 0}, -- set group index to 0 to skip loading LuaLS completions
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' },
-          },
-          {
-            { name = 'buffer' },
-          }
-        )
-      })
+    ---@module "blink.cmp"
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = { preset = "enter" },  -- "super-tab" for vscode-like experience
 
-      cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' }
-        }
-      })
+      appearance = {
+        nerd_font_variant = "mono"
+      },
 
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' }
-        }, {
-          { name = 'cmdline' }
-        })
-      })
+      completion = { documentation = { auto_show = true } },
 
-    end
-  },
-  {
-    "ray-x/lsp_signature.nvim",
-    config = function()
-      local cmp = require("cmp")
-    end
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+    opts_extend = { "sources.default" }
   },
   -------------------
   -- COLOR SCHEMES --
