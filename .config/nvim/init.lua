@@ -335,14 +335,17 @@ require("lazy").setup({
   -----------------
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'tokyonight',
-        component_separators = '|',
-        section_separators = '',
-      },
-    }
+    config = function()
+      require("lualine").setup({
+        options = {
+          icons_enabled = false,
+          theme = 'tokyonight',
+          component_separators = '|',
+          section_separators = '',
+        }
+      })
+      vim.opt.showmode = false  -- Don't show mode in command line. It's already in the status line.
+    end
   },
 })
 
@@ -356,17 +359,21 @@ vim.keymap.set({"n", "v"}, "L", "g$")  -- Move cursor to end of line
 -- (C-q to enter visual block mode, because C-v is often used by terminal for paste)
 vim.opt.virtualedit = "block"
 
------------
--- <Tab> --
------------
-vim.opt.expandtab = true  -- convert tabs to spaces
-vim.opt.tabstop = 2       -- number of spaces a <Tab> in the text stands for
-vim.opt.softtabstop = 2   -- number of spaces to insert for a <Tab>
+------------
+-- INDENT --
+------------
+vim.opt.expandtab = true        -- convert tabs to spaces
+vim.opt.softtabstop = 2         -- number of spaces inserted for a <Tab>
+vim.opt.tabstop = 2             -- number of spaces shown per <Tab>
+vim.opt.shiftwidth = 2          -- number of spaces for each << and >>
+vim.opt.shiftround = true       -- round to 'shiftwidth' for << and >>
+vim.keymap.set("v", ">", ">gv") -- stay in visual mode after indenting
+vim.keymap.set("v", "<", "<gv")
+vim.opt.smartindent = true      -- autoindent = same indent as line above; smartindent = autoindent + one level of indentation in some cases
 
 --------------
 -- WRAPPING --
 --------------
-vim.opt.smartindent = true      -- autoindent = same indent as line above; smartindent = autoindent + one level of indentation in some cases
 vim.opt.breakindent = true      -- preserve indentation in wrapped text
 vim.opt.showbreak="↳ "          -- string to put before wrapped screen lines
 vim.keymap.set("n", "k", "gk")  -- move by screen lines (not physical lines) in wrapped text
@@ -374,14 +381,6 @@ vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "^", "g^")
 vim.keymap.set("n", "0", "g0")
 vim.keymap.set("n", "$", "g$")
-
-------------
--- INDENT --
-------------
-vim.opt.shiftwidth = 2          -- number of spaces for each << and >>
-vim.opt.shiftround = true       -- round to 'shiftwidth' for << and >>
-vim.keymap.set("v", ">", ">gv") -- stay in visual mode after indenting
-vim.keymap.set("v", "<", "<gv")
 
 ---------------
 -- CLIPBOARD --
