@@ -3,6 +3,7 @@ vim.g.mapleader = " "  -- Needs to be set before loading external code so that m
 --------------------
 -- PLUGIN MANAGER --
 --------------------
+-- Bootstraps lazy.nvim
 -- :Lazy to open the UI where you can update plugins.
 -- Supports installing specific SemVers of a plugin and locking working versions in a lockfile `lazy-lock.json`.
 -- Can lazy-load on events, commands, filetypes, and key mappings. UI shows what caused a plugin to be loaded.
@@ -24,9 +25,9 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
   {
-    -- Configures LuaLS for editing Neovim config files. Available as completion source in nvim-cmp
+    -- Configures LuaLS for editing Neovim config files. Available as a completion source.
     "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
+    ft = "lua", -- lazy-load for lua filetype only
     opts = {
       library = {
         -- See the configuration section for more details
@@ -63,23 +64,21 @@ require("lazy").setup({
   {
     "echasnovski/mini.move",
     -- Move current/selected line(s)
-    config = function()
-      require('mini.move').setup({
-        mappings = {
-          -- Move visual selection
-          left = '',
-          right = '',
-          down = '<C-j>',
-          up = '<C-k>',
+    opts = {
+      mappings = {
+        -- Move visual selection
+        left = '',
+        right = '',
+        down = '<C-j>',
+        up = '<C-k>',
 
-          -- Move current line in Normal mode
-          line_left = '',
-          line_right = '',
-          line_down = '<C-j>',
-          line_up = '<C-k>',
-        },
-      })
-    end
+        -- Move current line in Normal mode
+        line_left = '',
+        line_right = '',
+        line_down = '<C-j>',
+        line_up = '<C-k>',
+      },
+    }
   },
 
   --------------
@@ -182,9 +181,7 @@ require("lazy").setup({
   "nvim-treesitter/nvim-treesitter-textobjects",
   {
     "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup({ mode = 'topline' })
-    end
+    opts = { mode = 'topline' }
   },
   -- ae  entire file
   -- ie  entire file but skip empty lines at beginning and end
@@ -207,9 +204,7 @@ require("lazy").setup({
     -- ds]    delete surrounding ]
     -- viwSb  visual inner work surround with bracket )
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup()
-    end
+    opts = {}
   },
   {
     -- New operator and motions to perform quick substitutions and exchanges (not configured).
@@ -301,6 +296,8 @@ require("lazy").setup({
   -- Main colorscheme has to be loaded first, which can be achieved with `priority=1000`
   {
     "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
       require("tokyonight").setup({
         styles = {
@@ -341,46 +338,41 @@ require("lazy").setup({
     -- :Gitsigns toggle_current_line_blame
     -- :Gitsigns toggle_deleted
     -- :Gitsigns preview_hunk or preview_hunk_inline (and then navigate with ]h and [h) to preview changes
-    config = function()
-      require("gitsigns").setup({
-        current_line_blame_opts = {
-          delay = 10
-        },
-        current_line_blame_formatter = '<author> <author_time:%Y-%m-%d> <summary>',
-        on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
+    opts = {
+      current_line_blame_opts = {
+        delay = 10
+      },
+      current_line_blame_formatter = '<author> <author_time:%Y-%m-%d> <summary>',
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
 
-          vim.keymap.set('n', ']h', function()
-            if vim.wo.diff then return ']h' end
-            vim.schedule(function() gs.next_hunk() end)
-            return '<Ignore>'
-          end, {buffer=bufnr, expr=true})
+        vim.keymap.set('n', ']h', function()
+          if vim.wo.diff then return ']h' end
+          vim.schedule(function() gs.next_hunk() end)
+          return '<Ignore>'
+        end, {buffer=bufnr, expr=true})
 
-          vim.keymap.set('n', '[h', function()
-            if vim.wo.diff then return '[h' end
-            vim.schedule(function() gs.prev_hunk() end)
-            return '<Ignore>'
-          end, {buffer=bufnr, expr=true})
-        end
-      })
-    end
+        vim.keymap.set('n', '[h', function()
+          if vim.wo.diff then return '[h' end
+          vim.schedule(function() gs.prev_hunk() end)
+          return '<Ignore>'
+        end, {buffer=bufnr, expr=true})
+      end
+    }
   },
   -----------------
   -- STATUS LINE --
   -----------------
   {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      -- See `:help lualine.txt`
-      require('lualine').setup {
-        options = {
-          icons_enabled = false,
-          theme = 'tokyonight',
-          component_separators = '|',
-          section_separators = '',
-        },
-      }
-    end
+    opts = {
+      options = {
+        icons_enabled = false,
+        theme = 'tokyonight',
+        component_separators = '|',
+        section_separators = '',
+      },
+    }
   },
 })
 
