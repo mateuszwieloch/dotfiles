@@ -136,8 +136,8 @@ require("lazy").setup({
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require("nvim-treesitter.configs").setup({
-        -- TODO: Neovim 0.10 will ship with bash, markdown and python parsers
-        ensure_installed = { "bash", "css", "dockerfile", "fish", "gitcommit", "gitignore", "html", "javascript", "json", "json5", "jsonc", "lua", "markdown", "markdown_inline", "python", "toml", "typescript", "vim", "vimdoc", "yaml" },
+        -- Neovim has built-in C, Lua, Markdown, Vimscript, Vimdoc parsers.
+        ensure_installed = { "bash", "css", "dockerfile", "fish", "gitcommit", "gitignore", "html", "javascript", "json", "json5", "jsonc", "markdown_inline", "python", "toml", "typescript", "vim", "yaml" },
 
         -- Automatically install missing parsers when entering buffer
         -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
@@ -159,8 +159,8 @@ require("lazy").setup({
             keymaps = {
               ["af"] = { query = "@function.outer", desc = "Select outer part of a function" },
               ["if"] = { query = "@function.inner", desc = "Select inner part of a function" },
-              ["ac"] = { query = "@class.outer", desc = "Select outer part of a function" },
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+              ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
+              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
             }
           },
           move = {
@@ -175,7 +175,16 @@ require("lazy").setup({
               ["[c"] = { query = "@class.outer", desc = "Next class end" },
             }
           }
-        }
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "<Enter>", -- set to `false` to disable one of the mappings
+            node_incremental = "<Enter>",
+            scope_incremental = false,
+            node_decremental = "\\",
+          },
+        },
       })
     end
   },
@@ -358,6 +367,7 @@ vim.keymap.set({"n", "v"}, "L", "g$")  -- Move cursor to end of line
 -- Allow positioning cursor past the last character in a line in visual block mode
 -- (C-q to enter visual block mode, because C-v is often used by terminal for paste)
 vim.opt.virtualedit = "block"
+vim.opt.scrolloff = 5  -- min number of lines to keep visible above and below cursor
 
 ------------
 -- INDENT --
