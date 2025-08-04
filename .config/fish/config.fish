@@ -91,6 +91,6 @@ function storePathForWindowsTerminal --on-variable PWD
 end
 
 # mise is a dev env manager for tool versions, env variables, tasks
-if test -e ~/.local/bin/mise
-  ~/.local/bin/mise activate fish | source
+if type -q mise  # if mise is in PATH
+  mise activate fish | source
 end
