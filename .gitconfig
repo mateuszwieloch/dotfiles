@@ -7,6 +7,7 @@
 [core]
   # CRLF endings in Windows checkouts, but LF endings on macOS and Linux systems and in the repository
   autocrlf = input
+  excludesFile = ~/.gitignore_global
 [init]
   # To match GitHub's and GitLab's default branch name
   defaultBranch = main
