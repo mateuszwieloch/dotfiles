@@ -1,8 +1,12 @@
 # dotfiles
-A set of opinionated setup and installation scripts for Linux, Windows and macOS.
+My setup scripts for Linux, Windows and macOS.
 
-## Setup
+## Prerequisites
+```shell
+pacman -S openssh git
+```
 
+## SSH key setup
 Generate SSH key:
 ```shell
 ssh-keygen -t rsa -b 4096 -C "github@mateuszwieloch.com"
@@ -23,9 +27,9 @@ Display and copy public SSH key:
 cat ~/.ssh/id_rsa.pub
 ```
 
-Paste it in [GitHub -> Settings -> SSH and GPG keys -> New SSH key](https://github.com/settings/keys)
+Paste the key in the [GitHub -> Settings -> SSH and GPG keys -> New SSH key](https://github.com/settings/keys)
 
-Clone the dotfiles repo:
+## Clone this repo
 ```shell
 git@github.com:mateuszwieloch/dotfiles.git
 ```
