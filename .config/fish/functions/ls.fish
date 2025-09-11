@@ -1,5 +1,4 @@
 function ls
   # -F append indicator to entries /=directory, *=executable, @=symbolic link
-  # -h humanly readable file sizes
-  command ls -Fh $argv
+  command ls -F --human-readable --time-style=long-iso $argv
 end
