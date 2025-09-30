@@ -28,7 +28,7 @@
           "PackageIdentifier": "AutoHotkey.AutoHotkey"
         },
         {
-          "PackageIdentifier": "qBittorrent.qBittorrent"
+          "PackageIdentifier": "Transmission.Transmission"
         },
         {
           "PackageIdentifier": "dotPDN.PaintDotNet"
@@ -90,6 +90,10 @@
     {
       "comment": "Very lightweight, Windows-only PDF reader. No editing functionality.",
       "PackageIdentifier": "SumatraPDF.SumatraPDF"
+    },
+    {
+      "comment": "In favor of simpler Transmission client",
+      "PackageIdentifier": "qBittorrent.qBittorrent"
     },
   ]
 }
